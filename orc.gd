@@ -4,11 +4,55 @@ extends CharacterBody2D
 var health:=5
 var hit:AnimationPlayer
 var sprite:AnimatedSprite2D
+var shadow: AnimatedSprite2D
 var dead=false
+var player: CharacterBody2D
+@export var speed = 100
+var direction:="right"
+var attacking:=false
+var animator: AnimationPlayer
+var attackingList:=[]
+var canAttack:=true
+@export var cooldown:=.25
+@export var weaponDamage:=1
 
 func _ready() -> void:
-	hit=$AnimationPlayer
+	hit=$Hit
 	sprite=$Sprite
+	shadow=$Shadow
+	player=GameManager.player
+	animator = $Attack
+
+func _physics_process(_delta: float) -> void:
+	if(dead or attacking):
+		return
+	if(len(attackingList)>=1 and canAttack):
+		attack()
+		return
+	velocity=Vector2.ZERO
+	if(global_position.distance_to(player.global_position)>=20):
+		velocity=player.global_position-global_position
+		velocity=velocity.normalized()*speed
+	move_and_slide()
+	if(velocity!=Vector2.ZERO and sprite.animation=="idle"):
+		sprite.play("walk")
+	if(velocity==Vector2.ZERO and sprite.animation=="walk"):
+		sprite.play("idle")
+	if(velocity.x<0):
+		flip("left")
+	else:
+		flip("right")
+
+func flip(newDirection):
+	direction=newDirection
+	if(direction=="left"):
+		sprite.flip_h=true
+		shadow.flip_h=true
+		$Areas.scale.x=-1
+	else:
+		sprite.flip_h=false
+		shadow.flip_h=false
+		$Areas.scale.x=1
 
 func damage(hitDamage):
 	if(dead):
@@ -18,3 +62,35 @@ func damage(hitDamage):
 	if(health<=0):
 		dead=true
 		sprite.play("die")
+		shadow.play("die")
+
+func attack():
+	if(attacking or dead):
+		return
+	attacking=true
+	canAttack=false
+	if(randi_range(1, 2)==2):
+		sprite.play("attack-2")
+		animator.play("attack-2")
+	else:
+		sprite.play("attack-1")
+		animator.play("attack-1")
+
+func _on_checks_area_entered(area: Area2D) -> void:
+	attackingList.append(area.get_parent())
+
+
+func _on_sprite_animation_finished() -> void:
+	if("attack" in sprite.animation):
+		attacking=false
+		sprite.play("idle")
+		await get_tree().create_timer(cooldown).timeout
+		canAttack=true
+
+
+func _on_checks_area_exited(area: Area2D) -> void:
+	attackingList.erase(area.get_parent())
+
+
+func _on_hits_area_entered(area: Area2D) -> void:
+	area.get_parent().hit(weaponDamage)

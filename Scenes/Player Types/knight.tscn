@@ -1,9 +1,14 @@
-[gd_scene load_steps=51 format=3 uid="uid://bgmpq3nw65l7j"]
+[gd_scene load_steps=58 format=3 uid="uid://bgmpq3nw65l7j"]
 
 [ext_resource type="Script" uid="uid://cllbojkrs433o" path="res://player.gd" id="1_ebkyg"]
 [ext_resource type="Texture2D" uid="uid://dvqwqmuns8vkw" path="res://Characters/Characters(100x100)/Knight/Knight/Knight.png" id="2_3hayl"]
+[ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://flash.gdshader" id="2_fy2qv"]
 [ext_resource type="Texture2D" uid="uid://3j76cno7nww6" path="res://Characters/Characters(100x100)/Knight/Knight/Shadow sprites/Knight-Shadow.png" id="3_fy2qv"]
 [ext_resource type="Texture2D" uid="uid://b4j2re4yu88i1" path="res://Characters/Characters(100x100)/Knight/Knight/Shadow sprites/Knight-Shadow_death.png" id="4_qgysq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qgysq"]
+shader = ExtResource("2_fy2qv")
+shader_parameter/whiteness = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
 atlas = ExtResource("2_3hayl")
@@ -329,6 +334,69 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
 radius = 4.0
 
+[sub_resource type="Animation" id="Animation_3hayl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitboxController/attack-1:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxController/attack-2a:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxController/attack-2b:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitboxController/attack-2a:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HitboxController/attack-2b:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_ebkyg"]
 resource_name = "attack-1"
 length = 0.3
@@ -345,25 +413,104 @@ tracks/0/keys = {
 "values": [true, false, true]
 }
 
-[sub_resource type="Animation" id="Animation_3hayl"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_fy2qv"]
+resource_name = "attack-2"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HitboxController/attack-1:disabled")
+tracks/0/path = NodePath("HitboxController/attack-2a:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxController/attack-2b:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxController/attack-2a:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitboxController/attack-2b:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fy2qv"]
 _data = {
 &"RESET": SubResource("Animation_3hayl"),
-&"attack-1": SubResource("Animation_ebkyg")
+&"attack-1": SubResource("Animation_ebkyg"),
+&"attack-2": SubResource("Animation_fy2qv")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ebkyg"]
+radius = 8.0
+height = 20.0
+
+[sub_resource type="Animation" id="Animation_qgysq"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:material:shader_parameter/whiteness")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hncr7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:material:shader_parameter/whiteness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hncr7"]
+_data = {
+&"RESET": SubResource("Animation_hncr7"),
+&"hit": SubResource("Animation_qgysq")
 }
 
 [node name="Knight" type="CharacterBody2D"]
@@ -374,8 +521,9 @@ script = ExtResource("1_ebkyg")
 speed = 65.0
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_qgysq")
 sprite_frames = SubResource("SpriteFrames_d2t1y")
-animation = &"attack-1"
+animation = &"attack-2"
 autoplay = "idle"
 
 [node name="Shadow" type="AnimatedSprite2D" parent="."]
@@ -393,6 +541,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="attack-1" type="CollisionPolygon2D" parent="HitboxController"]
+visible = false
 polygon = PackedVector2Array(3, -13, 7, -14, 13, -7, 13, 0, 6, 2, 3, 6, 16, 11, 24, 7, 23, -13, 10, -20, 0, -15)
 disabled = true
 
@@ -410,6 +559,20 @@ disabled = true
 libraries = {
 &"": SubResource("AnimationLibrary_fy2qv")
 }
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_ebkyg")
+
+[node name="Hit" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hncr7")
+}
+speed_scale = 1.5
 
 [connection signal="animation_finished" from="Player" to="." method="_on_player_animation_finished"]
 [connection signal="area_entered" from="HitboxController" to="." method="_enemy_hit"]
