@@ -1,7 +1,7 @@
 @icon("res://Assets/GodotIcon/icon_sword.png")
 extends CharacterBody2D
 
-var health:=5
+@export var health:=5
 var hit:AnimationPlayer
 var sprite:AnimatedSprite2D
 var shadow: AnimatedSprite2D
@@ -75,7 +75,7 @@ func attack():
 		return
 	attacking=true
 	canAttack=false
-	if(randi_range(1, 2)==20):
+	if(randi_range(1, 2)==2):
 		sprite.play("attack-2")
 		animator.play("attack-2")
 	else:
