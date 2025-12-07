@@ -1,11 +1,13 @@
-[gd_scene load_steps=20 format=4 uid="uid://ciel7rppkyd1q"]
+[gd_scene load_steps=16 format=4 uid="uid://ciel7rppkyd1q"]
 
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="1_05pb0"]
 [ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="2_dl8mf"]
 [ext_resource type="Texture2D" uid="uid://wrg7d4vpuep6" path="res://Assets/Tilemap/FixedDoors.png" id="3_xcayt"]
 [ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Scenes/Player Types/knight.tscn" id="4_5g41i"]
 [ext_resource type="PackedScene" uid="uid://df4aytlkx5ais" path="res://Scenes/Enemies/strongOrc.tscn" id="5_7fl83"]
-[ext_resource type="Texture2D" uid="uid://dotrjain6kagb" path="res://Assets/Tilemap/doors_lever_chest_animation.png" id="6_p5226"]
+[ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Levels/door.tscn" id="6_dl8mf"]
+[ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="7_dl8mf"]
+[ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Levels/HUD.tscn" id="8_xcayt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(185, 38)
@@ -53,49 +55,6 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lquwl"]
-atlas = ExtResource("6_p5226")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
-atlas = ExtResource("6_p5226")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_272bh"]
-atlas = ExtResource("6_p5226")
-region = Rect2(64, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
-atlas = ExtResource("6_p5226")
-region = Rect2(96, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
-atlas = ExtResource("6_p5226")
-region = Rect2(128, 64, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4c57u"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lquwl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7mycd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_272bh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5vw27")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kek77")
-}],
-"loop": false,
-"name": &"default",
-"speed": 8.0
-}]
-
 [node name="Main" type="Node2D"]
 texture_filter = 1
 
@@ -105,7 +64,7 @@ tile_map_data = PackedByteArray("AAD+//n/AAABAA8AAAD+//r/AAABABAAAAD+//v/AAABABE
 
 [node name="FrontWalls" parent="." instance=ExtResource("1_05pb0")]
 z_index = 3
-tile_map_data = PackedByteArray("AAAFAAQAAAAGABEAAAD6/wIAAAAFAA8AAAD6/wMAAAAFABAAAAD6/wQAAAAFABEAAAAFAAIAAAAGAA8AAAAFAAMAAAAGABAAAAD7/wIAAAABAA8AAAD7/wMAAAABABAAAAD7/wQAAAABABEAAAD8/wIAAAABAA8AAAD8/wMAAAABABAAAAD8/wQAAAABABEAAAD9/wIAAAABAA8AAAD9/wMAAAABABAAAAD9/wQAAAABABEAAAD+/wIAAAABAA8AAAD+/wMAAAABABAAAAD+/wQAAAABABEAAAD//wIAAAABAA8AAAAAAAIAAAABAA8AAAABAAIAAAABAA8AAAABAAMAAAABABAAAAABAAQAAAABABEAAAACAAIAAAABAA8AAAACAAMAAAABABAAAAACAAQAAAABABEAAAADAAIAAAABAA8AAAADAAMAAAABABAAAAADAAQAAAABABEAAAAEAAIAAAABAA8AAAAEAAMAAAABABAAAAAEAAQAAAABABEAAAA=")
+tile_map_data = PackedByteArray("AAAFAAQAAAAGABEAAAD6/wIAAAAFAA8AAAD6/wMAAAAFABAAAAD6/wQAAAAFABEAAAAFAAIAAAAGAA8AAAAFAAMAAAAGABAAAAD7/wIAAAABAA8AAAD7/wMAAAABABAAAAD7/wQAAAABABEAAAD8/wIAAAABAA8AAAD8/wMAAAABABAAAAD8/wQAAAABABEAAAD9/wIAAAABAA8AAAD9/wMAAAABABAAAAD9/wQAAAABABEAAAD+/wIAAAABAA8AAAD+/wMAAAABABAAAAD+/wQAAAABABEAAAD//wIAAAABAA8AAAAAAAIAAAABAA8AAAABAAIAAAABAA8AAAABAAMAAAABABAAAAABAAQAAAABABEAAAACAAIAAAABAA8AAAACAAMAAAABABAAAAACAAQAAAABABEAAAADAAIAAAABAA8AAAADAAMAAAABABAAAAADAAQAAAABABEAAAAEAAIAAAABAA8AAAAEAAMAAAABABAAAAAEAAQAAAABABEAAAD///r/AAADABMAAAAAAPr/AAAEABMAAAD///n/AAADABIAAAAAAPn/AAAEABIAAAA=")
 script = ExtResource("2_dl8mf")
 
 [node name="Area2D" type="Area2D" parent="FrontWalls"]
@@ -137,17 +96,25 @@ y_sort_enabled = true
 [node name="Knight" parent="Y_Sorting" instance=ExtResource("4_5g41i")]
 
 [node name="Camera2D" type="Camera2D" parent="Y_Sorting/Knight"]
-zoom = Vector2(5.95, 5.95)
+zoom = Vector2(8, 8)
 position_smoothing_enabled = true
 
 [node name="Orc" parent="Y_Sorting" instance=ExtResource("5_7fl83")]
 position = Vector2(-44, 0)
 
-[node name="Door" type="AnimatedSprite2D" parent="."]
+[node name="Door" parent="." instance=ExtResource("6_dl8mf")]
 position = Vector2(0, -85)
-sprite_frames = SubResource("SpriteFrames_4c57u")
-frame = 4
-frame_progress = 1.0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.69135684, 0.6913568, 0.69135684, 1)
+
+[node name="Torch" parent="." instance=ExtResource("7_dl8mf")]
+position = Vector2(38, -85)
+
+[node name="Torch2" parent="." instance=ExtResource("7_dl8mf")]
+position = Vector2(-34, -85)
+
+[node name="HUD" parent="." instance=ExtResource("8_xcayt")]
 
 [connection signal="area_entered" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_exited"]

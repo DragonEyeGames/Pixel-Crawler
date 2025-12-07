@@ -1,5 +1,6 @@
 @icon("res://Assets/GodotIcon/icon_character.png")
 extends CharacterBody2D
+class_name Player
 
 var sprite: AnimatedSprite2D
 var shadow: AnimatedSprite2D
@@ -11,6 +12,7 @@ var direction:="right"
 var animator:AnimationPlayer
 var hitAnimator: AnimationPlayer
 var dead:=false
+var canMove=true
 
 
 func  _ready() -> void:
@@ -21,7 +23,7 @@ func  _ready() -> void:
 	animator=$Attack
 	
 func _physics_process(_delta: float) -> void:
-	if(dead):
+	if(dead or not canMove):
 		return
 	velocity = Input.get_vector("Left", "Right", "Up", "Down")
 	velocity*=speed

@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://bu73dvp8i65sr"]
+
+[ext_resource type="Texture2D" uid="uid://dkgps26n57idn" path="res://Assets/Tilemap/fire_animation.png" id="1_wced7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcayt"]
+atlas = ExtResource("1_wced7")
+region = Rect2(0, 0, 35, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g41i"]
+atlas = ExtResource("1_wced7")
+region = Rect2(0, 48, 35, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fl83"]
+atlas = ExtResource("1_wced7")
+region = Rect2(0, 96, 35, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5226"]
+atlas = ExtResource("1_wced7")
+region = Rect2(0, 144, 35, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuji2"]
+atlas = ExtResource("1_wced7")
+region = Rect2(0, 192, 35, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5cpa"]
+atlas = ExtResource("1_wced7")
+region = Rect2(0, 240, 35, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_104vp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcayt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g41i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fl83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5226")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuji2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5cpa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Torch" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_104vp")
+autoplay = "default"
+frame_progress = 0.99544734
