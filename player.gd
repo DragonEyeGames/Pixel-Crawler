@@ -74,4 +74,6 @@ func hit(newDamage):
 		dead=true
 		sprite.play("die")
 		shadow.play("die")
+		await get_tree().create_timer(1.5).timeout
+		hitAnimator.play("die")
 	

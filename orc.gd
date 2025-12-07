@@ -27,8 +27,9 @@ func _physics_process(_delta: float) -> void:
 	if(dead or attacking):
 		return
 	if(len(attackingList)>=1 and canAttack):
-		attack()
-		return
+		if player.dead!=true:
+			attack()
+			return
 	velocity=Vector2.ZERO
 	if(global_position.distance_to(player.global_position)>=20):
 		velocity=player.global_position-global_position
@@ -40,7 +41,7 @@ func _physics_process(_delta: float) -> void:
 		sprite.play("idle")
 	if(velocity.x<0):
 		flip("left")
-	else:
+	elif(velocity.x>0):
 		flip("right")
 
 func flip(newDirection):
@@ -63,13 +64,18 @@ func damage(hitDamage):
 		dead=true
 		sprite.play("die")
 		shadow.play("die")
+		await get_tree().create_timer(1.5).timeout
+		hit.play("die")
+		await get_tree().create_timer(5).timeout
+		await get_tree().process_frame
+		queue_free()
 
 func attack():
 	if(attacking or dead):
 		return
 	attacking=true
 	canAttack=false
-	if(randi_range(1, 2)==2):
+	if(randi_range(1, 2)==20):
 		sprite.play("attack-2")
 		animator.play("attack-2")
 	else:

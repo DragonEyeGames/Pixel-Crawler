@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://bgmpq3nw65l7j"]
+[gd_scene load_steps=62 format=3 uid="uid://bgmpq3nw65l7j"]
 
 [ext_resource type="Script" uid="uid://cllbojkrs433o" path="res://player.gd" id="1_ebkyg"]
 [ext_resource type="Texture2D" uid="uid://dvqwqmuns8vkw" path="res://Characters/Characters(100x100)/Knight/Knight/Knight.png" id="2_3hayl"]
@@ -6,9 +6,20 @@
 [ext_resource type="Texture2D" uid="uid://3j76cno7nww6" path="res://Characters/Characters(100x100)/Knight/Knight/Shadow sprites/Knight-Shadow.png" id="3_fy2qv"]
 [ext_resource type="Texture2D" uid="uid://b4j2re4yu88i1" path="res://Characters/Characters(100x100)/Knight/Knight/Shadow sprites/Knight-Shadow_death.png" id="4_qgysq"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3hayl"]
+seed = 1
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fy2qv"]
+width = 1000
+height = 1000
+noise = SubResource("FastNoiseLite_3hayl")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qgysq"]
 shader = ExtResource("2_fy2qv")
 shader_parameter/whiteness = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_fy2qv")
+shader_parameter/dissolve_amount = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
 atlas = ExtResource("2_3hayl")
@@ -334,6 +345,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
 radius = 4.0
 
+[sub_resource type="Gradient" id="Gradient_3hayl"]
+colors = PackedColorArray(0.16621861, 0.20040736, 0.22039643, 1, 0, 0, 0, 0)
+
 [sub_resource type="Animation" id="Animation_3hayl"]
 length = 0.001
 tracks/0/type = "value"
@@ -482,7 +496,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player:material:shader_parameter/whiteness")
+tracks/0/path = NodePath(".:material:shader_parameter/whiteness")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -497,34 +511,115 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player:material:shader_parameter/whiteness")
+tracks/0/path = NodePath("Shadow:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
+"values": [Color(0.5370987, 0.5370987, 0.5370987, 0.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/dissolve_amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
 "values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:shader_parameter/whiteness")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitboxController/CPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_h8vq0"]
+resource_name = "die"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/dissolve_amount")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shadow:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.5370987, 0.5370987, 0.5370987, 0.6), Color(0.5370987, 0.5370987, 0.5370987, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxController/CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hncr7"]
 _data = {
 &"RESET": SubResource("Animation_hncr7"),
+&"die": SubResource("Animation_h8vq0"),
 &"hit": SubResource("Animation_qgysq")
 }
 
 [node name="Knight" type="CharacterBody2D"]
 z_index = 1
 texture_filter = 1
+material = SubResource("ShaderMaterial_qgysq")
 collision_layer = 0
 script = ExtResource("1_ebkyg")
 speed = 65.0
+damage = 2
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_qgysq")
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_d2t1y")
-animation = &"attack-2"
+animation = &"die"
 autoplay = "idle"
+frame = 3
+frame_progress = 1.0
 
 [node name="Shadow" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.5370987, 0.5370987, 0.5370987, 0.6)
@@ -554,6 +649,20 @@ disabled = true
 visible = false
 polygon = PackedVector2Array(6, -20, 13, -18, 17, -11, 17, -2, 15, 1, 5, 1, 3, 7, 17, 11, 26, 8, 32, -1, 30, -15, 21, -22, 3, -23)
 disabled = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="HitboxController"]
+position = Vector2(8, 4)
+emitting = false
+emission_shape = 3
+emission_rect_extents = Vector2(8.195, 3.08)
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 1)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+color_ramp = SubResource("Gradient_3hayl")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
 
 [node name="Attack" type="AnimationPlayer" parent="."]
 libraries = {
