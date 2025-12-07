@@ -95,7 +95,7 @@ y_sort_enabled = true
 
 [node name="Knight" parent="Y_Sorting" instance=ExtResource("4_5g41i")]
 
-[node name="Camera2D" type="Camera2D" parent="Y_Sorting/Knight"]
+[node name="Cam" type="Camera2D" parent="Y_Sorting/Knight"]
 zoom = Vector2(8, 8)
 position_smoothing_enabled = true
 
@@ -104,6 +104,7 @@ position = Vector2(-44, 0)
 
 [node name="Door" parent="." instance=ExtResource("6_dl8mf")]
 position = Vector2(0, -85)
+playerPos = Vector2(16, 125)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.69135684, 0.6913568, 0.69135684, 1)

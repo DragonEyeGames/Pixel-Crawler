@@ -16,14 +16,20 @@ var canMove=true
 
 
 func  _ready() -> void:
+	if(GameManager.playerPos!=null):
+		global_position=GameManager.playerPos
+		GameManager.playerPos=null
 	GameManager.player=self
 	hitAnimator=$Hit
 	sprite=$Player
 	shadow=$Shadow
 	animator=$Attack
+	await get_tree().process_frame
+	await get_tree().process_frame
+	$Cam.position_smoothing_enabled=true
 	
 func _physics_process(_delta: float) -> void:
-	if(dead or not canMove):
+	if(dead or not canMove or attacking):
 		return
 	velocity = Input.get_vector("Left", "Right", "Up", "Down")
 	velocity*=speed

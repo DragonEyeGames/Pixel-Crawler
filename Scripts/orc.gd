@@ -99,4 +99,5 @@ func _on_checks_area_exited(area: Area2D) -> void:
 
 
 func _on_hits_area_entered(area: Area2D) -> void:
-	area.get_parent().hit(weaponDamage)
+	if(not dead):
+		area.get_parent().hit(weaponDamage)
