@@ -1,10 +1,10 @@
 [gd_scene load_steps=62 format=3 uid="uid://bgmpq3nw65l7j"]
 
-[ext_resource type="Script" uid="uid://cllbojkrs433o" path="res://player.gd" id="1_ebkyg"]
-[ext_resource type="Texture2D" uid="uid://dvqwqmuns8vkw" path="res://Characters/Characters(100x100)/Knight/Knight/Knight.png" id="2_3hayl"]
-[ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://flash.gdshader" id="2_fy2qv"]
-[ext_resource type="Texture2D" uid="uid://3j76cno7nww6" path="res://Characters/Characters(100x100)/Knight/Knight/Shadow sprites/Knight-Shadow.png" id="3_fy2qv"]
-[ext_resource type="Texture2D" uid="uid://b4j2re4yu88i1" path="res://Characters/Characters(100x100)/Knight/Knight/Shadow sprites/Knight-Shadow_death.png" id="4_qgysq"]
+[ext_resource type="Script" uid="uid://cllbojkrs433o" path="res://Scripts/player.gd" id="1_ebkyg"]
+[ext_resource type="Texture2D" uid="uid://dvqwqmuns8vkw" path="res://Assets/Characters/Characters(100x100)/Knight/Knight/Knight.png" id="2_3hayl"]
+[ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="2_fy2qv"]
+[ext_resource type="Texture2D" uid="uid://3j76cno7nww6" path="res://Assets/Characters/Characters(100x100)/Knight/Knight/Shadow sprites/Knight-Shadow.png" id="3_fy2qv"]
+[ext_resource type="Texture2D" uid="uid://b4j2re4yu88i1" path="res://Assets/Characters/Characters(100x100)/Knight/Knight/Shadow sprites/Knight-Shadow_death.png" id="4_qgysq"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3hayl"]
 seed = 1
@@ -490,22 +490,6 @@ _data = {
 radius = 8.0
 height = 20.0
 
-[sub_resource type="Animation" id="Animation_qgysq"]
-resource_name = "hit"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/whiteness")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 0.0]
-}
-
 [sub_resource type="Animation" id="Animation_hncr7"]
 length = 0.001
 tracks/0/type = "value"
@@ -597,6 +581,22 @@ tracks/2/keys = {
 "values": [false, true, false]
 }
 
+[sub_resource type="Animation" id="Animation_qgysq"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/whiteness")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hncr7"]
 _data = {
 &"RESET": SubResource("Animation_hncr7"),
@@ -616,10 +616,8 @@ damage = 2
 [node name="Player" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_d2t1y")
-animation = &"die"
+animation = &"idle"
 autoplay = "idle"
-frame = 3
-frame_progress = 1.0
 
 [node name="Shadow" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.5370987, 0.5370987, 0.5370987, 0.6)
