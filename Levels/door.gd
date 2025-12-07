@@ -2,6 +2,15 @@
 extends AnimatedSprite2D
 @export var toTransport:=2
 @export var playerPos:= Vector2.ZERO
+@export var enemyControlled:=false
+
+func _ready() -> void:
+	if(enemyControlled):
+		SignalBus.allGone.connect(openDoor)
+
+func openDoor():
+	play("raise")
+	$StaticBody2D/CollisionPolygon2D.disabled=true
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if(area.get_parent() is Player):

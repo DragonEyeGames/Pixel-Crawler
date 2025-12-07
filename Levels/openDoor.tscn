@@ -28,6 +28,14 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n6tk3")
+}],
+"loop": false,
+"name": &"down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6tk3")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_arxy7")
@@ -53,9 +61,7 @@ size = Vector2(20, 3)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_4c57u")
 animation = &"raise"
-autoplay = "raise"
-frame = 4
-frame_progress = 1.0
+autoplay = "down"
 script = ExtResource("2_n6tk3")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

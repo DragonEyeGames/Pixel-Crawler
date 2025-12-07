@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://ccujaxhm0ts1a"]
+
+[ext_resource type="Texture2D" uid="uid://wrg7d4vpuep6" path="res://Assets/Tilemap/FixedDoors.png" id="1_i6sw5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf2mf"]
+atlas = ExtResource("1_i6sw5")
+region = Rect2(0, 22, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80cou"]
+atlas = ExtResource("1_i6sw5")
+region = Rect2(32, 22, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xosfc"]
+atlas = ExtResource("1_i6sw5")
+region = Rect2(64, 22, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbiy8"]
+atlas = ExtResource("1_i6sw5")
+region = Rect2(96, 22, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tweqo"]
+atlas = ExtResource("1_i6sw5")
+region = Rect2(128, 22, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mbwna"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lf2mf")
+}],
+"loop": true,
+"name": &"generic",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lf2mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80cou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xosfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbiy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tweqo")
+}],
+"loop": false,
+"name": &"raise",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v023s"]
+size = Vector2(20, 4)
+
+[node name="Door" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_mbwna")
+animation = &"raise"
+autoplay = "generic"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_v023s")

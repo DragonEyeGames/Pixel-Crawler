@@ -66,6 +66,7 @@ func damage(hitDamage):
 		shadow.play("die")
 		await get_tree().create_timer(1.5).timeout
 		hit.play("die")
+		SignalBus.enemy_died.emit()
 		await get_tree().create_timer(5).timeout
 		await get_tree().process_frame
 		queue_free()
