@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://c4wws2xdfldn2"]
+
+[ext_resource type="Texture2D" uid="uid://dotrjain6kagb" path="res://Assets/Tilemap/doors_lever_chest_animation.png" id="1_d8yp6"]
+[ext_resource type="Script" uid="uid://cqh5jjshbcifh" path="res://Levels/chest.gd" id="2_612na"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf2mf"]
+atlas = ExtResource("1_d8yp6")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80cou"]
+atlas = ExtResource("1_d8yp6")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xosfc"]
+atlas = ExtResource("1_d8yp6")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbiy8"]
+atlas = ExtResource("1_d8yp6")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tweqo"]
+atlas = ExtResource("1_d8yp6")
+region = Rect2(128, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mbwna"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lf2mf")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lf2mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80cou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xosfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbiy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tweqo")
+}],
+"loop": false,
+"name": &"open",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d8yp6"]
+radius = 25.179358
+
+[node name="Chest" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_mbwna")
+animation = &"idle"
+autoplay = "idle"
+script = ExtResource("2_612na")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_d8yp6")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
