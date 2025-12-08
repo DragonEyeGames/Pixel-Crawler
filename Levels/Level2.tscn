@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bb8xchi76xpxd"]
+[gd_scene load_steps=25 format=4 uid="uid://bb8xchi76xpxd"]
 
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="1_m3ha0"]
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Levels/level.gd" id="1_xosfc"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c4wws2xdfldn2" path="res://Levels/chest.tscn" id="10_x7rwe"]
 [ext_resource type="PackedScene" uid="uid://ccujaxhm0ts1a" path="res://Levels/blockingDoor.tscn" id="13_mbiy8"]
 [ext_resource type="Script" uid="uid://b3mtqd2rdon7d" path="res://Levels/blocking_door.gd" id="14_mbiy8"]
+[ext_resource type="PackedScene" uid="uid://dq4caphl02lr3" path="res://Scenes/Enemies/strongSkeleton.tscn" id="15_tweqo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(304.5, 38)
@@ -163,6 +164,9 @@ tile_map_data = PackedByteArray("AAD+/wEAAAAHAAUAAAD9/wEAAAAHAAUAAAD8/wEAAAAHAAU
 
 [node name="Chest" parent="." instance=ExtResource("10_x7rwe")]
 position = Vector2(16, -98)
+
+[node name="Skeleton" parent="." instance=ExtResource("15_tweqo")]
+position = Vector2(-46, -5)
 
 [connection signal="area_entered" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_exited"]

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="2_dl8mf"]
 [ext_resource type="Texture2D" uid="uid://wrg7d4vpuep6" path="res://Assets/Tilemap/FixedDoors.png" id="3_xcayt"]
 [ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Scenes/Player Types/knight.tscn" id="4_5g41i"]
-[ext_resource type="PackedScene" uid="uid://df4aytlkx5ais" path="res://Scenes/Enemies/strongOrc.tscn" id="5_7fl83"]
+[ext_resource type="PackedScene" uid="uid://dq4caphl02lr3" path="res://Scenes/Enemies/strongSkeleton.tscn" id="5_xcayt"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Levels/door.tscn" id="6_dl8mf"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="7_dl8mf"]
 [ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Levels/HUD.tscn" id="8_xcayt"]
@@ -99,8 +99,8 @@ y_sort_enabled = true
 zoom = Vector2(8, 8)
 position_smoothing_enabled = true
 
-[node name="Orc" parent="Y_Sorting" instance=ExtResource("5_7fl83")]
-position = Vector2(-44, 0)
+[node name="Skeleton" parent="Y_Sorting" instance=ExtResource("5_xcayt")]
+position = Vector2(14, -26)
 
 [node name="Door" parent="." instance=ExtResource("6_dl8mf")]
 position = Vector2(0, -85)

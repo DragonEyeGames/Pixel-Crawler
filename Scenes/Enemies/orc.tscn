@@ -1,24 +1,24 @@
 [gd_scene load_steps=56 format=3 uid="uid://c78fswc6hav73"]
 
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="1_l04we"]
-[ext_resource type="Script" uid="uid://doip6q4xhc234" path="res://Scripts/orc.gd" id="2_tq37w"]
+[ext_resource type="Script" uid="uid://doip6q4xhc234" path="res://Scripts/swordEnemy.gd" id="2_tq37w"]
 [ext_resource type="Texture2D" uid="uid://uchgfrmdp7x1" path="res://Assets/Characters/Characters(100x100)/Orc/Orc/Orc.png" id="3_l04we"]
 [ext_resource type="Texture2D" uid="uid://xxbh5qoesha2" path="res://Assets/Characters/Characters(100x100)/Armored Orc/Armored Orc/Shadow sprites/Armored Orc-Shadow.png" id="4_adlby"]
 [ext_resource type="Texture2D" uid="uid://dynpn4qc58fbn" path="res://Assets/Characters/Characters(100x100)/Orc/Orc/Shadow sprites/Orc-shadow_death.png" id="5_l04we"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_e37l4"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xosfc"]
 frequency = 1.0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pd02h"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mbiy8"]
 width = 1000
 height = 1000
-noise = SubResource("FastNoiseLite_e37l4")
+noise = SubResource("FastNoiseLite_xosfc")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
 resource_local_to_scene = true
 shader = ExtResource("1_l04we")
 shader_parameter/whiteness = 0.0
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_pd02h")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_mbiy8")
 shader_parameter/dissolve_amount = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tq37w"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=68 format=3 uid="uid://df4aytlkx5ais"]
 
-[ext_resource type="Script" uid="uid://doip6q4xhc234" path="res://Scripts/orc.gd" id="1_e37l4"]
+[ext_resource type="Script" uid="uid://doip6q4xhc234" path="res://Scripts/swordEnemy.gd" id="1_e37l4"]
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="2_pd02h"]
 [ext_resource type="Texture2D" uid="uid://b8c28t5qnpsc3" path="res://Assets/Characters/Characters(100x100)/Armored Orc/Armored Orc/Armored Orc.png" id="3_4fc3n"]
 [ext_resource type="Texture2D" uid="uid://xxbh5qoesha2" path="res://Assets/Characters/Characters(100x100)/Armored Orc/Armored Orc/Shadow sprites/Armored Orc-Shadow.png" id="4_i3a7b"]
