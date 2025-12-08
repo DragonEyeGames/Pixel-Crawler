@@ -122,7 +122,6 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="Knight" parent="Y_Sorting" instance=ExtResource("5_dxjb0")]
-z_index = 0
 position = Vector2(0, 54)
 
 [node name="Cam" type="Camera2D" parent="Y_Sorting/Knight"]
@@ -136,7 +135,7 @@ position = Vector2(14, -26)
 [node name="Fire" type="AnimatedSprite2D" parent="Y_Sorting"]
 sprite_frames = SubResource("SpriteFrames_t21pv")
 autoplay = "default"
-frame_progress = 0.8069249
+frame_progress = 0.23267825
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Y_Sorting/Fire"]
 

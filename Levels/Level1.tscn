@@ -5,11 +5,11 @@
 [ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="2_dl8mf"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Levels/openDoor.tscn" id="3_5g41i"]
 [ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Scenes/Player Types/knight.tscn" id="4_5g41i"]
-[ext_resource type="PackedScene" uid="uid://dq4caphl02lr3" path="res://Scenes/Enemies/strongSkeleton.tscn" id="5_xcayt"]
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="6_7fl83"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Levels/door.tscn" id="6_dl8mf"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="7_dl8mf"]
 [ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Levels/HUD.tscn" id="8_xcayt"]
+[ext_resource type="PackedScene" uid="uid://du02kq7mkyull" path="res://Scenes/Enemies/skeleton.tscn" id="9_7fl83"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(185, 38)
@@ -54,7 +54,7 @@ shape = SubResource("RectangleShape2D_1bvp3")
 
 [node name="Door2" parent="FrontWalls" instance=ExtResource("3_5g41i")]
 position = Vector2(0, 59)
-enemyControlled = true
+toTransport = 0
 
 [node name="Walls" parent="." instance=ExtResource("1_05pb0")]
 z_index = 2
@@ -65,22 +65,19 @@ z_index = -2
 tile_map_data = PackedByteArray("AAACAPz/AAABAAoAAAABAPz/AAABAAoAAAAAAPz/AAABAAoAAAD///z/AAABAAoAAAD+//z/AAABABUAAAD9//z/AAABAAoAAAD8//z/AAABAAoAAAD7//z/AAABABUAAAD7//3/AAABABYAAAD7//7/AAAAABYAAAD7////AAABAAoAAAD7/wAAAAABAAoAAAD7/wEAAAAAABYAAAD7/wIAAAAAABUAAAD7/wMAAAABAAoAAAD8/wMAAAABAAoAAAD9/wMAAAAAABUAAAD+/wMAAAABAAoAAAD//wMAAAABAAoAAAAAAAMAAAABAAoAAAABAAMAAAABABUAAAACAAMAAAABAAoAAAADAAMAAAABAAoAAAAEAAMAAAABAAoAAAAEAAIAAAABAAoAAAAEAAEAAAABAAoAAAAEAAAAAAABABYAAAAEAP//AAABAAoAAAAEAP7/AAAAABUAAAAEAP3/AAABAAoAAAADAP3/AAABABYAAAADAPz/AAABAAoAAAAEAPz/AAABAAoAAAACAP3/AAABAAoAAAABAP3/AAABAAoAAAAAAP3/AAABAAoAAAD///3/AAABAAoAAAD+//3/AAABABYAAAD9//3/AAABAAoAAAD8//3/AAABAAoAAAD8//7/AAAAABYAAAD8////AAAAABYAAAD8/wAAAAABABYAAAD8/wEAAAABAAoAAAD8/wIAAAABAAoAAAD9/wIAAAABAAoAAAD+/wIAAAABAAoAAAD//wIAAAAAABUAAAAAAAIAAAABAAoAAAABAAIAAAABABYAAAACAAIAAAABAAoAAAADAAIAAAABABUAAAADAAEAAAABAAoAAAADAAAAAAABAAoAAAADAP//AAABABUAAAACAP//AAABAAoAAAACAP7/AAAAABUAAAABAP7/AAABAAoAAAAAAP7/AAABAAoAAAD///7/AAABAAoAAAD+//7/AAABAAoAAAD9//7/AAABAAoAAAD9////AAABAAoAAAD9/wAAAAABABYAAAD9/wEAAAABAAoAAAD+/wEAAAABAAoAAAD//wEAAAABAAoAAAACAAEAAAABAAoAAAADAP7/AAABAAoAAAD/////AAAAABUAAAD+////AAABAAoAAAD+/wAAAAABAAoAAAAAAAEAAAABAAoAAAABAAEAAAABAAoAAAACAAAAAAAAABUAAAABAP//AAABABUAAAAAAP//AAABAAoAAAAAAAAAAAAAABYAAAABAAAAAAABABYAAAD//wAAAAABAAoAAAAEAPv/AAABAAkAAAADAPv/AAABAAkAAAACAPv/AAABAAkAAAABAPv/AAABAAkAAAAAAPv/AAABAAkAAAD///v/AAABAAkAAAD+//v/AAABAAkAAAD9//v/AAABAAkAAAD8//v/AAABAAkAAAD7//v/AAABAAkAAAD6//v/AAAAAAkAAAD6//z/AAAAAAoAAAD6//3/AAAAAAoAAAD6//7/AAAAAAoAAAD6////AAAAAAoAAAD6/wAAAAAAAAoAAAD6/wEAAAAAAAoAAAD6/wIAAAAAAAoAAAD6/wMAAAAAAAoAAAD6/wQAAAAAAAsAAAD7/wQAAAABAAsAAAD8/wQAAAABAAsAAAD9/wQAAAABAAsAAAD+/wQAAAABAAsAAAD//wQAAAABAAsAAAAAAAQAAAABAAsAAAABAAQAAAABAAsAAAACAAQAAAABAAsAAAADAAQAAAABAAsAAAAEAAQAAAABAAsAAAAFAAQAAAACAAsAAAAFAAMAAAACAAoAAAAFAAIAAAACAAoAAAAFAAEAAAACAAoAAAAFAAAAAAACAAoAAAAFAP//AAACAAoAAAAFAP7/AAACAAoAAAAFAP3/AAACAAoAAAAFAPz/AAACAAoAAAAFAPv/AAACAAkAAAA=")
 
 [node name="Y_Sorting" type="Node2D" parent="."]
+z_index = 1
 y_sort_enabled = true
 
 [node name="Knight" parent="Y_Sorting" instance=ExtResource("4_5g41i")]
+position = Vector2(0, 55)
 
 [node name="Cam" type="Camera2D" parent="Y_Sorting/Knight"]
 zoom = Vector2(8, 8)
 position_smoothing_enabled = true
 
-[node name="Skeleton" parent="Y_Sorting" instance=ExtResource("5_xcayt")]
-material = SubResource("ShaderMaterial_p5226")
-position = Vector2(14, -26)
-
 [node name="Door" parent="." instance=ExtResource("6_dl8mf")]
 position = Vector2(0, -85)
 playerPos = Vector2(16, 125)
-enemyControlled = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.69135684, 0.6913568, 0.69135684, 1)
@@ -92,6 +89,10 @@ position = Vector2(38, -85)
 position = Vector2(-34, -85)
 
 [node name="HUD" parent="." instance=ExtResource("8_xcayt")]
+
+[node name="Skeleton" parent="." instance=ExtResource("9_7fl83")]
+material = SubResource("ShaderMaterial_p5226")
+position = Vector2(-3, -64)
 
 [connection signal="area_entered" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_exited"]

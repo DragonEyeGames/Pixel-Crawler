@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cc0s4o6dq8er"]
+[gd_scene load_steps=8 format=3 uid="uid://cc0s4o6dq8er"]
 
 [ext_resource type="Script" uid="uid://bw0m6nv81px4h" path="res://Levels/hud.gd" id="1_gqhqa"]
 
@@ -80,10 +80,17 @@ _data = {
 &"out": SubResource("Animation_7fl83")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqhqa"]
+bg_color = Color(0.60209715, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0dox"]
+bg_color = Color(2.5268645e-07, 0.4577831, 0.04449694, 1)
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_gqhqa")
 
 [node name="Transition" type="ColorRect" parent="."]
+z_index = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -97,3 +104,14 @@ libraries = {
 &"": SubResource("AnimationLibrary_p5226")
 }
 autoplay = "in"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 43.0
+offset_top = 58.0
+offset_right = 564.0
+offset_bottom = 135.0
+theme_override_font_sizes/font_size = 59
+theme_override_styles/background = SubResource("StyleBoxFlat_gqhqa")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a0dox")
+max_value = 10.0
+value = 5.0

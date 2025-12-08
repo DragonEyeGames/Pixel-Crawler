@@ -16,6 +16,7 @@ var canMove=true
 
 
 func  _ready() -> void:
+	health=GameManager.playerHealth
 	if(GameManager.playerPos!=null):
 		global_position=GameManager.playerPos
 		GameManager.playerPos=null
@@ -78,10 +79,12 @@ func hit(newDamage):
 		return
 	health-=newDamage
 	hitAnimator.play("hit")
+	GameManager.playerHealth=health
 	if(health<=0):
 		dead=true
 		sprite.play("die")
 		shadow.play("die")
 		await get_tree().create_timer(1.5).timeout
 		hitAnimator.play("die")
+		
 	
