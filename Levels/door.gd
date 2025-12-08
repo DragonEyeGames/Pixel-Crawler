@@ -7,10 +7,15 @@ extends AnimatedSprite2D
 func _ready() -> void:
 	if(enemyControlled):
 		SignalBus.allGone.connect(openDoor)
+		$StaticBody2D/CollisionShape2D.disabled=false
+		play("closed")
+		await get_tree().process_frame
+		play("closed")
+		print("shutTight")
 
 func openDoor():
 	play("raise")
-	$StaticBody2D/CollisionPolygon2D.disabled=true
+	$StaticBody2D/CollisionShape2D.disabled=true
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if(area.get_parent() is Player):

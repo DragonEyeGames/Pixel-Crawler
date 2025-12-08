@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bb8xchi76xpxd"]
+[gd_scene load_steps=28 format=4 uid="uid://bb8xchi76xpxd"]
 
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="1_m3ha0"]
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Levels/level.gd" id="1_xosfc"]
@@ -59,6 +59,21 @@ shader_parameter/dissolve_amount = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x7rwe"]
 size = Vector2(135, 21)
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xhj3x"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3je14"]
+width = 1000
+height = 1000
+noise = SubResource("FastNoiseLite_xhj3x")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v023s"]
+resource_local_to_scene = true
+shader = ExtResource("6_vd23k")
+shader_parameter/whiteness = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_3je14")
+shader_parameter/dissolve_amount = 0.0
+
 [node name="Main" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_xosfc")
@@ -89,7 +104,7 @@ tile_map_data = PackedByteArray("AAD3/wIAAAACAA4AAAD3/wEAAAACAA4AAAD3/wAAAAACAA4
 y_sort_enabled = true
 
 [node name="Knight" parent="Y_Sorting" instance=ExtResource("4_lf2mf")]
-position = Vector2(-4, 0)
+position = Vector2(-96, -102)
 
 [node name="Cam" type="Camera2D" parent="Y_Sorting/Knight"]
 zoom = Vector2(8, 8)
@@ -132,11 +147,11 @@ enemyControlled = true
 
 [node name="Door" parent="." instance=ExtResource("6_xosfc")]
 position = Vector2(-96, -117)
-toTransport = 1
+toTransport = 3
 
 [node name="Door2" parent="." instance=ExtResource("6_xosfc")]
 position = Vector2(128, -117)
-toTransport = 1
+toTransport = 4
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.69135684, 0.6913568, 0.69135684, 1)
@@ -166,6 +181,7 @@ tile_map_data = PackedByteArray("AAD+/wEAAAAHAAUAAAD9/wEAAAAHAAUAAAD8/wEAAAAHAAU
 position = Vector2(16, -98)
 
 [node name="Skeleton" parent="." instance=ExtResource("15_tweqo")]
+material = SubResource("ShaderMaterial_v023s")
 position = Vector2(-46, -5)
 
 [connection signal="area_entered" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_entered"]

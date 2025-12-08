@@ -1,10 +1,12 @@
-[gd_scene load_steps=16 format=4 uid="uid://ciel7rppkyd1q"]
+[gd_scene load_steps=15 format=4 uid="uid://ciel7rppkyd1q"]
 
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="1_05pb0"]
+[ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Levels/level.gd" id="1_7fl83"]
 [ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="2_dl8mf"]
-[ext_resource type="Texture2D" uid="uid://wrg7d4vpuep6" path="res://Assets/Tilemap/FixedDoors.png" id="3_xcayt"]
+[ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Levels/openDoor.tscn" id="3_5g41i"]
 [ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Scenes/Player Types/knight.tscn" id="4_5g41i"]
 [ext_resource type="PackedScene" uid="uid://dq4caphl02lr3" path="res://Scenes/Enemies/strongSkeleton.tscn" id="5_xcayt"]
+[ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="6_7fl83"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Levels/door.tscn" id="6_dl8mf"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="7_dl8mf"]
 [ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Levels/HUD.tscn" id="8_xcayt"]
@@ -12,51 +14,25 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(185, 38)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4c57u"]
-atlas = ExtResource("3_xcayt")
-region = Rect2(0, 22, 32, 32)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xhj3x"]
+frequency = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_efxa6"]
-atlas = ExtResource("3_xcayt")
-region = Rect2(32, 22, 32, 32)
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3je14"]
+width = 1000
+height = 1000
+noise = SubResource("FastNoiseLite_xhj3x")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dg77c"]
-atlas = ExtResource("3_xcayt")
-region = Rect2(64, 22, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ycdy4"]
-atlas = ExtResource("3_xcayt")
-region = Rect2(96, 22, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w48qg"]
-atlas = ExtResource("3_xcayt")
-region = Rect2(128, 22, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_vivmo"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4c57u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_efxa6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dg77c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ycdy4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w48qg")
-}],
-"loop": false,
-"name": &"default",
-"speed": 8.0
-}]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p5226"]
+resource_local_to_scene = true
+shader = ExtResource("6_7fl83")
+shader_parameter/whiteness = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_3je14")
+shader_parameter/dissolve_amount = 0.0
 
 [node name="Main" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_7fl83")
+enemies = 1
 
 [node name="BackWalls" parent="." instance=ExtResource("1_05pb0")]
 z_index = -1
@@ -76,11 +52,9 @@ collision_mask = 2
 position = Vector2(0.5, 54)
 shape = SubResource("RectangleShape2D_1bvp3")
 
-[node name="Door2" type="AnimatedSprite2D" parent="FrontWalls"]
+[node name="Door2" parent="FrontWalls" instance=ExtResource("3_5g41i")]
 position = Vector2(0, 59)
-sprite_frames = SubResource("SpriteFrames_vivmo")
-frame = 4
-frame_progress = 1.0
+enemyControlled = true
 
 [node name="Walls" parent="." instance=ExtResource("1_05pb0")]
 z_index = 2
@@ -100,11 +74,13 @@ zoom = Vector2(8, 8)
 position_smoothing_enabled = true
 
 [node name="Skeleton" parent="Y_Sorting" instance=ExtResource("5_xcayt")]
+material = SubResource("ShaderMaterial_p5226")
 position = Vector2(14, -26)
 
 [node name="Door" parent="." instance=ExtResource("6_dl8mf")]
 position = Vector2(0, -85)
 playerPos = Vector2(16, 125)
+enemyControlled = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.69135684, 0.6913568, 0.69135684, 1)
