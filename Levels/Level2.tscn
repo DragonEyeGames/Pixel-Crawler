@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="2_vd23k"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Levels/openDoor.tscn" id="3_m3ha0"]
 [ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Scenes/Player Types/knight.tscn" id="4_lf2mf"]
-[ext_resource type="PackedScene" uid="uid://df4aytlkx5ais" path="res://Scenes/Enemies/strongOrc.tscn" id="5_80cou"]
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="6_vd23k"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Levels/door.tscn" id="6_xosfc"]
 [ext_resource type="PackedScene" uid="uid://c78fswc6hav73" path="res://Scenes/Enemies/orc.tscn" id="7_80cou"]
@@ -14,24 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://c4wws2xdfldn2" path="res://Levels/chest.tscn" id="10_x7rwe"]
 [ext_resource type="PackedScene" uid="uid://ccujaxhm0ts1a" path="res://Levels/blockingDoor.tscn" id="13_mbiy8"]
 [ext_resource type="Script" uid="uid://b3mtqd2rdon7d" path="res://Levels/blocking_door.gd" id="14_mbiy8"]
+[ext_resource type="PackedScene" uid="uid://dq4caphl02lr3" path="res://Scenes/Enemies/strongSkeleton.tscn" id="15_tweqo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(304.5, 38)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_e37l4"]
-frequency = 1.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pd02h"]
-width = 1000
-height = 1000
-noise = SubResource("FastNoiseLite_e37l4")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x7rwe"]
-resource_local_to_scene = true
-shader = ExtResource("6_vd23k")
-shader_parameter/whiteness = 0.0
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_pd02h")
-shader_parameter/dissolve_amount = 0.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xosfc"]
 frequency = 1.0
@@ -57,6 +42,21 @@ shader_parameter/dissolve_amount = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x7rwe"]
 size = Vector2(135, 21)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xhj3x"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3je14"]
+width = 1000
+height = 1000
+noise = SubResource("FastNoiseLite_xhj3x")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mbiy8"]
+resource_local_to_scene = true
+shader = ExtResource("6_vd23k")
+shader_parameter/whiteness = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_3je14")
+shader_parameter/dissolve_amount = 0.0
 
 [node name="Main" type="Node2D"]
 texture_filter = 1
@@ -93,10 +93,6 @@ position = Vector2(-96, -102)
 
 [node name="Cam" type="Camera2D" parent="Y_Sorting/Knight"]
 zoom = Vector2(8, 8)
-
-[node name="Orc" parent="Y_Sorting" instance=ExtResource("5_80cou")]
-material = SubResource("ShaderMaterial_x7rwe")
-position = Vector2(14, 53)
 
 [node name="Orc2" parent="Y_Sorting" instance=ExtResource("7_80cou")]
 material = SubResource("ShaderMaterial_tweqo")
@@ -164,6 +160,10 @@ tile_map_data = PackedByteArray("AAD+/wEAAAAHAAUAAAD9/wEAAAAHAAUAAAD8/wEAAAAHAAU
 
 [node name="Chest" parent="." instance=ExtResource("10_x7rwe")]
 position = Vector2(16, -98)
+
+[node name="Skeleton" parent="." instance=ExtResource("15_tweqo")]
+material = SubResource("ShaderMaterial_mbiy8")
+position = Vector2(15, 68)
 
 [connection signal="area_entered" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_exited"]
