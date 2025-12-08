@@ -1,0 +1,105 @@
+[gd_scene load_steps=10 format=3 uid="uid://b3i6dfak5vsmn"]
+
+[ext_resource type="Texture2D" uid="uid://yag1le4ax0qk" path="res://Assets/Tilemap/trap_animation.png" id="1_li8fa"]
+[ext_resource type="Script" uid="uid://bdyu8y2uhvpsl" path="res://Levels/spike.gd" id="2_6wgmb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wgmb"]
+atlas = ExtResource("1_li8fa")
+region = Rect2(96, 48, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s607c"]
+atlas = ExtResource("1_li8fa")
+region = Rect2(96, 128, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_504vv"]
+atlas = ExtResource("1_li8fa")
+region = Rect2(96, 208, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxt72"]
+atlas = ExtResource("1_li8fa")
+region = Rect2(96, 288, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0uftg"]
+atlas = ExtResource("1_li8fa")
+region = Rect2(96, 368, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4dhhr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wgmb")
+}],
+"loop": true,
+"name": &"down",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wgmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s607c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_504vv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxt72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0uftg")
+}],
+"loop": false,
+"name": &"extrude",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0uftg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxt72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_504vv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s607c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wgmb")
+}],
+"loop": false,
+"name": &"retract",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0uftg")
+}],
+"loop": true,
+"name": &"up",
+"speed": 16.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_li8fa"]
+radius = 2.0
+height = 14.0
+
+[node name="Spike" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_4dhhr")
+animation = &"up"
+autoplay = "down"
+script = ExtResource("2_6wgmb")
+
+[node name="Hitzone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitzone"]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_li8fa")
+disabled = true
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="area_entered" from="Hitzone" to="." method="_on_hitzone_area_entered"]
