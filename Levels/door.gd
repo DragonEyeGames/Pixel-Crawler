@@ -11,7 +11,10 @@ func _ready() -> void:
 		play("closed")
 		await get_tree().process_frame
 		play("closed")
-		print("shutTight")
+	else:
+		play("open")
+		await get_tree().process_frame
+		play("open")
 
 func openDoor():
 	play("raise")

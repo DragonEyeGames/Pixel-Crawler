@@ -42,7 +42,8 @@ shape = SubResource("RectangleShape2D_1bvp3")
 
 [node name="Door2" parent="FrontWalls" instance=ExtResource("4_jld50")]
 position = Vector2(-48, 59)
-toTransport = 0
+playerPos = Vector2(128, -102)
+enemyControlled = false
 
 [node name="FrontWalls2" parent="." instance=ExtResource("2_so18s")]
 z_index = 3
@@ -70,7 +71,7 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="Knight" parent="Y_Sorting" instance=ExtResource("5_svocn")]
-position = Vector2(-49, 55)
+position = Vector2(-48, 55)
 
 [node name="Cam" type="Camera2D" parent="Y_Sorting/Knight"]
 zoom = Vector2(8, 8)

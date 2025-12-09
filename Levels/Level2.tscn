@@ -89,7 +89,7 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="Knight" parent="Y_Sorting" instance=ExtResource("4_lf2mf")]
-position = Vector2(-96, -102)
+position = Vector2(128, -102)
 
 [node name="Cam" type="Camera2D" parent="Y_Sorting/Knight"]
 zoom = Vector2(8, 8)
@@ -103,7 +103,6 @@ material = SubResource("ShaderMaterial_mbwna")
 position = Vector2(122, -84)
 
 [node name="BackWalls" parent="Y_Sorting" instance=ExtResource("1_m3ha0")]
-z_index = 1
 position = Vector2(16, -33)
 tile_map_data = PackedByteArray("AAD8//7/AAABAA8AAAD9//7/AAABAA8AAAD+//7/AAABAA8AAAD///7/AAADABIAAAAAAP7/AAAEABIAAAABAP7/AAABAA8AAAACAP7/AAABAA8AAAADAP7/AAABAA8AAAAEAP7/AAAGAA8AAAD7//7/AAAFAA8AAAD7////AAAFABAAAAD7/wAAAAAFABEAAAD8////AAABABAAAAD8/wAAAAABABEAAAD9////AAABABAAAAD9/wAAAAABABEAAAD+////AAABABAAAAD+/wAAAAABABEAAAABAP//AAABABAAAAABAAAAAAABABEAAAACAP//AAABABAAAAACAAAAAAABABEAAAADAP//AAABABAAAAADAAAAAAABABEAAAAEAP//AAAGABAAAAAEAAAAAAAGABEAAAA=")
 
@@ -133,6 +132,7 @@ toTransport = 3
 [node name="Door2" parent="." instance=ExtResource("6_xosfc")]
 position = Vector2(128, -117)
 toTransport = 4
+playerPos = Vector2(-48, 55)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.69135684, 0.6913568, 0.69135684, 1)

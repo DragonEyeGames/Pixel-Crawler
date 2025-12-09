@@ -87,6 +87,7 @@ bg_color = Color(0.60209715, 0, 0, 1)
 bg_color = Color(2.5268645e-07, 0.4577831, 0.04449694, 1)
 
 [node name="HUD" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_gqhqa")
 
 [node name="Transition" type="ColorRect" parent="."]
