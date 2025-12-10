@@ -356,22 +356,6 @@ radius = 20.09975
 offsets = PackedFloat32Array(0, 0.19178082, 1)
 colors = PackedColorArray(0.6431373, 0.6431373, 0.6431373, 1, 0.5726565, 0.5726565, 0.5726565, 0.89041096, 0, 0, 0, 0)
 
-[sub_resource type="Animation" id="Animation_hn8e4"]
-resource_name = "hit"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/whiteness")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 0.0]
-}
-
 [sub_resource type="Animation" id="Animation_xhj3x"]
 length = 0.001
 tracks/0/type = "value"
@@ -463,27 +447,27 @@ tracks/2/keys = {
 "values": [false, true, false]
 }
 
+[sub_resource type="Animation" id="Animation_hn8e4"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/whiteness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xhj3x"]
 _data = {
 &"RESET": SubResource("Animation_xhj3x"),
 &"die": SubResource("Animation_3je14"),
 &"hit": SubResource("Animation_hn8e4")
-}
-
-[sub_resource type="Animation" id="Animation_cvx2j"]
-resource_name = "attack-1"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Areas/Hits/attack-1:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_g2p5r"]
@@ -511,6 +495,22 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_cvx2j"]
+resource_name = "attack-1"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Areas/Hits/attack-1:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_tj6wx"]
@@ -620,7 +620,17 @@ libraries = {
 &"": SubResource("AnimationLibrary_5nddp")
 }
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+avoidance_layers = 2
+avoidance_mask = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="area_entered" from="Areas/Hits" to="." method="_on_hits_area_entered"]
 [connection signal="area_entered" from="Areas/Checks" to="." method="_on_checks_area_entered"]
 [connection signal="area_exited" from="Areas/Checks" to="." method="_on_checks_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

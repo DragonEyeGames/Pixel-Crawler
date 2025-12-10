@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://ciel7rppkyd1q"]
+[gd_scene load_steps=16 format=4 uid="uid://ciel7rppkyd1q"]
 
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="1_05pb0"]
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Levels/level.gd" id="1_7fl83"]
@@ -28,6 +28,12 @@ shader = ExtResource("6_7fl83")
 shader_parameter/whiteness = 0.0
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_3je14")
 shader_parameter/dissolve_amount = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7fl83"]
+vertices = PackedVector2Array(83, 59.992188, -82, 59, -82, -70, 83, -70)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-83, -71, 84, -71, 84, 61, -83, 60)])
+agent_radius = 1.0
 
 [node name="Main" type="Node2D"]
 texture_filter = 1
@@ -93,6 +99,9 @@ position = Vector2(-34, -85)
 [node name="Skeleton" parent="." instance=ExtResource("9_7fl83")]
 material = SubResource("ShaderMaterial_p5226")
 position = Vector2(-3, -64)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_7fl83")
 
 [connection signal="area_entered" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_exited"]

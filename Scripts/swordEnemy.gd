@@ -15,6 +15,7 @@ var attackingList:=[]
 var canAttack:=true
 @export var cooldown:=.25
 @export var weaponDamage:=1
+@onready var navAgent := $NavigationAgent2D as NavigationAgent2D
 
 func _ready() -> void:
 	hit=$Hit
@@ -32,16 +33,18 @@ func _physics_process(_delta: float) -> void:
 			return
 	velocity=Vector2.ZERO
 	if(global_position.distance_to(player.global_position)>=20):
-		velocity=player.global_position-global_position
-		velocity=velocity.normalized()*speed
+		var dir = to_local(navAgent.get_next_path_position()).normalized()
+		velocity = dir*speed
+		#velocity=player.global_position-global_position
+		#velocity=velocity.normalized()*speed
 	move_and_slide()
 	if(velocity!=Vector2.ZERO and sprite.animation=="idle"):
 		sprite.play("walk")
 	if(velocity==Vector2.ZERO and sprite.animation=="walk"):
 		sprite.play("idle")
-	if(velocity.x<0):
+	if(velocity.x<-1):
 		flip("left")
-	elif(velocity.x>0):
+	elif(velocity.x>1):
 		flip("right")
 
 func flip(newDirection):
@@ -102,3 +105,22 @@ func _on_checks_area_exited(area: Area2D) -> void:
 func _on_hits_area_entered(area: Area2D) -> void:
 	if(not dead):
 		area.get_parent().hit(weaponDamage)
+
+func makePath():
+	navAgent.target_position = player.global_position
+	await navAgent.path_changed
+	
+	var points = navAgent.get_current_navigation_path()
+	var length = 0.0
+
+	for i in range(points.size() - 1):
+		length += points[i].distance_to(points[i + 1])
+
+	if length > 150:
+		# Too long — cancel the move
+		navAgent.target_position = global_position 
+		print("Path too long:", length)
+		return
+
+func _on_timer_timeout() -> void:
+	makePath()
