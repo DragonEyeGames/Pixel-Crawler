@@ -52,7 +52,8 @@ shape = SubResource("RectangleShape2D_1bvp3")
 
 [node name="Door2" parent="FrontWalls" instance=ExtResource("4_sraex")]
 position = Vector2(0, 59)
-playerPos = Vector2(-96, -102)
+toTransport = 4
+playerPos = Vector2(80, -70)
 enemyControlled = false
 
 [node name="Walls" parent="." instance=ExtResource("2_me3ps")]

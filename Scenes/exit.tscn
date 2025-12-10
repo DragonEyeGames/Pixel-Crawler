@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://lu0ebdw52oem"]
+
+[ext_resource type="Texture2D" uid="uid://d4eydjekh02t0" path="res://Assets/Tilemap/Objects.png" id="1_ljsmn"]
+[ext_resource type="Script" uid="uid://bgs6ojh1iadd4" path="res://Levels/exit.gd" id="2_650lm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_58uy7"]
+radius = 10.440307
+
+[node name="Exit" type="Sprite2D"]
+z_index = -1
+texture = ExtResource("1_ljsmn")
+region_enabled = true
+region_rect = Rect2(4, 69, 24, 24)
+region_filter_clip_enabled = true
+script = ExtResource("2_650lm")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(14, 0)
+shape = SubResource("CircleShape2D_58uy7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(11, -8, -8, -8, -8, 8, 11, 8, 11, 11, -11, 11, -11, -11, 11, -11)
+
+[node name="Control" type="Control" parent="."]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -8.0
+offset_top = -78.0
+offset_right = 149.0
+offset_bottom = 8.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

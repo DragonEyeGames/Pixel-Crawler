@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bb8xchi76xpxd"]
+[gd_scene load_steps=24 format=4 uid="uid://bb8xchi76xpxd"]
 
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="1_m3ha0"]
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Levels/level.gd" id="1_xosfc"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Levels/HUD.tscn" id="8_m3ha0"]
 [ext_resource type="PackedScene" uid="uid://c4wws2xdfldn2" path="res://Levels/chest.tscn" id="10_x7rwe"]
 [ext_resource type="PackedScene" uid="uid://ccujaxhm0ts1a" path="res://Levels/blockingDoor.tscn" id="13_mbiy8"]
-[ext_resource type="Script" uid="uid://b3mtqd2rdon7d" path="res://Levels/blocking_door.gd" id="14_mbiy8"]
 [ext_resource type="PackedScene" uid="uid://dq4caphl02lr3" path="res://Scenes/Enemies/strongSkeleton.tscn" id="15_tweqo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
@@ -128,8 +127,6 @@ position = Vector2(-49, -6)
 
 [node name="Door" parent="Y_Sorting/BackWalls" instance=ExtResource("13_mbiy8")]
 position = Vector2(0, -5)
-script = ExtResource("14_mbiy8")
-enemyControlled = true
 
 [node name="Skeleton" parent="Y_Sorting" instance=ExtResource("15_tweqo")]
 material = SubResource("ShaderMaterial_mbiy8")
@@ -172,6 +169,7 @@ tile_map_data = PackedByteArray("AAD+/wEAAAAHAAUAAAD9/wEAAAAHAAUAAAD8/wEAAAAHAAU
 position = Vector2(16, -98)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_xosfc")
 
 [connection signal="area_entered" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_entered"]
