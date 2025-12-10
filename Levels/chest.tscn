@@ -61,12 +61,15 @@ radius = 25.179358
 size = Vector2(15, 8)
 
 [node name="Chest" type="AnimatedSprite2D"]
+position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_mbwna")
 animation = &"idle"
 autoplay = "idle"
+offset = Vector2(0, 5)
 script = ExtResource("2_612na")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 8)
 collision_layer = 0
 collision_mask = 2
 
@@ -75,6 +78,7 @@ position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_d8yp6")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0.5, -6)
