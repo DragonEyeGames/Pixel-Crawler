@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://dwxnwle6lldtl"]
+[gd_scene load_steps=21 format=4 uid="uid://dwxnwle6lldtl"]
 
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Levels/level.gd" id="1_i4375"]
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_4b247"]
@@ -14,6 +14,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(185, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4b247"]
+size = Vector2(142, 25)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_e37l4"]
 frequency = 1.0
@@ -77,8 +80,7 @@ shape = SubResource("RectangleShape2D_1bvp3")
 [node name="Door2" parent="FrontWalls" instance=ExtResource("4_isovy")]
 position = Vector2(0, 59)
 toTransport = 4
-playerPos = Vector2(80, -70)
-enemyControlled = false
+playerPos = Vector2(160, -70)
 
 [node name="Walls" parent="." instance=ExtResource("2_4b247")]
 z_index = 2
@@ -93,7 +95,7 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="Knight" parent="Y_Sorting" instance=ExtResource("5_g3tdx")]
-position = Vector2(19, -124)
+position = Vector2(0, 54)
 
 [node name="Cam" type="Camera2D" parent="Y_Sorting/Knight"]
 zoom = Vector2(8, 8)
@@ -102,9 +104,18 @@ position_smoothing_enabled = true
 [node name="Walls2" parent="Y_Sorting" instance=ExtResource("2_4b247")]
 position = Vector2(0, -64)
 tile_map_data = PackedByteArray("AAD8//7/AAABAA8AAAD9//7/AAABAA8AAAD+//7/AAABAA8AAAABAP7/AAABAA8AAAACAP7/AAABAA8AAAADAP7/AAABAA8AAAD8////AAABABAAAAD8/wAAAAABABEAAAD9////AAABABAAAAD9/wAAAAABABEAAAD+////AAABABAAAAD+/wAAAAABABEAAAD///7/AAABAA8AAAAAAP7/AAABAA8AAAABAP//AAABABAAAAABAAAAAAABABEAAAACAP//AAABABAAAAACAAAAAAABABEAAAADAP//AAABABAAAAADAAAAAAABABEAAAA=")
+script = ExtResource("3_o4d3g")
 
 [node name="Door" parent="Y_Sorting/Walls2" instance=ExtResource("6_4b247")]
 position = Vector2(0, -5)
+
+[node name="Area2D" type="Area2D" parent="Y_Sorting/Walls2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Y_Sorting/Walls2/Area2D"]
+position = Vector2(-2, -16.5)
+shape = SubResource("RectangleShape2D_4b247")
 
 [node name="Orc" parent="Y_Sorting" instance=ExtResource("6_i4375")]
 material = SubResource("ShaderMaterial_isovy")
@@ -128,3 +139,5 @@ navigation_polygon = SubResource("NavigationPolygon_i4375")
 
 [connection signal="area_entered" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Y_Sorting/Walls2/Area2D" to="Y_Sorting/Walls2" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Y_Sorting/Walls2/Area2D" to="Y_Sorting/Walls2" method="_on_area_2d_area_exited"]

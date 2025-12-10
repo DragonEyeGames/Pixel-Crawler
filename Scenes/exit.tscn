@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://lu0ebdw52oem"]
+[gd_scene load_steps=5 format=3 uid="uid://lu0ebdw52oem"]
 
 [ext_resource type="Texture2D" uid="uid://d4eydjekh02t0" path="res://Assets/Tilemap/Objects.png" id="1_ljsmn"]
 [ext_resource type="Script" uid="uid://bgs6ojh1iadd4" path="res://Levels/exit.gd" id="2_650lm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_58uy7"]
 radius = 10.440307
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ljsmn"]
+radius = 9.0
 
 [node name="Exit" type="Sprite2D"]
 z_index = -1
@@ -22,10 +25,13 @@ collision_mask = 2
 position = Vector2(14, 0)
 shape = SubResource("CircleShape2D_58uy7")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(11, -8, -8, -8, -8, 8, 11, 8, 11, 11, -11, 11, -11, -11, 11, -11)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(5, 1)
+shape = SubResource("CircleShape2D_ljsmn")
 
 [node name="Control" type="Control" parent="."]
 clip_contents = true
@@ -36,5 +42,20 @@ offset_top = -78.0
 offset_right = 149.0
 offset_bottom = 8.0
 
+[node name="End" type="Marker2D" parent="."]
+position = Vector2(-21, 20)
+
+[node name="Seen" type="ColorRect" parent="."]
+visible = false
+z_index = -1
+offset_left = -13.0
+offset_top = -13.0
+offset_right = 13.0
+offset_bottom = 13.0
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(14, 0)
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]

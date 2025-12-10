@@ -25,6 +25,7 @@ func  _ready() -> void:
 	sprite=$Player
 	shadow=$Shadow
 	animator=$Attack
+	$Cam.position_smoothing_enabled=false
 	await get_tree().process_frame
 	await get_tree().process_frame
 	$Cam.position_smoothing_enabled=true
@@ -86,5 +87,7 @@ func hit(newDamage):
 		shadow.play("die")
 		await get_tree().create_timer(1.5).timeout
 		hitAnimator.play("die")
+		await get_tree().create_timer(5).timeout
+		get_tree().change_scene_to_file("res://Scenes/dead.tscn")
 		
 	

@@ -71,7 +71,7 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="Knight" parent="Y_Sorting" instance=ExtResource("5_svocn")]
-position = Vector2(-46, 55)
+position = Vector2(160, -71)
 
 [node name="Cam" type="Camera2D" parent="Y_Sorting/Knight"]
 zoom = Vector2(8, 8)
@@ -111,7 +111,8 @@ enemyControlled = false
 [node name="Door3" parent="." instance=ExtResource("6_7csao")]
 position = Vector2(160, -85)
 toTransport = 7
-playerPos = Vector2(16, 125)
+playerPos = Vector2(0, 54)
+enemyControlled = false
 
 [node name="Door4" parent="." instance=ExtResource("6_7csao")]
 position = Vector2(240, -85)

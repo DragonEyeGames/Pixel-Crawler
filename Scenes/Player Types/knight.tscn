@@ -16,6 +16,7 @@ height = 1000
 noise = SubResource("FastNoiseLite_3hayl")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qgysq"]
+resource_local_to_scene = true
 shader = ExtResource("2_fy2qv")
 shader_parameter/whiteness = 0.0
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_fy2qv")

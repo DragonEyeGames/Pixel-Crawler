@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://doip6q4xhc234" path="res://Scripts/swordEnemy.gd" id="2_eiu2b"]
 [ext_resource type="Texture2D" uid="uid://wxgkky5poraf" path="res://Assets/Characters/Characters(100x100)/Skeleton/Skeleton/Skeleton.png" id="3_nu5bn"]
 [ext_resource type="Texture2D" uid="uid://pmeowwd68m1i" path="res://Assets/Characters/Characters(100x100)/Armored Skeleton/Armored Skeleton/Shadow sprites/Armored Skeleton-Shadow.png" id="4_rjsu3"]
-[ext_resource type="Texture2D" uid="uid://rrlt3tn4m5mf" path="res://Assets/Characters/Characters(100x100)/Armored Skeleton/Armored Skeleton/Shadow sprites/Armored Skeleton-Shadow_death.png" id="5_05oj5"]
+[ext_resource type="Texture2D" uid="uid://blopey63jbrkb" path="res://Assets/Characters/Characters(100x100)/Skeleton/Skeleton/Shadow sprites/Skeleton-Shadow_death.png" id="5_nu5bn"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xhj3x"]
 frequency = 1.0
@@ -270,20 +270,20 @@ animations = [{
 atlas = ExtResource("4_rjsu3")
 region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yotyv"]
-atlas = ExtResource("5_05oj5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1telt"]
+atlas = ExtResource("5_nu5bn")
 region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nj1kl"]
-atlas = ExtResource("5_05oj5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qyts"]
+atlas = ExtResource("5_nu5bn")
 region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xu5da"]
-atlas = ExtResource("5_05oj5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_032lo"]
+atlas = ExtResource("5_nu5bn")
 region = Rect2(200, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5fca8"]
-atlas = ExtResource("5_05oj5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bev0"]
+atlas = ExtResource("5_nu5bn")
 region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2gcy2"]
@@ -298,16 +298,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yotyv")
+"texture": SubResource("AtlasTexture_1telt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nj1kl")
+"texture": SubResource("AtlasTexture_5qyts")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xu5da")
+"texture": SubResource("AtlasTexture_032lo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5fca8")
+"texture": SubResource("AtlasTexture_2bev0")
 }],
 "loop": false,
 "name": &"die",
@@ -516,15 +516,19 @@ cooldown = 0.7
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_1telt")
-animation = &"attack-2"
+animation = &"die"
 autoplay = "idle"
 frame = 3
+frame_progress = 1.0
 
 [node name="Shadow" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.5370987, 0.5370987, 0.5370987, 0.6)
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_2gcy2")
+animation = &"die"
 autoplay = "default"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
