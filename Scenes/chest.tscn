@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://c4wws2xdfldn2"]
 
 [ext_resource type="Texture2D" uid="uid://dotrjain6kagb" path="res://Assets/Tilemap/doors_lever_chest_animation.png" id="1_d8yp6"]
-[ext_resource type="Script" uid="uid://cqh5jjshbcifh" path="res://Levels/chest.gd" id="2_612na"]
+[ext_resource type="Script" uid="uid://cqh5jjshbcifh" path="res://Scripts/chest.gd" id="2_612na"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lf2mf"]
 atlas = ExtResource("1_d8yp6")

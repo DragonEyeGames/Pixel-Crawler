@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cc0s4o6dq8er"]
 
-[ext_resource type="Script" uid="uid://bw0m6nv81px4h" path="res://Levels/hud.gd" id="1_gqhqa"]
+[ext_resource type="Script" uid="uid://bw0m6nv81px4h" path="res://Scripts/hud.gd" id="1_gqhqa"]
 
 [sub_resource type="Animation" id="Animation_5g41i"]
 length = 0.001

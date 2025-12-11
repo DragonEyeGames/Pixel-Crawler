@@ -1,15 +1,14 @@
-[gd_scene load_steps=24 format=4 uid="uid://b5sb5uvmsepyh"]
+[gd_scene load_steps=16 format=4 uid="uid://c7ex7x4aahdjp"]
 
-[ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Levels/level.gd" id="1_hy5j1"]
-[ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_xxxi4"]
-[ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="3_4c4gq"]
-[ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Levels/openDoor.tscn" id="4_3e7p2"]
-[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Scenes/Player Types/knight.tscn" id="5_dxjb0"]
-[ext_resource type="PackedScene" uid="uid://dq4caphl02lr3" path="res://Scenes/Enemies/strongSkeleton.tscn" id="6_hx0pg"]
-[ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="7_uyp6w"]
-[ext_resource type="Texture2D" uid="uid://dkgps26n57idn" path="res://Assets/Tilemap/fire_animation.png" id="8_hy5j1"]
-[ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="9_xc3xs"]
-[ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Levels/HUD.tscn" id="10_tqo56"]
+[ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_4t7bu"]
+[ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_fe7e8"]
+[ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="3_jbidq"]
+[ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_m25an"]
+[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Scenes/Player Types/knight.tscn" id="5_1fulx"]
+[ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="6_eff8r"]
+[ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Scenes/HUD.tscn" id="7_3m721"]
+[ext_resource type="PackedScene" uid="uid://du02kq7mkyull" path="res://Scenes/Enemies/skeleton.tscn" id="8_pnxx3"]
+[ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="9_jj3m8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(185, 38)
@@ -22,85 +21,39 @@ width = 1000
 height = 1000
 noise = SubResource("FastNoiseLite_xhj3x")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p5226"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ptlqi"]
 resource_local_to_scene = true
-shader = ExtResource("7_uyp6w")
+shader = ExtResource("9_jj3m8")
 shader_parameter/whiteness = 0.0
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_3je14")
 shader_parameter/dissolve_amount = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xxxi4"]
-atlas = ExtResource("8_hy5j1")
-region = Rect2(130, 0, 43, 48)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vfg7c"]
+resource_local_to_scene = true
+shader = ExtResource("9_jj3m8")
+shader_parameter/whiteness = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_3je14")
+shader_parameter/dissolve_amount = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4c4gq"]
-atlas = ExtResource("8_hy5j1")
-region = Rect2(130, 48, 43, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3e7p2"]
-atlas = ExtResource("8_hy5j1")
-region = Rect2(130, 96, 43, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dxjb0"]
-atlas = ExtResource("8_hy5j1")
-region = Rect2(130, 144, 43, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hx0pg"]
-atlas = ExtResource("8_hy5j1")
-region = Rect2(130, 192, 43, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uyp6w"]
-atlas = ExtResource("8_hy5j1")
-region = Rect2(130, 240, 43, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_t21pv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xxxi4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4c4gq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3e7p2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dxjb0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hx0pg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uyp6w")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xc3xs"]
-radius = 4.0
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_hy5j1"]
-vertices = PackedVector2Array(66, 64, -66, 64, -66, -37, 66, -37)
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_fki3c"]
+vertices = PackedVector2Array(67, 66, -66.99219, 66, -66.00781, -38, 67, -38)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-67, -38, -67, 65, 67, 65, 67, -38)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-67, -39, 68, -39, 68, 67, -68, 67)])
 agent_radius = 1.0
 
 [node name="Main" type="Node2D"]
 texture_filter = 1
-script = ExtResource("1_hy5j1")
-enemies = 1
+script = ExtResource("1_4t7bu")
+enemies = 2
 
-[node name="BackWalls" parent="." instance=ExtResource("2_xxxi4")]
+[node name="BackWalls" parent="." instance=ExtResource("2_fe7e8")]
 z_index = -1
 tile_map_data = PackedByteArray("AAD7//v/AAAFAAwAAAD8//v/AAABAA8AAAD9//v/AAABAA8AAAD+//v/AAABAA8AAAD///v/AAABAA8AAAAAAPv/AAABAA8AAAABAPv/AAABAA8AAAACAPv/AAABAA8AAAADAPv/AAABAA8AAAAEAPv/AAAGAAwAAAD7//z/AAAFAA0AAAD7//3/AAAFAA4AAAD8//z/AAABABAAAAD8//3/AAABABEAAAD9//z/AAABABAAAAD9//3/AAABABEAAAD+//z/AAABABAAAAD+//3/AAABABEAAAD///z/AAABABAAAAD///3/AAABABEAAAAAAPz/AAABABAAAAAAAP3/AAABABEAAAABAPz/AAABABAAAAABAP3/AAABABEAAAACAPz/AAABABAAAAACAP3/AAABABEAAAADAPz/AAABABAAAAADAP3/AAABABEAAAAEAPz/AAAGAA0AAAAEAP3/AAAGAA4AAAA=")
 
-[node name="FrontWalls" parent="." instance=ExtResource("2_xxxi4")]
+[node name="FrontWalls" parent="." instance=ExtResource("2_fe7e8")]
 z_index = 3
 tile_map_data = PackedByteArray("AAD7/wIAAAAFAA8AAAD7/wMAAAAFABAAAAD7/wQAAAAFABEAAAD8/wIAAAABAA8AAAD8/wMAAAABABAAAAD8/wQAAAABABEAAAD9/wIAAAABAA8AAAD9/wMAAAABABAAAAD9/wQAAAABABEAAAD+/wIAAAABAA8AAAD+/wMAAAABABAAAAD+/wQAAAABABEAAAD//wIAAAABAA8AAAAAAAIAAAABAA8AAAABAAIAAAABAA8AAAABAAMAAAABABAAAAABAAQAAAABABEAAAACAAIAAAABAA8AAAACAAMAAAABABAAAAACAAQAAAABABEAAAADAAIAAAABAA8AAAADAAMAAAABABAAAAADAAQAAAABABEAAAAEAAIAAAAGAA8AAAAEAAMAAAAGABAAAAAEAAQAAAAGABEAAAA=")
-script = ExtResource("3_4c4gq")
+script = ExtResource("3_jbidq")
 
 [node name="Area2D" type="Area2D" parent="FrontWalls"]
 visible = false
@@ -111,15 +64,16 @@ collision_mask = 2
 position = Vector2(0.5, 54)
 shape = SubResource("RectangleShape2D_1bvp3")
 
-[node name="Door2" parent="FrontWalls" instance=ExtResource("4_3e7p2")]
+[node name="Door2" parent="FrontWalls" instance=ExtResource("4_m25an")]
 position = Vector2(0, 59)
-playerPos = Vector2(-96, -102)
+toTransport = 4
+playerPos = Vector2(240, -70)
 
-[node name="Walls" parent="." instance=ExtResource("2_xxxi4")]
+[node name="Walls" parent="." instance=ExtResource("2_fe7e8")]
 z_index = 2
 tile_map_data = PackedByteArray("AAD7//7/AAACAA4AAAD7////AAACAA4AAAD7/wAAAAACAA4AAAD7/wEAAAACAA4AAAD7/wIAAAACABIAAAD7/wMAAAACABMAAAAEAP7/AAACAA4AAAAEAP//AAACAA4AAAAEAAAAAAACAA4AAAAEAAEAAAACAA4AAAAEAAIAAAACABIAAAAEAAMAAAACABMAAAD7/wQAAAACABQAAAAEAAQAAAACABQAAAA=")
 
-[node name="Floor" parent="." instance=ExtResource("2_xxxi4")]
+[node name="Floor" parent="." instance=ExtResource("2_fe7e8")]
 z_index = -2
 tile_map_data = PackedByteArray("AAACAPz/AAABAAoAAAABAPz/AAABAAoAAAAAAPz/AAABAAoAAAD///z/AAABAAoAAAD+//z/AAABABUAAAD9//z/AAABAAoAAAD8//z/AAABABUAAAD8/wMAAAABAAoAAAD9/wMAAAAAABUAAAD+/wMAAAABAAoAAAD//wMAAAABAAoAAAAAAAMAAAABAAoAAAABAAMAAAABABUAAAACAAMAAAABAAoAAAADAAMAAAABAAoAAAAEAAMAAAACAAoAAAAEAAIAAAACAAoAAAAEAAEAAAACAAoAAAAEAAAAAAACAAoAAAAEAP//AAACAAoAAAAEAP7/AAACAAoAAAAEAP3/AAACAAoAAAADAP3/AAABABYAAAADAPz/AAABAAoAAAAEAPz/AAACAAoAAAACAP3/AAABAAoAAAABAP3/AAABAAoAAAAAAP3/AAABAAoAAAD///3/AAABAAoAAAD+//3/AAABABYAAAD9//3/AAABAAoAAAD8//3/AAABABYAAAD8//7/AAAAABYAAAD8////AAABAAoAAAD8/wAAAAABAAoAAAD8/wEAAAAAABYAAAD8/wIAAAAAABUAAAD9/wIAAAABAAoAAAD+/wIAAAABAAoAAAD//wIAAAAAABUAAAAAAAIAAAABAAoAAAABAAIAAAABABYAAAACAAIAAAABAAoAAAADAAIAAAABABUAAAADAAEAAAABAAoAAAADAAAAAAABAAoAAAADAP//AAABABUAAAACAP//AAABAAoAAAACAP7/AAAAABUAAAABAP7/AAABAAoAAAAAAP7/AAABAAoAAAD///7/AAABAAoAAAD+//7/AAABAAoAAAD9//7/AAABAAoAAAD9////AAABAAoAAAD9/wAAAAABABYAAAD9/wEAAAABAAoAAAD+/wEAAAABAAoAAAD//wEAAAABAAoAAAACAAEAAAABAAoAAAADAP7/AAABAAoAAAD/////AAAAABUAAAD+////AAABAAoAAAD+/wAAAAABAAoAAAAAAAEAAAABAAoAAAABAAEAAAABAAoAAAACAAAAAAAAABUAAAABAP//AAABABUAAAAAAP//AAABAAoAAAAAAAAAAAAAABYAAAABAAAAAAABABYAAAD//wAAAAABAAoAAAAEAPv/AAACAAkAAAADAPv/AAABAAkAAAACAPv/AAABAAkAAAABAPv/AAABAAkAAAAAAPv/AAABAAkAAAD///v/AAABAAkAAAD+//v/AAABAAkAAAD9//v/AAABAAkAAAD8//v/AAABAAkAAAD8/wQAAAABAAsAAAD9/wQAAAABAAsAAAD+/wQAAAABAAsAAAD//wQAAAABAAsAAAAAAAQAAAABAAsAAAABAAQAAAABAAsAAAACAAQAAAABAAsAAAADAAQAAAABAAsAAAAEAAQAAAACAAsAAAD7//v/AAAAAAkAAAD7//z/AAAAAAoAAAD7//3/AAAAAAoAAAD7//7/AAAAAAoAAAD7////AAAAAAoAAAD7/wAAAAAAAAoAAAD7/wEAAAAAAAoAAAD7/wIAAAAAAAoAAAD7/wMAAAAAAAoAAAD7/wQAAAAAAAsAAAA=")
 
@@ -127,41 +81,34 @@ tile_map_data = PackedByteArray("AAACAPz/AAABAAoAAAABAPz/AAABAAoAAAAAAPz/AAABAAo
 z_index = 1
 y_sort_enabled = true
 
-[node name="Knight" parent="Y_Sorting" instance=ExtResource("5_dxjb0")]
+[node name="Knight" parent="Y_Sorting" instance=ExtResource("5_1fulx")]
 position = Vector2(0, 54)
 
 [node name="Cam" type="Camera2D" parent="Y_Sorting/Knight"]
 zoom = Vector2(8, 8)
 position_smoothing_enabled = true
 
-[node name="Skeleton" parent="Y_Sorting" instance=ExtResource("6_hx0pg")]
-material = SubResource("ShaderMaterial_p5226")
-position = Vector2(14, -26)
-
-[node name="Fire" type="AnimatedSprite2D" parent="Y_Sorting"]
-sprite_frames = SubResource("SpriteFrames_t21pv")
-autoplay = "default"
-frame_progress = 0.23267825
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Y_Sorting/Fire"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Y_Sorting/Fire/StaticBody2D"]
-position = Vector2(-1, 4)
-shape = SubResource("CircleShape2D_xc3xs")
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.69135684, 0.6913568, 0.69135684, 1)
 
-[node name="Torch" parent="." instance=ExtResource("9_xc3xs")]
+[node name="Torch" parent="." instance=ExtResource("6_eff8r")]
 position = Vector2(37.5, -55)
 
-[node name="Torch2" parent="." instance=ExtResource("9_xc3xs")]
+[node name="Torch2" parent="." instance=ExtResource("6_eff8r")]
 position = Vector2(-34.5, -55)
 
-[node name="HUD" parent="." instance=ExtResource("10_tqo56")]
+[node name="HUD" parent="." instance=ExtResource("7_3m721")]
+
+[node name="Skeleton" parent="." instance=ExtResource("8_pnxx3")]
+material = SubResource("ShaderMaterial_ptlqi")
+position = Vector2(-55, -31)
+
+[node name="Skeleton2" parent="." instance=ExtResource("8_pnxx3")]
+material = SubResource("ShaderMaterial_vfg7c")
+position = Vector2(50, -30)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_hy5j1")
+navigation_polygon = SubResource("NavigationPolygon_fki3c")
 
 [connection signal="area_entered" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_exited"]

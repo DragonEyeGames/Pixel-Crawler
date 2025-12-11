@@ -1,15 +1,15 @@
-[gd_scene load_steps=15 format=4 uid="uid://bpgb62u7c0l6m"]
+[gd_scene load_steps=15 format=4 uid="uid://yj3fppdcvxbj"]
 
-[ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Levels/level.gd" id="1_nkn5i"]
-[ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_me3ps"]
-[ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="3_vmtie"]
-[ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Levels/openDoor.tscn" id="4_sraex"]
-[ext_resource type="PackedScene" uid="uid://c4wws2xdfldn2" path="res://Levels/chest.tscn" id="5_d8brc"]
-[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Scenes/Player Types/knight.tscn" id="5_ygoef"]
-[ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="9_1cu8l"]
-[ext_resource type="Texture2D" uid="uid://cj0omml67i2ky" path="res://Assets/BreakablPot.png" id="9_uj6fh"]
-[ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Levels/HUD.tscn" id="10_10py1"]
-[ext_resource type="Script" uid="uid://bgxn0fqeivp3d" path="res://Levels/breakable_pot.gd" id="10_nkn5i"]
+[ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_l70hy"]
+[ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_x4vx7"]
+[ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="3_tacv6"]
+[ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_prbei"]
+[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Scenes/Player Types/knight.tscn" id="5_0vd34"]
+[ext_resource type="PackedScene" uid="uid://c4wws2xdfldn2" path="res://Scenes/chest.tscn" id="6_d38p4"]
+[ext_resource type="Texture2D" uid="uid://cj0omml67i2ky" path="res://Assets/BreakablPot.png" id="7_8oc7v"]
+[ext_resource type="Script" uid="uid://bgxn0fqeivp3d" path="res://Scripts/breakable_pot.gd" id="8_mprfr"]
+[ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="9_cxpcp"]
+[ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Scenes/HUD.tscn" id="10_0qijj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(185, 38)
@@ -29,17 +29,17 @@ height = 20.0
 
 [node name="Main" type="Node2D"]
 texture_filter = 1
-script = ExtResource("1_nkn5i")
+script = ExtResource("1_l70hy")
 enemies = 0
 
-[node name="BackWalls" parent="." instance=ExtResource("2_me3ps")]
+[node name="BackWalls" parent="." instance=ExtResource("2_x4vx7")]
 z_index = -1
 tile_map_data = PackedByteArray("AAD7//v/AAAFAAwAAAD8//v/AAABAA8AAAD9//v/AAABAA8AAAD+//v/AAABAA8AAAD///v/AAABAA8AAAAAAPv/AAABAA8AAAABAPv/AAABAA8AAAACAPv/AAABAA8AAAADAPv/AAABAA8AAAAEAPv/AAAGAAwAAAD7//z/AAAFAA0AAAD7//3/AAAFAA4AAAD8//z/AAABABAAAAD8//3/AAABABEAAAD9//z/AAABABAAAAD9//3/AAABABEAAAD+//z/AAABABAAAAD+//3/AAABABEAAAD///z/AAABABAAAAD///3/AAABABEAAAAAAPz/AAABABAAAAAAAP3/AAABABEAAAABAPz/AAABABAAAAABAP3/AAABABEAAAACAPz/AAABABAAAAACAP3/AAABABEAAAADAPz/AAABABAAAAADAP3/AAABABEAAAAEAPz/AAAGAA0AAAAEAP3/AAAGAA4AAAA=")
 
-[node name="FrontWalls" parent="." instance=ExtResource("2_me3ps")]
+[node name="FrontWalls" parent="." instance=ExtResource("2_x4vx7")]
 z_index = 3
 tile_map_data = PackedByteArray("AAD7/wIAAAAFAA8AAAD7/wMAAAAFABAAAAD7/wQAAAAFABEAAAD8/wIAAAABAA8AAAD8/wMAAAABABAAAAD8/wQAAAABABEAAAD9/wIAAAABAA8AAAD9/wMAAAABABAAAAD9/wQAAAABABEAAAD+/wIAAAABAA8AAAD+/wMAAAABABAAAAD+/wQAAAABABEAAAD//wIAAAABAA8AAAAAAAIAAAABAA8AAAABAAIAAAABAA8AAAABAAMAAAABABAAAAABAAQAAAABABEAAAACAAIAAAABAA8AAAACAAMAAAABABAAAAACAAQAAAABABEAAAADAAIAAAABAA8AAAADAAMAAAABABAAAAADAAQAAAABABEAAAAEAAIAAAAGAA8AAAAEAAMAAAAGABAAAAAEAAQAAAAGABEAAAA=")
-script = ExtResource("3_vmtie")
+script = ExtResource("3_tacv6")
 
 [node name="Area2D" type="Area2D" parent="FrontWalls"]
 visible = false
@@ -50,17 +50,17 @@ collision_mask = 2
 position = Vector2(0.5, 54)
 shape = SubResource("RectangleShape2D_1bvp3")
 
-[node name="Door2" parent="FrontWalls" instance=ExtResource("4_sraex")]
+[node name="Door2" parent="FrontWalls" instance=ExtResource("4_prbei")]
 position = Vector2(0, 59)
 toTransport = 4
 playerPos = Vector2(80, -70)
 enemyControlled = false
 
-[node name="Walls" parent="." instance=ExtResource("2_me3ps")]
+[node name="Walls" parent="." instance=ExtResource("2_x4vx7")]
 z_index = 2
 tile_map_data = PackedByteArray("AAD7//7/AAACAA4AAAD7////AAACAA4AAAD7/wAAAAACAA4AAAD7/wEAAAACAA4AAAD7/wIAAAACABIAAAD7/wMAAAACABMAAAAEAP7/AAACAA4AAAAEAP//AAACAA4AAAAEAAAAAAACAA4AAAAEAAEAAAACAA4AAAAEAAIAAAACABIAAAAEAAMAAAACABMAAAD7/wQAAAACABQAAAAEAAQAAAACABQAAAA=")
 
-[node name="Floor" parent="." instance=ExtResource("2_me3ps")]
+[node name="Floor" parent="." instance=ExtResource("2_x4vx7")]
 z_index = -2
 tile_map_data = PackedByteArray("AAACAPz/AAABAAoAAAABAPz/AAABAAoAAAAAAPz/AAABAAoAAAD///z/AAABAAoAAAD+//z/AAABABUAAAD9//z/AAABAAoAAAD8//z/AAABABUAAAD8/wMAAAABAAoAAAD9/wMAAAAAABUAAAD+/wMAAAABAAoAAAD//wMAAAABAAoAAAAAAAMAAAABAAoAAAABAAMAAAABABUAAAACAAMAAAABAAoAAAADAAMAAAABAAoAAAAEAAMAAAACAAoAAAAEAAIAAAACAAoAAAAEAAEAAAACAAoAAAAEAAAAAAACAAoAAAAEAP//AAACAAoAAAAEAP7/AAACAAoAAAAEAP3/AAACAAoAAAADAP3/AAABABYAAAADAPz/AAABAAoAAAAEAPz/AAACAAoAAAACAP3/AAABAAoAAAABAP3/AAABAAoAAAAAAP3/AAABAAoAAAD///3/AAABAAoAAAD+//3/AAABABYAAAD9//3/AAABAAoAAAD8//3/AAABABYAAAD8//7/AAAAABYAAAD8////AAABAAoAAAD8/wAAAAABAAoAAAD8/wEAAAAAABYAAAD8/wIAAAAAABUAAAD9/wIAAAABAAoAAAD+/wIAAAABAAoAAAD//wIAAAAAABUAAAAAAAIAAAABAAoAAAABAAIAAAABABYAAAACAAIAAAABAAoAAAADAAIAAAABABUAAAADAAEAAAABAAoAAAADAAAAAAABAAoAAAADAP//AAABABUAAAACAP//AAABAAoAAAACAP7/AAAAABUAAAABAP7/AAABAAoAAAAAAP7/AAABAAoAAAD///7/AAABAAoAAAD+//7/AAABAAoAAAD9//7/AAABAAoAAAD9////AAABAAoAAAD9/wAAAAABABYAAAD9/wEAAAABAAoAAAD+/wEAAAABAAoAAAD//wEAAAABAAoAAAACAAEAAAABAAoAAAADAP7/AAABAAoAAAD/////AAAAABUAAAD+////AAABAAoAAAD+/wAAAAABAAoAAAAAAAEAAAABAAoAAAABAAEAAAABAAoAAAACAAAAAAAAABUAAAABAP//AAABABUAAAAAAP//AAABAAoAAAAAAAAAAAAAABYAAAABAAAAAAABABYAAAD//wAAAAABAAoAAAAEAPv/AAACAAkAAAADAPv/AAABAAkAAAACAPv/AAABAAkAAAABAPv/AAABAAkAAAAAAPv/AAABAAkAAAD///v/AAABAAkAAAD+//v/AAABAAkAAAD9//v/AAABAAkAAAD8//v/AAABAAkAAAD8/wQAAAABAAsAAAD9/wQAAAABAAsAAAD+/wQAAAABAAsAAAD//wQAAAABAAsAAAAAAAQAAAABAAsAAAABAAQAAAABAAsAAAACAAQAAAABAAsAAAADAAQAAAABAAsAAAAEAAQAAAACAAsAAAD7//v/AAAAAAkAAAD7//z/AAAAAAoAAAD7//3/AAAAAAoAAAD7//7/AAAAAAoAAAD7////AAAAAAoAAAD7/wAAAAAAAAoAAAD7/wEAAAAAAAoAAAD7/wIAAAAAAAoAAAD7/wMAAAAAAAoAAAD7/wQAAAAAAAsAAAA=")
 
@@ -68,20 +68,20 @@ tile_map_data = PackedByteArray("AAACAPz/AAABAAoAAAABAPz/AAABAAoAAAAAAPz/AAABAAo
 z_index = 1
 y_sort_enabled = true
 
-[node name="Knight" parent="Y_Sorting" instance=ExtResource("5_ygoef")]
+[node name="Knight" parent="Y_Sorting" instance=ExtResource("5_0vd34")]
 position = Vector2(0, 54)
 
 [node name="Cam" type="Camera2D" parent="Y_Sorting/Knight"]
 zoom = Vector2(8, 8)
 position_smoothing_enabled = true
 
-[node name="Chest" parent="Y_Sorting" instance=ExtResource("5_d8brc")]
+[node name="Chest" parent="Y_Sorting" instance=ExtResource("6_d38p4")]
 position = Vector2(0, -33)
 
 [node name="BreakablePot" type="Sprite2D" parent="Y_Sorting"]
 position = Vector2(-45, -33)
-texture = ExtResource("9_uj6fh")
-script = ExtResource("10_nkn5i")
+texture = ExtResource("7_8oc7v")
+script = ExtResource("8_mprfr")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Y_Sorting/BreakablePot"]
 position = Vector2(0, 2)
@@ -107,8 +107,8 @@ shape = SubResource("CapsuleShape2D_uj6fh")
 
 [node name="BreakablePot2" type="Sprite2D" parent="Y_Sorting"]
 position = Vector2(56, -34)
-texture = ExtResource("9_uj6fh")
-script = ExtResource("10_nkn5i")
+texture = ExtResource("7_8oc7v")
+script = ExtResource("8_mprfr")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Y_Sorting/BreakablePot2"]
 position = Vector2(0, 2)
@@ -135,13 +135,13 @@ shape = SubResource("CapsuleShape2D_uj6fh")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.69135684, 0.6913568, 0.69135684, 1)
 
-[node name="Torch" parent="." instance=ExtResource("9_1cu8l")]
+[node name="Torch" parent="." instance=ExtResource("9_cxpcp")]
 position = Vector2(37.5, -55)
 
-[node name="Torch2" parent="." instance=ExtResource("9_1cu8l")]
+[node name="Torch2" parent="." instance=ExtResource("9_cxpcp")]
 position = Vector2(-34.5, -55)
 
-[node name="HUD" parent="." instance=ExtResource("10_10py1")]
+[node name="HUD" parent="." instance=ExtResource("10_0qijj")]
 
 [connection signal="area_entered" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_exited"]

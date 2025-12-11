@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://d32wmlan6l876"]
+
+[ext_resource type="Script" uid="uid://bijnftmewdq1x" path="res://Scenes/Enemies/arrow.gd" id="1_1fs1j"]
+[ext_resource type="Texture2D" uid="uid://c2rpo8jiqwueu" path="res://Assets/Characters/Arrow(Projectile)/Arrow01(32x32).png" id="2_fpagu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nd4ig"]
+radius = 2.0
+
+[node name="Arrow" type="CharacterBody2D"]
+script = ExtResource("1_1fs1j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fpagu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, 0)
+shape = SubResource("CircleShape2D_nd4ig")
+
+[node name="Hits" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hits"]
+polygon = PackedVector2Array(-9, -4, 10, -2, 10, 2, -9, 5)
+disabled = true
+
+[connection signal="area_entered" from="Hits" to="." method="_on_hits_area_entered"]

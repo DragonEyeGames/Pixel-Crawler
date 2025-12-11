@@ -1,5 +1,6 @@
 @icon("res://Assets/GodotIcon/icon_door.png")
 extends AnimatedSprite2D
+@export var transportLevel=1
 @export var toTransport:=2
 @export var playerPos:= Vector2.ZERO
 @export var enemyControlled:=false
@@ -28,4 +29,4 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		await get_tree().process_frame
 		await get_tree().process_frame
 		GameManager.playerPos=playerPos
-		get_tree().change_scene_to_file("res://Levels/Level" + str(toTransport) + ".tscn")
+		get_tree().change_scene_to_file("res://Levels/Level" + str(transportLevel) + "/Level" + str(toTransport) +".tscn")

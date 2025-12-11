@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://ccujaxhm0ts1a"]
 
 [ext_resource type="Texture2D" uid="uid://wrg7d4vpuep6" path="res://Assets/Tilemap/FixedDoors.png" id="1_i6sw5"]
-[ext_resource type="Script" uid="uid://b3mtqd2rdon7d" path="res://Levels/blocking_door.gd" id="2_epyjk"]
+[ext_resource type="Script" uid="uid://b3mtqd2rdon7d" path="res://Scripts/blocking_door.gd" id="2_epyjk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lf2mf"]
 atlas = ExtResource("1_i6sw5")
