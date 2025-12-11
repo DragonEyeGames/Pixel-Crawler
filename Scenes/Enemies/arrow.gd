@@ -18,3 +18,4 @@ func _physics_process(_delta: float) -> void:
 
 func _on_hits_area_entered(area: Area2D) -> void:
 	area.get_parent().hit(weaponDamage)
+	queue_free()

@@ -38,7 +38,6 @@ func _physics_process(_delta: float) -> void:
 	velocity=-global_position+GameManager.player.global_position
 	velocity=velocity.normalized()*speed
 	velocity.x=0
-	print(velocity)
 		#velocity=player.global_position-global_position
 		#velocity=velocity.normalized()*speed
 	move_and_slide()
@@ -85,13 +84,6 @@ func attack():
 	canAttack=false
 	sprite.play("attack-1")
 	animator.play("attack-1")
-	var arrow = arrowScene.instantiate()
-	get_parent().add_child(arrow)
-	var offset = Vector2(11, 0)
-	if(direction=="left"):
-		offset.x*=-1
-	arrow.global_position=global_position + offset
-	arrow.initialVelocity=-global_position+GameManager.player.global_position
 	
 
 func _on_checks_area_entered(area: Area2D) -> void:
@@ -109,6 +101,16 @@ func _on_sprite_animation_finished() -> void:
 func _on_checks_area_exited(area: Area2D) -> void:
 	attackingList.erase(area.get_parent())
 
+func spawnArrow():
+	print("SPAWNING")
+	var arrow = arrowScene.instantiate()
+	get_parent().add_child(arrow)
+	var offset = Vector2(11, 0)
+	if(direction=="left"):
+		offset.x*=-1
+	arrow.global_position=global_position + offset
+	arrow.initialVelocity=-global_position+GameManager.player.global_position
+	arrow.initialVelocity=arrow.initialVelocity.normalized()
 
 func _on_hits_area_entered(area: Area2D) -> void:
 	if(not dead):
