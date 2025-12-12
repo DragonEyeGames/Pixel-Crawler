@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_qfn07"]
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_2wxag"]
 [ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="3_34jho"]
-[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Scenes/Player Types/knight.tscn" id="4_shj0g"]
+[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Player Types/knight.tscn" id="4_shj0g"]
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="5_30vle"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Scenes/door.tscn" id="6_gneuj"]
 [ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Scenes/HUD.tscn" id="7_4cexm"]

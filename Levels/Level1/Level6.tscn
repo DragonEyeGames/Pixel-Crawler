@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="3_vmtie"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_sraex"]
 [ext_resource type="PackedScene" uid="uid://c4wws2xdfldn2" path="res://Scenes/chest.tscn" id="5_d8brc"]
-[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Scenes/Player Types/knight.tscn" id="5_ygoef"]
+[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Player Types/knight.tscn" id="5_ygoef"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="9_1cu8l"]
 [ext_resource type="Texture2D" uid="uid://cj0omml67i2ky" path="res://Assets/BreakablPot.png" id="9_uj6fh"]
 [ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Scenes/HUD.tscn" id="10_10py1"]

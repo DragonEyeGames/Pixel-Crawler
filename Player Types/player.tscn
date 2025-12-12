@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://ct4ti7ck1jr5y"]
+
+[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Player Types/knight.tscn" id="1_6wsvd"]
+[ext_resource type="Script" uid="uid://cuaqac3qey48c" path="res://Player Types/player.gd" id="1_7j8bl"]
+[ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="2_7j8bl"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3hayl"]
+seed = 1
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fy2qv"]
+width = 1000
+height = 1000
+noise = SubResource("FastNoiseLite_3hayl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fmvb7"]
+resource_local_to_scene = true
+shader = ExtResource("2_7j8bl")
+shader_parameter/whiteness = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_fy2qv")
+shader_parameter/dissolve_amount = 0.0
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_7j8bl")
+
+[node name="Knight" parent="." instance=ExtResource("1_6wsvd")]
+material = SubResource("ShaderMaterial_fmvb7")

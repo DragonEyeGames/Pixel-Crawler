@@ -1,6 +1,10 @@
-[gd_scene load_steps=38 format=3 uid="uid://cx0hmhgoj4oqx"]
+[gd_scene load_steps=63 format=3 uid="uid://cx0hmhgoj4oqx"]
 
+[ext_resource type="Script" uid="uid://b7fe5b2vfjrqe" path="res://Scenes/character_select.gd" id="1_p2alb"]
 [ext_resource type="Texture2D" uid="uid://dvqwqmuns8vkw" path="res://Assets/Characters/Characters(100x100)/Knight/Knight/Knight.png" id="1_yrype"]
+[ext_resource type="Texture2D" uid="uid://dxu3gdhre3opv" path="res://Assets/Characters/Characters(100x100)/Archer/Archer/Archer.png" id="2_jpr0i"]
+[ext_resource type="Texture2D" uid="uid://cwbth46relc2d" path="res://Assets/Characters/Characters(100x100)/Armored Axeman/Armored Axeman/Armored Axeman.png" id="3_qorhy"]
+[ext_resource type="Texture2D" uid="uid://cn7jyp5impaim" path="res://Assets/Characters/Characters(100x100)/Wizard/Wizard/Wizard.png" id="4_kymve"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
 atlas = ExtResource("1_yrype")
@@ -275,6 +279,477 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qorhy"]
+atlas = ExtResource("2_jpr0i")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kymve"]
+atlas = ExtResource("2_jpr0i")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2alb"]
+atlas = ExtResource("2_jpr0i")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6mwj"]
+atlas = ExtResource("2_jpr0i")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkgly"]
+atlas = ExtResource("2_jpr0i")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhsnq"]
+atlas = ExtResource("2_jpr0i")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_evegc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vw27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kek77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c57u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efxa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg77c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycdy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w48qg")
+}],
+"loop": false,
+"name": &"attack-1",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vivmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cqfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yaehf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_074og")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cegan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82xsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_getpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryguw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d13ii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1u8w0")
+}],
+"loop": false,
+"name": &"attack-2",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0odxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lswn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6jrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuqvo")
+}],
+"loop": false,
+"name": &"die",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qorhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kymve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2alb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6mwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkgly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhsnq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rl1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok6jj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_facbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1qrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_come4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8e4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lmeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cp0l")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evegc"]
+atlas = ExtResource("3_qorhy")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7w0s"]
+atlas = ExtResource("3_qorhy")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kxl0"]
+atlas = ExtResource("3_qorhy")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxl4r"]
+atlas = ExtResource("3_qorhy")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ub03b"]
+atlas = ExtResource("3_qorhy")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whswc"]
+atlas = ExtResource("3_qorhy")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tbsjy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vw27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kek77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c57u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efxa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg77c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycdy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w48qg")
+}],
+"loop": false,
+"name": &"attack-1",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vivmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cqfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yaehf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_074og")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cegan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82xsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_getpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryguw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d13ii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1u8w0")
+}],
+"loop": false,
+"name": &"attack-2",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0odxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lswn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6jrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuqvo")
+}],
+"loop": false,
+"name": &"die",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evegc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7w0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kxl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxl4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ub03b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whswc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rl1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok6jj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_facbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1qrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_come4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8e4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lmeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cp0l")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbsjy"]
+atlas = ExtResource("4_kymve")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8u48"]
+atlas = ExtResource("4_kymve")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhrxk"]
+atlas = ExtResource("4_kymve")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pd0yo"]
+atlas = ExtResource("4_kymve")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pvad"]
+atlas = ExtResource("4_kymve")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1wx1"]
+atlas = ExtResource("4_kymve")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3qoh0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vw27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kek77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c57u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efxa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg77c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycdy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w48qg")
+}],
+"loop": false,
+"name": &"attack-1",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vivmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cqfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yaehf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_074og")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cegan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82xsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_getpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryguw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d13ii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1u8w0")
+}],
+"loop": false,
+"name": &"attack-2",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0odxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lswn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6jrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuqvo")
+}],
+"loop": false,
+"name": &"die",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbsjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8u48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhrxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pd0yo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pvad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1wx1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rl1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok6jj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_facbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1qrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_come4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8e4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lmeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cp0l")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -282,24 +757,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_p2alb")
 
-[node name="Knight" type="Control" parent="."]
-custom_minimum_size = Vector2(500, 650)
-anchors_preset = 0
-offset_right = 500.0
-offset_bottom = 650.0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 251.00002
+offset_right = 2565.3335
+offset_bottom = 920.3333
+scale = Vector2(0.75, 0.75)
+alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="Knight"]
+[node name="Knight" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(550, 650)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Knight"]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -50.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.2903535, 0.2903535, 0.29035345, 1)
 
-[node name="Knight" type="Button" parent="Knight"]
+[node name="Knight" type="Button" parent="HBoxContainer/Knight"]
 layout_mode = 0
 offset_left = 160.0
 offset_top = 542.0
@@ -309,7 +792,7 @@ scale = Vector2(0.64, 0.64)
 theme_override_font_sizes/font_size = 90
 text = "Select"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Knight"]
+[node name="Label" type="RichTextLabel" parent="HBoxContainer/Knight"]
 layout_mode = 0
 offset_right = 501.0
 offset_bottom = 115.0
@@ -318,22 +801,232 @@ text = "Knight"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="Knight"]
+[node name="Description" type="RichTextLabel" parent="HBoxContainer/Knight"]
 layout_mode = 0
 offset_top = 273.0
 offset_right = 501.0
-offset_bottom = 466.0
+offset_bottom = 468.0
 theme_override_font_sizes/normal_font_size = 40
 text = "Health: 20
-Speed: 12
-Damage: 15"
+Speed: 8
+Strength: 12
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player" type="AnimatedSprite2D" parent="Knight"]
+[node name="Ability" type="RichTextLabel" parent="HBoxContainer/Knight"]
+layout_mode = 0
+offset_top = 472.0
+offset_right = 501.0
+offset_bottom = 524.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Can block attacks with shield"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" type="AnimatedSprite2D" parent="HBoxContainer/Knight"]
 use_parent_material = true
 position = Vector2(250.00002, 201.00002)
 scale = Vector2(7.5, 7.5)
 sprite_frames = SubResource("SpriteFrames_jpr0i")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.058559038
+
+[node name="Archer" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(550, 650)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Archer"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2903535, 0.2903535, 0.29035345, 1)
+
+[node name="Archer" type="Button" parent="HBoxContainer/Archer"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 542.0
+offset_right = 455.0
+offset_bottom = 687.0
+scale = Vector2(0.64, 0.64)
+theme_override_font_sizes/font_size = 90
+text = "Select"
+
+[node name="Label" type="RichTextLabel" parent="HBoxContainer/Archer"]
+layout_mode = 0
+offset_right = 501.0
+offset_bottom = 115.0
+theme_override_font_sizes/normal_font_size = 70
+text = "Archer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="HBoxContainer/Archer"]
+layout_mode = 0
+offset_top = 273.0
+offset_right = 501.0
+offset_bottom = 468.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Health: 10
+Speed: 14
+Strength: 16
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ability" type="RichTextLabel" parent="HBoxContainer/Archer"]
+layout_mode = 0
+offset_top = 472.0
+offset_right = 501.0
+offset_bottom = 524.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Can shoot arrows at enemies"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" type="AnimatedSprite2D" parent="HBoxContainer/Archer"]
+use_parent_material = true
+position = Vector2(250.00002, 201.00002)
+scale = Vector2(7.5, 7.5)
+sprite_frames = SubResource("SpriteFrames_evegc")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.7768991
+
+[node name="Axeman" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(550, 650)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Axeman"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2903535, 0.2903535, 0.29035345, 1)
+
+[node name="Archer" type="Button" parent="HBoxContainer/Axeman"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 542.0
+offset_right = 455.0
+offset_bottom = 687.0
+scale = Vector2(0.64, 0.64)
+theme_override_font_sizes/font_size = 90
+text = "Select"
+
+[node name="Label" type="RichTextLabel" parent="HBoxContainer/Axeman"]
+layout_mode = 0
+offset_right = 501.0
+offset_bottom = 115.0
+theme_override_font_sizes/normal_font_size = 70
+text = "Axeman"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="HBoxContainer/Axeman"]
+layout_mode = 0
+offset_top = 273.0
+offset_right = 501.0
+offset_bottom = 468.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Health: 15
+Speed: 8
+Strength: 20
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ability" type="RichTextLabel" parent="HBoxContainer/Axeman"]
+layout_mode = 0
+offset_top = 472.0
+offset_right = 501.0
+offset_bottom = 524.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Very powerful"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" type="AnimatedSprite2D" parent="HBoxContainer/Axeman"]
+use_parent_material = true
+position = Vector2(250.00002, 201.00002)
+scale = Vector2(7.5, 7.5)
+sprite_frames = SubResource("SpriteFrames_tbsjy")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.9159147
+
+[node name="Wizard" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(550, 650)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Wizard"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2903535, 0.2903535, 0.29035345, 1)
+
+[node name="Archer" type="Button" parent="HBoxContainer/Wizard"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 542.0
+offset_right = 455.0
+offset_bottom = 687.0
+scale = Vector2(0.64, 0.64)
+theme_override_font_sizes/font_size = 90
+text = "Select"
+
+[node name="Label" type="RichTextLabel" parent="HBoxContainer/Wizard"]
+layout_mode = 0
+offset_right = 501.0
+offset_bottom = 115.0
+theme_override_font_sizes/normal_font_size = 70
+text = "Wizard"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="HBoxContainer/Wizard"]
+layout_mode = 0
+offset_top = 273.0
+offset_right = 501.0
+offset_bottom = 468.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Health: 8
+Speed: 10
+Strength: 18
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ability" type="RichTextLabel" parent="HBoxContainer/Wizard"]
+layout_mode = 0
+offset_top = 472.0
+offset_right = 501.0
+offset_bottom = 524.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Knows Magic"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" type="AnimatedSprite2D" parent="HBoxContainer/Wizard"]
+use_parent_material = true
+position = Vector2(250.00002, 201.00002)
+scale = Vector2(7.5, 7.5)
+sprite_frames = SubResource("SpriteFrames_3qoh0")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.05442468

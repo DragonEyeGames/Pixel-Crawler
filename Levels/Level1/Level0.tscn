@@ -1,32 +1,15 @@
-[gd_scene load_steps=20 format=4 uid="uid://s3yjedgeef8o"]
+[gd_scene load_steps=16 format=4 uid="uid://s3yjedgeef8o"]
 
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_ajely"]
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_3yu0n"]
 [ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="3_im6i0"]
-[ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="5_u74sm"]
-[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Scenes/Player Types/knight.tscn" id="5_yx5hh"]
+[ext_resource type="PackedScene" uid="uid://ct4ti7ck1jr5y" path="res://Player Types/player.tscn" id="4_o5j48"]
 [ext_resource type="Texture2D" uid="uid://dkgps26n57idn" path="res://Assets/Tilemap/fire_animation.png" id="7_h2dl5"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Scenes/door.tscn" id="8_aa3m5"]
 [ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Scenes/HUD.tscn" id="10_nbhn6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(185, 38)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_3hayl"]
-seed = 1
-frequency = 1.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fy2qv"]
-width = 1000
-height = 1000
-noise = SubResource("FastNoiseLite_3hayl")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qpfp8"]
-resource_local_to_scene = true
-shader = ExtResource("5_u74sm")
-shader_parameter/whiteness = 0.0
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_fy2qv")
-shader_parameter/dissolve_amount = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u74sm"]
 atlas = ExtResource("7_h2dl5")
@@ -113,11 +96,11 @@ tile_map_data = PackedByteArray("AAACAPz/AAABAAoAAAABAPz/AAABAAoAAAAAAPz/AAABAAo
 z_index = 1
 y_sort_enabled = true
 
-[node name="Knight" parent="Y_Sorting" instance=ExtResource("5_yx5hh")]
-material = SubResource("ShaderMaterial_qpfp8")
-position = Vector2(-4, 22)
+[node name="Player" parent="Y_Sorting" instance=ExtResource("4_o5j48")]
+position = Vector2(-4, 47)
 
-[node name="Cam" type="Camera2D" parent="Y_Sorting/Knight"]
+[node name="Cam" type="Camera2D" parent="Y_Sorting/Player"]
+position = Vector2(-1856.5076, -280.6278)
 zoom = Vector2(8, 8)
 position_smoothing_enabled = true
 

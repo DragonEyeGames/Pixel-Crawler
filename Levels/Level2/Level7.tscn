@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_b4jni"]
 [ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="3_hlopc"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_sbss1"]
-[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Scenes/Player Types/knight.tscn" id="5_yfna7"]
+[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Player Types/knight.tscn" id="5_yfna7"]
 [ext_resource type="PackedScene" uid="uid://ccujaxhm0ts1a" path="res://Scenes/blockingDoor.tscn" id="6_n5ay0"]
 [ext_resource type="PackedScene" uid="uid://df4aytlkx5ais" path="res://Scenes/Enemies/strongOrc.tscn" id="7_pst7d"]
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="8_trvyj"]

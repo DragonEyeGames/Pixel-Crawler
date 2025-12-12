@@ -25,10 +25,6 @@ func  _ready() -> void:
 	sprite=$Player
 	shadow=$Shadow
 	animator=$Attack
-	$Cam.position_smoothing_enabled=false
-	await get_tree().process_frame
-	await get_tree().process_frame
-	$Cam.position_smoothing_enabled=true
 	
 func _physics_process(_delta: float) -> void:
 	if(dead or not canMove or attacking):

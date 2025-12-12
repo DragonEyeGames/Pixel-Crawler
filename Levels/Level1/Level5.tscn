@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_cg4ff"]
 [ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="3_rss6v"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_x1euj"]
-[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Scenes/Player Types/knight.tscn" id="5_am2wo"]
+[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Player Types/knight.tscn" id="5_am2wo"]
 [ext_resource type="PackedScene" uid="uid://c1f1h4vx7wiai" path="res://Scenes/Enemies/slime.tscn" id="6_nijbd"]
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="7_nxrld"]
 [ext_resource type="Texture2D" uid="uid://dkgps26n57idn" path="res://Assets/Tilemap/fire_animation.png" id="8_ycmcf"]

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_x4vx7"]
 [ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="3_tacv6"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_prbei"]
-[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Scenes/Player Types/knight.tscn" id="5_0vd34"]
+[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Player Types/knight.tscn" id="5_0vd34"]
 [ext_resource type="PackedScene" uid="uid://c4wws2xdfldn2" path="res://Scenes/chest.tscn" id="6_d38p4"]
 [ext_resource type="Texture2D" uid="uid://cj0omml67i2ky" path="res://Assets/BreakablPot.png" id="7_8oc7v"]
 [ext_resource type="Script" uid="uid://bgxn0fqeivp3d" path="res://Scripts/breakable_pot.gd" id="8_mprfr"]
