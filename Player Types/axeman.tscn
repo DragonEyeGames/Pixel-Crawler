@@ -3,23 +3,23 @@
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="1_tqe0l"]
 [ext_resource type="Script" uid="uid://cllbojkrs433o" path="res://Scripts/knight.gd" id="2_hkl5u"]
 [ext_resource type="Texture2D" uid="uid://cwbth46relc2d" path="res://Assets/Characters/Characters(100x100)/Armored Axeman/Armored Axeman/Armored Axeman.png" id="3_jjtdw"]
-[ext_resource type="Texture2D" uid="uid://3j76cno7nww6" path="res://Assets/Characters/Characters(100x100)/Knight/Knight/Shadow sprites/Knight-Shadow.png" id="4_ikv8n"]
-[ext_resource type="Texture2D" uid="uid://b4j2re4yu88i1" path="res://Assets/Characters/Characters(100x100)/Knight/Knight/Shadow sprites/Knight-Shadow_death.png" id="5_l4jkb"]
+[ext_resource type="Texture2D" uid="uid://cxexnq44abgmr" path="res://Assets/Characters/Characters(100x100)/Armored Axeman/Armored Axeman/Shadow sprites/Armored Axeman-Shadow.png" id="4_tqe0l"]
+[ext_resource type="Texture2D" uid="uid://yb3x81n1xnrh" path="res://Assets/Characters/Characters(100x100)/Armored Axeman/Armored Axeman/Shadow sprites/Armored Axeman-Shadow_death.png" id="5_hkl5u"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_3hayl"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tqe0l"]
 seed = 1
 frequency = 1.0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fy2qv"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l1ucm"]
 width = 1000
 height = 1000
-noise = SubResource("FastNoiseLite_3hayl")
+noise = SubResource("FastNoiseLite_tqe0l")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fmvb7"]
 resource_local_to_scene = true
 shader = ExtResource("1_tqe0l")
 shader_parameter/whiteness = 0.0
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_fy2qv")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_l1ucm")
 shader_parameter/dissolve_amount = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eef01"]
@@ -302,31 +302,31 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gngh3"]
-atlas = ExtResource("4_ikv8n")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjtdw"]
+atlas = ExtResource("4_tqe0l")
 region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0n3wm"]
-atlas = ExtResource("5_l4jkb")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikv8n"]
+atlas = ExtResource("5_hkl5u")
 region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qnost"]
-atlas = ExtResource("5_l4jkb")
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4jkb"]
+atlas = ExtResource("5_hkl5u")
 region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wnkbs"]
-atlas = ExtResource("5_l4jkb")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cb2b"]
+atlas = ExtResource("5_hkl5u")
 region = Rect2(200, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f6a44"]
-atlas = ExtResource("5_l4jkb")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtqxo"]
+atlas = ExtResource("5_hkl5u")
 region = Rect2(300, 0, 100, 100)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0cbny"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_gg2as"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gngh3")
+"texture": SubResource("AtlasTexture_jjtdw")
 }],
 "loop": false,
 "name": &"default",
@@ -334,16 +334,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0n3wm")
+"texture": SubResource("AtlasTexture_ikv8n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qnost")
+"texture": SubResource("AtlasTexture_l4jkb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wnkbs")
+"texture": SubResource("AtlasTexture_1cb2b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f6a44")
+"texture": SubResource("AtlasTexture_vtqxo")
 }],
 "loop": false,
 "name": &"die",
@@ -574,8 +574,6 @@ material = SubResource("ShaderMaterial_fmvb7")
 collision_layer = 0
 script = ExtResource("2_hkl5u")
 speed = 65.0
-damage = 2
-health = 25
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
@@ -587,7 +585,8 @@ frame = 7
 [node name="Shadow" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.5370987, 0.5370987, 0.5370987, 0.6)
 z_index = -1
-sprite_frames = SubResource("SpriteFrames_0cbny")
+sprite_frames = SubResource("SpriteFrames_gg2as")
+animation = &"die"
 autoplay = "default"
 
 [node name="Collider" type="CollisionShape2D" parent="."]

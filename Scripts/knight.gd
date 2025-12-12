@@ -5,8 +5,9 @@ class_name Player
 var sprite: AnimatedSprite2D
 var shadow: AnimatedSprite2D
 @export var speed := 80.0
-@export var damage=1
-@export var health=10
+@export var damage:=1.0
+@export var strength=1
+@export var health:=10.0
 var attacking:=false
 var direction:="right"
 var animator:AnimationPlayer
@@ -15,7 +16,7 @@ var dead:=false
 var canMove=true
 
 
-func  _ready() -> void:
+func  initialize() -> void:
 	health=GameManager.playerHealth
 	if(GameManager.playerPos!=null):
 		global_position=GameManager.playerPos
@@ -25,6 +26,8 @@ func  _ready() -> void:
 	sprite=$Player
 	shadow=$Shadow
 	animator=$Attack
+	speed=GameManager.playerSpeed*9
+	strength=GameManager.playerStrength/10
 	
 func _physics_process(_delta: float) -> void:
 	if(dead or not canMove or attacking):
@@ -69,7 +72,8 @@ func _on_player_animation_finished() -> void:
 
 
 func _enemy_hit(area: Area2D) -> void:
-	area.get_parent().damage(damage)
+	area.get_parent().damage(damage*strength)
+	print(damage*strength)
 	
 func hit(newDamage):
 	if(dead):

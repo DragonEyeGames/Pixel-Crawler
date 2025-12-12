@@ -1,7 +1,7 @@
 @icon("res://Assets/GodotIcon/icon_sword.png")
 extends CharacterBody2D
 
-@export var health:=5
+@export var health:=5.0
 var hit:AnimationPlayer
 var sprite:AnimatedSprite2D
 var shadow: AnimatedSprite2D
@@ -18,6 +18,7 @@ var canAttack:=true
 @onready var navAgent := $NavigationAgent2D as NavigationAgent2D
 
 func _ready() -> void:
+	await get_tree().process_frame
 	hit=$Hit
 	sprite=$Sprite
 	shadow=$Shadow
@@ -119,7 +120,6 @@ func makePath():
 	if length > 150:
 		# Too long — cancel the move
 		navAgent.target_position = global_position 
-		print("Path too long:", length)
 		return
 
 func _on_timer_timeout() -> void:

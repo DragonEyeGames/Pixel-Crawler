@@ -549,6 +549,7 @@ _data = {
 material = SubResource("ShaderMaterial_p5226")
 collision_layer = 0
 script = ExtResource("2_183pt")
+health = 2.0
 speed = 50
 arrowScene = ExtResource("7_183pt")
 

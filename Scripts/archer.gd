@@ -1,7 +1,7 @@
 @icon("res://Assets/GodotIcon/icon_sword.png")
 extends CharacterBody2D
 
-@export var health:=5
+@export var health:=5.0
 var hit:AnimationPlayer
 var sprite:AnimatedSprite2D
 var shadow: AnimatedSprite2D
@@ -19,6 +19,7 @@ var canAttack:=true
 @export var arrowScene: PackedScene
 
 func _ready() -> void:
+	await get_tree().process_frame
 	hit=$Hit
 	sprite=$Sprite
 	shadow=$Shadow
@@ -102,7 +103,6 @@ func _on_checks_area_exited(area: Area2D) -> void:
 	attackingList.erase(area.get_parent())
 
 func spawnArrow():
-	print("SPAWNING")
 	var arrow = arrowScene.instantiate()
 	get_parent().add_child(arrow)
 	var offset = Vector2(11, 0)

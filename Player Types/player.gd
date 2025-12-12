@@ -4,6 +4,7 @@ func _ready():
 	match GameManager.playerType:
 		GameManager.playerTypes.Knight:
 			var knight = $Knight
+			knight.initialize()
 			var cam = $Cam
 			cam.call_deferred("reparent", knight)
 			knight.call_deferred("reparent", get_parent())
@@ -12,15 +13,18 @@ func _ready():
 			await get_tree().process_frame
 			await get_tree().process_frame
 			cam.position_smoothing_enabled=true
+			cam.position=Vector2.ZERO
 			call_deferred("queue_free")
 		GameManager.playerTypes.Axeman:
-			var knight = $Axeman
+			var axeman = $Axeman
+			axeman.initialize()
 			var cam = $Cam
-			cam.call_deferred("reparent", knight)
-			knight.call_deferred("reparent", get_parent())
+			cam.call_deferred("reparent", axeman)
+			axeman.call_deferred("reparent", get_parent())
 			cam.position=Vector2.ZERO
 			cam.position_smoothing_enabled=false
 			await get_tree().process_frame
 			await get_tree().process_frame
 			cam.position_smoothing_enabled=true
+			cam.position=Vector2.ZERO
 			call_deferred("queue_free")

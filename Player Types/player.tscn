@@ -5,14 +5,14 @@
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="2_7j8bl"]
 [ext_resource type="PackedScene" uid="uid://cq1lla3hekqqj" path="res://Player Types/axeman.tscn" id="4_fmvb7"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_3hayl"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fmvb7"]
 seed = 1
 frequency = 1.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fy2qv"]
 width = 1000
 height = 1000
-noise = SubResource("FastNoiseLite_3hayl")
+noise = SubResource("FastNoiseLite_fmvb7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fmvb7"]
 resource_local_to_scene = true
@@ -21,14 +21,14 @@ shader_parameter/whiteness = 0.0
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_fy2qv")
 shader_parameter/dissolve_amount = 0.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_5uo6n"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tqe0l"]
 seed = 1
 frequency = 1.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l1ucm"]
 width = 1000
 height = 1000
-noise = SubResource("FastNoiseLite_5uo6n")
+noise = SubResource("FastNoiseLite_tqe0l")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lghnf"]
 resource_local_to_scene = true
@@ -42,6 +42,8 @@ script = ExtResource("1_7j8bl")
 
 [node name="Knight" parent="." instance=ExtResource("1_6wsvd")]
 material = SubResource("ShaderMaterial_fmvb7")
+damage = 1.0
+health = 10.0
 
 [node name="Axeman" parent="." instance=ExtResource("4_fmvb7")]
 material = SubResource("ShaderMaterial_lghnf")

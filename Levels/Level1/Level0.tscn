@@ -106,7 +106,6 @@ position_smoothing_enabled = true
 
 [node name="Door" parent="." instance=ExtResource("8_aa3m5")]
 position = Vector2(0, -53)
-transportLevel = 2
 toTransport = 1
 playerPos = Vector2(0, 55)
 enemyControlled = false

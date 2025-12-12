@@ -1,10 +1,10 @@
 extends Node
 
 var player: Player
-var playerHealth=20
-var playerMaxHealth=20
-var playerSpeed=12
-var playerStrength=20
+var playerHealth:=20.0
+var playerMaxHealth:=20.0
+var playerSpeed:=12.0
+var playerStrength:=20.0
 var transition: AnimationPlayer
 var playerPos = null
 

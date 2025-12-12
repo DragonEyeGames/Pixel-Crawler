@@ -1,7 +1,7 @@
 @icon("res://Assets/GodotIcon/icon_sword.png")
 extends CharacterBody2D
 
-@export var health:=5
+@export var health:=5.0
 var hit:AnimationPlayer
 var sprite:AnimatedSprite2D
 var shadow: AnimatedSprite2D
@@ -17,6 +17,7 @@ var canAttack:=true
 @export var weaponDamage:=1
 
 func _ready() -> void:
+	await get_tree().process_frame
 	hit=$Hit
 	sprite=$Sprite
 	shadow=$Shadow

@@ -96,10 +96,12 @@ y_sort_enabled = true
 [node name="Orc2" parent="Y_Sorting" instance=ExtResource("7_80cou")]
 material = SubResource("ShaderMaterial_tweqo")
 position = Vector2(-101, -84)
+health = 5.0
 
 [node name="Orc3" parent="Y_Sorting" instance=ExtResource("7_80cou")]
 material = SubResource("ShaderMaterial_mbwna")
 position = Vector2(122, -84)
+health = 5.0
 
 [node name="BackWalls" parent="Y_Sorting" instance=ExtResource("1_m3ha0")]
 position = Vector2(16, -33)
@@ -125,12 +127,12 @@ position = Vector2(0, -5)
 [node name="Skeleton" parent="Y_Sorting" instance=ExtResource("15_tweqo")]
 material = SubResource("ShaderMaterial_mbiy8")
 position = Vector2(5, 88)
+health = 5.0
 
 [node name="Player" parent="Y_Sorting" instance=ExtResource("10_vafnc")]
 position = Vector2(-4, 47)
 
 [node name="Cam" type="Camera2D" parent="Y_Sorting/Player"]
-position = Vector2(-1856.5076, -280.6278)
 zoom = Vector2(8, 8)
 position_smoothing_enabled = true
 
