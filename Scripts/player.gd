@@ -4,7 +4,7 @@ class_name Player
 
 var sprite: AnimatedSprite2D
 var shadow: AnimatedSprite2D
-@export var speed := 100.0
+@export var speed := 80.0
 @export var damage=1
 @export var health=10
 var attacking:=false

@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxeku84y8wgt8"]
+
+[ext_resource type="Script" uid="uid://dhul8ngh8gxhe" path="res://Scenes/mainMenu.gd" id="1_60k44"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_60k44")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 236.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 130
+text = "Pixel Crawler"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 682.0
+offset_top = 433.0
+offset_right = 1229.0
+offset_bottom = 629.0
+theme_override_font_sizes/font_size = 100
+text = "Start"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
