@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_so18s"]
 [ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="3_hg5yk"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_jld50"]
-[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Player Types/knight.tscn" id="5_svocn"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Scenes/door.tscn" id="6_7csao"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="7_xrw8b"]
 [ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Scenes/HUD.tscn" id="8_jtuoa"]
 [ext_resource type="PackedScene" uid="uid://b3i6dfak5vsmn" path="res://Scenes/spike.tscn" id="9_lfbxl"]
 [ext_resource type="Script" uid="uid://dya7qfsa4hqdw" path="res://Scripts/spikeController.gd" id="9_v72e1"]
+[ext_resource type="PackedScene" uid="uid://ct4ti7ck1jr5y" path="res://Player Types/player.tscn" id="10_h3ukb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(185, 38)
@@ -70,13 +70,6 @@ tile_map_data = PackedByteArray("AAACAPz/AAABAAoAAAABAPz/AAABABYAAAAAAPz/AAAAABU
 z_index = 1
 y_sort_enabled = true
 
-[node name="Knight" parent="Y_Sorting" instance=ExtResource("5_svocn")]
-position = Vector2(160, -71)
-
-[node name="Cam" type="Camera2D" parent="Y_Sorting/Knight"]
-zoom = Vector2(8, 8)
-position_smoothing_enabled = true
-
 [node name="Spikes" type="Node2D" parent="Y_Sorting"]
 position = Vector2(-30, -5)
 script = ExtResource("9_v72e1")
@@ -130,6 +123,14 @@ position = Vector2(38, -85)
 position = Vector2(-34, -85)
 
 [node name="HUD" parent="." instance=ExtResource("8_jtuoa")]
+
+[node name="Player" parent="." instance=ExtResource("10_h3ukb")]
+position = Vector2(-4, 47)
+
+[node name="Cam" type="Camera2D" parent="Player"]
+position = Vector2(-1856.5076, -280.6278)
+zoom = Vector2(8, 8)
+position_smoothing_enabled = true
 
 [connection signal="area_entered" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_exited"]

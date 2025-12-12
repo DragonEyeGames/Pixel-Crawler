@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_4b247"]
 [ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="3_o4d3g"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_isovy"]
-[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Player Types/knight.tscn" id="5_g3tdx"]
 [ext_resource type="PackedScene" uid="uid://ccujaxhm0ts1a" path="res://Scenes/blockingDoor.tscn" id="6_4b247"]
 [ext_resource type="PackedScene" uid="uid://df4aytlkx5ais" path="res://Scenes/Enemies/strongOrc.tscn" id="6_i4375"]
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="7_4b247"]
 [ext_resource type="PackedScene" uid="uid://dq4caphl02lr3" path="res://Scenes/Enemies/strongSkeleton.tscn" id="8_o4d3g"]
+[ext_resource type="PackedScene" uid="uid://ct4ti7ck1jr5y" path="res://Player Types/player.tscn" id="9_fs6j2"]
 [ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Scenes/HUD.tscn" id="10_y8jc6"]
 [ext_resource type="PackedScene" uid="uid://lu0ebdw52oem" path="res://Scenes/exit.tscn" id="11_4b247"]
 
@@ -94,13 +94,6 @@ tile_map_data = PackedByteArray("AAACAPz/AAABABYAAAABAPz/AAABAAoAAAAAAPz/AAABABU
 z_index = 1
 y_sort_enabled = true
 
-[node name="Knight" parent="Y_Sorting" instance=ExtResource("5_g3tdx")]
-position = Vector2(0, 54)
-
-[node name="Cam" type="Camera2D" parent="Y_Sorting/Knight"]
-zoom = Vector2(8, 8)
-position_smoothing_enabled = true
-
 [node name="Walls2" parent="Y_Sorting" instance=ExtResource("2_4b247")]
 position = Vector2(0, -64)
 tile_map_data = PackedByteArray("AAD8//7/AAABAA8AAAD9//7/AAABAA8AAAD+//7/AAABAA8AAAABAP7/AAABAA8AAAACAP7/AAABAA8AAAADAP7/AAABAA8AAAD8////AAABABAAAAD8/wAAAAABABEAAAD9////AAABABAAAAD9/wAAAAABABEAAAD+////AAABABAAAAD+/wAAAAABABEAAAD///7/AAABAA8AAAAAAP7/AAABAA8AAAABAP//AAABABAAAAABAAAAAAABABEAAAACAP//AAABABAAAAACAAAAAAABABEAAAADAP//AAABABAAAAADAAAAAAABABEAAAA=")
@@ -124,6 +117,14 @@ position = Vector2(-56, -46)
 [node name="Skeleton" parent="Y_Sorting" instance=ExtResource("8_o4d3g")]
 material = SubResource("ShaderMaterial_g3tdx")
 position = Vector2(51, -42)
+
+[node name="Player" parent="Y_Sorting" instance=ExtResource("9_fs6j2")]
+position = Vector2(-4, 47)
+
+[node name="Cam" type="Camera2D" parent="Y_Sorting/Player"]
+position = Vector2(-1856.5076, -280.6278)
+zoom = Vector2(8, 8)
+position_smoothing_enabled = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.69135684, 0.6913568, 0.69135684, 1)

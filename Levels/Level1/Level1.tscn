@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_7fl83"]
 [ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="2_dl8mf"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="3_5g41i"]
-[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Player Types/knight.tscn" id="4_5g41i"]
+[ext_resource type="PackedScene" uid="uid://ct4ti7ck1jr5y" path="res://Player Types/player.tscn" id="5_7ouqh"]
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="6_7fl83"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Scenes/door.tscn" id="6_dl8mf"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="7_dl8mf"]
@@ -74,10 +74,11 @@ tile_map_data = PackedByteArray("AAACAPz/AAABAAoAAAABAPz/AAABAAoAAAAAAPz/AAABAAo
 z_index = 1
 y_sort_enabled = true
 
-[node name="Knight" parent="Y_Sorting" instance=ExtResource("4_5g41i")]
-position = Vector2(0, 55)
+[node name="Player" parent="Y_Sorting" instance=ExtResource("5_7ouqh")]
+position = Vector2(-4, 47)
 
-[node name="Cam" type="Camera2D" parent="Y_Sorting/Knight"]
+[node name="Cam" type="Camera2D" parent="Y_Sorting/Player"]
+position = Vector2(-1856.5076, -280.6278)
 zoom = Vector2(8, 8)
 position_smoothing_enabled = true
 

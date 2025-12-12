@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_xxxi4"]
 [ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="3_4c4gq"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_3e7p2"]
-[ext_resource type="PackedScene" uid="uid://bgmpq3nw65l7j" path="res://Player Types/knight.tscn" id="5_dxjb0"]
 [ext_resource type="PackedScene" uid="uid://dq4caphl02lr3" path="res://Scenes/Enemies/strongSkeleton.tscn" id="6_hx0pg"]
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="7_uyp6w"]
+[ext_resource type="PackedScene" uid="uid://ct4ti7ck1jr5y" path="res://Player Types/player.tscn" id="8_5hoj7"]
 [ext_resource type="Texture2D" uid="uid://dkgps26n57idn" path="res://Assets/Tilemap/fire_animation.png" id="8_hy5j1"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="9_xc3xs"]
 [ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Scenes/HUD.tscn" id="10_tqo56"]
@@ -127,13 +127,6 @@ tile_map_data = PackedByteArray("AAACAPz/AAABAAoAAAABAPz/AAABAAoAAAAAAPz/AAABAAo
 z_index = 1
 y_sort_enabled = true
 
-[node name="Knight" parent="Y_Sorting" instance=ExtResource("5_dxjb0")]
-position = Vector2(0, 54)
-
-[node name="Cam" type="Camera2D" parent="Y_Sorting/Knight"]
-zoom = Vector2(8, 8)
-position_smoothing_enabled = true
-
 [node name="Skeleton" parent="Y_Sorting" instance=ExtResource("6_hx0pg")]
 material = SubResource("ShaderMaterial_p5226")
 position = Vector2(14, -26)
@@ -148,6 +141,14 @@ frame_progress = 0.23267825
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Y_Sorting/Fire/StaticBody2D"]
 position = Vector2(-1, 4)
 shape = SubResource("CircleShape2D_xc3xs")
+
+[node name="Player" parent="Y_Sorting" instance=ExtResource("8_5hoj7")]
+position = Vector2(-4, 47)
+
+[node name="Cam" type="Camera2D" parent="Y_Sorting/Player"]
+position = Vector2(-1856.5076, -280.6278)
+zoom = Vector2(8, 8)
+position_smoothing_enabled = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.69135684, 0.6913568, 0.69135684, 1)
