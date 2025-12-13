@@ -27,6 +27,9 @@ func _ready() -> void:
 	cooldown*=1.5
 
 func _physics_process(_delta: float) -> void:
+	if(player==null):
+		player=GameManager.player
+		return
 	if(dead and not sprite.animation=="die"):
 		sprite.play("die")
 		shadow.play("die")

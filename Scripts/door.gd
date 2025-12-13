@@ -31,11 +31,13 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		await get_tree().process_frame
 		var enemies = get_tree().get_nodes_in_group("Enemy")
 		var data = SceneData.new()
+		GameManager.playerPos=playerPos
+		if(not level in GameManager.save):
+			GameManager.save.append(level)
 		for enemy in enemies:
 			var enemyScene = PackedScene.new()
 			enemyScene.pack(enemy)
-			data.enemyArray[level].append(enemyScene)
+			data.enemyArray[0][level].append(enemyScene)
+		data.savedArray=GameManager.save
 		ResourceSaver.save(data, "user://scene_data.tres")
-		GameManager.playerPos=playerPos
-		GameManager.save=true
 		get_tree().change_scene_to_file("res://Levels/Level" + str(transportLevel) + "/Level" + str(toTransport) +".tscn")

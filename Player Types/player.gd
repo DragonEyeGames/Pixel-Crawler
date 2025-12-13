@@ -1,6 +1,8 @@
 extends Node2D
 
 func _ready():
+	if(GameManager.playerPos!=null):
+		global_position=GameManager.playerPos
 	match GameManager.playerType:
 		GameManager.playerTypes.Knight:
 			var knight = $Knight
