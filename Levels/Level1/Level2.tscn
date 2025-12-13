@@ -66,6 +66,7 @@ agent_radius = 1.0
 [node name="Main" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_xosfc")
+level = 2
 
 [node name="FrontWalls" parent="." instance=ExtResource("1_m3ha0")]
 z_index = 3

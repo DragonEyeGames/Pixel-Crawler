@@ -4,6 +4,7 @@ extends AnimatedSprite2D
 @export var toTransport:=2
 @export var playerPos:= Vector2.ZERO
 @export var enemyControlled:=false
+@export var level = 2
 
 func _ready() -> void:
 	if(enemyControlled):
@@ -28,5 +29,13 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		await get_tree().create_timer(.5).timeout
 		await get_tree().process_frame
 		await get_tree().process_frame
+		var enemies = get_tree().get_nodes_in_group("Enemy")
+		var data = SceneData.new()
+		for enemy in enemies:
+			var enemyScene = PackedScene.new()
+			enemyScene.pack(enemy)
+			data.enemyArray[level].append(enemyScene)
+		ResourceSaver.save(data, "user://scene_data.tres")
 		GameManager.playerPos=playerPos
+		GameManager.save=true
 		get_tree().change_scene_to_file("res://Levels/Level" + str(transportLevel) + "/Level" + str(toTransport) +".tscn")

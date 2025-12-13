@@ -1,5 +1,7 @@
 extends Node
 
+var save=false
+
 var player: Player
 var playerHealth:=20.0
 var playerMaxHealth:=20.0

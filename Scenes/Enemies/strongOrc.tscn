@@ -631,7 +631,7 @@ _data = {
 &"attack-2": SubResource("Animation_pd02h")
 }
 
-[node name="Orc" type="CharacterBody2D"]
+[node name="Orc" type="CharacterBody2D" groups=["Enemy"]]
 texture_filter = 1
 material = SubResource("ShaderMaterial_5vw27")
 collision_layer = 0
