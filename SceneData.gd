@@ -7,5 +7,5 @@ class_name SceneData
 @export var playerSpeed: float
 @export var playerStrength: float
 
-@export var enemyArray:=[[[], [], [], [], [], [], [], [], []]]
+@export var enemyArray:=[[[], [], [], [], [], [], [], [], [], []]]
 @export var savedArray:=[]

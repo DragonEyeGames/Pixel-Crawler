@@ -5,10 +5,9 @@ extends Node2D
 var emitted:=false
 
 func _ready() -> void:
+	for door in get_tree().get_nodes_in_group("Door"):
+		door.level=level
 	SignalBus.enemy_died.connect(on_death)
-	get_tree().paused=true
-	await get_tree().create_timer(.3).timeout
-	get_tree().paused=false
 	var data = ResourceLoader.load("user://scene_data.tres") as SceneData
 	if(level in GameManager.save):
 		for enemy in get_tree().get_nodes_in_group("Enemy"):
@@ -21,6 +20,9 @@ func _ready() -> void:
 		if(enemies<=0):
 			emitted=true
 			SignalBus.allGone.emit()
+	get_tree().paused=true
+	await get_tree().create_timer(.3).timeout
+	get_tree().paused=false
 	
 func on_death():
 	enemies-=1

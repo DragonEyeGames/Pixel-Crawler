@@ -68,7 +68,7 @@ size = Vector2(20, 5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dl8mf"]
 size = Vector2(20, 3)
 
-[node name="Door" type="AnimatedSprite2D"]
+[node name="Door" type="AnimatedSprite2D" groups=["Door"]]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_4c57u")
 animation = &"raise"

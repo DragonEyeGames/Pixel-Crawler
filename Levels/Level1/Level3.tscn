@@ -91,6 +91,7 @@ agent_radius = 1.0
 [node name="Main" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_hy5j1")
+level = 3
 enemies = 1
 
 [node name="BackWalls" parent="." instance=ExtResource("2_xxxi4")]
@@ -143,7 +144,7 @@ position = Vector2(-1, 4)
 shape = SubResource("CircleShape2D_xc3xs")
 
 [node name="Player" parent="Y_Sorting" instance=ExtResource("8_5hoj7")]
-position = Vector2(-4, 47)
+position = Vector2(0, 54)
 
 [node name="Cam" type="Camera2D" parent="Y_Sorting/Player"]
 position = Vector2(-1856.5076, -280.6278)

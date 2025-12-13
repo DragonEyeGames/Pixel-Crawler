@@ -22,6 +22,7 @@ agent_radius = 1.0
 [node name="Main" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_jsdd8")
+level = 9
 enemies = 0
 
 [node name="BackWalls" parent="." instance=ExtResource("2_l7ecc")]
@@ -31,8 +32,9 @@ tile_map_data = PackedByteArray("AAD7//v/AAAFAAwAAAD8//v/AAABAA8AAAD9//v/AAABAA8
 [node name="Door" parent="BackWalls" instance=ExtResource("9_csn0e")]
 position = Vector2(0, -53)
 toTransport = 4
-playerPos = Vector2(-48, 55)
+playerPos = Vector2(-51, 56)
 enemyControlled = false
+level = 9
 
 [node name="FrontWalls" parent="." instance=ExtResource("2_l7ecc")]
 z_index = 3
@@ -50,8 +52,9 @@ shape = SubResource("RectangleShape2D_1bvp3")
 
 [node name="Door2" parent="FrontWalls" instance=ExtResource("4_x2yma")]
 position = Vector2(0, 59)
-playerPos = Vector2(-96, -102)
+playerPos = Vector2(128, -101)
 enemyControlled = false
+level = 9
 
 [node name="Walls" parent="." instance=ExtResource("2_l7ecc")]
 z_index = 2
@@ -66,7 +69,7 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="Player" parent="Y_Sorting" instance=ExtResource("8_cysgm")]
-position = Vector2(0, 55)
+position = Vector2(0, -38)
 
 [node name="Cam" type="Camera2D" parent="Y_Sorting/Player"]
 position = Vector2(-1856.5076, -280.6278)

@@ -85,6 +85,8 @@ shape = SubResource("RectangleShape2D_1bvp3")
 [node name="Door2" parent="FrontWalls" instance=ExtResource("3_m3ha0")]
 position = Vector2(16, 123)
 toTransport = 1
+playerPos = Vector2(0, -70)
+enemyControlled = false
 
 [node name="Walls" parent="." instance=ExtResource("1_m3ha0")]
 z_index = 2
@@ -131,7 +133,7 @@ position = Vector2(11, 13)
 health = 5.0
 
 [node name="Player" parent="Y_Sorting" instance=ExtResource("10_vafnc")]
-position = Vector2(17, 118)
+position = Vector2(128, -101)
 
 [node name="Cam" type="Camera2D" parent="Y_Sorting/Player"]
 zoom = Vector2(8, 8)
@@ -140,11 +142,14 @@ position_smoothing_enabled = true
 [node name="Door" parent="." instance=ExtResource("6_xosfc")]
 position = Vector2(-96, -117)
 toTransport = 3
+playerPos = Vector2(0, 54)
+enemyControlled = false
 
 [node name="Door2" parent="." instance=ExtResource("6_xosfc")]
 position = Vector2(128, -117)
 toTransport = 9
 playerPos = Vector2(0, 55)
+enemyControlled = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.69135684, 0.6913568, 0.69135684, 1)

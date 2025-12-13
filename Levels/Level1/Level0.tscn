@@ -109,6 +109,7 @@ position = Vector2(0, -53)
 toTransport = 1
 playerPos = Vector2(0, 55)
 enemyControlled = false
+level = 0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.69135684, 0.6913568, 0.69135684, 1)
