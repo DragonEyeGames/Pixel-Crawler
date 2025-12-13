@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5a5w6hpeq0ok"]
+
+[ext_resource type="Script" uid="uid://dj78sehwdoapv" path="res://Levels/Level1/statue.gd" id="1_qfrp0"]
+[ext_resource type="Texture2D" uid="uid://bicpsssg7ccl8" path="res://Assets/Statues.png" id="2_87h5e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_csn0e"]
+radius = 15.0
+height = 34.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1wgyo"]
+radius = 2.0
+height = 20.0
+
+[node name="Statue" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_qfrp0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -9)
+shape = SubResource("CapsuleShape2D_csn0e")
+
+[node name="Statues" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("2_87h5e")
+region_enabled = true
+region_rect = Rect2(14, 21, 20, 26)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 2)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_1wgyo")
+
+[node name="Used" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect3" type="ColorRect" parent="Used"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -16.0
+offset_right = 4.0
+offset_bottom = -14.0
+color = Color(0.7533901, 8.904189e-07, 5.7756904e-07, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Used"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -16.0
+offset_right = -2.0
+offset_bottom = -14.0
+color = Color(0.7533901, 8.904189e-07, 5.7756904e-07, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Used"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = -16.0
+offset_right = 4.0
+offset_bottom = -15.0
+color = Color(0.6189329, 1.732707e-06, 3.85046e-07, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Used"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -16.0
+offset_right = -3.0
+offset_bottom = -15.0
+color = Color(0.6189329, 1.732707e-06, 3.85046e-07, 1)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

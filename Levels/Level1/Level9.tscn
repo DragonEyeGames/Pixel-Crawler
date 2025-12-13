@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=4 uid="uid://0ovwwmuxgk31"]
+
+[ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_jsdd8"]
+[ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_l7ecc"]
+[ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="3_tujpt"]
+[ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_x2yma"]
+[ext_resource type="PackedScene" uid="uid://c5a5w6hpeq0ok" path="res://Levels/Level1/statue.tscn" id="6_csn0e"]
+[ext_resource type="PackedScene" uid="uid://ct4ti7ck1jr5y" path="res://Player Types/player.tscn" id="8_cysgm"]
+[ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Scenes/door.tscn" id="9_csn0e"]
+[ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="9_p4o7v"]
+[ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Scenes/HUD.tscn" id="10_uc74g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(185, 38)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_hy5j1"]
+vertices = PackedVector2Array(66, 64, -66, 64, -66, -37, 66, -37)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-67, -38, -67, 65, 67, 65, 67, -38)])
+agent_radius = 1.0
+
+[node name="Main" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_jsdd8")
+enemies = 0
+
+[node name="BackWalls" parent="." instance=ExtResource("2_l7ecc")]
+z_index = -1
+tile_map_data = PackedByteArray("AAD7//v/AAAFAAwAAAD8//v/AAABAA8AAAD9//v/AAABAA8AAAD+//v/AAABAA8AAAD///v/AAABAA8AAAAAAPv/AAABAA8AAAABAPv/AAABAA8AAAACAPv/AAABAA8AAAADAPv/AAABAA8AAAAEAPv/AAAGAAwAAAD7//z/AAAFAA0AAAD7//3/AAAFAA4AAAD8//z/AAABABAAAAD8//3/AAABABEAAAD9//z/AAABABAAAAD9//3/AAABABEAAAD+//z/AAABABAAAAD+//3/AAABABEAAAABAPz/AAABABAAAAABAP3/AAABABEAAAACAPz/AAABABAAAAACAP3/AAABABEAAAADAPz/AAABABAAAAADAP3/AAABABEAAAAEAPz/AAAGAA0AAAAEAP3/AAAGAA4AAAA=")
+
+[node name="Door" parent="BackWalls" instance=ExtResource("9_csn0e")]
+position = Vector2(0, -53)
+toTransport = 4
+playerPos = Vector2(-48, 55)
+enemyControlled = false
+
+[node name="FrontWalls" parent="." instance=ExtResource("2_l7ecc")]
+z_index = 3
+tile_map_data = PackedByteArray("AAD7/wIAAAAFAA8AAAD7/wMAAAAFABAAAAD7/wQAAAAFABEAAAD8/wIAAAABAA8AAAD8/wMAAAABABAAAAD8/wQAAAABABEAAAD9/wIAAAABAA8AAAD9/wMAAAABABAAAAD9/wQAAAABABEAAAD+/wIAAAABAA8AAAD+/wMAAAABABAAAAD+/wQAAAABABEAAAD//wIAAAABAA8AAAAAAAIAAAABAA8AAAABAAIAAAABAA8AAAABAAMAAAABABAAAAABAAQAAAABABEAAAACAAIAAAABAA8AAAACAAMAAAABABAAAAACAAQAAAABABEAAAADAAIAAAABAA8AAAADAAMAAAABABAAAAADAAQAAAABABEAAAAEAAIAAAAGAA8AAAAEAAMAAAAGABAAAAAEAAQAAAAGABEAAAA=")
+script = ExtResource("3_tujpt")
+
+[node name="Area2D" type="Area2D" parent="FrontWalls"]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrontWalls/Area2D"]
+position = Vector2(0.5, 54)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Door2" parent="FrontWalls" instance=ExtResource("4_x2yma")]
+position = Vector2(0, 59)
+playerPos = Vector2(-96, -102)
+
+[node name="Walls" parent="." instance=ExtResource("2_l7ecc")]
+z_index = 2
+tile_map_data = PackedByteArray("AAD7//7/AAACAA4AAAD7////AAACAA4AAAD7/wAAAAACAA4AAAD7/wEAAAACAA4AAAD7/wIAAAACABIAAAD7/wMAAAACABMAAAAEAP7/AAACAA4AAAAEAP//AAACAA4AAAAEAAAAAAACAA4AAAAEAAEAAAACAA4AAAAEAAIAAAACABIAAAAEAAMAAAACABMAAAD7/wQAAAACABQAAAAEAAQAAAACABQAAAA=")
+
+[node name="Floor" parent="." instance=ExtResource("2_l7ecc")]
+z_index = -2
+tile_map_data = PackedByteArray("AAACAPz/AAABAAoAAAABAPz/AAABAAoAAAAAAPz/AAABAAoAAAD///z/AAABAAoAAAD+//z/AAABABUAAAD9//z/AAABAAoAAAD8//z/AAABABUAAAD8/wMAAAABAAoAAAD9/wMAAAAAABUAAAD+/wMAAAABAAoAAAD//wMAAAABAAoAAAAAAAMAAAABAAoAAAABAAMAAAABABUAAAACAAMAAAABAAoAAAADAAMAAAABAAoAAAAEAAMAAAACAAoAAAAEAAIAAAACAAoAAAAEAAEAAAACAAoAAAAEAAAAAAACAAoAAAAEAP//AAACAAoAAAAEAP7/AAACAAoAAAAEAP3/AAACAAoAAAADAP3/AAABABYAAAADAPz/AAABAAoAAAAEAPz/AAACAAoAAAACAP3/AAABAAoAAAABAP3/AAABAAoAAAAAAP3/AAABAAoAAAD///3/AAABAAoAAAD+//3/AAABABYAAAD9//3/AAABAAoAAAD8//3/AAABABYAAAD8//7/AAAAABYAAAD8////AAABAAoAAAD8/wAAAAABAAoAAAD8/wEAAAAAABYAAAD8/wIAAAAAABUAAAD9/wIAAAABAAoAAAD+/wIAAAABAAoAAAD//wIAAAAAABUAAAAAAAIAAAABAAoAAAABAAIAAAABABYAAAACAAIAAAABAAoAAAADAAIAAAABABUAAAADAAEAAAABAAoAAAADAAAAAAABAAoAAAADAP//AAABABUAAAACAP//AAABAAoAAAACAP7/AAAAABUAAAABAP7/AAABAAoAAAAAAP7/AAABAAoAAAD///7/AAABAAoAAAD+//7/AAABAAoAAAD9//7/AAABAAoAAAD9////AAABAAoAAAD9/wAAAAABABYAAAD9/wEAAAABAAoAAAD+/wEAAAABAAoAAAD//wEAAAABAAoAAAACAAEAAAABAAoAAAADAP7/AAABAAoAAAD/////AAAAABUAAAD+////AAABAAoAAAD+/wAAAAABAAoAAAAAAAEAAAABAAoAAAABAAEAAAABAAoAAAACAAAAAAAAABUAAAABAP//AAABABUAAAAAAP//AAABAAoAAAAAAAAAAAAAABYAAAABAAAAAAABABYAAAD//wAAAAABAAoAAAAEAPv/AAACAAkAAAADAPv/AAABAAkAAAACAPv/AAABAAkAAAABAPv/AAABAAkAAAAAAPv/AAABAAkAAAD///v/AAABAAkAAAD+//v/AAABAAkAAAD9//v/AAABAAkAAAD8//v/AAABAAkAAAD8/wQAAAABAAsAAAD9/wQAAAABAAsAAAD+/wQAAAABAAsAAAD//wQAAAABAAsAAAAAAAQAAAABAAsAAAABAAQAAAABAAsAAAACAAQAAAABAAsAAAADAAQAAAABAAsAAAAEAAQAAAACAAsAAAD7//v/AAAAAAkAAAD7//z/AAAAAAoAAAD7//3/AAAAAAoAAAD7//7/AAAAAAoAAAD7////AAAAAAoAAAD7/wAAAAAAAAoAAAD7/wEAAAAAAAoAAAD7/wIAAAAAAAoAAAD7/wMAAAAAAAoAAAD7/wQAAAAAAAsAAAA=")
+
+[node name="Y_Sorting" type="Node2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+
+[node name="Player" parent="Y_Sorting" instance=ExtResource("8_cysgm")]
+position = Vector2(0, 55)
+
+[node name="Cam" type="Camera2D" parent="Y_Sorting/Player"]
+position = Vector2(-1856.5076, -280.6278)
+zoom = Vector2(8, 8)
+position_smoothing_enabled = true
+
+[node name="Statue" parent="Y_Sorting" instance=ExtResource("6_csn0e")]
+position = Vector2(0, 3)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.69135684, 0.6913568, 0.69135684, 1)
+
+[node name="Torch" parent="." instance=ExtResource("9_p4o7v")]
+position = Vector2(37.5, -55)
+
+[node name="Torch2" parent="." instance=ExtResource("9_p4o7v")]
+position = Vector2(-34.5, -55)
+
+[node name="HUD" parent="." instance=ExtResource("10_uc74g")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_hy5j1")
+
+[connection signal="area_entered" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_exited"]

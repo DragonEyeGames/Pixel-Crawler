@@ -142,8 +142,8 @@ toTransport = 3
 
 [node name="Door2" parent="." instance=ExtResource("6_xosfc")]
 position = Vector2(128, -117)
-toTransport = 4
-playerPos = Vector2(-48, 55)
+toTransport = 9
+playerPos = Vector2(0, 55)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.69135684, 0.6913568, 0.69135684, 1)

@@ -42,8 +42,9 @@ script = ExtResource("1_7j8bl")
 
 [node name="Knight" parent="." instance=ExtResource("1_6wsvd")]
 material = SubResource("ShaderMaterial_fmvb7")
-damage = 1.0
+damage = 1.5
 health = 10.0
 
 [node name="Axeman" parent="." instance=ExtResource("4_fmvb7")]
 material = SubResource("ShaderMaterial_lghnf")
+damage = 2.0
