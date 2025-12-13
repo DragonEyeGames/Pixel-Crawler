@@ -1,6 +1,6 @@
 extends Node
 
-var save=false
+var save:=[]
 
 var player: Player
 var playerHealth:=20.0

@@ -5,18 +5,22 @@ extends Node2D
 var emitted:=false
 
 func _ready() -> void:
-	GameManager.save=true
 	SignalBus.enemy_died.connect(on_death)
 	get_tree().paused=true
 	await get_tree().create_timer(.3).timeout
 	get_tree().paused=false
 	var data = ResourceLoader.load("user://scene_data.tres") as SceneData
-	if(GameManager.save):
+	if(level in GameManager.save):
 		for enemy in get_tree().get_nodes_in_group("Enemy"):
 			enemy.queue_free()
-		for enemy in data.enemyArray[level]:
+		enemies=0
+		for enemy in data.enemyArray[0][level]:
 			var newEnemy=enemy.instantiate()
 			$Y_Sorting.add_child(newEnemy)
+			enemies+=1
+		if(enemies<=0):
+			emitted=true
+			SignalBus.allGone.emit()
 	
 func on_death():
 	enemies-=1

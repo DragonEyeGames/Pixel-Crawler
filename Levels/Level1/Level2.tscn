@@ -127,11 +127,11 @@ position = Vector2(0, -5)
 
 [node name="Skeleton" parent="Y_Sorting" instance=ExtResource("15_tweqo")]
 material = SubResource("ShaderMaterial_mbiy8")
-position = Vector2(5, 88)
+position = Vector2(11, 13)
 health = 5.0
 
 [node name="Player" parent="Y_Sorting" instance=ExtResource("10_vafnc")]
-position = Vector2(-4, 47)
+position = Vector2(17, 118)
 
 [node name="Cam" type="Camera2D" parent="Y_Sorting/Player"]
 zoom = Vector2(8, 8)

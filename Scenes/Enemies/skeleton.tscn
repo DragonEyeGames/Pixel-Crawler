@@ -505,7 +505,7 @@ _data = {
 &"attack-2": SubResource("Animation_tj6wx")
 }
 
-[node name="Skeleton" type="CharacterBody2D"]
+[node name="Skeleton" type="CharacterBody2D" groups=["Enemy"]]
 material = SubResource("ShaderMaterial_cvx2j")
 collision_layer = 0
 script = ExtResource("2_eiu2b")

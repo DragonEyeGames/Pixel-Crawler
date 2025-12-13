@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://ciel7rppkyd1q"]
+[gd_scene load_steps=16 format=4 uid="uid://ddjp1bxvonyff"]
 
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="1_05pb0"]
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_7fl83"]
@@ -38,6 +38,7 @@ agent_radius = 1.0
 [node name="Main" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_7fl83")
+level = 1
 enemies = 1
 
 [node name="BackWalls" parent="." instance=ExtResource("1_05pb0")]
@@ -85,7 +86,7 @@ position_smoothing_enabled = true
 
 [node name="Door" parent="." instance=ExtResource("6_dl8mf")]
 position = Vector2(0, -85)
-playerPos = Vector2(16, 125)
+playerPos = Vector2(17, 118)
 level = 1
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
