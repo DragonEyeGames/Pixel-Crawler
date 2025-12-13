@@ -24,8 +24,12 @@ func _ready() -> void:
 	shadow=$Shadow
 	player=GameManager.player
 	animator = $Attack
+	cooldown*=1.5
 
 func _physics_process(_delta: float) -> void:
+	if(dead and not sprite.animation=="die"):
+		sprite.play("die")
+		shadow.play("die")
 	if(dead or attacking):
 		return
 	if(len(attackingList)>=1 and canAttack):
@@ -80,6 +84,8 @@ func attack():
 		return
 	attacking=true
 	canAttack=false
+	sprite.play("idle")
+	await get_tree().create_timer(cooldown/2).timeout
 	if(randi_range(1, 2)==2):
 		sprite.play("attack-2")
 		animator.play("attack-2")
@@ -95,7 +101,7 @@ func _on_sprite_animation_finished() -> void:
 	if("attack" in sprite.animation):
 		attacking=false
 		sprite.play("idle")
-		await get_tree().create_timer(cooldown).timeout
+		await get_tree().create_timer(cooldown/2).timeout
 		canAttack=true
 
 

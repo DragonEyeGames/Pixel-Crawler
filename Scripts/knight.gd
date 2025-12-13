@@ -8,6 +8,7 @@ var shadow: AnimatedSprite2D
 @export var damage:=1.0
 @export var strength=1
 @export var health:=10.0
+@export var attackSpeed:=1.1
 var attacking:=false
 var direction:="right"
 var animator:AnimationPlayer
@@ -28,6 +29,7 @@ func  initialize() -> void:
 	animator=$Attack
 	speed=GameManager.playerSpeed*9
 	strength=GameManager.playerStrength/10
+	attackSpeed=GameManager.playerSpeed/10
 	
 func _physics_process(_delta: float) -> void:
 	if(dead or not canMove or attacking):
@@ -45,6 +47,8 @@ func _physics_process(_delta: float) -> void:
 		flip("right")
 	if(Input.is_action_just_pressed("Attack") and attacking==false):
 		attacking=true
+		sprite.speed_scale=attackSpeed
+		animator.speed_scale=attackSpeed
 		if(randi_range(1, 10)==10):
 			sprite.play("attack-2")
 			animator.play("attack-2")
@@ -68,6 +72,8 @@ func flip(newDirection: String):
 func _on_player_animation_finished() -> void:
 	if("attack" in sprite.animation):
 		attacking=false
+		sprite.speed_scale=1.0
+		animator.speed_scale=1.0
 		sprite.play("idle")
 
 
