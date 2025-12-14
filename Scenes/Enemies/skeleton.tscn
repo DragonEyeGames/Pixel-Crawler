@@ -509,7 +509,7 @@ _data = {
 material = SubResource("ShaderMaterial_cvx2j")
 collision_layer = 0
 script = ExtResource("2_eiu2b")
-health = 1
+health = 1.0
 speed = 50
 cooldown = 0.7
 

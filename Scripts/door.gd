@@ -19,6 +19,8 @@ func _ready() -> void:
 		play("open")
 
 func openDoor():
+	await get_tree().process_frame
+	await get_tree().process_frame
 	play("raise")
 	$StaticBody2D/CollisionShape2D.disabled=true
 
@@ -42,7 +44,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		data.playerHealth=GameManager.player.health
 		data.playerMaxHealth=GameManager.playerMaxHealth
 		data.playerSpeed=GameManager.playerSpeed
+		data.playerStrength=GameManager.playerStrength
 		data.playerScene="res://Levels/Level" + str(transportLevel) + "/Level" + str(toTransport) +".tscn"
 		data.savedArray=GameManager.save
+		data.playerType=GameManager.playerType
 		ResourceSaver.save(data, "user://scene_data.tres")
 		get_tree().change_scene_to_file("res://Levels/Level" + str(transportLevel) + "/Level" + str(toTransport) +".tscn")

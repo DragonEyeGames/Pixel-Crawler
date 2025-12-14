@@ -23,4 +23,6 @@ func _on_load_game_pressed() -> void:
 	GameManager.playerMaxHealth=data.playerMaxHealth
 	GameManager.playerSpeed=data.playerSpeed
 	GameManager.playerStrength=data.playerStrength
+	GameManager.playerType=data.playerType
+	GameManager.playerPos=data.playerPosition
 	get_tree().change_scene_to_file(data.playerScene)

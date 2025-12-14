@@ -525,7 +525,7 @@ collision_layer = 0
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("2_tq37w")
-health = 4
+health = 3.0
 speed = 40
 cooldown = 0.5
 
