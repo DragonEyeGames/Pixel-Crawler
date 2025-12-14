@@ -20,6 +20,7 @@ size = Vector2(326, 36)
 [node name="Main" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_v72e1")
+level = 4
 enemies = 0
 
 [node name="BackWalls" parent="." instance=ExtResource("2_so18s")]

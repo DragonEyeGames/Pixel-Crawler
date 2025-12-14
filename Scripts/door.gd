@@ -38,6 +38,11 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			var enemyScene = PackedScene.new()
 			enemyScene.pack(enemy)
 			data.enemyArray[0][level].append(enemyScene)
+		data.playerPosition=playerPos
+		data.playerHealth=GameManager.player.health
+		data.playerMaxHealth=GameManager.playerMaxHealth
+		data.playerSpeed=GameManager.playerSpeed
+		data.playerScene="res://Levels/Level" + str(transportLevel) + "/Level" + str(toTransport) +".tscn"
 		data.savedArray=GameManager.save
 		ResourceSaver.save(data, "user://scene_data.tres")
 		get_tree().change_scene_to_file("res://Levels/Level" + str(transportLevel) + "/Level" + str(toTransport) +".tscn")

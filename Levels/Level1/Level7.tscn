@@ -57,6 +57,7 @@ agent_radius = 1.0
 [node name="Main" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_i4375")
+level = 7
 enemies = 2
 
 [node name="BackWalls" parent="." instance=ExtResource("2_4b247")]

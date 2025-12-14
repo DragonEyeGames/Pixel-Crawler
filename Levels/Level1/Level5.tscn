@@ -85,6 +85,7 @@ radius = 4.0
 [node name="Main" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_nijbd")
+level = 5
 enemies = 1
 
 [node name="BackWalls" parent="." instance=ExtResource("2_cg4ff")]

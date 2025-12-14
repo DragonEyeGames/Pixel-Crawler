@@ -18,15 +18,16 @@ var canMove=true
 
 
 func  initialize() -> void:
-	health=GameManager.playerHealth
-	if(GameManager.playerPos!=null):
-		global_position=GameManager.playerPos
-		GameManager.playerPos=null
 	GameManager.player=self
 	hitAnimator=$Hit
 	sprite=$Player
 	shadow=$Shadow
 	animator=$Attack
+	#Loading from Game Manager
+	health=GameManager.playerHealth
+	if(GameManager.playerPos!=null):
+		global_position=GameManager.playerPos
+		GameManager.playerPos=null
 	speed=GameManager.playerSpeed*9
 	strength=GameManager.playerStrength/10
 	attackSpeed=GameManager.playerSpeed/10
