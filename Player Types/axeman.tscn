@@ -1,7 +1,7 @@
 [gd_scene load_steps=64 format=3 uid="uid://cq1lla3hekqqj"]
 
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="1_tqe0l"]
-[ext_resource type="Script" uid="uid://cllbojkrs433o" path="res://Scripts/knight.gd" id="2_hkl5u"]
+[ext_resource type="Script" uid="uid://0xrfgrabfsf4" path="res://Scripts/axeman.gd" id="2_tqe0l"]
 [ext_resource type="Texture2D" uid="uid://cwbth46relc2d" path="res://Assets/Characters/Characters(100x100)/Armored Axeman/Armored Axeman/Armored Axeman.png" id="3_jjtdw"]
 [ext_resource type="Texture2D" uid="uid://cxexnq44abgmr" path="res://Assets/Characters/Characters(100x100)/Armored Axeman/Armored Axeman/Shadow sprites/Armored Axeman-Shadow.png" id="4_tqe0l"]
 [ext_resource type="Texture2D" uid="uid://yb3x81n1xnrh" path="res://Assets/Characters/Characters(100x100)/Armored Axeman/Armored Axeman/Shadow sprites/Armored Axeman-Shadow_death.png" id="5_hkl5u"]
@@ -572,8 +572,12 @@ _data = {
 texture_filter = 1
 material = SubResource("ShaderMaterial_fmvb7")
 collision_layer = 0
-script = ExtResource("2_hkl5u")
+script = ExtResource("2_tqe0l")
 speed = 65.0
+damage = null
+strength = null
+health = null
+attackSpeed = null
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 use_parent_material = true

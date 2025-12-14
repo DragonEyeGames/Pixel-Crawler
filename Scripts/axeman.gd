@@ -1,6 +1,6 @@
 @icon("res://Assets/GodotIcon/icon_character.png")
 extends Player
-class_name Knight
+class_name Axeman
 
 var sprite: AnimatedSprite2D
 var shadow: AnimatedSprite2D
@@ -15,7 +15,6 @@ var animator:AnimationPlayer
 var hitAnimator: AnimationPlayer
 var dead:=false
 var canMove=true
-var blocking:=false
 
 
 func  initialize() -> void:
@@ -35,18 +34,6 @@ func  initialize() -> void:
 	
 func _physics_process(_delta: float) -> void:
 	if(dead or not canMove or attacking):
-		return
-	if(blocking):
-		if(not "block" in sprite.animation):
-			sprite.play("blockStart")
-		if(Input.is_action_just_released("Special")):
-			blocking=false
-			sprite.play("idle")
-		else:
-			return
-	if(Input.is_action_just_pressed("Special")):
-		blocking=true
-		sprite.play("blockStart")
 		return
 	velocity = Input.get_vector("Left", "Right", "Up", "Down")
 	velocity*=speed
@@ -89,8 +76,6 @@ func _on_player_animation_finished() -> void:
 		sprite.speed_scale=1.0
 		animator.speed_scale=1.0
 		sprite.play("idle")
-	elif("block" in sprite.animation):
-		sprite.play("blockStart")
 
 
 func _enemy_hit(area: Area2D) -> void:
@@ -99,9 +84,6 @@ func _enemy_hit(area: Area2D) -> void:
 	
 func hit(newDamage):
 	if(dead):
-		return
-	if(blocking):
-		sprite.play("block")
 		return
 	health-=newDamage
 	hitAnimator.play("hit")

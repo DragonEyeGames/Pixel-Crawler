@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bgmpq3nw65l7j"]
+[gd_scene load_steps=64 format=3 uid="uid://bgmpq3nw65l7j"]
 
 [ext_resource type="Script" uid="uid://cllbojkrs433o" path="res://Scripts/knight.gd" id="1_ebkyg"]
 [ext_resource type="Texture2D" uid="uid://dvqwqmuns8vkw" path="res://Assets/Characters/Characters(100x100)/Knight/Knight/Knight.png" id="2_3hayl"]
@@ -89,6 +89,14 @@ region = Rect2(800, 300, 100, 100)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1u8w0"]
 atlas = ExtResource("2_3hayl")
 region = Rect2(900, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2vpb"]
+atlas = ExtResource("2_3hayl")
+region = Rect2(100, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fud3"]
+atlas = ExtResource("2_3hayl")
+region = Rect2(300, 500, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0odxb"]
 atlas = ExtResource("2_3hayl")
@@ -224,6 +232,22 @@ animations = [{
 "loop": false,
 "name": &"attack-2",
 "speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2vpb")
+}],
+"loop": false,
+"name": &"block",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fud3")
+}],
+"loop": true,
+"name": &"blockStart",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -611,14 +635,13 @@ material = SubResource("ShaderMaterial_qgysq")
 collision_layer = 0
 script = ExtResource("1_ebkyg")
 speed = 65.0
-damage = 2
-health = 25
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_d2t1y")
-animation = &"idle"
+animation = &"block"
 autoplay = "idle"
+frame_progress = 1.0
 
 [node name="Shadow" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.5370987, 0.5370987, 0.5370987, 0.6)
@@ -627,6 +650,7 @@ sprite_frames = SubResource("SpriteFrames_0cbny")
 autoplay = "default"
 
 [node name="Collider" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, 4)
 shape = SubResource("CircleShape2D_lquwl")
 
@@ -673,6 +697,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_ebkyg")
 

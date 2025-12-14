@@ -834,6 +834,7 @@ autoplay = "idle"
 frame_progress = 0.022161271
 
 [node name="Archer" type="Control" parent="HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(550, 650)
 layout_mode = 2
 
@@ -966,6 +967,7 @@ autoplay = "idle"
 frame_progress = 0.87952274
 
 [node name="Wizard" type="Control" parent="HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(550, 650)
 layout_mode = 2
 
