@@ -33,8 +33,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_d8yp6"]
 radius = 25.179358
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8yp6"]
-size = Vector2(15, 8)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjfl1"]
+size = Vector2(16, 13)
 
 [node name="Chest" type="AnimatedSprite2D"]
 position = Vector2(0, -5)
@@ -50,7 +50,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_d8yp6")
 
@@ -58,9 +57,8 @@ shape = SubResource("CircleShape2D_d8yp6")
 position = Vector2(0, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-visible = false
-position = Vector2(0.5, -6)
-shape = SubResource("RectangleShape2D_d8yp6")
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_cjfl1")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

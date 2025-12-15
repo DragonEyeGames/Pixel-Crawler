@@ -19,6 +19,7 @@ var canAttack:=true
 
 func _ready() -> void:
 	await get_tree().process_frame
+	$Timer.start()
 	hit=$Hit
 	sprite=$Sprite
 	shadow=$Shadow

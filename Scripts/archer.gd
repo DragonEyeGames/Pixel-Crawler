@@ -85,7 +85,7 @@ func spawnArrow():
 	arrow.weaponDamage=damage*strength
 	arrow.initialVelocity=Vector2(1*newDirection, 0).normalized()
 	arrow.playerFired=true
-	arrow.speed=speed*5
+	arrow.speed=speed*4
 	
 func flip(newDirection: String):
 	direction=newDirection
