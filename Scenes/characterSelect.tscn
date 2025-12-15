@@ -873,9 +873,9 @@ offset_top = 273.0
 offset_right = 501.0
 offset_bottom = 468.0
 theme_override_font_sizes/normal_font_size = 40
-text = "Health: 10
+text = "Health: 7
 Speed: 14
-Strength: 16
+Strength: 14
 "
 horizontal_alignment = 1
 vertical_alignment = 1

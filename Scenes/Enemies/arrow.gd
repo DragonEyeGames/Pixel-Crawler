@@ -4,6 +4,7 @@ extends CharacterBody2D
 var initialVelocity=Vector2.ZERO
 var weaponDamage = 2
 @export var playerFired:=false
+var speed:=250.0
 
 func _ready():
 	await get_tree().process_frame
@@ -13,7 +14,7 @@ func _ready():
 	initialVelocity.y=0
 	
 func _physics_process(_delta: float) -> void:
-	velocity=initialVelocity*250
+	velocity=initialVelocity*speed
 	velocity.y=0
 	move_and_slide()
 	if(is_on_wall() or is_on_ceiling() or is_on_floor()):

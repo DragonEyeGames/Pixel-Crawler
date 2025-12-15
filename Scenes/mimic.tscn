@@ -1,14 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4wws2xdfldn2"]
+[gd_scene load_steps=8 format=3 uid="uid://d3x22sgpk0unl"]
 
-[ext_resource type="Texture2D" uid="uid://bnsqih0kkgul1" path="res://Assets/Mimic/malevolent mimic A v04.png" id="1_cjfl1"]
-[ext_resource type="Script" uid="uid://cqh5jjshbcifh" path="res://Scripts/chest.gd" id="2_612na"]
+[ext_resource type="Texture2D" uid="uid://bnsqih0kkgul1" path="res://Assets/Mimic/malevolent mimic A v04.png" id="1_dnvk4"]
+[ext_resource type="Script" uid="uid://cqh5jjshbcifh" path="res://Scripts/chest.gd" id="2_caxi4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bagqn"]
-atlas = ExtResource("1_cjfl1")
+atlas = ExtResource("1_dnvk4")
 region = Rect2(128, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pmguq"]
-atlas = ExtResource("1_cjfl1")
+atlas = ExtResource("1_dnvk4")
 region = Rect2(192, 192, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mbwna"]
@@ -42,7 +42,7 @@ sprite_frames = SubResource("SpriteFrames_mbwna")
 animation = &"open"
 autoplay = "idle"
 offset = Vector2(0, 5)
-script = ExtResource("2_612na")
+script = ExtResource("2_caxi4")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, 8)

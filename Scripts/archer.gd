@@ -35,8 +35,25 @@ func  initialize() -> void:
 	attackSpeed=GameManager.playerSpeed/10
 	
 func _physics_process(_delta: float) -> void:
-	if(dead or not canMove or attacking):
+	if(dead or not canMove):
 		return
+	if(attacking):
+		if(Input.is_action_just_released("Attack") and attacking):
+			if(charged):
+				if("1" in sprite.animation):
+					sprite.play("launch-1")
+				else:
+					sprite.play("launch-2")
+				spawnArrow()
+			else:
+				attacking=false
+				sprite.speed_scale=1.0
+				animator.speed_scale=1.0
+				sprite.play("idle")
+			charged=false
+			
+		else:
+			return
 	velocity = Input.get_vector("Left", "Right", "Up", "Down")
 	velocity*=speed
 	move_and_slide()
@@ -57,18 +74,6 @@ func _physics_process(_delta: float) -> void:
 			sprite.play("charge-2")
 		else:
 			sprite.play("charge-1")
-	if(Input.is_action_just_released("Attack")):
-		print("true")
-	if(Input.is_action_just_released("Attack") and attacking):
-		print(charged)
-		if(charged):
-			if("1" in sprite.animation):
-				sprite.play("launch-1")
-			else:
-				sprite.play("launch-2")
-			spawnArrow()
-		charged=false
-		sprite.play("idle")
 			
 func spawnArrow():
 	var arrow=arrowScene.instantiate()
@@ -80,6 +85,7 @@ func spawnArrow():
 	arrow.weaponDamage=damage*strength
 	arrow.initialVelocity=Vector2(1*newDirection, 0).normalized()
 	arrow.playerFired=true
+	arrow.speed=speed*5
 	
 func flip(newDirection: String):
 	direction=newDirection

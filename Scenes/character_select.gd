@@ -21,8 +21,8 @@ func _on_axeman_pressed() -> void:
 
 func _on_archer_pressed() -> void:
 	GameManager.playerType=GameManager.playerTypes.Archer
-	GameManager.playerMaxHealth=10.0
+	GameManager.playerMaxHealth=7.0
 	GameManager.playerSpeed=14.0
-	GameManager.playerStrength=16.0
+	GameManager.playerStrength=14.0
 	GameManager.playerHealth=GameManager.playerMaxHealth
 	get_tree().change_scene_to_file("res://Levels/Level1/Level0.tscn")
