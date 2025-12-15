@@ -7,13 +7,20 @@ var canMove=false
 var sprite
 var health:=5
 var dead:=false
-var damage:=1
 var colliding:=false
+var player
+var attacking:=false
+var canAttack:=true
+@export var weaponDamage:=1
+@export var cooldown:=.5
 @onready var navAgent := $NavigationAgent2D as NavigationAgent2D
 @export var speed=50
+var hit:AnimationPlayer
+@export var chest: PackedScene
 
 func _ready():
 	$Timer.start()
+	hit=$Hit
 	sprite=$Sprite
 	peek()
 	if(not (sprite.animation=="peek" or sprite.animation=="idle")):
@@ -24,11 +31,25 @@ func _ready():
 		
 
 func _process(_delta: float) -> void:
-	print(sprite.animation)
+	player=GameManager.player
+	if(attacking):
+		return
+	if(canAttack and colliding and opened):
+		print("snap")
+		attacking=true
+		canAttack=false
+		if(sprite.animation=="hopFront"):
+			sprite.play("attackFront")
+		else:
+			sprite.play("attackBack")
+		$Hitbox/CollisionShape2D.set_deferred("disabled", false)
 	if(collided and not opened and Input.is_action_just_pressed("Interact") and not opened):
 		opened=true
+		canAttack=false
 		sprite.play("jumpscare")
 		$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
+		await get_tree().create_timer(1).timeout
+		canAttack=true
 	if(canMove):
 		velocity=Vector2.ZERO
 		if(global_position.distance_to(GameManager.player.global_position)>=20):
@@ -41,9 +62,9 @@ func _process(_delta: float) -> void:
 			sprite.flip_h=false
 		elif(velocity.x>0):
 			sprite.flip_h=true
-		if(velocity.y<0 and not sprite.animation=="hopBack"):
+		if(velocity.y<0 and sprite.animation=="hopFront"):
 			sprite.play("hopBack")
-		elif(velocity.y>0 and not sprite.animation=="hopFront"):
+		elif(velocity.y>0 and sprite.animation=="hopBack"):
 			sprite.play("hopFront")
 
 func peek():
@@ -59,6 +80,17 @@ func _on_area_2d_area_entered(_area: Area2D) -> void:
 func _on_area_2d_area_exited(_area: Area2D) -> void:
 	collided=false
 
+func damage(hitDamage):
+	if(dead):
+		return
+	health-=hitDamage
+	hit.play("hit")
+	if(health<=0):
+		dead=true
+		opened=false
+		
+		SignalBus.enemy_died.emit()
+		await get_tree().create_timer(5).timeout
 
 func _on_animation_finished() -> void:
 	if(sprite.animation=="peek"):
@@ -67,10 +99,17 @@ func _on_animation_finished() -> void:
 		sprite.play("hopFront")
 		canMove=true
 	elif("attack" in sprite.animation):
-		sprite.play("hopFront")
+		attacking=false
+		$Hitbox/CollisionShape2D.set_deferred("disabled", true)
+		if(sprite.animation=="attackBack"):
+			sprite.play("hopBack")
+		else:
+			sprite.play("hopFront")
+		await get_tree().create_timer(cooldown).timeout
+		canAttack=true
 
 func makePath():
-	navAgent.target_position = GameManager.player.global_position
+	navAgent.target_position = player.global_position
 	await navAgent.path_changed
 	
 	var points = navAgent.get_current_navigation_path()
@@ -94,3 +133,8 @@ func _on_attack_check_area_entered(_area: Area2D) -> void:
 
 func _on_attack_check_area_exited(_area: Area2D) -> void:
 	colliding=false
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if(not dead):
+		area.get_parent().hit(weaponDamage)
