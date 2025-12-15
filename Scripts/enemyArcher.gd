@@ -15,7 +15,8 @@ var attackingList:=[]
 var canAttack:=true
 @export var cooldown:=.25
 @export var weaponDamage:=1
-@onready var navAgent := $NavigationAgent2D as NavigationAgent2D
+@export var startDirection:="left"
+@export var arrowScene: PackedScene
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -24,15 +25,10 @@ func _ready() -> void:
 	shadow=$Shadow
 	player=GameManager.player
 	animator = $Attack
-	cooldown*=1.5
+	if(startDirection!=direction):
+		flip(startDirection)
 
 func _physics_process(_delta: float) -> void:
-	if(player==null):
-		player=GameManager.player
-		return
-	if(dead and not sprite.animation=="die"):
-		sprite.play("die")
-		shadow.play("die")
 	if(dead or attacking):
 		return
 	if(len(attackingList)>=1 and canAttack):
@@ -40,9 +36,9 @@ func _physics_process(_delta: float) -> void:
 			attack()
 			return
 	velocity=Vector2.ZERO
-	if(global_position.distance_to(player.global_position)>=20):
-		var dir = to_local(navAgent.get_next_path_position()).normalized()
-		velocity = dir*speed
+	velocity=-global_position+GameManager.player.global_position
+	velocity=velocity.normalized()*speed
+	velocity.x=0
 		#velocity=player.global_position-global_position
 		#velocity=velocity.normalized()*speed
 	move_and_slide()
@@ -73,9 +69,8 @@ func damage(hitDamage):
 	hit.play("hit")
 	if(health<=0):
 		dead=true
-		if(not sprite.animation=="die"):
-			sprite.play("die")
-			shadow.play("die")
+		sprite.play("die")
+		shadow.play("die")
 		await get_tree().create_timer(1.5).timeout
 		hit.play("die")
 		SignalBus.enemy_died.emit()
@@ -88,14 +83,9 @@ func attack():
 		return
 	attacking=true
 	canAttack=false
-	sprite.play("idle")
-	await get_tree().create_timer(cooldown/2).timeout
-	if(randi_range(1, 2)==2):
-		sprite.play("attack-2")
-		animator.play("attack-2")
-	else:
-		sprite.play("attack-1")
-		animator.play("attack-1")
+	sprite.play("attack-1")
+	animator.play("attack-1")
+	
 
 func _on_checks_area_entered(area: Area2D) -> void:
 	attackingList.append(area.get_parent())
@@ -105,32 +95,23 @@ func _on_sprite_animation_finished() -> void:
 	if("attack" in sprite.animation):
 		attacking=false
 		sprite.play("idle")
-		await get_tree().create_timer(cooldown/2).timeout
+		await get_tree().create_timer(cooldown).timeout
 		canAttack=true
 
 
 func _on_checks_area_exited(area: Area2D) -> void:
 	attackingList.erase(area.get_parent())
 
+func spawnArrow():
+	var arrow = arrowScene.instantiate()
+	get_parent().add_child(arrow)
+	var offset = Vector2(11, 0)
+	if(direction=="left"):
+		offset.x*=-1
+	arrow.global_position=global_position + offset
+	arrow.initialVelocity=-global_position+GameManager.player.global_position
+	arrow.initialVelocity=arrow.initialVelocity.normalized()
 
 func _on_hits_area_entered(area: Area2D) -> void:
 	if(not dead):
 		area.get_parent().hit(weaponDamage)
-
-func makePath():
-	navAgent.target_position = player.global_position
-	await navAgent.path_changed
-	
-	var points = navAgent.get_current_navigation_path()
-	var length = 0.0
-
-	for i in range(points.size() - 1):
-		length += points[i].distance_to(points[i + 1])
-
-	if length > 150:
-		# Too long — cancel the move
-		navAgent.target_position = global_position 
-		return
-
-func _on_timer_timeout() -> void:
-	makePath()

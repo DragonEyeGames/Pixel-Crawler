@@ -1,7 +1,7 @@
 [gd_scene load_steps=64 format=3 uid="uid://cpv167v11ths8"]
 
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="1_4hwy0"]
-[ext_resource type="Script" uid="uid://be7kx1du2u7i6" path="res://Scripts/archer.gd" id="2_183pt"]
+[ext_resource type="Script" uid="uid://be7kx1du2u7i6" path="res://Scripts/enemyArcher.gd" id="2_183pt"]
 [ext_resource type="Texture2D" uid="uid://behqb8xghkxue" path="res://Assets/Characters/Characters(100x100)/Skeleton Archer/Skeleton Archer/Skeleton Archer.png" id="3_nd4ig"]
 [ext_resource type="Texture2D" uid="uid://wxgkky5poraf" path="res://Assets/Characters/Characters(100x100)/Skeleton/Skeleton/Skeleton.png" id="4_gecj3"]
 [ext_resource type="Texture2D" uid="uid://pmeowwd68m1i" path="res://Assets/Characters/Characters(100x100)/Armored Skeleton/Armored Skeleton/Shadow sprites/Armored Skeleton-Shadow.png" id="5_2yfd0"]

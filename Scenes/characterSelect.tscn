@@ -834,7 +834,6 @@ autoplay = "idle"
 frame_progress = 0.022161271
 
 [node name="Archer" type="Control" parent="HBoxContainer"]
-visible = false
 custom_minimum_size = Vector2(550, 650)
 layout_mode = 2
 
@@ -1034,4 +1033,5 @@ autoplay = "idle"
 frame_progress = 0.018027034
 
 [connection signal="pressed" from="HBoxContainer/Knight/Knight" to="." method="_on_knight_pressed"]
+[connection signal="pressed" from="HBoxContainer/Archer/Archer" to="." method="_on_archer_pressed"]
 [connection signal="pressed" from="HBoxContainer/Axeman/Axeman" to="." method="_on_axeman_pressed"]

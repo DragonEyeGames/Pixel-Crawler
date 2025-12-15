@@ -1,117 +1,125 @@
-@icon("res://Assets/GodotIcon/icon_sword.png")
-extends CharacterBody2D
+@icon("res://Assets/GodotIcon/icon_character.png")
+extends Player
+class_name Archer
 
-@export var health:=5.0
-var hit:AnimationPlayer
-var sprite:AnimatedSprite2D
+var sprite: AnimatedSprite2D
 var shadow: AnimatedSprite2D
-var dead=false
-var player: CharacterBody2D
-@export var speed = 100
-var direction:="right"
-var attacking:=false
-var animator: AnimationPlayer
-var attackingList:=[]
-var canAttack:=true
-@export var cooldown:=.25
-@export var weaponDamage:=1
-@export var startDirection:="left"
+@export var speed := 80.0
+@export var damage:=1.0
+@export var strength=1
+@export var health:=10.0
+@export var attackSpeed:=1.1
 @export var arrowScene: PackedScene
+var attacking:=false
+var direction:="right"
+var animator:AnimationPlayer
+var hitAnimator: AnimationPlayer
+var dead:=false
+var canMove=true
+var charged:=false
 
-func _ready() -> void:
-	await get_tree().process_frame
-	hit=$Hit
-	sprite=$Sprite
+
+func  initialize() -> void:
+	GameManager.player=self
+	hitAnimator=$Hit
+	sprite=$Player
 	shadow=$Shadow
-	player=GameManager.player
-	animator = $Attack
-	if(startDirection!=direction):
-		flip(startDirection)
-
+	animator=$Attack
+	#Loading from Game Manager
+	health=GameManager.playerHealth
+	if(GameManager.playerPos!=null):
+		global_position=GameManager.playerPos
+		GameManager.playerPos=null
+	speed=GameManager.playerSpeed*9
+	strength=GameManager.playerStrength/10
+	attackSpeed=GameManager.playerSpeed/10
+	
 func _physics_process(_delta: float) -> void:
-	if(dead or attacking):
+	if(dead or not canMove or attacking):
 		return
-	if(len(attackingList)>=1 and canAttack):
-		if player.dead!=true:
-			attack()
-			return
-	velocity=Vector2.ZERO
-	velocity=-global_position+GameManager.player.global_position
-	velocity=velocity.normalized()*speed
-	velocity.x=0
-		#velocity=player.global_position-global_position
-		#velocity=velocity.normalized()*speed
+	velocity = Input.get_vector("Left", "Right", "Up", "Down")
+	velocity*=speed
 	move_and_slide()
-	if(velocity!=Vector2.ZERO and sprite.animation=="idle"):
-		sprite.play("walk")
-	if(velocity==Vector2.ZERO and sprite.animation=="walk"):
+	if(velocity == Vector2.ZERO and sprite.animation=="walk" and attacking==false):
 		sprite.play("idle")
-	if(velocity.x<-1):
+	if(velocity != Vector2.ZERO and sprite.animation=="idle" and attacking==false):
+		sprite.play("walk")
+	if(velocity.x<0 and direction=="right"):
 		flip("left")
-	elif(velocity.x>1):
+	if(velocity.x>0 and direction=="left"):
 		flip("right")
-
-func flip(newDirection):
+	if(Input.is_action_just_pressed("Attack") and attacking==false):
+		attacking=true
+		charged=false
+		sprite.speed_scale=attackSpeed
+		animator.speed_scale=attackSpeed
+		if(randi_range(1, 10)==10):
+			sprite.play("charge-2")
+		else:
+			sprite.play("charge-1")
+	if(Input.is_action_just_released("Attack")):
+		print("true")
+	if(Input.is_action_just_released("Attack") and attacking):
+		print(charged)
+		if(charged):
+			if("1" in sprite.animation):
+				sprite.play("launch-1")
+			else:
+				sprite.play("launch-2")
+			spawnArrow()
+		charged=false
+		sprite.play("idle")
+			
+func spawnArrow():
+	var arrow=arrowScene.instantiate()
+	get_parent().add_child(arrow)
+	var newDirection:=1
+	if(sprite.flip_h):
+		newDirection=-1
+	arrow.global_position=global_position+Vector2(21*newDirection, 0)
+	arrow.weaponDamage=damage*strength
+	arrow.initialVelocity=Vector2(1*newDirection, 0).normalized()
+	arrow.playerFired=true
+	
+func flip(newDirection: String):
 	direction=newDirection
 	if(direction=="left"):
 		sprite.flip_h=true
 		shadow.flip_h=true
-		$Areas.scale.x=-1
+		$HitboxController.scale.x=-1
 	else:
 		sprite.flip_h=false
 		shadow.flip_h=false
-		$Areas.scale.x=1
+		$HitboxController.scale.x=1
 
-func damage(hitDamage):
+
+func _on_player_animation_finished() -> void:
+	if("launch" in sprite.animation):
+		attacking=false
+		charged=false
+		sprite.speed_scale=1.0
+		animator.speed_scale=1.0
+		sprite.play("idle")
+	elif("charge" in sprite.animation):
+		charged=true
+
+
+func _enemy_hit(area: Area2D) -> void:
+	area.get_parent().damage(damage*strength)
+	
+func hit(newDamage):
 	if(dead):
 		return
-	health-=hitDamage
-	hit.play("hit")
+	health-=newDamage
+	hitAnimator.play("hit")
+	GameManager.playerHealth=health
 	if(health<=0):
 		dead=true
 		sprite.play("die")
 		shadow.play("die")
 		await get_tree().create_timer(1.5).timeout
-		hit.play("die")
-		SignalBus.enemy_died.emit()
+		hitAnimator.play("die")
 		await get_tree().create_timer(5).timeout
-		await get_tree().process_frame
-		queue_free()
-
-func attack():
-	if(attacking or dead):
-		return
-	attacking=true
-	canAttack=false
-	sprite.play("attack-1")
-	animator.play("attack-1")
+		get_tree().change_scene_to_file("res://Scenes/dead.tscn")
+		
 	
-
-func _on_checks_area_entered(area: Area2D) -> void:
-	attackingList.append(area.get_parent())
-
-
-func _on_sprite_animation_finished() -> void:
-	if("attack" in sprite.animation):
-		attacking=false
-		sprite.play("idle")
-		await get_tree().create_timer(cooldown).timeout
-		canAttack=true
-
-
-func _on_checks_area_exited(area: Area2D) -> void:
-	attackingList.erase(area.get_parent())
-
-func spawnArrow():
-	var arrow = arrowScene.instantiate()
-	get_parent().add_child(arrow)
-	var offset = Vector2(11, 0)
-	if(direction=="left"):
-		offset.x*=-1
-	arrow.global_position=global_position + offset
-	arrow.initialVelocity=-global_position+GameManager.player.global_position
-	arrow.initialVelocity=arrow.initialVelocity.normalized()
-
-func _on_hits_area_entered(area: Area2D) -> void:
-	if(not dead):
-		area.get_parent().hit(weaponDamage)

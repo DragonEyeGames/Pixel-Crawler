@@ -95,7 +95,6 @@ func _on_player_animation_finished() -> void:
 
 func _enemy_hit(area: Area2D) -> void:
 	area.get_parent().damage(damage*strength)
-	print(damage*strength)
 	
 func hit(newDamage):
 	if(dead):
