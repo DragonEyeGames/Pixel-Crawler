@@ -36,10 +36,15 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		GameManager.playerPos=playerPos
 		if(not level in GameManager.save):
 			GameManager.save.append(level)
+		if ResourceLoader.exists("user://scene_data.tres"):
+			var oldData = ResourceLoader.load("user://scene_data.tres") as SceneData
+			data.enemyArray=oldData.enemyArray
+			data.enemyArray[0][level]=[]
 		for enemy in enemies:
-			var enemyScene = PackedScene.new()
-			enemyScene.pack(enemy)
-			data.enemyArray[0][level].append(enemyScene)
+			if(not enemy.dead):
+				var enemyScene = PackedScene.new()
+				enemyScene.pack(enemy)
+				data.enemyArray[0][level].append(enemyScene)
 		data.playerPosition=playerPos
 		data.playerHealth=GameManager.player.health
 		data.playerMaxHealth=GameManager.playerMaxHealth
