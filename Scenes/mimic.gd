@@ -11,7 +11,7 @@ var colliding:=false
 var player
 var attacking:=false
 var canAttack:=true
-@export var weaponDamage:=1
+@export var weaponDamage:=2.5
 @export var cooldown:=.5
 @onready var navAgent := $NavigationAgent2D as NavigationAgent2D
 @export var speed=50
@@ -81,16 +81,19 @@ func _on_area_2d_area_exited(_area: Area2D) -> void:
 	collided=false
 
 func damage(hitDamage):
-	if(dead):
+	if(dead or not opened):
 		return
 	health-=hitDamage
 	hit.play("hit")
 	if(health<=0):
 		dead=true
 		opened=false
-		
+		var newChest=chest.instantiate()
+		get_parent().call_deferred("add_child" ,newChest)
+		newChest.global_position=global_position
+		newChest.global_position.y-=5
 		SignalBus.enemy_died.emit()
-		await get_tree().create_timer(5).timeout
+		sprite.play("boom")
 
 func _on_animation_finished() -> void:
 	if(sprite.animation=="peek"):
@@ -107,6 +110,8 @@ func _on_animation_finished() -> void:
 			sprite.play("hopFront")
 		await get_tree().create_timer(cooldown).timeout
 		canAttack=true
+	elif(sprite.animation=="boom"):
+		queue_free()
 
 func makePath():
 	navAgent.target_position = player.global_position
