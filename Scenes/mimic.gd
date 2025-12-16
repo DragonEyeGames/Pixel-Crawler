@@ -35,7 +35,6 @@ func _process(_delta: float) -> void:
 	if(attacking):
 		return
 	if(canAttack and colliding and opened):
-		print("snap")
 		attacking=true
 		canAttack=false
 		if(sprite.animation=="hopFront"):
