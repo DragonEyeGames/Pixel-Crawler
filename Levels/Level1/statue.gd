@@ -4,6 +4,9 @@ extends Area2D
 var colliding=false
 var used:=false
 
+func _ready() -> void:
+	used=$Used.visible
+
 func _process(_delta: float) -> void:
 	if(Input.is_action_just_pressed("Interact") and colliding and not used):
 		GameManager.playerHealth=GameManager.player.health

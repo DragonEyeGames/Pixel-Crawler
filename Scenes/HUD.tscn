@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cc0s4o6dq8er"]
+[gd_scene load_steps=16 format=3 uid="uid://cc0s4o6dq8er"]
 
 [ext_resource type="Script" uid="uid://bw0m6nv81px4h" path="res://Scripts/hud.gd" id="1_gqhqa"]
+[ext_resource type="Texture2D" uid="uid://boxvemmbmck2m" path="res://Assets/coin-Sheet.png" id="2_jo1ms"]
 
 [sub_resource type="Animation" id="Animation_5g41i"]
 length = 0.001
@@ -86,6 +87,56 @@ bg_color = Color(0.60209715, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0dox"]
 bg_color = Color(2.5268645e-07, 0.4577831, 0.04449694, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_psnte"]
+atlas = ExtResource("2_jo1ms")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3jbq"]
+atlas = ExtResource("2_jo1ms")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3eba"]
+atlas = ExtResource("2_jo1ms")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8s2e"]
+atlas = ExtResource("2_jo1ms")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t385i"]
+atlas = ExtResource("2_jo1ms")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfm57"]
+atlas = ExtResource("2_jo1ms")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b5b84"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psnte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3jbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3eba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8s2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t385i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfm57")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_gqhqa")
@@ -116,3 +167,19 @@ theme_override_styles/background = SubResource("StyleBoxFlat_gqhqa")
 theme_override_styles/fill = SubResource("StyleBoxFlat_a0dox")
 max_value = 10.0
 value = 5.0
+
+[node name="Gold" type="RichTextLabel" parent="."]
+offset_left = 139.0
+offset_top = 109.0
+offset_right = 322.0
+offset_bottom = 244.0
+theme_override_font_sizes/normal_font_size = 66
+text = "0"
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(104, 175.00002)
+scale = Vector2(3.8, 3.8)
+sprite_frames = SubResource("SpriteFrames_b5b84")
+autoplay = "default"
+frame_progress = 0.22728841

@@ -53,5 +53,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		data.playerScene="res://Levels/Level" + str(transportLevel) + "/Level" + str(toTransport) +".tscn"
 		data.savedArray=GameManager.save
 		data.playerType=GameManager.playerType
+		data.playerGold=GameManager.playerGold
 		ResourceSaver.save(data, "user://scene_data.tres")
 		get_tree().change_scene_to_file("res://Levels/Level" + str(transportLevel) + "/Level" + str(toTransport) +".tscn")

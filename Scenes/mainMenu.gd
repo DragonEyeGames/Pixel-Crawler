@@ -2,9 +2,8 @@ extends Control
 
 
 func _ready() -> void:
-	var data = ResourceLoader.load("user://scene_data.tres") as SceneData
-	if(data!=null):
-		#GameManager.save=data.savedArray
+	var path := "user://scene_data.tres"
+	if FileAccess.file_exists(path):
 		pass
 	else:
 		$"VBoxContainer/Load Game".visible=false
@@ -25,4 +24,5 @@ func _on_load_game_pressed() -> void:
 	GameManager.playerStrength=data.playerStrength
 	GameManager.playerType=data.playerType
 	GameManager.playerPos=data.playerPosition
+	GameManager.playerGold=data.playerGold
 	get_tree().change_scene_to_file(data.playerScene)

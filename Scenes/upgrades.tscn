@@ -1,0 +1,198 @@
+[gd_scene load_steps=2 format=3 uid="uid://dki6tawtdwex1"]
+
+[ext_resource type="Script" uid="uid://bsvokrc24oqkn" path="res://Scenes/upgrades.gd" id="1_qnnf3"]
+
+[node name="Upgrades" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qnnf3")
+
+[node name="Free" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 192.00002
+offset_right = 2197.714
+offset_bottom = 592.0
+scale = Vector2(0.875, 0.875)
+alignment = 1
+
+[node name="Damage" type="ColorRect" parent="Free"]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Free/Damage"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.571411
+offset_right = 295.42853
+offset_bottom = 395.42856
+color = Color(0.41981313, 0.41981313, 0.4198131, 1)
+
+[node name="Title" type="RichTextLabel" parent="Free/Damage"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.714264
+offset_right = 295.42853
+offset_bottom = 89.14284
+theme_override_font_sizes/normal_font_size = 34
+text = "Damage Upgrade"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buff" type="RichTextLabel" parent="Free/Damage"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 116.5714
+offset_right = 295.42853
+offset_bottom = 191.99997
+theme_override_font_sizes/normal_font_size = 39
+text = "+1 Damage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Free/Damage"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 215.99997
+offset_right = 295.42853
+offset_bottom = 291.42853
+theme_override_font_sizes/normal_font_size = 27
+text = "Be very strong and bonk those enemies!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Select" type="Button" parent="Free/Damage"]
+layout_mode = 0
+offset_left = 23.42857
+offset_top = 315.42856
+offset_right = 270.28577
+offset_bottom = 378.42856
+theme_override_font_sizes/font_size = 40
+text = "Select"
+
+[node name="Speed" type="ColorRect" parent="Free"]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Free/Speed"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.571411
+offset_right = 295.42853
+offset_bottom = 395.42856
+color = Color(0.41981313, 0.41981313, 0.4198131, 1)
+
+[node name="Title" type="RichTextLabel" parent="Free/Speed"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.714264
+offset_right = 295.42853
+offset_bottom = 89.14284
+theme_override_font_sizes/normal_font_size = 34
+text = "Speed Upgrade"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buff" type="RichTextLabel" parent="Free/Speed"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 116.5714
+offset_right = 295.42853
+offset_bottom = 191.99997
+theme_override_font_sizes/normal_font_size = 39
+text = "+1 Speed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Free/Speed"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 215.99997
+offset_right = 295.42853
+offset_bottom = 291.42853
+theme_override_font_sizes/normal_font_size = 27
+text = "Go fast and outspeed those enemies!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Select" type="Button" parent="Free/Speed"]
+layout_mode = 0
+offset_left = 23.42857
+offset_top = 315.42856
+offset_right = 270.28577
+offset_bottom = 378.42856
+theme_override_font_sizes/font_size = 40
+text = "Select"
+
+[node name="Health" type="ColorRect" parent="Free"]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Free/Health"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.571411
+offset_right = 295.42853
+offset_bottom = 395.42856
+color = Color(0.41981313, 0.41981313, 0.4198131, 1)
+
+[node name="Title" type="RichTextLabel" parent="Free/Health"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.714264
+offset_right = 295.42853
+offset_bottom = 89.14284
+theme_override_font_sizes/normal_font_size = 34
+text = "Health Upgrade"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buff" type="RichTextLabel" parent="Free/Health"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 116.5714
+offset_right = 295.42853
+offset_bottom = 191.99997
+theme_override_font_sizes/normal_font_size = 39
+text = "+1 Health"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Free/Health"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 215.99997
+offset_right = 295.42853
+offset_bottom = 291.42853
+theme_override_font_sizes/normal_font_size = 27
+text = "Be very tanky and take more hits!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Select" type="Button" parent="Free/Health"]
+layout_mode = 0
+offset_left = 23.42857
+offset_top = 315.42856
+offset_right = 270.28577
+offset_bottom = 378.42856
+theme_override_font_sizes/font_size = 40
+text = "Select"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 1919.0
+offset_bottom = 174.0
+theme_override_font_sizes/normal_font_size = 73
+text = "You may pick one of these for free!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Free/Damage/Select" to="." method="_damage"]
+[connection signal="pressed" from="Free/Speed/Select" to="." method="_speed"]
+[connection signal="pressed" from="Free/Health/Select" to="." method="_health"]

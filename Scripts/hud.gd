@@ -6,3 +6,4 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	$ProgressBar.max_value=GameManager.playerMaxHealth
 	$ProgressBar.value=GameManager.playerHealth
+	$Gold.text=str(GameManager.playerGold)

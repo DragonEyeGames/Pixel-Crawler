@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ckwcx72j5s0tg"]
 
-[ext_resource type="Script" uid="uid://bevdrdh5lrqe8" path="res://Scenes/finished.gd" id="1_6bsmv"]
+[ext_resource type="Script" uid="uid://rk5hjje3fs1o" path="res://Scenes/dead.gd" id="1_6bsmv"]
 
 [sub_resource type="Animation" id="Animation_weud0"]
 length = 0.001

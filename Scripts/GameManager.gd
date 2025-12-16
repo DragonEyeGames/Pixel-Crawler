@@ -9,6 +9,7 @@ var playerSpeed:=12.0
 var playerStrength:=20.0
 var transition: AnimationPlayer
 var playerPos = null
+var playerGold:=0
 
 enum playerTypes {
 	Knight,
