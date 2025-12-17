@@ -193,6 +193,56 @@ text = "You may pick one of these for free!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 753.0
+offset_top = 842.0
+offset_right = 1191.0
+offset_bottom = 1006.0
+theme_override_font_sizes/font_size = 82
+text = "Continue"
+
+[node name="StatHeader" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 220.0
+offset_right = 502.0
+offset_bottom = 329.0
+theme_override_font_sizes/normal_font_size = 44
+text = "Your Current Stats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 319.0
+offset_right = 542.0
+offset_bottom = 385.0
+theme_override_font_sizes/normal_font_size = 44
+text = "Health: 20"
+vertical_alignment = 1
+
+[node name="Health2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 378.0
+offset_right = 544.0
+offset_bottom = 444.0
+theme_override_font_sizes/normal_font_size = 44
+text = "Speed: 20"
+vertical_alignment = 1
+
+[node name="Health3" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 442.0
+offset_right = 545.0
+offset_bottom = 508.0
+theme_override_font_sizes/normal_font_size = 44
+text = "Strength: 20"
+vertical_alignment = 1
+
 [connection signal="pressed" from="Free/Damage/Select" to="." method="_damage"]
 [connection signal="pressed" from="Free/Speed/Select" to="." method="_speed"]
 [connection signal="pressed" from="Free/Health/Select" to="." method="_health"]
