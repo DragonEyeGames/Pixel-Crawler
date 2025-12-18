@@ -16,8 +16,10 @@ var canAttack:=true
 @export var cooldown:=.25
 @export var weaponDamage:=1
 @onready var navAgent := $NavigationAgent2D as NavigationAgent2D
+var maxHealth
 
 func _ready() -> void:
+	maxHealth=health
 	await get_tree().process_frame
 	$Timer.start()
 	hit=$Hit
@@ -80,6 +82,7 @@ func damage(hitDamage):
 			shadow.play("die")
 		await get_tree().create_timer(1.5).timeout
 		hit.play("die")
+		GameManager.playerGold+=randi_range(maxHealth-1, maxHealth+1)
 		SignalBus.enemy_died.emit()
 		await get_tree().create_timer(5).timeout
 		await get_tree().process_frame

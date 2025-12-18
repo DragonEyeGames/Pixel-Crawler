@@ -11,6 +11,14 @@ var transition: AnimationPlayer
 var playerPos = null
 var playerGold:=0
 
+enum inventoryItems {
+	Tome,
+	Ring,
+	Chest
+}
+
+var playerInventory = []
+
 enum playerTypes {
 	Knight,
 	Wizard,

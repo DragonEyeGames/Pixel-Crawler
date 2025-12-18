@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8bekucr76jye"]
+[gd_scene load_steps=4 format=3 uid="uid://b8bekucr76jye"]
 
 [ext_resource type="FontFile" uid="uid://df43mdabfw85x" path="res://Fonts/Pixley.ttf" id="1_2shtd"]
+[ext_resource type="Script" uid="uid://ex1vthk30db8" path="res://Scenes/shop.gd" id="1_io27d"]
 [ext_resource type="Texture2D" uid="uid://d4xo2l5jbfsq" path="res://Assets/Stuff.png" id="2_io27d"]
 
 [node name="Shop" type="Control"]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_io27d")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
@@ -94,9 +96,9 @@ offset_left = 23.42857
 offset_top = 315.42856
 offset_right = 270.28577
 offset_bottom = 378.42856
-theme_override_font_sizes/font_size = 40
-text = "Buy
-"
+theme_override_fonts/font = ExtResource("1_2shtd")
+theme_override_font_sizes/font_size = 48
+text = "30 Gold"
 
 [node name="Stuff" type="Sprite2D" parent="Paid/Ring"]
 position = Vector2(142.35297, 144.11765)
@@ -105,12 +107,12 @@ texture = ExtResource("2_io27d")
 region_enabled = true
 region_rect = Rect2(64, 16, 16, 16)
 
-[node name="Ring2" type="ColorRect" parent="Paid"]
+[node name="Chest" type="ColorRect" parent="Paid"]
 custom_minimum_size = Vector2(300, 400)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Paid/Ring2"]
+[node name="Color" type="ColorRect" parent="Paid/Chest"]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 4.571411
@@ -118,7 +120,7 @@ offset_right = 295.42853
 offset_bottom = 395.42856
 color = Color(0.41981313, 0.41981313, 0.4198131, 1)
 
-[node name="Title" type="RichTextLabel" parent="Paid/Ring2"]
+[node name="Title" type="RichTextLabel" parent="Paid/Chest"]
 layout_mode = 0
 offset_left = 8.000022
 offset_top = 10.784306
@@ -131,7 +133,7 @@ text = "Chest of Greed"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buff" type="RichTextLabel" parent="Paid/Ring2"]
+[node name="Buff" type="RichTextLabel" parent="Paid/Chest"]
 visible = false
 layout_mode = 0
 offset_left = 4.0784483
@@ -144,7 +146,7 @@ text = "+1 Damage"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="RichTextLabel" parent="Paid/Ring2"]
+[node name="Description" type="RichTextLabel" parent="Paid/Chest"]
 layout_mode = 0
 offset_left = 5.019598
 offset_top = 210.78432
@@ -157,18 +159,115 @@ text = "This chest fills you with greed and increases gold earned"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Select" type="Button" parent="Paid/Ring2"]
+[node name="Select" type="Button" parent="Paid/Chest"]
 layout_mode = 0
 offset_left = 23.42857
 offset_top = 315.42856
 offset_right = 270.28577
 offset_bottom = 378.42856
-theme_override_font_sizes/font_size = 40
-text = "Buy"
+theme_override_fonts/font = ExtResource("1_2shtd")
+theme_override_font_sizes/font_size = 48
+text = "40 Gold"
 
-[node name="Stuff" type="Sprite2D" parent="Paid/Ring2"]
+[node name="Stuff" type="Sprite2D" parent="Paid/Chest"]
 position = Vector2(146.19603, 151.96078)
 scale = Vector2(6.92, 6.92)
 texture = ExtResource("2_io27d")
 region_enabled = true
 region_rect = Rect2(80, 1, 16, 15)
+
+[node name="Tome" type="ColorRect" parent="Paid"]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Paid/Tome"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.571411
+offset_right = 295.42853
+offset_bottom = 395.42856
+color = Color(0.41981313, 0.41981313, 0.4198131, 1)
+
+[node name="Title" type="RichTextLabel" parent="Paid/Tome"]
+layout_mode = 0
+offset_left = 8.000022
+offset_top = 10.784306
+offset_right = 255.19514
+offset_bottom = 55.115086
+scale = Vector2(1.15, 1.15)
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 32
+text = "Tome of Vitality"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buff" type="RichTextLabel" parent="Paid/Tome"]
+visible = false
+layout_mode = 0
+offset_left = 4.0784483
+offset_top = 191.17648
+offset_right = 295.507
+offset_bottom = 266.60504
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 39
+text = "+1 Damage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Paid/Tome"]
+layout_mode = 0
+offset_left = 5.019598
+offset_top = 210.78432
+offset_right = 189.74945
+offset_bottom = 260.99377
+scale = Vector2(1.555, 1.555)
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 16
+text = "This tome gives you extra health, as long as you read it right."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Select" type="Button" parent="Paid/Tome"]
+layout_mode = 0
+offset_left = 23.42857
+offset_top = 315.42856
+offset_right = 270.28577
+offset_bottom = 378.42856
+theme_override_fonts/font = ExtResource("1_2shtd")
+theme_override_font_sizes/font_size = 48
+text = "25 Gold"
+
+[node name="Stuff" type="Sprite2D" parent="Paid/Tome"]
+position = Vector2(146.19603, 151.96078)
+scale = Vector2(6.92, 6.92)
+texture = ExtResource("2_io27d")
+region_enabled = true
+region_rect = Rect2(17, 0, 14, 16)
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 0
+offset_left = 774.00006
+offset_top = 888.00006
+offset_right = 1212.0
+offset_bottom = 1052.0
+scale = Vector2(0.845, 0.845)
+theme_override_fonts/font = ExtResource("1_2shtd")
+theme_override_font_sizes/font_size = 128
+text = "Finish"
+
+[node name="Gold Counter" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 530.0
+offset_top = 179.0
+offset_right = 1393.0
+offset_bottom = 282.0
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 64
+text = "Your Gold: 67"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Paid/Ring/Select" to="." method="Ring"]
+[connection signal="pressed" from="Paid/Chest/Select" to="." method="Chest"]
+[connection signal="pressed" from="Paid/Tome/Select" to="." method="Tome"]
