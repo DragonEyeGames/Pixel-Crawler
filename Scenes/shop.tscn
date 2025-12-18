@@ -1,0 +1,174 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8bekucr76jye"]
+
+[ext_resource type="FontFile" uid="uid://df43mdabfw85x" path="res://Fonts/Pixley.ttf" id="1_2shtd"]
+[ext_resource type="Texture2D" uid="uid://d4xo2l5jbfsq" path="res://Assets/Stuff.png" id="2_io27d"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 1919.0
+offset_bottom = 174.0
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 64
+text = "You may spend as much or as little gold as you want on these!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Paid" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -237.0
+offset_right = -32.686157
+offset_bottom = 163.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.02, 1.02)
+alignment = 1
+
+[node name="Ring" type="ColorRect" parent="Paid"]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Paid/Ring"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.571411
+offset_right = 295.42853
+offset_bottom = 395.42856
+color = Color(0.41981313, 0.41981313, 0.4198131, 1)
+
+[node name="Title" type="RichTextLabel" parent="Paid/Ring"]
+layout_mode = 0
+offset_left = 8.000022
+offset_top = 10.784306
+offset_right = 235.5295
+offset_bottom = 49.019627
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 32
+text = "Ring of Power"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buff" type="RichTextLabel" parent="Paid/Ring"]
+visible = false
+layout_mode = 0
+offset_left = 4.0784483
+offset_top = 191.17648
+offset_right = 295.507
+offset_bottom = 266.60504
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 39
+text = "+1 Damage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Paid/Ring"]
+layout_mode = 0
+offset_left = 6.0784388
+offset_top = 208.82353
+offset_right = 190.8083
+offset_bottom = 259.03296
+scale = Vector2(1.555, 1.555)
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 16
+text = "Evil spills out of the stone and gives you extra attack power"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Select" type="Button" parent="Paid/Ring"]
+layout_mode = 0
+offset_left = 23.42857
+offset_top = 315.42856
+offset_right = 270.28577
+offset_bottom = 378.42856
+theme_override_font_sizes/font_size = 40
+text = "Buy
+"
+
+[node name="Stuff" type="Sprite2D" parent="Paid/Ring"]
+position = Vector2(142.35297, 144.11765)
+scale = Vector2(6.4, 6.4)
+texture = ExtResource("2_io27d")
+region_enabled = true
+region_rect = Rect2(64, 16, 16, 16)
+
+[node name="Ring2" type="ColorRect" parent="Paid"]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Paid/Ring2"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.571411
+offset_right = 295.42853
+offset_bottom = 395.42856
+color = Color(0.41981313, 0.41981313, 0.4198131, 1)
+
+[node name="Title" type="RichTextLabel" parent="Paid/Ring2"]
+layout_mode = 0
+offset_left = 8.000022
+offset_top = 10.784306
+offset_right = 255.19514
+offset_bottom = 55.115086
+scale = Vector2(1.15, 1.15)
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 32
+text = "Chest of Greed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buff" type="RichTextLabel" parent="Paid/Ring2"]
+visible = false
+layout_mode = 0
+offset_left = 4.0784483
+offset_top = 191.17648
+offset_right = 295.507
+offset_bottom = 266.60504
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 39
+text = "+1 Damage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Paid/Ring2"]
+layout_mode = 0
+offset_left = 5.019598
+offset_top = 210.78432
+offset_right = 189.74945
+offset_bottom = 260.99377
+scale = Vector2(1.555, 1.555)
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 16
+text = "This chest fills you with greed and increases gold earned"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Select" type="Button" parent="Paid/Ring2"]
+layout_mode = 0
+offset_left = 23.42857
+offset_top = 315.42856
+offset_right = 270.28577
+offset_bottom = 378.42856
+theme_override_font_sizes/font_size = 40
+text = "Buy"
+
+[node name="Stuff" type="Sprite2D" parent="Paid/Ring2"]
+position = Vector2(146.19603, 151.96078)
+scale = Vector2(6.92, 6.92)
+texture = ExtResource("2_io27d")
+region_enabled = true
+region_rect = Rect2(80, 1, 16, 15)
