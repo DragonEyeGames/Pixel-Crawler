@@ -3,7 +3,7 @@ extends Control
 var playerGold
 
 func _ready() -> void:
-	GameManager.playerGold=100
+	GameManager.playerGold=90
 	playerGold=GameManager.playerGold
 	calculateDisabled()
 
@@ -23,6 +23,9 @@ func Chest() -> void:
 	$Paid/Chest/Select.disabled=true
 	$Paid/Chest/Select.text="Sold Out"
 	GameManager.playerInventory.append(GameManager.inventoryItems.Chest)
+	var backup=GameManager.playerMaxHealth
+	GameManager.playerMaxHealth=round(GameManager.playerMaxHealth*1.2)
+	GameManager.playerHealth+=GameManager.playerMaxHealth-backup
 
 func Ring() -> void:
 	playerGold-=30
@@ -31,6 +34,8 @@ func Ring() -> void:
 	$Paid/Ring/Select.disabled=true
 	$Paid/Ring/Select.text="Sold Out"
 	GameManager.playerInventory.append(GameManager.inventoryItems.Ring)
+	GameManager.playerStrength*=1.25
+	GameManager.playerStrength=round(GameManager.playerStrength)
 	
 func calculateDisabled():
 	$"Gold Counter".text="Your Gold: " + str(playerGold)

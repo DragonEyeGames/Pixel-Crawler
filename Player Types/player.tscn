@@ -64,6 +64,9 @@ damage = 1.5
 [node name="Axeman" parent="." instance=ExtResource("4_fmvb7")]
 material = SubResource("ShaderMaterial_lghnf")
 damage = 2.0
+strength = 1
+health = 10.0
+attackSpeed = 1.1
 
 [node name="Archer" parent="." instance=ExtResource("5_5uo6n")]
 material = SubResource("ShaderMaterial_eef01")
