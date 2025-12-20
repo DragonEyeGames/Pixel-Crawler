@@ -29,3 +29,27 @@ func  initialize() -> void:
 	speed=GameManager.playerSpeed*9
 	strength=GameManager.playerStrength/10
 	attackSpeed=GameManager.playerSpeed/10
+	
+func hit(newDamage):
+	newDamage=calculateResistance(newDamage)
+	if(dead):
+		return
+	health-=newDamage
+	hitAnimator.play("hit")
+	GameManager.playerHealth=health
+	if(health<=0):
+		dead=true
+		sprite.play("die")
+		shadow.play("die")
+		await get_tree().create_timer(1.5).timeout
+		hitAnimator.play("die")
+		await get_tree().create_timer(5).timeout
+		get_tree().change_scene_to_file("res://Scenes/dead.tscn")
+
+func calculateResistance(calculatedDamage):
+	if(GameManager.inventoryItems.Armour in GameManager.playerInventory):
+		return calculatedDamage*.7
+	elif(GameManager.inventoryItems.Tunic in GameManager.playerInventory):
+		return calculatedDamage*.9
+	else:
+		return calculatedDamage

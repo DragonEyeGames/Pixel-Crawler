@@ -9,6 +9,7 @@ class_name SceneData
 @export var playerScene: String
 @export var playerType: GameManager.playerTypes
 @export var playerGold: int
+@export var playerInventory:=[]
 
 @export var enemyArray:=[[[], [], [], [], [], [], [], [], [], []]]
 @export var savedArray:=[]

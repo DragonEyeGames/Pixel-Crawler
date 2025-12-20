@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_l7ecc"]
 [ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="3_tujpt"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_x2yma"]
-[ext_resource type="PackedScene" uid="uid://c5a5w6hpeq0ok" path="res://Levels/Level1/statue.tscn" id="6_csn0e"]
+[ext_resource type="PackedScene" uid="uid://c5a5w6hpeq0ok" path="res://Scenes/statue.tscn" id="6_csn0e"]
 [ext_resource type="PackedScene" uid="uid://ct4ti7ck1jr5y" path="res://Player Types/player.tscn" id="8_cysgm"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Scenes/door.tscn" id="9_csn0e"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="9_p4o7v"]

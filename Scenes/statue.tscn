@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c5a5w6hpeq0ok"]
 
-[ext_resource type="Script" uid="uid://dj78sehwdoapv" path="res://Levels/Level1/statue.gd" id="1_qfrp0"]
-[ext_resource type="Texture2D" uid="uid://bicpsssg7ccl8" path="res://Assets/Statues.png" id="2_87h5e"]
+[ext_resource type="Script" uid="uid://dj78sehwdoapv" path="res://Scripts/statue.gd" id="1_218gy"]
+[ext_resource type="Texture2D" uid="uid://bicpsssg7ccl8" path="res://Assets/Statues.png" id="2_ufaa2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_csn0e"]
 radius = 15.0
@@ -14,7 +14,7 @@ height = 20.0
 [node name="Statue" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("1_qfrp0")
+script = ExtResource("1_218gy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -23,7 +23,7 @@ shape = SubResource("CapsuleShape2D_csn0e")
 
 [node name="Statues" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
-texture = ExtResource("2_87h5e")
+texture = ExtResource("2_ufaa2")
 region_enabled = true
 region_rect = Rect2(14, 21, 20, 26)
 

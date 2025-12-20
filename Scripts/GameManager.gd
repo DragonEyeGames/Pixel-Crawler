@@ -14,7 +14,11 @@ var playerGold:=0
 enum inventoryItems {
 	Tome,
 	Ring,
-	Chest
+	Chest,
+	Eye,
+	Tunic,
+	Armour,
+	Elixir
 }
 
 var playerInventory = []

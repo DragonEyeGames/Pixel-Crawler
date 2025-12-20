@@ -1,12 +1,14 @@
 extends Node2D
 
 @export var level:=0
+@export var chapter=0
 @export var enemies=3
 var emitted:=false
 
 func _ready() -> void:
 	for door in get_tree().get_nodes_in_group("Door"):
 		door.level=level
+		door.chapter=chapter
 	SignalBus.enemy_died.connect(on_death)
 	if ResourceLoader.exists("user://scene_data.tres"):
 		var data = ResourceLoader.load("user://scene_data.tres") as SceneData

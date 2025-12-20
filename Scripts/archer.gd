@@ -84,20 +84,5 @@ func _on_player_animation_finished() -> void:
 
 func _enemy_hit(area: Area2D) -> void:
 	area.get_parent().damage(damage*strength)
-	
-func hit(newDamage):
-	if(dead):
-		return
-	health-=newDamage
-	hitAnimator.play("hit")
-	GameManager.playerHealth=health
-	if(health<=0):
-		dead=true
-		sprite.play("die")
-		shadow.play("die")
-		await get_tree().create_timer(1.5).timeout
-		hitAnimator.play("die")
-		await get_tree().create_timer(5).timeout
-		get_tree().change_scene_to_file("res://Scenes/dead.tscn")
 		
 	

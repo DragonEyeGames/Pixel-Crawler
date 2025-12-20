@@ -25,4 +25,5 @@ func _on_load_game_pressed() -> void:
 	GameManager.playerType=data.playerType
 	GameManager.playerPos=data.playerPosition
 	GameManager.playerGold=data.playerGold
+	GameManager.playerInventory=data.playerInventory.duplicate()
 	get_tree().change_scene_to_file(data.playerScene)

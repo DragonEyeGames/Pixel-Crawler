@@ -224,7 +224,7 @@ offset_bottom = 260.99377
 scale = Vector2(1.555, 1.555)
 theme_override_fonts/normal_font = ExtResource("1_2shtd")
 theme_override_font_sizes/normal_font_size = 16
-text = "This tome gives you extra health, as long as you read it right."
+text = "This tome gives you extra health, as long as you read it right"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -244,6 +244,282 @@ scale = Vector2(6.92, 6.92)
 texture = ExtResource("2_io27d")
 region_enabled = true
 region_rect = Rect2(17, 0, 14, 16)
+
+[node name="Eye" type="ColorRect" parent="Paid"]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Paid/Eye"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.571411
+offset_right = 295.42853
+offset_bottom = 395.42856
+color = Color(0.41981313, 0.41981313, 0.4198131, 1)
+
+[node name="Title" type="RichTextLabel" parent="Paid/Eye"]
+layout_mode = 0
+offset_left = 8.000022
+offset_top = 10.784306
+offset_right = 255.19514
+offset_bottom = 55.115086
+scale = Vector2(1.15, 1.15)
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 32
+text = "Eye of the Wind"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buff" type="RichTextLabel" parent="Paid/Eye"]
+visible = false
+layout_mode = 0
+offset_left = 4.0784483
+offset_top = 191.17648
+offset_right = 295.507
+offset_bottom = 266.60504
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 39
+text = "+1 Damage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Paid/Eye"]
+layout_mode = 0
+offset_left = 5.019598
+offset_top = 210.78432
+offset_right = 189.74945
+offset_bottom = 275.09302
+scale = Vector2(1.555, 1.555)
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 16
+text = "This magic eye uses the power of the wind to make you faster"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Select" type="Button" parent="Paid/Eye"]
+layout_mode = 0
+offset_left = 23.42857
+offset_top = 315.42856
+offset_right = 270.28577
+offset_bottom = 378.42856
+theme_override_fonts/font = ExtResource("1_2shtd")
+theme_override_font_sizes/font_size = 48
+text = "35 Gold"
+
+[node name="Stuff" type="Sprite2D" parent="Paid/Eye"]
+position = Vector2(146.19603, 151.96078)
+scale = Vector2(6.92, 6.92)
+texture = ExtResource("2_io27d")
+region_enabled = true
+region_rect = Rect2(80, 64, 16, 16)
+
+[node name="Tunic" type="ColorRect" parent="Paid"]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Paid/Tunic"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.571411
+offset_right = 295.42853
+offset_bottom = 395.42856
+color = Color(0.41981313, 0.41981313, 0.4198131, 1)
+
+[node name="Title" type="RichTextLabel" parent="Paid/Tunic"]
+layout_mode = 0
+offset_left = 8.000022
+offset_top = 10.784306
+offset_right = 255.19514
+offset_bottom = 55.115086
+scale = Vector2(1.15, 1.15)
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 32
+text = "Fancy Clothes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buff" type="RichTextLabel" parent="Paid/Tunic"]
+visible = false
+layout_mode = 0
+offset_left = 4.0784483
+offset_top = 191.17648
+offset_right = 295.507
+offset_bottom = 266.60504
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 39
+text = "+1 Damage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Paid/Tunic"]
+layout_mode = 0
+offset_left = 5.019598
+offset_top = 210.78432
+offset_right = 189.74945
+offset_bottom = 275.09302
+scale = Vector2(1.555, 1.555)
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 16
+text = "These clothes protect you from attacks as well as look fancy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Select" type="Button" parent="Paid/Tunic"]
+layout_mode = 0
+offset_left = 23.42857
+offset_top = 315.42856
+offset_right = 270.28577
+offset_bottom = 378.42856
+theme_override_fonts/font = ExtResource("1_2shtd")
+theme_override_font_sizes/font_size = 48
+text = "15 Gold"
+
+[node name="Stuff" type="Sprite2D" parent="Paid/Tunic"]
+position = Vector2(146.19603, 151.96078)
+scale = Vector2(6.92, 6.92)
+texture = ExtResource("2_io27d")
+region_enabled = true
+region_rect = Rect2(48, 64, 16, 16)
+
+[node name="Armour" type="ColorRect" parent="Paid"]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Paid/Armour"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.571411
+offset_right = 295.42853
+offset_bottom = 395.42856
+color = Color(0.41981313, 0.41981313, 0.4198131, 1)
+
+[node name="Title" type="RichTextLabel" parent="Paid/Armour"]
+layout_mode = 0
+offset_left = 8.000022
+offset_top = 10.784306
+offset_right = 255.19514
+offset_bottom = 55.115086
+scale = Vector2(1.15, 1.15)
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 32
+text = "Plot Armour"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buff" type="RichTextLabel" parent="Paid/Armour"]
+visible = false
+layout_mode = 0
+offset_left = 4.0784483
+offset_top = 191.17648
+offset_right = 295.507
+offset_bottom = 266.60504
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 39
+text = "+1 Damage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Paid/Armour"]
+layout_mode = 0
+offset_left = 5.019598
+offset_top = 210.78432
+offset_right = 189.74945
+offset_bottom = 275.09302
+scale = Vector2(1.555, 1.555)
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 16
+text = "This armour protects you from even the strongest of attacks"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Select" type="Button" parent="Paid/Armour"]
+layout_mode = 0
+offset_left = 23.42857
+offset_top = 315.42856
+offset_right = 270.28577
+offset_bottom = 378.42856
+theme_override_fonts/font = ExtResource("1_2shtd")
+theme_override_font_sizes/font_size = 48
+text = "50 Gold"
+
+[node name="Stuff" type="Sprite2D" parent="Paid/Armour"]
+position = Vector2(146.19603, 151.96078)
+scale = Vector2(6.92, 6.92)
+texture = ExtResource("2_io27d")
+region_enabled = true
+region_rect = Rect2(16, 80, 16, 16)
+
+[node name="Potion" type="ColorRect" parent="Paid"]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Paid/Potion"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.571411
+offset_right = 295.42853
+offset_bottom = 395.42856
+color = Color(0.41981313, 0.41981313, 0.4198131, 1)
+
+[node name="Title" type="RichTextLabel" parent="Paid/Potion"]
+layout_mode = 0
+offset_left = 8.000022
+offset_top = 10.784306
+offset_right = 278.38467
+offset_bottom = 63.322056
+scale = Vector2(1.045, 1.045)
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 32
+text = "Elixir or Balance"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buff" type="RichTextLabel" parent="Paid/Potion"]
+visible = false
+layout_mode = 0
+offset_left = 4.0784483
+offset_top = 191.17648
+offset_right = 295.507
+offset_bottom = 266.60504
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 39
+text = "+1 Damage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Paid/Potion"]
+layout_mode = 0
+offset_left = 5.019598
+offset_top = 210.78432
+offset_right = 189.74945
+offset_bottom = 275.09302
+scale = Vector2(1.555, 1.555)
+theme_override_fonts/normal_font = ExtResource("1_2shtd")
+theme_override_font_sizes/normal_font_size = 16
+text = "This funny little potion slightly increases all of your stats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Select" type="Button" parent="Paid/Potion"]
+layout_mode = 0
+offset_left = 23.42857
+offset_top = 315.42856
+offset_right = 270.28577
+offset_bottom = 378.42856
+theme_override_fonts/font = ExtResource("1_2shtd")
+theme_override_font_sizes/font_size = 48
+text = "20 Gold"
+
+[node name="Stuff" type="Sprite2D" parent="Paid/Potion"]
+position = Vector2(146.19603, 151.96078)
+scale = Vector2(6.92, 6.92)
+texture = ExtResource("2_io27d")
+region_enabled = true
+region_rect = Rect2(34, 32, 12, 16)
 
 [node name="Continue" type="Button" parent="."]
 layout_mode = 0
@@ -271,3 +547,8 @@ vertical_alignment = 1
 [connection signal="pressed" from="Paid/Ring/Select" to="." method="Ring"]
 [connection signal="pressed" from="Paid/Chest/Select" to="." method="Chest"]
 [connection signal="pressed" from="Paid/Tome/Select" to="." method="Tome"]
+[connection signal="pressed" from="Paid/Eye/Select" to="." method="Eye"]
+[connection signal="pressed" from="Paid/Tunic/Select" to="." method="Tunic"]
+[connection signal="pressed" from="Paid/Armour/Select" to="." method="Armour"]
+[connection signal="pressed" from="Paid/Potion/Select" to="." method="Elixir"]
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
