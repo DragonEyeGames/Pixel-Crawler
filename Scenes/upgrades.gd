@@ -41,7 +41,7 @@ func _health() -> void:
 func _on_continue_pressed() -> void:
 	match selected:
 		selectedTypes.Health:
-			GameManager.playerMaxhealth+=1
+			GameManager.playerMaxHealth+=1
 			GameManager.playerHealth+=1
 		selectedTypes.Damage:
 			GameManager.playerStrength+=1

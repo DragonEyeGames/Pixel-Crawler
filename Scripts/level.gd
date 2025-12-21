@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var level:=0
-@export var chapter=0
+@export var chapter=1
 @export var enemies=3
 var emitted:=false
 

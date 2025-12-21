@@ -108,7 +108,6 @@ func _on_continue_pressed() -> void:
 		var oldData = ResourceLoader.load("user://scene_data.tres") as SceneData
 		data.enemyArray=oldData.enemyArray
 	data.playerPosition=null
-	data.playerHealth=GameManager.player.health
 	data.playerMaxHealth=GameManager.playerMaxHealth
 	data.playerSpeed=GameManager.playerSpeed
 	data.playerStrength=GameManager.playerStrength
