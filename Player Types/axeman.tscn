@@ -574,10 +574,6 @@ material = SubResource("ShaderMaterial_fmvb7")
 collision_layer = 0
 script = ExtResource("2_tqe0l")
 speed = 65.0
-damage = null
-strength = null
-health = null
-attackSpeed = null
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
