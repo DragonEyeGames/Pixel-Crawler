@@ -11,10 +11,10 @@ void fragment() {
 	if (noise_value < dissolve_amount) {
         discard;
     }
-    vec3 white = vec3(1.0);
+    vec3 red = vec3(0.6, 0.0, 0.0);
 
     // Mix original → white based on "whiteness"
-    c.rgb = mix(c.rgb, white, whiteness);
+    c.rgb = mix(c.rgb, red, whiteness);
 
     COLOR = c;
 }

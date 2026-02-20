@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://dhd0snu2yv3e5"]
+[gd_scene load_steps=10 format=4 uid="uid://dhd0snu2yv3e5"]
 
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_v72e1"]
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_so18s"]
-[ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="3_hg5yk"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_jld50"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Scenes/door.tscn" id="6_7csao"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="7_xrw8b"]
@@ -10,12 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://b3i6dfak5vsmn" path="res://Scenes/spike.tscn" id="9_lfbxl"]
 [ext_resource type="Script" uid="uid://dya7qfsa4hqdw" path="res://Scripts/spikeController.gd" id="9_v72e1"]
 [ext_resource type="PackedScene" uid="uid://ct4ti7ck1jr5y" path="res://Player Types/player.tscn" id="10_h3ukb"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
-size = Vector2(185, 38)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgbee"]
-size = Vector2(326, 36)
 
 [node name="Main" type="Node2D"]
 texture_filter = 1
@@ -25,44 +18,13 @@ enemies = 0
 
 [node name="BackWalls" parent="." instance=ExtResource("2_so18s")]
 z_index = -1
-tile_map_data = PackedByteArray("AAD+//n/AAABAA8AAAD+//r/AAABABAAAAD+//v/AAABABEAAAD9//n/AAABAA8AAAD9//r/AAABABAAAAD9//v/AAABABEAAAD8//n/AAABAA8AAAD8//r/AAABABAAAAD8//v/AAABABEAAAD7//n/AAABAA8AAAD7//r/AAABABAAAAD7//v/AAABABEAAAD6//n/AAAFAAwAAAD6//r/AAAFAA0AAAD6//v/AAAFAA4AAAD///n/AAABAA8AAAAAAPn/AAABAA8AAAAQAPn/AAABAA8AAAAQAPr/AAABABAAAAAQAPv/AAABABEAAAARAPn/AAABAA8AAAARAPr/AAABABAAAAARAPv/AAABABEAAAASAPn/AAABAA8AAAASAPr/AAABABAAAAASAPv/AAABABEAAAATAPn/AAAGAAwAAAATAPr/AAAGAA0AAAATAPv/AAAGAA4AAAABAPn/AAABAA8AAAABAPr/AAABABAAAAABAPv/AAABABEAAAACAPn/AAABAA8AAAACAPr/AAABABAAAAACAPv/AAABABEAAAADAPn/AAABAA8AAAADAPr/AAABABAAAAADAPv/AAABABEAAAAEAPn/AAABAA8AAAAFAPn/AAABAA8AAAAGAPn/AAABAA8AAAAHAPn/AAABAA8AAAAHAPr/AAABABAAAAAHAPv/AAABABEAAAAPAPn/AAABAA8AAAAOAPn/AAABAA8AAAANAPn/AAABAA8AAAANAPr/AAABABAAAAANAPv/AAABABEAAAAMAPn/AAABAA8AAAAMAPr/AAABABAAAAAMAPv/AAABABEAAAALAPn/AAABAA8AAAALAPr/AAABABAAAAALAPv/AAABABEAAAAKAPn/AAABAA8AAAAJAPn/AAABAA8AAAAIAPn/AAABAA8AAAAIAPr/AAABABAAAAAIAPv/AAABABEAAAAGAPv/AAABABEAAAAGAPr/AAABABAAAAA=")
+tile_map_data = PackedByteArray("AAD+//n/AAABAA8AAAD+//r/AAABABAAAAD+//v/AAABABEAAAD9//n/AAABAA8AAAD9//r/AAABABAAAAD9//v/AAABABEAAAD8//n/AAABAA8AAAD8//r/AAABABAAAAD8//v/AAABABEAAAD7//n/AAABAA8AAAD7//r/AAABABAAAAD7//v/AAABABEAAAD///n/AAABAA8AAAAAAPn/AAABAA8AAAAQAPn/AAABAA8AAAAQAPr/AAABABAAAAAQAPv/AAABABEAAAARAPn/AAABAA8AAAARAPr/AAABABAAAAARAPv/AAABABEAAAASAPn/AAABAA8AAAASAPr/AAABABAAAAASAPv/AAABABEAAAATAPn/AAABAA8AAAATAPr/AAABABAAAAATAPv/AAABABEAAAABAPn/AAABAA8AAAABAPr/AAABABAAAAABAPv/AAABABEAAAACAPn/AAABAA8AAAACAPr/AAABABAAAAACAPv/AAABABEAAAADAPn/AAABAA8AAAADAPr/AAABABAAAAADAPv/AAABABEAAAAEAPn/AAABAA8AAAAFAPn/AAABAA8AAAAGAPn/AAABAA8AAAAHAPn/AAABAA8AAAAHAPr/AAABABAAAAAHAPv/AAABABEAAAAPAPn/AAABAA8AAAAOAPn/AAABAA8AAAANAPn/AAABAA8AAAANAPr/AAABABAAAAANAPv/AAABABEAAAAMAPn/AAABAA8AAAAMAPr/AAABABAAAAAMAPv/AAABABEAAAALAPn/AAABAA8AAAALAPr/AAABABAAAAALAPv/AAABABEAAAAKAPn/AAABAA8AAAAJAPn/AAABAA8AAAAIAPn/AAABAA8AAAAIAPr/AAABABAAAAAIAPv/AAABABEAAAAGAPv/AAABABEAAAAGAPr/AAABABAAAAD6//n/AAABAA8AAAD6//r/AAABABAAAAD6//v/AAABABEAAAAEAPr/AAABABAAAAAEAPv/AAABABEAAAAFAPr/AAABABAAAAAFAPv/AAABABEAAAAJAPr/AAABABAAAAAJAPv/AAABABEAAAAKAPr/AAABABAAAAAKAPv/AAABABEAAAA=")
 
-[node name="FrontWalls" parent="." instance=ExtResource("2_so18s")]
-z_index = 3
-tile_map_data = PackedByteArray("AAD6/wIAAAAFAA8AAAD6/wMAAAAFABAAAAD6/wQAAAAFABEAAAD7/wIAAAABAA8AAAD7/wMAAAABABAAAAD7/wQAAAABABEAAAD8/wIAAAABAA8AAAD///r/AAADABMAAAAAAPr/AAAEABMAAAD///n/AAADABIAAAAAAPn/AAAEABIAAAD9/wIAAAABAA8AAAD//wIAAAAGAA8AAAD//wMAAAAGABAAAAD//wQAAAAGABEAAAD+/wIAAAABAA8AAAD+/wMAAAABABAAAAD+/wQAAAABABEAAAA=")
-script = ExtResource("3_hg5yk")
-
-[node name="Area2D" type="Area2D" parent="FrontWalls"]
-visible = false
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FrontWalls/Area2D"]
-position = Vector2(0.5, 54)
-shape = SubResource("RectangleShape2D_1bvp3")
-
-[node name="Door2" parent="FrontWalls" instance=ExtResource("4_jld50")]
+[node name="Door5" parent="." instance=ExtResource("4_jld50")]
 position = Vector2(-48, 59)
 toTransport = 9
 playerPos = Vector2(0, -38)
 enemyControlled = false
-
-[node name="FrontWalls2" parent="." instance=ExtResource("2_so18s")]
-z_index = 3
-tile_map_data = PackedByteArray("AAD///r/AAADABMAAAAAAPr/AAAEABMAAAD///n/AAADABIAAAAAAPn/AAAEABIAAAACAP//AAABABAAAAACAAAAAAABABEAAAADAP//AAABABAAAAADAAAAAAABABEAAAAEAP//AAABABAAAAAEAAAAAAABABEAAAAFAP//AAABABAAAAAFAAAAAAABABEAAAAGAP//AAABABAAAAAGAAAAAAABABEAAAAHAP//AAABABAAAAAHAAAAAAABABEAAAAIAP//AAABABAAAAAIAAAAAAABABEAAAAJAP//AAABABAAAAAJAAAAAAABABEAAAAKAP//AAABABAAAAAKAAAAAAABABEAAAALAP//AAABABAAAAALAAAAAAABABEAAAAMAP//AAABABAAAAAMAAAAAAABABEAAAANAP//AAABABAAAAANAAAAAAABABEAAAAOAP//AAABABAAAAAOAAAAAAABABEAAAAPAP//AAABABAAAAAPAAAAAAABABEAAAAQAP//AAABABAAAAAQAAAAAAABABEAAAARAP//AAABABAAAAARAAAAAAABABEAAAASAP//AAABABAAAAASAAAAAAABABEAAAATAP//AAAGABAAAAATAAAAAAAGABEAAAACAP7/AAABAA8AAAADAP7/AAABAA8AAAAEAP7/AAABAA8AAAAFAP7/AAABAA8AAAAGAP7/AAABAA8AAAAHAP7/AAABAA8AAAAIAP7/AAABAA8AAAAJAP7/AAABAA8AAAAKAP7/AAABAA8AAAALAP7/AAABAA8AAAAMAP7/AAABAA8AAAANAP7/AAABAA8AAAAOAP7/AAABAA8AAAAPAP7/AAABAA8AAAAQAP7/AAABAA8AAAARAP7/AAABAA8AAAASAP7/AAABAA8AAAATAP7/AAAGAA8AAAD///7/AAAFAAwAAAD/////AAAFAA0AAAD//wAAAAAFAA4AAAAAAP7/AAABAA8AAAAAAP//AAABABAAAAAAAAAAAAABABEAAAABAP7/AAABAA8AAAABAP//AAABABAAAAABAAAAAAABABEAAAA=")
-script = ExtResource("3_hg5yk")
-
-[node name="Area2D" type="Area2D" parent="FrontWalls2"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FrontWalls2/Area2D"]
-position = Vector2(152, -10)
-shape = SubResource("RectangleShape2D_vgbee")
-
-[node name="Walls" parent="." instance=ExtResource("2_so18s")]
-z_index = 2
-tile_map_data = PackedByteArray("AAD6/wIAAAACABIAAAD6/wMAAAACABMAAAD6/wQAAAACABQAAAD6/wEAAAACAA4AAAD6/wAAAAACAA4AAAD6////AAACAA4AAAD6//7/AAACAA4AAAD6//3/AAACAA4AAAD6//z/AAACAA4AAAD//wEAAAACAA4AAAD//wIAAAACABIAAAD//wMAAAACABMAAAD//wQAAAACABQAAAATAPz/AAACAA4AAAATAP3/AAACAA4AAAATAP7/AAACABIAAAATAP//AAACABMAAAATAAAAAAACABQAAAA=")
 
 [node name="Floor" parent="." instance=ExtResource("2_so18s")]
 z_index = -2
@@ -77,19 +39,22 @@ position = Vector2(-30, -5)
 script = ExtResource("9_v72e1")
 
 [node name="Spike" parent="Y_Sorting/Spikes" instance=ExtResource("9_lfbxl")]
-position = Vector2(10, -1)
+position = Vector2(18, -1)
 
 [node name="Spike2" parent="Y_Sorting/Spikes" instance=ExtResource("9_lfbxl")]
-position = Vector2(-4, -1)
+position = Vector2(4, -1)
 
 [node name="Spike3" parent="Y_Sorting/Spikes" instance=ExtResource("9_lfbxl")]
-position = Vector2(-18, -1)
+position = Vector2(-10, -1)
 
 [node name="Spike4" parent="Y_Sorting/Spikes" instance=ExtResource("9_lfbxl")]
-position = Vector2(-32, -1)
+position = Vector2(-24, -1)
 
 [node name="Spike5" parent="Y_Sorting/Spikes" instance=ExtResource("9_lfbxl")]
-position = Vector2(-46, -1)
+position = Vector2(-38, -1)
+
+[node name="Spike6" parent="Y_Sorting/Spikes" instance=ExtResource("9_lfbxl")]
+position = Vector2(-52, -1)
 
 [node name="Player" parent="Y_Sorting" instance=ExtResource("10_h3ukb")]
 position = Vector2(-49, 56)
@@ -106,14 +71,8 @@ playerPos = Vector2(0, 54)
 enemyControlled = false
 
 [node name="Door2" parent="." instance=ExtResource("6_7csao")]
-position = Vector2(80, -85)
+position = Vector2(111, -85)
 toTransport = 6
-playerPos = Vector2(0, 54)
-enemyControlled = false
-
-[node name="Door3" parent="." instance=ExtResource("6_7csao")]
-position = Vector2(160, -85)
-toTransport = 7
 playerPos = Vector2(0, 54)
 enemyControlled = false
 
@@ -134,7 +93,16 @@ position = Vector2(-34, -85)
 
 [node name="HUD" parent="." instance=ExtResource("8_jtuoa")]
 
-[connection signal="area_entered" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_exited"]
-[connection signal="area_entered" from="FrontWalls2/Area2D" to="FrontWalls2" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="FrontWalls2/Area2D" to="FrontWalls2" method="_on_area_2d_area_exited"]
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -132.0
+offset_top = -113.0
+offset_right = -92.0
+offset_bottom = -65.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 317.0
+offset_top = -111.0
+offset_right = 357.0
+offset_bottom = -63.0
+color = Color(0, 0, 0, 1)

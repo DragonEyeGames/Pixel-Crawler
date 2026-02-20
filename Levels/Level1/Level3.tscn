@@ -1,8 +1,7 @@
-[gd_scene load_steps=24 format=4 uid="uid://b5sb5uvmsepyh"]
+[gd_scene load_steps=22 format=4 uid="uid://b5sb5uvmsepyh"]
 
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_hy5j1"]
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_xxxi4"]
-[ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="3_4c4gq"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_3e7p2"]
 [ext_resource type="PackedScene" uid="uid://dq4caphl02lr3" path="res://Scenes/Enemies/strongSkeleton.tscn" id="6_hx0pg"]
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="7_uyp6w"]
@@ -10,9 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://dkgps26n57idn" path="res://Assets/Tilemap/fire_animation.png" id="8_hy5j1"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="9_xc3xs"]
 [ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Scenes/HUD.tscn" id="10_tqo56"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
-size = Vector2(185, 38)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xhj3x"]
 frequency = 1.0
@@ -96,29 +92,11 @@ enemies = 1
 
 [node name="BackWalls" parent="." instance=ExtResource("2_xxxi4")]
 z_index = -1
-tile_map_data = PackedByteArray("AAD7//v/AAAFAAwAAAD8//v/AAABAA8AAAD9//v/AAABAA8AAAD+//v/AAABAA8AAAD///v/AAABAA8AAAAAAPv/AAABAA8AAAABAPv/AAABAA8AAAACAPv/AAABAA8AAAADAPv/AAABAA8AAAAEAPv/AAAGAAwAAAD7//z/AAAFAA0AAAD7//3/AAAFAA4AAAD8//z/AAABABAAAAD8//3/AAABABEAAAD9//z/AAABABAAAAD9//3/AAABABEAAAD+//z/AAABABAAAAD+//3/AAABABEAAAD///z/AAABABAAAAD///3/AAABABEAAAAAAPz/AAABABAAAAAAAP3/AAABABEAAAABAPz/AAABABAAAAABAP3/AAABABEAAAACAPz/AAABABAAAAACAP3/AAABABEAAAADAPz/AAABABAAAAADAP3/AAABABEAAAAEAPz/AAAGAA0AAAAEAP3/AAAGAA4AAAA=")
+tile_map_data = PackedByteArray("AAD7//v/AAABAA8AAAD8//v/AAABAA8AAAD9//v/AAABAA8AAAD+//v/AAABAA8AAAD///v/AAABAA8AAAAAAPv/AAABAA8AAAABAPv/AAABAA8AAAACAPv/AAABAA8AAAADAPv/AAABAA8AAAAEAPv/AAABAA8AAAD7//z/AAABABAAAAD7//3/AAABABEAAAD8//z/AAABABAAAAD8//3/AAABABEAAAD9//z/AAABABAAAAD9//3/AAABABEAAAD+//z/AAABABAAAAD+//3/AAABABEAAAD///z/AAABABAAAAD///3/AAABABEAAAAAAPz/AAABABAAAAAAAP3/AAABABEAAAABAPz/AAABABAAAAABAP3/AAABABEAAAACAPz/AAABABAAAAACAP3/AAABABEAAAADAPz/AAABABAAAAADAP3/AAABABEAAAAEAPz/AAABABAAAAAEAP3/AAABABEAAAA=")
 
-[node name="FrontWalls" parent="." instance=ExtResource("2_xxxi4")]
-z_index = 3
-tile_map_data = PackedByteArray("AAD7/wIAAAAFAA8AAAD7/wMAAAAFABAAAAD7/wQAAAAFABEAAAD8/wIAAAABAA8AAAD8/wMAAAABABAAAAD8/wQAAAABABEAAAD9/wIAAAABAA8AAAD9/wMAAAABABAAAAD9/wQAAAABABEAAAD+/wIAAAABAA8AAAD+/wMAAAABABAAAAD+/wQAAAABABEAAAD//wIAAAABAA8AAAAAAAIAAAABAA8AAAABAAIAAAABAA8AAAABAAMAAAABABAAAAABAAQAAAABABEAAAACAAIAAAABAA8AAAACAAMAAAABABAAAAACAAQAAAABABEAAAADAAIAAAABAA8AAAADAAMAAAABABAAAAADAAQAAAABABEAAAAEAAIAAAAGAA8AAAAEAAMAAAAGABAAAAAEAAQAAAAGABEAAAA=")
-script = ExtResource("3_4c4gq")
-
-[node name="Area2D" type="Area2D" parent="FrontWalls"]
-visible = false
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FrontWalls/Area2D"]
-position = Vector2(0.5, 54)
-shape = SubResource("RectangleShape2D_1bvp3")
-
-[node name="Door2" parent="FrontWalls" instance=ExtResource("4_3e7p2")]
+[node name="Door2" parent="." instance=ExtResource("4_3e7p2")]
 position = Vector2(0, 59)
 playerPos = Vector2(-96, -102)
-
-[node name="Walls" parent="." instance=ExtResource("2_xxxi4")]
-z_index = 2
-tile_map_data = PackedByteArray("AAD7//7/AAACAA4AAAD7////AAACAA4AAAD7/wAAAAACAA4AAAD7/wEAAAACAA4AAAD7/wIAAAACABIAAAD7/wMAAAACABMAAAAEAP7/AAACAA4AAAAEAP//AAACAA4AAAAEAAAAAAACAA4AAAAEAAEAAAACAA4AAAAEAAIAAAACABIAAAAEAAMAAAACABMAAAD7/wQAAAACABQAAAAEAAQAAAACABQAAAA=")
 
 [node name="Floor" parent="." instance=ExtResource("2_xxxi4")]
 z_index = -2
@@ -165,5 +143,16 @@ position = Vector2(-34.5, -55)
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_hy5j1")
 
-[connection signal="area_entered" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_exited"]
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -95.0
+offset_top = -82.0
+offset_right = -76.0
+offset_bottom = -34.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 77.0
+offset_top = -82.0
+offset_right = 96.0
+offset_bottom = -34.0
+color = Color(0, 0, 0, 1)

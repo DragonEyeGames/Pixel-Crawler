@@ -1,22 +1,14 @@
-[gd_scene load_steps=21 format=4 uid="uid://dwxnwle6lldtl"]
+[gd_scene load_steps=17 format=4 uid="uid://dwxnwle6lldtl"]
 
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_i4375"]
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_4b247"]
-[ext_resource type="Script" uid="uid://babj0ynw33jph" path="res://Scripts/frontWalls.gd" id="3_o4d3g"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_isovy"]
-[ext_resource type="PackedScene" uid="uid://ccujaxhm0ts1a" path="res://Scenes/blockingDoor.tscn" id="6_4b247"]
 [ext_resource type="PackedScene" uid="uid://df4aytlkx5ais" path="res://Scenes/Enemies/strongOrc.tscn" id="6_i4375"]
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="7_4b247"]
 [ext_resource type="PackedScene" uid="uid://dq4caphl02lr3" path="res://Scenes/Enemies/strongSkeleton.tscn" id="8_o4d3g"]
 [ext_resource type="PackedScene" uid="uid://ct4ti7ck1jr5y" path="res://Player Types/player.tscn" id="9_fs6j2"]
 [ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Scenes/HUD.tscn" id="10_y8jc6"]
 [ext_resource type="PackedScene" uid="uid://lu0ebdw52oem" path="res://Scenes/exit.tscn" id="11_4b247"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
-size = Vector2(185, 38)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4b247"]
-size = Vector2(142, 25)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_e37l4"]
 frequency = 1.0
@@ -62,30 +54,12 @@ enemies = 2
 
 [node name="BackWalls" parent="." instance=ExtResource("2_4b247")]
 z_index = -1
-tile_map_data = PackedByteArray("AAD7//X/AAAFAAwAAAD7//b/AAAFAA0AAAD7//f/AAAFAA4AAAD8//X/AAABAA8AAAD8//b/AAABABAAAAD8//f/AAABABEAAAD9//X/AAABAA8AAAD9//b/AAABABAAAAD9//f/AAABABEAAAD+//X/AAABAA8AAAD+//b/AAABABAAAAD+//f/AAABABEAAAD///X/AAABAA8AAAD///b/AAABABAAAAD///f/AAABABEAAAAAAPX/AAABAA8AAAAAAPb/AAABABAAAAAAAPf/AAABABEAAAABAPX/AAABAA8AAAABAPb/AAABABAAAAABAPf/AAABABEAAAACAPX/AAABAA8AAAACAPb/AAABABAAAAACAPf/AAABABEAAAADAPX/AAABAA8AAAADAPb/AAABABAAAAADAPf/AAABABEAAAAEAPX/AAAGAAwAAAAEAPb/AAAGAA0AAAAEAPf/AAAGAA4AAAA=")
+tile_map_data = PackedByteArray("AAD7//X/AAABAA8AAAD7//b/AAABABAAAAD7//f/AAABABEAAAD8//X/AAABAA8AAAD8//b/AAABABAAAAD8//f/AAABABEAAAD9//X/AAABAA8AAAD9//b/AAABABAAAAD9//f/AAABABEAAAD+//X/AAABAA8AAAD+//b/AAABABAAAAD+//f/AAABABEAAAD///X/AAABAA8AAAD///b/AAABABAAAAD///f/AAABABEAAAAAAPX/AAABAA8AAAAAAPb/AAABABAAAAAAAPf/AAABABEAAAABAPX/AAABAA8AAAABAPb/AAABABAAAAABAPf/AAABABEAAAACAPX/AAABAA8AAAACAPb/AAABABAAAAACAPf/AAABABEAAAADAPX/AAABAA8AAAADAPb/AAABABAAAAADAPf/AAABABEAAAAEAPX/AAABAA8AAAAEAPb/AAABABAAAAAEAPf/AAABABEAAAA=")
 
-[node name="FrontWalls" parent="." instance=ExtResource("2_4b247")]
-z_index = 3
-tile_map_data = PackedByteArray("AAD7/wIAAAAFAA8AAAD7/wMAAAAFABAAAAD7/wQAAAAFABEAAAD8/wIAAAABAA8AAAD8/wMAAAABABAAAAD8/wQAAAABABEAAAD9/wIAAAABAA8AAAD9/wMAAAABABAAAAD9/wQAAAABABEAAAD+/wIAAAABAA8AAAD+/wMAAAABABAAAAD+/wQAAAABABEAAAD//wIAAAABAA8AAAAAAAIAAAABAA8AAAABAAIAAAABAA8AAAABAAMAAAABABAAAAABAAQAAAABABEAAAACAAIAAAABAA8AAAACAAMAAAABABAAAAACAAQAAAABABEAAAADAAIAAAABAA8AAAADAAMAAAABABAAAAADAAQAAAABABEAAAAEAAIAAAAGAA8AAAAEAAMAAAAGABAAAAAEAAQAAAAGABEAAAA=")
-script = ExtResource("3_o4d3g")
-
-[node name="Area2D" type="Area2D" parent="FrontWalls"]
-visible = false
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FrontWalls/Area2D"]
-position = Vector2(0.5, 54)
-shape = SubResource("RectangleShape2D_1bvp3")
-
-[node name="Door2" parent="FrontWalls" instance=ExtResource("4_isovy")]
+[node name="Door2" parent="." instance=ExtResource("4_isovy")]
 position = Vector2(0, 59)
 toTransport = 4
 playerPos = Vector2(160, -70)
-
-[node name="Walls" parent="." instance=ExtResource("2_4b247")]
-z_index = 2
-tile_map_data = PackedByteArray("AAD7////AAACAA4AAAD7/wAAAAACAA4AAAD7/wEAAAACAA4AAAD7/wIAAAACABIAAAD7/wMAAAACABMAAAAEAP//AAACAA4AAAAEAAAAAAACAA4AAAAEAAEAAAACAA4AAAAEAAIAAAACABIAAAAEAAMAAAACABMAAAD7/wQAAAACABQAAAAEAAQAAAACABQAAAAEAPj/AAACAA4AAAAEAPn/AAACAA4AAAAEAPr/AAADAA4AAAAEAPv/AAABAA0AAAD7//j/AAACAA4AAAD7//n/AAACAA4AAAD7//r/AAAEAAwAAAD7//v/AAAAAA0AAAD7//z/AAAAAA4AAAAEAPz/AAABAA4AAAD7//3/AAACAA4AAAD7//7/AAACAA4AAAAEAP3/AAACAA4AAAAEAP7/AAACAA4AAAA=")
 
 [node name="Floor" parent="." instance=ExtResource("2_4b247")]
 z_index = -2
@@ -94,22 +68,6 @@ tile_map_data = PackedByteArray("AAACAPz/AAABABYAAAABAPz/AAABAAoAAAAAAPz/AAABABU
 [node name="Y_Sorting" type="Node2D" parent="."]
 z_index = 1
 y_sort_enabled = true
-
-[node name="Walls2" parent="Y_Sorting" instance=ExtResource("2_4b247")]
-position = Vector2(0, -64)
-tile_map_data = PackedByteArray("AAD8//7/AAABAA8AAAD9//7/AAABAA8AAAD+//7/AAABAA8AAAABAP7/AAABAA8AAAACAP7/AAABAA8AAAADAP7/AAABAA8AAAD8////AAABABAAAAD8/wAAAAABABEAAAD9////AAABABAAAAD9/wAAAAABABEAAAD+////AAABABAAAAD+/wAAAAABABEAAAD///7/AAABAA8AAAAAAP7/AAABAA8AAAABAP//AAABABAAAAABAAAAAAABABEAAAACAP//AAABABAAAAACAAAAAAABABEAAAADAP//AAABABAAAAADAAAAAAABABEAAAA=")
-script = ExtResource("3_o4d3g")
-
-[node name="Door" parent="Y_Sorting/Walls2" instance=ExtResource("6_4b247")]
-position = Vector2(0, -5)
-
-[node name="Area2D" type="Area2D" parent="Y_Sorting/Walls2"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Y_Sorting/Walls2/Area2D"]
-position = Vector2(-2, -16.5)
-shape = SubResource("RectangleShape2D_4b247")
 
 [node name="Orc" parent="Y_Sorting" instance=ExtResource("6_i4375")]
 material = SubResource("ShaderMaterial_isovy")
@@ -139,7 +97,16 @@ position = Vector2(2, -123)
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_i4375")
 
-[connection signal="area_entered" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="FrontWalls/Area2D" to="FrontWalls" method="_on_area_2d_area_exited"]
-[connection signal="area_entered" from="Y_Sorting/Walls2/Area2D" to="Y_Sorting/Walls2" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Y_Sorting/Walls2/Area2D" to="Y_Sorting/Walls2" method="_on_area_2d_area_exited"]
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 77.0
+offset_top = -177.0
+offset_right = 117.0
+offset_bottom = -123.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -116.0
+offset_top = -182.0
+offset_right = -76.0
+offset_bottom = -128.0
+color = Color(0, 0, 0, 1)
