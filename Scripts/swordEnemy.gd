@@ -34,9 +34,9 @@ func _physics_process(_delta: float) -> void:
 		player=GameManager.player
 		return
 	player=GameManager.player
-	if(dead and not sprite.animation=="die"):
-		sprite.play("die")
-		shadow.play("die")
+	#if(dead and not sprite.animation=="die"):
+		#sprite.play("die")
+		#shadow.play("die")
 	if(dead or attacking):
 		return
 	if(len(attackingList)>=1 and canAttack):
@@ -112,6 +112,10 @@ func _on_sprite_animation_finished() -> void:
 		sprite.play("idle")
 		await get_tree().create_timer(cooldown/2).timeout
 		canAttack=true
+	if(health<=0 or dead):
+		if(not sprite.animation=="die"):
+			sprite.play("die")
+			shadow.play("die")
 
 
 func _on_checks_area_exited(area: Area2D) -> void:

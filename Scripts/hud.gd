@@ -7,6 +7,7 @@ var goldOffset=0
 var goldMultiplier=true
 
 func _ready() -> void:
+	visible=true
 	GameManager.transition=$Transition/AnimationPlayer
 	$Gold.text=str(GameManager.playerGold)
 	goldValue=GameManager.playerGold
