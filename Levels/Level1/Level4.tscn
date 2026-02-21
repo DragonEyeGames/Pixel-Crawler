@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://dya7qfsa4hqdw" path="res://Scripts/spikeController.gd" id="9_v72e1"]
 [ext_resource type="PackedScene" uid="uid://ct4ti7ck1jr5y" path="res://Player Types/player.tscn" id="10_h3ukb"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" groups=["North", "South"]]
 texture_filter = 1
 script = ExtResource("1_v72e1")
 level = 4

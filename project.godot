@@ -43,6 +43,13 @@ folder_colors={
 "res://Shaders/": "teal"
 }
 
+[global_group]
+
+North=""
+South=""
+East=""
+West=""
+
 [input]
 
 Up={

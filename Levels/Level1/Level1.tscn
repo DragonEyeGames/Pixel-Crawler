@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=4 uid="uid://ddjp1bxvonyff"]
+[gd_scene load_steps=14 format=4 uid="uid://ddjp1bxvonyff"]
 
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="1_05pb0"]
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_7fl83"]
+[ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="3_5g41i"]
 [ext_resource type="PackedScene" uid="uid://ct4ti7ck1jr5y" path="res://Player Types/player.tscn" id="5_7ouqh"]
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="6_7fl83"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Scenes/door.tscn" id="6_dl8mf"]
@@ -30,7 +31,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-83, -71, 84, -71, 84, 61, -83, 60)])
 agent_radius = 1.0
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" groups=["North", "South"]]
 texture_filter = 1
 script = ExtResource("1_7fl83")
 level = 1
@@ -93,3 +94,7 @@ offset_top = -121.0
 offset_right = 133.0
 offset_bottom = -57.0
 color = Color(0, 0, 0, 1)
+
+[node name="Door2" parent="." instance=ExtResource("3_5g41i")]
+position = Vector2(0, 59)
+playerPos = Vector2(-96, -102)

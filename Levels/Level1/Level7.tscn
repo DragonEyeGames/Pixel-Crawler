@@ -46,7 +46,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-67, -55, 68, -55, 68, 66, -67, 65)])
 agent_radius = 1.0
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" groups=["South"]]
 texture_filter = 1
 script = ExtResource("1_i4375")
 level = 7

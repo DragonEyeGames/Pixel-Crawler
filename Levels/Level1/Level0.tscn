@@ -113,7 +113,7 @@ offset_right = 101.0
 offset_bottom = -28.0
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="." groups=["North"]]
 offset_left = -100.0
 offset_top = -86.0
 offset_right = -60.0
