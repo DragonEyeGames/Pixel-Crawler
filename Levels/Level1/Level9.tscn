@@ -1,13 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://0ovwwmuxgk31"]
+[gd_scene load_steps=8 format=4 uid="uid://0ovwwmuxgk31"]
 
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_jsdd8"]
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_l7ecc"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_x2yma"]
 [ext_resource type="PackedScene" uid="uid://c5a5w6hpeq0ok" path="res://Scenes/statue.tscn" id="6_csn0e"]
-[ext_resource type="PackedScene" uid="uid://ct4ti7ck1jr5y" path="res://Player Types/player.tscn" id="8_cysgm"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Scenes/door.tscn" id="9_csn0e"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="9_p4o7v"]
-[ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Scenes/HUD.tscn" id="10_uc74g"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hy5j1"]
 vertices = PackedVector2Array(66, 64, -66, 64, -66, -37, 66, -37)
@@ -15,22 +13,24 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-67, -38, -67, 65, 67, 65, 67, -38)])
 agent_radius = 1.0
 
-[node name="Main" type="Node2D" groups=["North", "South"]]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("doors") groups=["North", "South"]]
 texture_filter = 1
 script = ExtResource("1_jsdd8")
 level = 9
 enemies = 0
+doors = [NodePath("Door"), NodePath("Door2")]
 
-[node name="BackWalls" parent="." instance=ExtResource("2_l7ecc")]
-z_index = -1
-tile_map_data = PackedByteArray("AAD7//v/AAABAA8AAAD8//v/AAABAA8AAAD9//v/AAABAA8AAAD+//v/AAABAA8AAAD///v/AAABAA8AAAAAAPv/AAABAA8AAAABAPv/AAABAA8AAAACAPv/AAABAA8AAAADAPv/AAABAA8AAAAEAPv/AAADAA8AAAD7//z/AAABABAAAAD7//3/AAABABEAAAD8//z/AAABABAAAAD8//3/AAABABEAAAD9//z/AAABABAAAAD9//3/AAABABEAAAD+//z/AAABABAAAAD+//3/AAABABEAAAABAPz/AAABABAAAAABAP3/AAABABEAAAACAPz/AAABABAAAAACAP3/AAABABEAAAADAPz/AAABABAAAAADAP3/AAABABEAAAAEAPz/AAADABAAAAAEAP3/AAADABEAAAA=")
-
-[node name="Door" parent="BackWalls" instance=ExtResource("9_csn0e")]
+[node name="Door" parent="." instance=ExtResource("9_csn0e")]
 position = Vector2(0, -53)
 toTransport = 4
 playerPos = Vector2(-51, 56)
 enemyControlled = false
 level = 9
+direction = "north"
+
+[node name="BackWalls" parent="." instance=ExtResource("2_l7ecc")]
+z_index = -1
+tile_map_data = PackedByteArray("AAD7//v/AAABAA8AAAD8//v/AAABAA8AAAD9//v/AAABAA8AAAD+//v/AAABAA8AAAD///v/AAABAA8AAAAAAPv/AAABAA8AAAABAPv/AAABAA8AAAACAPv/AAABAA8AAAADAPv/AAABAA8AAAAEAPv/AAADAA8AAAD7//z/AAABABAAAAD7//3/AAABABEAAAD8//z/AAABABAAAAD8//3/AAABABEAAAD9//z/AAABABAAAAD9//3/AAABABEAAAD+//z/AAABABAAAAD+//3/AAABABEAAAABAPz/AAABABAAAAABAP3/AAABABEAAAACAPz/AAABABAAAAACAP3/AAABABEAAAADAPz/AAABABAAAAADAP3/AAABABEAAAAEAPz/AAADABAAAAAEAP3/AAADABEAAAA=")
 
 [node name="Door2" parent="." instance=ExtResource("4_x2yma")]
 position = Vector2(0, 59)
@@ -39,6 +39,7 @@ autoplay = ""
 playerPos = Vector2(128, -101)
 enemyControlled = false
 level = 9
+direction = "south"
 
 [node name="Floor" parent="." instance=ExtResource("2_l7ecc")]
 z_index = -2
@@ -47,14 +48,6 @@ tile_map_data = PackedByteArray("AAACAPz/AAABAAoAAAABAPz/AAABAAoAAAAAAPz/AAABAAo
 [node name="Y_Sorting" type="Node2D" parent="."]
 z_index = 1
 y_sort_enabled = true
-
-[node name="Player" parent="Y_Sorting" instance=ExtResource("8_cysgm")]
-position = Vector2(0, -38)
-
-[node name="Cam" type="Camera2D" parent="Y_Sorting/Player"]
-position = Vector2(-1856.5076, -280.6278)
-zoom = Vector2(7.5, 7.5)
-position_smoothing_enabled = true
 
 [node name="Statue" parent="Y_Sorting" instance=ExtResource("6_csn0e")]
 position = Vector2(0, 3)
@@ -67,8 +60,6 @@ position = Vector2(37.5, -55)
 
 [node name="Torch2" parent="." instance=ExtResource("9_p4o7v")]
 position = Vector2(-34.5, -55)
-
-[node name="HUD" parent="." instance=ExtResource("10_uc74g")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false

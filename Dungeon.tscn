@@ -1,3 +1,25 @@
-[gd_scene format=3 uid="uid://cwmhhrjco02h7"]
+[gd_scene load_steps=13 format=3 uid="uid://cwmhhrjco02h7"]
+
+[ext_resource type="Script" uid="uid://vayrh1hsg8yl" path="res://DungeonMaker.gd" id="1_nulmw"]
+[ext_resource type="PackedScene" uid="uid://dhd0snu2yv3e5" path="res://Levels/Level1/Level4.tscn" id="1_sifhu"]
+[ext_resource type="PackedScene" uid="uid://ddjp1bxvonyff" path="res://Levels/Level1/Level1.tscn" id="2_dqayi"]
+[ext_resource type="PackedScene" uid="uid://0ovwwmuxgk31" path="res://Levels/Level1/Level9.tscn" id="2_slqep"]
+[ext_resource type="PackedScene" uid="uid://bb8xchi76xpxd" path="res://Levels/Level1/Level2.tscn" id="3_dgn0p"]
+[ext_resource type="PackedScene" uid="uid://s3yjedgeef8o" path="res://Levels/Level1/Level0.tscn" id="6_1vdva"]
+[ext_resource type="PackedScene" uid="uid://b5sb5uvmsepyh" path="res://Levels/Level1/Level3.tscn" id="7_p832w"]
+[ext_resource type="PackedScene" uid="uid://deo8ogw66xfsq" path="res://Levels/Level1/Level5.tscn" id="8_oq8wd"]
+[ext_resource type="PackedScene" uid="uid://bpgb62u7c0l6m" path="res://Levels/Level1/Level6.tscn" id="9_5ilfn"]
+[ext_resource type="PackedScene" uid="uid://dwxnwle6lldtl" path="res://Levels/Level1/Level7.tscn" id="10_1qybq"]
+[ext_resource type="PackedScene" uid="uid://8ly23il61jqa" path="res://Levels/Level1/level8.tscn" id="11_fo3ry"]
+[ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Scenes/HUD.tscn" id="12_dgn0p"]
 
 [node name="Dungeon" type="Node2D"]
+script = ExtResource("1_nulmw")
+levels = Array[PackedScene]([ExtResource("2_dqayi"), ExtResource("1_sifhu"), ExtResource("2_slqep"), ExtResource("3_dgn0p")])
+caps = Array[PackedScene]([ExtResource("6_1vdva"), ExtResource("7_p832w"), ExtResource("8_oq8wd"), ExtResource("9_5ilfn"), ExtResource("10_1qybq"), ExtResource("11_fo3ry")])
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(60, -147)
+zoom = Vector2(2.385, 2.385)
+
+[node name="HUD" parent="." instance=ExtResource("12_dgn0p")]

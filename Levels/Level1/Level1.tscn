@@ -1,29 +1,10 @@
-[gd_scene load_steps=14 format=4 uid="uid://ddjp1bxvonyff"]
+[gd_scene load_steps=7 format=4 uid="uid://ddjp1bxvonyff"]
 
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="1_05pb0"]
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_7fl83"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="3_5g41i"]
-[ext_resource type="PackedScene" uid="uid://ct4ti7ck1jr5y" path="res://Player Types/player.tscn" id="5_7ouqh"]
-[ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="6_7fl83"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Scenes/door.tscn" id="6_dl8mf"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="7_dl8mf"]
-[ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Scenes/HUD.tscn" id="8_xcayt"]
-[ext_resource type="PackedScene" uid="uid://du02kq7mkyull" path="res://Scenes/Enemies/skeleton.tscn" id="9_7fl83"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_xhj3x"]
-frequency = 1.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3je14"]
-width = 1000
-height = 1000
-noise = SubResource("FastNoiseLite_xhj3x")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p5226"]
-resource_local_to_scene = true
-shader = ExtResource("6_7fl83")
-shader_parameter/whiteness = 0.0
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_3je14")
-shader_parameter/dissolve_amount = 0.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7fl83"]
 vertices = PackedVector2Array(83, 59.992188, -82, 59, -82, -70, 83, -70)
@@ -31,11 +12,12 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-83, -71, 84, -71, 84, 61, -83, 60)])
 agent_radius = 1.0
 
-[node name="Main" type="Node2D" groups=["North", "South"]]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("doors") groups=["North", "South"]]
 texture_filter = 1
 script = ExtResource("1_7fl83")
 level = 1
 enemies = 1
+doors = [NodePath("Door"), NodePath("Door2")]
 
 [node name="BackWalls" parent="." instance=ExtResource("1_05pb0")]
 z_index = -1
@@ -49,23 +31,12 @@ tile_map_data = PackedByteArray("AAACAPz/AAABAAoAAAABAPz/AAABAAoAAAAAAPz/AAABAAo
 z_index = 1
 y_sort_enabled = true
 
-[node name="Skeleton" parent="Y_Sorting" instance=ExtResource("9_7fl83")]
-material = SubResource("ShaderMaterial_p5226")
-position = Vector2(-3, -64)
-
-[node name="Player" parent="Y_Sorting" instance=ExtResource("5_7ouqh")]
-position = Vector2(0, -70)
-
-[node name="Cam" type="Camera2D" parent="Y_Sorting/Player"]
-position = Vector2(-1856.5076, -280.6278)
-zoom = Vector2(8, 8)
-position_smoothing_enabled = true
-
 [node name="Door" parent="." instance=ExtResource("6_dl8mf")]
 position = Vector2(0, -85)
 playerPos = Vector2(17, 118)
 enemyControlled = false
 level = 1
+direction = "north"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.69135684, 0.6913568, 0.69135684, 1)
@@ -75,8 +46,6 @@ position = Vector2(38, -85)
 
 [node name="Torch2" parent="." instance=ExtResource("7_dl8mf")]
 position = Vector2(-34, -85)
-
-[node name="HUD" parent="." instance=ExtResource("8_xcayt")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_7fl83")
@@ -98,3 +67,4 @@ color = Color(0, 0, 0, 1)
 [node name="Door2" parent="." instance=ExtResource("3_5g41i")]
 position = Vector2(0, 59)
 playerPos = Vector2(-96, -102)
+direction = "south"

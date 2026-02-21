@@ -5,6 +5,7 @@ extends AnimatedSprite2D
 @export var playerPos:= Vector2.ZERO
 @export var enemyControlled:=false
 @export var level = 2
+@export var direction: String
 
 func _ready() -> void:
 	if(enemyControlled):

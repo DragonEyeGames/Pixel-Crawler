@@ -1,30 +1,30 @@
-[gd_scene load_steps=10 format=4 uid="uid://dhd0snu2yv3e5"]
+[gd_scene load_steps=8 format=4 uid="uid://dhd0snu2yv3e5"]
 
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_v72e1"]
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_so18s"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_jld50"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Scenes/door.tscn" id="6_7csao"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="7_xrw8b"]
-[ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Scenes/HUD.tscn" id="8_jtuoa"]
 [ext_resource type="PackedScene" uid="uid://b3i6dfak5vsmn" path="res://Scenes/spike.tscn" id="9_lfbxl"]
 [ext_resource type="Script" uid="uid://dya7qfsa4hqdw" path="res://Scripts/spikeController.gd" id="9_v72e1"]
-[ext_resource type="PackedScene" uid="uid://ct4ti7ck1jr5y" path="res://Player Types/player.tscn" id="10_h3ukb"]
 
-[node name="Main" type="Node2D" groups=["North", "South"]]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("doors") groups=["North", "South"]]
 texture_filter = 1
 script = ExtResource("1_v72e1")
 level = 4
 enemies = 0
+doors = [NodePath("Door5"), NodePath("Door"), NodePath("Door2"), NodePath("Door4")]
 
 [node name="BackWalls" parent="." instance=ExtResource("2_so18s")]
 z_index = -1
-tile_map_data = PackedByteArray("AAD+//n/AAABAA8AAAD+//r/AAABABAAAAD+//v/AAABABEAAAD9//n/AAABAA8AAAD9//r/AAABABAAAAD9//v/AAABABEAAAD8//n/AAABAA8AAAD8//r/AAABABAAAAD8//v/AAABABEAAAD7//n/AAABAA8AAAD7//r/AAABABAAAAD7//v/AAABABEAAAD///n/AAABAA8AAAAAAPn/AAABAA8AAAAQAPn/AAABAA8AAAAQAPr/AAABABAAAAAQAPv/AAABABEAAAARAPn/AAABAA8AAAARAPr/AAABABAAAAARAPv/AAABABEAAAASAPn/AAABAA8AAAASAPr/AAABABAAAAASAPv/AAABABEAAAATAPn/AAABAA8AAAATAPr/AAABABAAAAATAPv/AAABABEAAAABAPn/AAABAA8AAAABAPr/AAABABAAAAABAPv/AAABABEAAAACAPn/AAABAA8AAAACAPr/AAABABAAAAACAPv/AAABABEAAAADAPn/AAABAA8AAAADAPr/AAABABAAAAADAPv/AAABABEAAAAEAPn/AAABAA8AAAAFAPn/AAABAA8AAAAGAPn/AAABAA8AAAAHAPn/AAABAA8AAAAHAPr/AAABABAAAAAHAPv/AAABABEAAAAPAPn/AAABAA8AAAAOAPn/AAABAA8AAAANAPn/AAABAA8AAAANAPr/AAABABAAAAANAPv/AAABABEAAAAMAPn/AAABAA8AAAAMAPr/AAABABAAAAAMAPv/AAABABEAAAALAPn/AAABAA8AAAALAPr/AAABABAAAAALAPv/AAABABEAAAAKAPn/AAABAA8AAAAJAPn/AAABAA8AAAAIAPn/AAABAA8AAAAIAPr/AAABABAAAAAIAPv/AAABABEAAAAGAPv/AAABABEAAAAGAPr/AAABABAAAAD6//n/AAABAA8AAAD6//r/AAABABAAAAD6//v/AAABABEAAAAEAPr/AAABABAAAAAEAPv/AAABABEAAAAFAPr/AAABABAAAAAFAPv/AAABABEAAAAJAPr/AAABABAAAAAJAPv/AAABABEAAAAKAPr/AAABABAAAAAKAPv/AAABABEAAAA=")
+tile_map_data = PackedByteArray("AAD+//n/AAABAA8AAAD+//r/AAABABAAAAD+//v/AAABABEAAAD9//n/AAABAA8AAAD9//r/AAABABAAAAD9//v/AAABABEAAAD8//n/AAABAA8AAAD8//r/AAABABAAAAD8//v/AAABABEAAAD7//n/AAABAA8AAAD7//r/AAABABAAAAD7//v/AAABABEAAAD///n/AAABAA8AAAAAAPn/AAABAA8AAAAQAPn/AAABAA8AAAAQAPr/AAABABAAAAAQAPv/AAABABEAAAARAPn/AAABAA8AAAARAPr/AAABABAAAAARAPv/AAABABEAAAASAPn/AAABAA8AAAASAPr/AAABABAAAAASAPv/AAABABEAAAATAPn/AAABAA8AAAATAPr/AAABABAAAAATAPv/AAABABEAAAABAPn/AAABAA8AAAABAPr/AAABABAAAAABAPv/AAABABEAAAACAPn/AAABAA8AAAACAPr/AAABABAAAAACAPv/AAABABEAAAADAPn/AAABAA8AAAADAPr/AAABABAAAAADAPv/AAABABEAAAAEAPn/AAABAA8AAAAFAPn/AAABAA8AAAAGAPn/AAABAA8AAAAHAPn/AAABAA8AAAAPAPn/AAABAA8AAAAOAPn/AAABAA8AAAANAPn/AAABAA8AAAANAPr/AAABABAAAAANAPv/AAABABEAAAAMAPn/AAABAA8AAAAMAPr/AAABABAAAAAMAPv/AAABABEAAAALAPn/AAABAA8AAAALAPr/AAABABAAAAALAPv/AAABABEAAAAKAPn/AAABAA8AAAAJAPn/AAABAA8AAAAIAPn/AAABAA8AAAAIAPr/AAABABAAAAAIAPv/AAABABEAAAD6//n/AAABAA8AAAD6//r/AAABABAAAAD6//v/AAABABEAAAAEAPr/AAABABAAAAAEAPv/AAABABEAAAAFAPr/AAABABAAAAAFAPv/AAABABEAAAAJAPr/AAABABAAAAAJAPv/AAABABEAAAAKAPr/AAABABAAAAAKAPv/AAABABEAAAA=")
 
 [node name="Door5" parent="." instance=ExtResource("4_jld50")]
 position = Vector2(-48, 59)
 toTransport = 9
 playerPos = Vector2(0, -38)
 enemyControlled = false
+direction = "south"
 
 [node name="Floor" parent="." instance=ExtResource("2_so18s")]
 z_index = -2
@@ -56,31 +56,26 @@ position = Vector2(-38, -1)
 [node name="Spike6" parent="Y_Sorting/Spikes" instance=ExtResource("9_lfbxl")]
 position = Vector2(-52, -1)
 
-[node name="Player" parent="Y_Sorting" instance=ExtResource("10_h3ukb")]
-position = Vector2(-49, 56)
-
-[node name="Cam" type="Camera2D" parent="Y_Sorting/Player"]
-position = Vector2(-1856.5076, -280.6278)
-zoom = Vector2(8, 8)
-position_smoothing_enabled = true
-
 [node name="Door" parent="." instance=ExtResource("6_7csao")]
 position = Vector2(0, -85)
 toTransport = 5
 playerPos = Vector2(0, 54)
 enemyControlled = false
+direction = "north"
 
 [node name="Door2" parent="." instance=ExtResource("6_7csao")]
-position = Vector2(111, -85)
+position = Vector2(112, -85)
 toTransport = 6
 playerPos = Vector2(0, 54)
 enemyControlled = false
+direction = "north"
 
 [node name="Door4" parent="." instance=ExtResource("6_7csao")]
 position = Vector2(240, -85)
 toTransport = 8
 playerPos = Vector2(0, 54)
 enemyControlled = false
+direction = "north"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.69135684, 0.6913568, 0.69135684, 1)
@@ -90,8 +85,6 @@ position = Vector2(38, -85)
 
 [node name="Torch2" parent="." instance=ExtResource("7_xrw8b")]
 position = Vector2(-34, -85)
-
-[node name="HUD" parent="." instance=ExtResource("8_jtuoa")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -132.0
