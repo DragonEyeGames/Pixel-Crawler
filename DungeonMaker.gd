@@ -28,14 +28,15 @@ func generate(on: Node2D):
 			placedLevels.append(level)
 	level.visible=true
 	var door = null
-	while door==null:
-		if(len(level.doors)<=0):
-			#generate(placedLevels.pick_random())
-			return
-		var testDoor=level.doors.pick_random()
-		if(testDoor.direction=="north"):
-			door=testDoor
-			level.doors.erase(door)
+	var north_doors = []
+	for d in level.doors:
+		if d.direction == "north":
+			north_doors.append(d)
+	if north_doors.is_empty():
+		#generate(placedLevels.pick_random())
+		return
+	door = north_doors.pick_random()
+	level.doors.erase(door)
 	print(door.direction)
 	if(door.direction=="north"):
 		var levelReplacement=null
@@ -47,17 +48,21 @@ func generate(on: Node2D):
 				levelReplacement=testLevel
 				add_child(levelReplacement)
 				instantiatedLevels.erase(levelReplacement)
-				placedLevels.append(levelReplacement)
+				#placedLevels.append(levelReplacement)
 		levelReplacement.visible=true
 		var newDoor=null
-		while newDoor==null:
-			if(len(levelReplacement.doors)<=0):
-				#generate(placedLevels.pick_random())
-				return
-			var testDoor=levelReplacement.doors.pick_random()
-			if(testDoor.direction=="south"):
-				newDoor=testDoor
-				levelReplacement.doors.erase(newDoor)
+		var south_doors = []
+
+		for d in levelReplacement.doors:
+			if d.direction == "south":
+				south_doors.append(d)
+
+		if south_doors.is_empty():
+			#generate(placedLevels.pick_random())
+			return
+
+		newDoor = south_doors.pick_random()
+		levelReplacement.doors.erase(newDoor)
 		levelReplacement.visible=true
 		level.visible=true
 		levelReplacement.global_position = door.global_position - newDoor.global_position
@@ -65,11 +70,16 @@ func generate(on: Node2D):
 		await get_tree().process_frame
 		if(levelReplacement.colliding):
 			print("Coldsd")
-			#level.colliding=false
-			#levelReplacement.colliding=false
-			#remove_child(levelReplacement)
-			#instantiatedLevels.append(levelReplacement)
+			level.colliding=false
+			levelReplacement.colliding=false
+			remove_child(levelReplacement)
+			instantiatedLevels.append(levelReplacement)
+			level.doors.append(door)
+			levelReplacement.doors.append(newDoor)
+			#placedLevels.erase(levelReplacement)
 			#generate(placedLevels.pick_random())
+		else:
+			placedLevels.append(levelReplacement)
 			
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
