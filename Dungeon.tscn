@@ -16,11 +16,11 @@
 
 [node name="Dungeon" type="Node2D"]
 script = ExtResource("1_nulmw")
-levels = Array[PackedScene]([ExtResource("2_dqayi"), ExtResource("1_sifhu"), ExtResource("2_slqep"), ExtResource("3_dgn0p"), ExtResource("6_p832w")])
+levels = Array[PackedScene]([ExtResource("2_dqayi"), ExtResource("3_dgn0p"), ExtResource("1_sifhu"), ExtResource("2_slqep"), ExtResource("6_p832w")])
 caps = Array[PackedScene]([ExtResource("6_1vdva"), ExtResource("7_p832w"), ExtResource("8_oq8wd"), ExtResource("9_5ilfn"), ExtResource("10_1qybq"), ExtResource("11_fo3ry")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(70, -237)
-zoom = Vector2(1.3, 1.3)
+position = Vector2(76, -308)
+zoom = Vector2(1.245, 1.245)
 
 [node name="HUD" parent="." instance=ExtResource("12_dgn0p")]

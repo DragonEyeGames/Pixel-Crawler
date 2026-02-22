@@ -65,7 +65,7 @@ func generate(on: Node2D):
 		levelReplacement.doors.erase(newDoor)
 		levelReplacement.visible=true
 		level.visible=true
-		levelReplacement.global_position = door.global_position - newDoor.global_position
+		levelReplacement.global_position = door.global_position - newDoor.position
 		await get_tree().process_frame
 		await get_tree().process_frame
 		if(levelReplacement.colliding):

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Pixel Crawler"
-run/main_scene="uid://cxeku84y8wgt8"
+run/main_scene="uid://cwmhhrjco02h7"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://Assets/icon.svg"
 
