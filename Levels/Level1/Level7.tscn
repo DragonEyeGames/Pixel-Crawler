@@ -18,10 +18,6 @@ level = 7
 enemies = 2
 doors = [NodePath("Door2")]
 
-[node name="BackWalls" parent="." instance=ExtResource("2_4b247")]
-z_index = -1
-tile_map_data = PackedByteArray("AAD7//X/AAABAA8AAAD7//b/AAABABAAAAD7//f/AAABABEAAAD8//X/AAABAA8AAAD8//b/AAABABAAAAD8//f/AAABABEAAAD9//X/AAABAA8AAAD9//b/AAABABAAAAD9//f/AAABABEAAAD+//X/AAABAA8AAAD+//b/AAABABAAAAD+//f/AAABABEAAAD///X/AAABAA8AAAD///b/AAABABAAAAD///f/AAABABEAAAAAAPX/AAABAA8AAAAAAPb/AAABABAAAAAAAPf/AAABABEAAAABAPX/AAABAA8AAAABAPb/AAABABAAAAABAPf/AAABABEAAAACAPX/AAABAA8AAAACAPb/AAABABAAAAACAPf/AAABABEAAAADAPX/AAABAA8AAAADAPb/AAABABAAAAADAPf/AAABABEAAAAEAPX/AAABAA8AAAAEAPb/AAABABAAAAAEAPf/AAABABEAAAA=")
-
 [node name="Door2" parent="." instance=ExtResource("4_isovy")]
 position = Vector2(0, 59)
 toTransport = 4
@@ -46,16 +42,16 @@ position = Vector2(2, -123)
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_i4375")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 77.0
-offset_top = -177.0
-offset_right = 117.0
-offset_bottom = -123.0
-color = Color(0, 0, 0, 1)
+[node name="Control" type="Control" parent="."]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -76.0
+offset_top = -173.0
+offset_right = 77.0
+offset_bottom = 73.0
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = -116.0
-offset_top = -182.0
-offset_right = -76.0
-offset_bottom = -128.0
-color = Color(0, 0, 0, 1)
+[node name="BackWalls" parent="Control" instance=ExtResource("2_4b247")]
+z_index = -1
+position = Vector2(76, 173)
+tile_map_data = PackedByteArray("AAD7//X/AAABAA8AAAD7//b/AAABABAAAAD7//f/AAABABEAAAD8//X/AAABAA8AAAD8//b/AAABABAAAAD8//f/AAABABEAAAD9//X/AAABAA8AAAD9//b/AAABABAAAAD9//f/AAABABEAAAD+//X/AAABAA8AAAD+//b/AAABABAAAAD+//f/AAABABEAAAD///X/AAABAA8AAAD///b/AAABABAAAAD///f/AAABABEAAAAAAPX/AAABAA8AAAAAAPb/AAABABAAAAAAAPf/AAABABEAAAABAPX/AAABAA8AAAABAPb/AAABABAAAAABAPf/AAABABEAAAACAPX/AAABAA8AAAACAPb/AAABABAAAAACAPf/AAABABEAAAADAPX/AAABAA8AAAADAPb/AAABABAAAAADAPf/AAABABEAAAAEAPX/AAABAA8AAAAEAPb/AAABABAAAAAEAPf/AAABABEAAAA=")

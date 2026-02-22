@@ -66,10 +66,6 @@ level = 5
 enemies = 1
 doors = [NodePath("Door2")]
 
-[node name="BackWalls" parent="." instance=ExtResource("2_cg4ff")]
-z_index = -1
-tile_map_data = PackedByteArray("AAD7//v/AAABAA8AAAD8//v/AAABAA8AAAD9//v/AAABAA8AAAD+//v/AAABAA8AAAD///v/AAABAA8AAAAAAPv/AAABAA8AAAABAPv/AAABAA8AAAACAPv/AAABAA8AAAADAPv/AAABAA8AAAAEAPv/AAABAA8AAAD7//z/AAABABAAAAD7//3/AAABABEAAAD8//z/AAABABAAAAD8//3/AAABABEAAAD9//z/AAABABAAAAD9//3/AAABABEAAAD+//z/AAABABAAAAD+//3/AAABABEAAAD///z/AAABABAAAAD///3/AAABABEAAAAAAPz/AAABABAAAAAAAP3/AAABABEAAAABAPz/AAABABAAAAABAP3/AAABABEAAAACAPz/AAABABAAAAACAP3/AAABABEAAAADAPz/AAABABAAAAADAP3/AAABABEAAAAEAPz/AAABABAAAAAEAP3/AAABABEAAAA=")
-
 [node name="Door2" parent="." instance=ExtResource("4_x1euj")]
 position = Vector2(0, 59)
 toTransport = 4
@@ -104,16 +100,16 @@ position = Vector2(37.5, -55)
 [node name="Torch2" parent="." instance=ExtResource("9_l2wws")]
 position = Vector2(-34.5, -55)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 77.0
-offset_top = -82.0
-offset_right = 117.0
-offset_bottom = -29.0
-color = Color(0, 0, 0, 1)
+[node name="Control" type="Control" parent="."]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -76.0
+offset_top = -77.0
+offset_right = 77.0
+offset_bottom = 73.0
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = -116.0
-offset_top = -82.0
-offset_right = -76.0
-offset_bottom = -29.0
-color = Color(0, 0, 0, 1)
+[node name="BackWalls" parent="Control" instance=ExtResource("2_cg4ff")]
+z_index = -1
+position = Vector2(76, 77)
+tile_map_data = PackedByteArray("AAD7//v/AAABAA8AAAD8//v/AAABAA8AAAD9//v/AAABAA8AAAD+//v/AAABAA8AAAD///v/AAABAA8AAAAAAPv/AAABAA8AAAABAPv/AAABAA8AAAACAPv/AAABAA8AAAADAPv/AAABAA8AAAAEAPv/AAABAA8AAAD7//z/AAABABAAAAD7//3/AAABABEAAAD8//z/AAABABAAAAD8//3/AAABABEAAAD9//z/AAABABAAAAD9//3/AAABABEAAAD+//z/AAABABAAAAD+//3/AAABABEAAAD///z/AAABABAAAAD///3/AAABABEAAAAAAPz/AAABABAAAAAAAP3/AAABABEAAAABAPz/AAABABAAAAABAP3/AAABABEAAAACAPz/AAABABAAAAACAP3/AAABABEAAAADAPz/AAABABAAAAADAP3/AAABABEAAAAEAPz/AAABABAAAAAEAP3/AAABABEAAAA=")

@@ -28,10 +28,6 @@ enemyControlled = false
 level = 9
 direction = "north"
 
-[node name="BackWalls" parent="." instance=ExtResource("2_l7ecc")]
-z_index = -1
-tile_map_data = PackedByteArray("AAD7//v/AAABAA8AAAD8//v/AAABAA8AAAD9//v/AAABAA8AAAD+//v/AAABAA8AAAD///v/AAABAA8AAAAAAPv/AAABAA8AAAABAPv/AAABAA8AAAACAPv/AAABAA8AAAADAPv/AAABAA8AAAAEAPv/AAADAA8AAAD7//z/AAABABAAAAD7//3/AAABABEAAAD8//z/AAABABAAAAD8//3/AAABABEAAAD9//z/AAABABAAAAD9//3/AAABABEAAAD+//z/AAABABAAAAD+//3/AAABABEAAAABAPz/AAABABAAAAABAP3/AAABABEAAAACAPz/AAABABAAAAACAP3/AAABABEAAAADAPz/AAABABAAAAADAP3/AAABABEAAAAEAPz/AAADABAAAAAEAP3/AAADABEAAAA=")
-
 [node name="Door2" parent="." instance=ExtResource("4_x2yma")]
 position = Vector2(0, 59)
 animation = &"closed"
@@ -65,23 +61,25 @@ position = Vector2(-34.5, -55)
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_hy5j1")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -116.0
-offset_top = -80.0
-offset_right = -76.0
-offset_bottom = -31.0
-color = Color(0, 0, 0, 1)
+[node name="Control" type="Control" parent="."]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -76.0
+offset_top = -77.0
+offset_right = 77.0
+offset_bottom = 73.0
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = 77.0
-offset_top = -78.0
-offset_right = 117.0
-offset_bottom = -29.0
-color = Color(0, 0, 0, 1)
+[node name="BackWalls" parent="Control" instance=ExtResource("2_l7ecc")]
+z_index = -1
+position = Vector2(76, 77)
+tile_map_data = PackedByteArray("AAD7//v/AAABAA8AAAD8//v/AAABAA8AAAD9//v/AAABAA8AAAD+//v/AAABAA8AAAD///v/AAABAA8AAAAAAPv/AAABAA8AAAABAPv/AAABAA8AAAACAPv/AAABAA8AAAADAPv/AAABAA8AAAAEAPv/AAADAA8AAAD7//z/AAABABAAAAD7//3/AAABABEAAAD8//z/AAABABAAAAD8//3/AAABABEAAAD9//z/AAABABAAAAD9//3/AAABABEAAAD+//z/AAABABAAAAD+//3/AAABABEAAAABAPz/AAABABAAAAABAP3/AAABABEAAAACAPz/AAABABAAAAACAP3/AAABABEAAAADAPz/AAABABAAAAADAP3/AAABABEAAAAEAPz/AAADABAAAAAEAP3/AAADABEAAAA=")
 
-[node name="ColorRect3" type="ColorRect" parent="."]
-offset_left = 77.0
-offset_top = -78.0
-offset_right = 117.0
-offset_bottom = -29.0
-color = Color(0, 0, 0, 1)
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-75, 72, 76, 72, 76, -38, -75, -38)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

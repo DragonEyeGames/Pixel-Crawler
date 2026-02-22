@@ -5,7 +5,7 @@ extends Node2D
 @export var enemies=3
 var emitted:=false
 @export var doors: Array[Node2D] = []
-
+var colliding=false
 func _ready() -> void:
 	for door in doors:
 		door.level=level
@@ -34,3 +34,7 @@ func on_death():
 	#if(enemies<=0 and not emitted):
 		#emitted=true
 		#SignalBus.allGone.emit()
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	colliding=true

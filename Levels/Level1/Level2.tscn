@@ -133,5 +133,13 @@ offset_right = 8.0
 offset_bottom = 18.0
 color = Color(0.61339027, 0.61339027, 0.61339027, 1)
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-139, 136, 172, 136, 172, -101, -139, -102)
+
 [connection signal="area_entered" from="SideDoor/Area2D" to="SideDoor" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="SideDoor2/Area2D" to="SideDoor2" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
