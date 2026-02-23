@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cwmhhrjco02h7"]
+[gd_scene load_steps=15 format=3 uid="uid://cwmhhrjco02h7"]
 
 [ext_resource type="Script" uid="uid://vayrh1hsg8yl" path="res://DungeonMaker.gd" id="1_nulmw"]
 [ext_resource type="PackedScene" uid="uid://dhd0snu2yv3e5" path="res://Levels/Level1/Level4.tscn" id="1_sifhu"]
@@ -13,14 +13,18 @@
 [ext_resource type="PackedScene" uid="uid://dwxnwle6lldtl" path="res://Levels/Level1/Level7.tscn" id="10_1qybq"]
 [ext_resource type="PackedScene" uid="uid://8ly23il61jqa" path="res://Levels/Level1/level8.tscn" id="11_fo3ry"]
 [ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Scenes/HUD.tscn" id="12_dgn0p"]
+[ext_resource type="PackedScene" uid="uid://ct4ti7ck1jr5y" path="res://Player Types/player.tscn" id="14_p832w"]
 
 [node name="Dungeon" type="Node2D"]
 script = ExtResource("1_nulmw")
 levels = Array[PackedScene]([ExtResource("2_dqayi"), ExtResource("3_dgn0p"), ExtResource("1_sifhu"), ExtResource("2_slqep"), ExtResource("6_p832w")])
 caps = Array[PackedScene]([ExtResource("6_1vdva"), ExtResource("7_p832w"), ExtResource("8_oq8wd"), ExtResource("9_5ilfn"), ExtResource("10_1qybq"), ExtResource("11_fo3ry")])
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(76, -308)
-zoom = Vector2(1.245, 1.245)
-
 [node name="HUD" parent="." instance=ExtResource("12_dgn0p")]
+
+[node name="Player" parent="." instance=ExtResource("14_p832w")]
+position = Vector2(13, 2)
+
+[node name="Cam" type="Camera2D" parent="Player"]
+position = Vector2(63, -310)
+zoom = Vector2(4.4, 4.4)

@@ -7,6 +7,9 @@ class_name Archer
 var charged:=false
 	
 func _physics_process(_delta: float) -> void:
+	if(sprite==null):
+		queue_free()
+		return
 	if(dead or not canMove):
 		return
 	if(attacking):

@@ -11,6 +11,7 @@ func _ready() -> void:
 		door.level=level
 		door.chapter=chapter
 	SignalBus.enemy_died.connect(on_death)
+	SignalBus.generated.connect(finishedGeneration)
 	#if ResourceLoader.exists("user://scene_data.tres"):
 		#var data = ResourceLoader.load("user://scene_data.tres") as SceneData
 		#if(level in GameManager.save):
@@ -36,5 +37,21 @@ func on_death():
 		#SignalBus.allGone.emit()
 
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_area_2d_area_entered(_area: Area2D) -> void:
 	colliding=true
+	
+func finishedGeneration():
+	for door in doors:
+		door.visible=false
+
+func _on_player_area_entered(_area: Area2D) -> void:
+	modulate.a=0
+	visible=true
+	var tween=create_tween()
+	tween.tween_property(self, "modulate:a", 1.0, .1)
+
+func _on_player_area_exited(_area: Area2D) -> void:
+	modulate.a=1
+	visible=true
+	var tween=create_tween()
+	tween.tween_property(self, "modulate:a", 0.0, .1)

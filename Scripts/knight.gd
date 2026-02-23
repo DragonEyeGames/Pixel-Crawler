@@ -5,6 +5,9 @@ class_name Knight
 var blocking:=false
 	
 func _physics_process(_delta: float) -> void:
+	if(sprite==null):
+		queue_free()
+		return
 	if(dead or not canMove or attacking):
 		return
 	if(blocking):

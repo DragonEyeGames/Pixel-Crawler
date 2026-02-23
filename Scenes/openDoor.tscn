@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1wf1joh17gir"]
+[gd_scene load_steps=10 format=3 uid="uid://b1wf1joh17gir"]
 
 [ext_resource type="Texture2D" uid="uid://wrg7d4vpuep6" path="res://Assets/Tilemap/FixedDoors.png" id="1_jgt0o"]
 [ext_resource type="Script" uid="uid://kgd2ux45ohr0" path="res://Scripts/door.gd" id="2_n6tk3"]
@@ -62,9 +62,6 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgt0o"]
-size = Vector2(20, 5)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dl8mf"]
 size = Vector2(20, 3)
 
@@ -75,18 +72,6 @@ animation = &"raise"
 autoplay = "closed"
 script = ExtResource("2_n6tk3")
 enemyControlled = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(0, 18)
-scale = Vector2(1, -1)
-polygon = PackedVector2Array(10, 14, 10, 5, 7, 1, -5, 1, -8, 5, -8, 14, -13, 14, -13, 1, -9, -2, 10, -2, 14, 1, 14, 14)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 7.5)
-shape = SubResource("RectangleShape2D_jgt0o")
-disabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

@@ -2,17 +2,20 @@ extends Node2D
 
 @export var levels: Array[PackedScene]
 @export var caps: Array[PackedScene]
+
 var instantiatedLevels=[]
 var placedLevels=[] #The levels that have already been moved and generated n stuff
+var uniqueLeft=[]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for level in levels:
 		var newLevel = level.instantiate()
 		#add_child(newLevel)
 		newLevel.visible=false
+		uniqueLeft.append(newLevel)
 		for door in newLevel.doors:
 			instantiatedLevels.append(newLevel)
-	generate(null)
+	generateWorld()
 		
 
 func generate(on: Node2D):
@@ -24,9 +27,10 @@ func generate(on: Node2D):
 		if(testLevel.is_in_group("North")):
 			level=testLevel
 			add_child(level)
+			uniqueLeft.erase(level)
 			instantiatedLevels.erase(level)
 			placedLevels.append(level)
-	level.visible=true
+			level.visible=true
 	var door = null
 	var north_doors = []
 	for d in level.doors:
@@ -44,12 +48,11 @@ func generate(on: Node2D):
 			if(len(instantiatedLevels)<=0):
 				return
 			var testLevel = instantiatedLevels.pick_random()
-			if(testLevel.is_in_group("South") and testLevel!=level and not testLevel in placedLevels):
+			if(testLevel.is_in_group("South") and testLevel!=level and testLevel in uniqueLeft):
 				levelReplacement=testLevel
 				add_child(levelReplacement)
 				instantiatedLevels.erase(levelReplacement)
 				#placedLevels.append(levelReplacement)
-		levelReplacement.visible=true
 		var newDoor=null
 		var south_doors = []
 
@@ -63,8 +66,6 @@ func generate(on: Node2D):
 
 		newDoor = south_doors.pick_random()
 		levelReplacement.doors.erase(newDoor)
-		levelReplacement.visible=true
-		level.visible=true
 		levelReplacement.global_position = door.global_position - newDoor.position
 		await get_tree().process_frame
 		await get_tree().process_frame
@@ -80,9 +81,15 @@ func generate(on: Node2D):
 			#generate(placedLevels.pick_random())
 		else:
 			placedLevels.append(levelReplacement)
+			uniqueLeft.erase(levelReplacement)
+			door.connection=newDoor
+			newDoor.connection=door
 			
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if(Input.is_action_just_pressed("Attack")):
-		generate(placedLevels.pick_random())
+func generateWorld():
+	await generate(null)
+	await get_tree().physics_frame
+	while len(uniqueLeft)>0:
+		await generate(placedLevels.pick_random())
+	await get_tree().process_frame
+	SignalBus.generated.emit()

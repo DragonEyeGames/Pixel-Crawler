@@ -8,4 +8,4 @@ func _ready() -> void:
 
 func openDoor():
 	play("raise")
-	$StaticBody2D/CollisionShape2D.disabled=true
+	#$StaticBody2D/CollisionShape2D.disabled=true

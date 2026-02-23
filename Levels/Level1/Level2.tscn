@@ -140,6 +140,15 @@ collision_mask = 8
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(-139, 136, 172, 136, 172, -101, -139, -102)
 
+[node name="player" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="player"]
+polygon = PackedVector2Array(-139, 136, 172, 136, 172, -101, -139, -102)
+
 [connection signal="area_entered" from="SideDoor/Area2D" to="SideDoor" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="SideDoor2/Area2D" to="SideDoor2" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="player" to="." method="_on_player_area_entered"]
+[connection signal="area_exited" from="player" to="." method="_on_player_area_exited"]

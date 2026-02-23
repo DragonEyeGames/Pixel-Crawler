@@ -6,11 +6,11 @@ extends AnimatedSprite2D
 @export var enemyControlled:=false
 @export var level = 2
 @export var direction: String
+var connection
 
 func _ready() -> void:
 	if(enemyControlled):
 		SignalBus.allGone.connect(openDoor)
-		$StaticBody2D/CollisionShape2D.disabled=false
 		play("closed")
 		await get_tree().process_frame
 		play("closed")
@@ -23,15 +23,14 @@ func openDoor():
 	await get_tree().process_frame
 	await get_tree().process_frame
 	play("raise")
-	$StaticBody2D/CollisionShape2D.disabled=true
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if(area.get_parent() is Player):
-		GameManager.transition.play("out")
-		area.get_parent().canMove=false
-		await get_tree().create_timer(.5).timeout
-		await get_tree().process_frame
-		await get_tree().process_frame
+	pass
+	#if(area.get_parent() is Player):
+		#get_parent().visible=!get_parent().visible;
+		
+		
+func saveGame(): #Old undedned stuf I don;t want to ocmment out or delete
 		var enemies = get_tree().get_nodes_in_group("Enemy")
 		var data = SceneData.new()
 		GameManager.playerPos=playerPos

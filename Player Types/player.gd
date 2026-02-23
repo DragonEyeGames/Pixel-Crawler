@@ -5,6 +5,7 @@ func _ready():
 		global_position=GameManager.playerPos
 	match GameManager.playerType:
 		GameManager.playerTypes.Knight:
+			print("knight")
 			var knight = $Knight
 			knight.initialize()
 			var cam = $Cam
@@ -14,8 +15,10 @@ func _ready():
 			cam.position=Vector2.ZERO
 			await get_tree().process_frame
 			cam.position=Vector2.ZERO
+			cam.position_smoothing_enabled=true
 			call_deferred("queue_free")
 		GameManager.playerTypes.Axeman:
+			print("axeman")
 			var axeman = $Axeman
 			axeman.initialize()
 			var cam = $Cam
@@ -25,8 +28,10 @@ func _ready():
 			cam.position=Vector2.ZERO
 			await get_tree().process_frame
 			cam.position=Vector2.ZERO
+			cam.position_smoothing_enabled=true
 			call_deferred("queue_free")
 		GameManager.playerTypes.Archer:
+			print("archer")
 			var archer = $Archer
 			archer.initialize()
 			var cam = $Cam
@@ -36,4 +41,5 @@ func _ready():
 			cam.position=Vector2.ZERO
 			await get_tree().process_frame
 			cam.position=Vector2.ZERO
+			cam.position_smoothing_enabled=true
 			call_deferred("queue_free")

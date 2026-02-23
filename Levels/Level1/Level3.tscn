@@ -73,7 +73,7 @@ enemies = 1
 doors = [NodePath("Door2")]
 
 [node name="Door2" parent="." instance=ExtResource("4_3e7p2")]
-position = Vector2(0, 59)
+position = Vector2(-1, 59)
 playerPos = Vector2(-96, -102)
 direction = "south"
 

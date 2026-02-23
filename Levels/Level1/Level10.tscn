@@ -20,7 +20,7 @@ enemies = 0
 doors = [NodePath("Door"), NodePath("Door3"), NodePath("Door2"), NodePath("Door4")]
 
 [node name="Door" parent="." instance=ExtResource("2_avc1n")]
-position = Vector2(66, -53)
+position = Vector2(64, -53)
 toTransport = 4
 playerPos = Vector2(-51, 56)
 enemyControlled = false
@@ -28,7 +28,7 @@ level = 9
 direction = "north"
 
 [node name="Door3" parent="." instance=ExtResource("2_avc1n")]
-position = Vector2(-62, -53)
+position = Vector2(-64, -53)
 toTransport = 4
 playerPos = Vector2(-51, 56)
 enemyControlled = false
@@ -86,7 +86,7 @@ offset_bottom = 73.0
 [node name="BackWalls" parent="Control" instance=ExtResource("4_t8q16")]
 z_index = -1
 position = Vector2(140, 77)
-tile_map_data = PackedByteArray("AAD7//v/AAABAA8AAAD8//v/AAABAA8AAAD9//v/AAABAA8AAAD+//v/AAABAA8AAAD///v/AAABAA8AAAAAAPv/AAABAA8AAAABAPv/AAABAA8AAAACAPv/AAABAA8AAAADAPv/AAABAA8AAAAEAPv/AAADAA8AAAD7//z/AAABABAAAAD7//3/AAABABEAAAD8//z/AAABABAAAAD8//3/AAABABEAAAD9//z/AAABABAAAAD9//3/AAABABEAAAD+//z/AAABABAAAAD+//3/AAABABEAAAABAPz/AAABABAAAAABAP3/AAABABEAAAACAPz/AAABABAAAAACAP3/AAABABEAAAADAPz/AAABABAAAAADAP3/AAABABEAAAAEAPz/AAADABAAAAAEAP3/AAADABEAAAD6//v/AAABAA8AAAD6//z/AAABABAAAAD6//3/AAABABEAAAD5//v/AAABAA8AAAD5//z/AAABABAAAAD5//3/AAABABEAAAD4//v/AAABAA8AAAD4//z/AAABABAAAAD4//3/AAABABEAAAAFAPv/AAABAA8AAAAFAPz/AAABABAAAAAFAP3/AAABABEAAAAGAPv/AAABAA8AAAAGAPz/AAABABAAAAAGAP3/AAABABEAAAAHAPv/AAABAA8AAAAHAPz/AAABABAAAAAHAP3/AAABABEAAAAAAPz/AAABABAAAAAAAP3/AAABABEAAAD///z/AAABABAAAAD///3/AAABABEAAAD3//v/AAABAA8AAAD3//z/AAABABAAAAD3//3/AAABABEAAAAIAPv/AAABAA8AAAAIAPz/AAABABAAAAAIAP3/AAABABEAAAA=")
+tile_map_data = PackedByteArray("AAD7//v/AAABAA8AAAD8//v/AAABAA8AAAD9//v/AAABAA8AAAD+//v/AAABAA8AAAD///v/AAABAA8AAAAAAPv/AAABAA8AAAABAPv/AAABAA8AAAACAPv/AAABAA8AAAADAPv/AAABAA8AAAAEAPv/AAADAA8AAAD9//z/AAABABAAAAD9//3/AAABABEAAAD+//z/AAABABAAAAD+//3/AAABABEAAAABAPz/AAABABAAAAABAP3/AAABABEAAAACAPz/AAABABAAAAACAP3/AAABABEAAAD6//v/AAABAA8AAAD6//z/AAABABAAAAD6//3/AAABABEAAAD5//v/AAABAA8AAAD5//z/AAABABAAAAD5//3/AAABABEAAAD4//v/AAABAA8AAAD4//z/AAABABAAAAD4//3/AAABABEAAAAFAPv/AAABAA8AAAAFAPz/AAABABAAAAAFAP3/AAABABEAAAAGAPv/AAABAA8AAAAGAPz/AAABABAAAAAGAP3/AAABABEAAAAHAPv/AAABAA8AAAAHAPz/AAABABAAAAAHAP3/AAABABEAAAAAAPz/AAABABAAAAAAAP3/AAABABEAAAD///z/AAABABAAAAD///3/AAABABEAAAD3//v/AAABAA8AAAD3//z/AAABABAAAAD3//3/AAABABEAAAAIAPv/AAABAA8AAAAIAPz/AAABABAAAAAIAP3/AAABABEAAAA=")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8
@@ -95,4 +95,13 @@ collision_mask = 8
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(-139, 72, 140, 72, 140, -38, -139, -38)
 
+[node name="player" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="player"]
+polygon = PackedVector2Array(-139, 72, 140, 72, 140, -38, -139, -38)
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="player" to="." method="_on_player_area_entered"]
+[connection signal="area_exited" from="player" to="." method="_on_player_area_exited"]
