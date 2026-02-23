@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var health:=5.0
 var hit:AnimationPlayer
-var sprite:AnimatedSprite2D
+@onready var sprite:AnimatedSprite2D = $Sprite
 var shadow: AnimatedSprite2D
 var dead=false
 var player: CharacterBody2D
@@ -17,6 +17,11 @@ var canAttack:=true
 @export var weaponDamage:=1
 
 func _ready() -> void:
+	hit=$Hit
+	sprite=$Sprite
+	shadow=$Shadow
+	player=GameManager.player
+	animator = $Attack
 	await get_tree().process_frame
 	hit=$Hit
 	sprite=$Sprite
@@ -25,6 +30,10 @@ func _ready() -> void:
 	animator = $Attack
 
 func _physics_process(_delta: float) -> void:
+	if(player==null):
+		player=GameManager.player
+		return
+	player=GameManager.player
 	if(dead or attacking):
 		return
 	if(len(attackingList)>=1 and canAttack):

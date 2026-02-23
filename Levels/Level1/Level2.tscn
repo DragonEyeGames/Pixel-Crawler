@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://bb8xchi76xpxd"]
+[gd_scene load_steps=10 format=4 uid="uid://bb8xchi76xpxd"]
 
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="1_m3ha0"]
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_xosfc"]
+[ext_resource type="PackedScene" uid="uid://0t3tdgnb5mjo" path="res://Levels/Level1/monsterSpawner.tscn" id="6_k313m"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Scenes/door.tscn" id="6_xosfc"]
 [ext_resource type="Script" uid="uid://kgd2ux45ohr0" path="res://Scripts/door.gd" id="10_mbuxx"]
 [ext_resource type="PackedScene" uid="uid://c4wws2xdfldn2" path="res://Scenes/chest.tscn" id="10_x7rwe"]
@@ -146,6 +147,16 @@ collision_mask = 2
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="player"]
 polygon = PackedVector2Array(-139, 136, 172, 136, 172, -101, -139, -102)
+
+[node name="MonsterSpawner" parent="." instance=ExtResource("6_k313m")]
+position = Vector2(-103, -64)
+
+[node name="MonsterSpawner2" parent="." instance=ExtResource("6_k313m")]
+position = Vector2(106, -54)
+
+[node name="MonsterSpawner3" parent="." instance=ExtResource("6_k313m")]
+position = Vector2(11, -22)
+strength = 1
 
 [connection signal="area_entered" from="SideDoor/Area2D" to="SideDoor" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="SideDoor2/Area2D" to="SideDoor2" method="_on_area_2d_area_entered"]

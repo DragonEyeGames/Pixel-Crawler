@@ -6,6 +6,7 @@ extends Node2D
 var emitted:=false
 @export var doors: Array[Node2D] = []
 var colliding=false
+var active=false
 func _ready() -> void:
 	for door in doors:
 		door.level=level
@@ -49,9 +50,11 @@ func _on_player_area_entered(_area: Area2D) -> void:
 	visible=true
 	var tween=create_tween()
 	tween.tween_property(self, "modulate:a", 1.0, .1)
+	active=true
 
 func _on_player_area_exited(_area: Area2D) -> void:
 	modulate.a=1
 	visible=true
 	var tween=create_tween()
 	tween.tween_property(self, "modulate:a", 0.0, .1)
+	active=false

@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var health:=5.0
 var hit:AnimationPlayer
-var sprite:AnimatedSprite2D
+@onready var sprite: AnimatedSprite2D = $Sprite
 var shadow: AnimatedSprite2D
 var dead=false
 var player: CharacterBody2D
@@ -23,21 +23,22 @@ func _ready() -> void:
 	await get_tree().process_frame
 	$Timer.start()
 	hit=$Hit
-	sprite=$Sprite
 	shadow=$Shadow
 	player=GameManager.player
 	animator = $Attack
 	cooldown*=1.5
 
 func _physics_process(_delta: float) -> void:
+	print(visible)
 	if(player==null):
 		player=GameManager.player
 		return
 	player=GameManager.player
+	
 	#if(dead and not sprite.animation=="die"):
 		#sprite.play("die")
 		#shadow.play("die")
-	if(dead or attacking):
+	if(dead or attacking or !get_parent().get_parent().active):
 		return
 	if(len(attackingList)>=1 and canAttack):
 		if player.dead!=true:
@@ -95,6 +96,8 @@ func attack():
 	canAttack=false
 	sprite.play("idle")
 	await get_tree().create_timer(cooldown/2).timeout
+	if(dead):
+		return
 	if(randi_range(1, 2)==2):
 		sprite.play("attack-2")
 		animator.play("attack-2")
@@ -107,6 +110,10 @@ func _on_checks_area_entered(area: Area2D) -> void:
 
 
 func _on_sprite_animation_finished() -> void:
+	if(dead and sprite.animation!="die"):
+		sprite.play("die")
+		shadow.play("die")
+		return
 	if("attack" in sprite.animation):
 		attacking=false
 		sprite.play("idle")

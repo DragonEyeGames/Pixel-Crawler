@@ -1,0 +1,109 @@
+[gd_scene load_steps=23 format=3 uid="uid://0t3tdgnb5mjo"]
+
+[ext_resource type="Script" uid="uid://xbdbk8tgb63e" path="res://Levels/Level1/monster_spawner.gd" id="1_ll0mg"]
+[ext_resource type="PackedScene" uid="uid://c78fswc6hav73" path="res://Scenes/Enemies/orc.tscn" id="2_wa7s8"]
+[ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="3_ap54j"]
+[ext_resource type="PackedScene" uid="uid://du02kq7mkyull" path="res://Scenes/Enemies/skeleton.tscn" id="4_d6eik"]
+[ext_resource type="PackedScene" uid="uid://c1f1h4vx7wiai" path="res://Scenes/Enemies/slime.tscn" id="5_g2u14"]
+[ext_resource type="PackedScene" uid="uid://df4aytlkx5ais" path="res://Scenes/Enemies/strongOrc.tscn" id="6_actt3"]
+[ext_resource type="PackedScene" uid="uid://dq4caphl02lr3" path="res://Scenes/Enemies/strongSkeleton.tscn" id="7_cq7yy"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xosfc"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mbiy8"]
+width = 1000
+height = 1000
+noise = SubResource("FastNoiseLite_xosfc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iu1fq"]
+resource_local_to_scene = true
+shader = ExtResource("3_ap54j")
+shader_parameter/whiteness = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_mbiy8")
+shader_parameter/dissolve_amount = 0.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xhj3x"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3je14"]
+width = 1000
+height = 1000
+noise = SubResource("FastNoiseLite_xhj3x")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_251ul"]
+resource_local_to_scene = true
+shader = ExtResource("3_ap54j")
+shader_parameter/whiteness = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_3je14")
+shader_parameter/dissolve_amount = 0.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_07s1k"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cxdgs"]
+width = 1000
+height = 1000
+noise = SubResource("FastNoiseLite_07s1k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k83io"]
+resource_local_to_scene = true
+shader = ExtResource("3_ap54j")
+shader_parameter/whiteness = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_cxdgs")
+shader_parameter/dissolve_amount = 0.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e37l4"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pd02h"]
+width = 1000
+height = 1000
+noise = SubResource("FastNoiseLite_e37l4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ruyw5"]
+resource_local_to_scene = true
+shader = ExtResource("3_ap54j")
+shader_parameter/whiteness = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_pd02h")
+shader_parameter/dissolve_amount = 0.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b7wrt"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_spt3s"]
+width = 1000
+height = 1000
+noise = SubResource("FastNoiseLite_b7wrt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fvl30"]
+resource_local_to_scene = true
+shader = ExtResource("3_ap54j")
+shader_parameter/whiteness = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_spt3s")
+shader_parameter/dissolve_amount = 0.0
+
+[node name="MonsterSpawner" type="Node2D"]
+script = ExtResource("1_ll0mg")
+
+[node name="Weak" type="Node2D" parent="."]
+process_mode = 4
+
+[node name="Orc" parent="Weak" instance=ExtResource("2_wa7s8")]
+material = SubResource("ShaderMaterial_iu1fq")
+
+[node name="Skeleton" parent="Weak" instance=ExtResource("4_d6eik")]
+material = SubResource("ShaderMaterial_251ul")
+
+[node name="Normal" type="Node2D" parent="."]
+process_mode = 4
+
+[node name="Slime" parent="Normal" instance=ExtResource("5_g2u14")]
+material = SubResource("ShaderMaterial_k83io")
+
+[node name="Strong Orc" parent="Normal" instance=ExtResource("6_actt3")]
+material = SubResource("ShaderMaterial_ruyw5")
+
+[node name="Strong Skeleton" parent="Normal" instance=ExtResource("7_cq7yy")]
+material = SubResource("ShaderMaterial_fvl30")
+health = 5.0
