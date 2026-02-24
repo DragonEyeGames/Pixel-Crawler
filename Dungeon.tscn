@@ -15,10 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Scenes/HUD.tscn" id="12_dgn0p"]
 [ext_resource type="PackedScene" uid="uid://ct4ti7ck1jr5y" path="res://Player Types/player.tscn" id="14_p832w"]
 
-[node name="Dungeon" type="Node2D"]
+[node name="Dungeon" type="Node2D" node_paths=PackedStringArray("startingLevel")]
 script = ExtResource("1_nulmw")
 levels = Array[PackedScene]([ExtResource("2_dqayi"), ExtResource("3_dgn0p"), ExtResource("1_sifhu"), ExtResource("2_slqep"), ExtResource("6_p832w")])
 caps = Array[PackedScene]([ExtResource("6_1vdva"), ExtResource("7_p832w"), ExtResource("8_oq8wd"), ExtResource("9_5ilfn"), ExtResource("10_1qybq"), ExtResource("11_fo3ry")])
+startingLevel = NodePath("Main")
 
 [node name="HUD" parent="." instance=ExtResource("12_dgn0p")]
 
@@ -28,3 +29,6 @@ position = Vector2(13, 2)
 [node name="Cam" type="Camera2D" parent="Player"]
 position = Vector2(63, -310)
 zoom = Vector2(4.4, 4.4)
+
+[node name="Main" parent="." instance=ExtResource("6_1vdva")]
+position = Vector2(1, -16)

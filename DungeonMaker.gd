@@ -2,7 +2,7 @@ extends Node2D
 
 @export var levels: Array[PackedScene]
 @export var caps: Array[PackedScene]
-
+@export var startingLevel: Node2D
 var instantiatedLevels=[]
 var placedLevels=[] #The levels that have already been moved and generated n stuff
 var uniqueLeft=[]
@@ -87,7 +87,7 @@ func generate(on: Node2D):
 			
 
 func generateWorld():
-	await generate(null)
+	await generate(startingLevel)
 	await get_tree().physics_frame
 	while len(uniqueLeft)>0:
 		await generate(placedLevels.pick_random())
