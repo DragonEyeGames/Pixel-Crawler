@@ -6,6 +6,7 @@ extends AnimatedSprite2D
 @export var enemyControlled:=false
 @export var level = 2
 @export var direction: String
+@export var coverUp: Node2D
 var connection
 
 func _ready() -> void:
@@ -29,7 +30,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	#if(area.get_parent() is Player):
 		#get_parent().visible=!get_parent().visible;
 		
-		
+func _process(delta: float) -> void:
+	if(coverUp!=null):
+		coverUp.visible=!visible
+
 func saveGame(): #Old undedned stuf I don;t want to ocmment out or delete
 		var enemies = get_tree().get_nodes_in_group("Enemy")
 		var data = SceneData.new()
