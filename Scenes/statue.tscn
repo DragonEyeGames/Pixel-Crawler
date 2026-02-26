@@ -48,7 +48,7 @@ offset_left = 2.0
 offset_top = -16.0
 offset_right = 4.0
 offset_bottom = -14.0
-color = Color(0.7533901, 8.904189e-07, 5.7756904e-07, 1)
+color = Color(0.55937773, 0.0006814111, 0.0003734465, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="Used"]
 layout_mode = 0
@@ -56,7 +56,7 @@ offset_left = -4.0
 offset_top = -16.0
 offset_right = -2.0
 offset_bottom = -14.0
-color = Color(0.7533901, 8.904189e-07, 5.7756904e-07, 1)
+color = Color(0.55937773, 0.0006814111, 0.0003734465, 1)
 
 [node name="ColorRect" type="ColorRect" parent="Used"]
 layout_mode = 0
@@ -64,7 +64,7 @@ offset_left = 3.0
 offset_top = -16.0
 offset_right = 4.0
 offset_bottom = -15.0
-color = Color(0.6189329, 1.732707e-06, 3.85046e-07, 1)
+color = Color(0.37181717, 3.7902967e-07, 4.813075e-08, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="Used"]
 layout_mode = 0
@@ -72,7 +72,7 @@ offset_left = -4.0
 offset_top = -16.0
 offset_right = -3.0
 offset_bottom = -15.0
-color = Color(0.6189329, 1.732707e-06, 3.85046e-07, 1)
+color = Color(0.37181717, 3.7902967e-07, 4.813075e-08, 1)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

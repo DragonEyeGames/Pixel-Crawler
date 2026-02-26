@@ -1,10 +1,12 @@
-[gd_scene load_steps=64 format=3 uid="uid://cq1lla3hekqqj"]
+[gd_scene load_steps=66 format=3 uid="uid://cq1lla3hekqqj"]
 
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="1_tqe0l"]
 [ext_resource type="Script" uid="uid://0xrfgrabfsf4" path="res://Scripts/axeman.gd" id="2_tqe0l"]
 [ext_resource type="Texture2D" uid="uid://cwbth46relc2d" path="res://Assets/Characters/Characters(100x100)/Armored Axeman/Armored Axeman/Armored Axeman.png" id="3_jjtdw"]
 [ext_resource type="Texture2D" uid="uid://cxexnq44abgmr" path="res://Assets/Characters/Characters(100x100)/Armored Axeman/Armored Axeman/Shadow sprites/Armored Axeman-Shadow.png" id="4_tqe0l"]
 [ext_resource type="Texture2D" uid="uid://yb3x81n1xnrh" path="res://Assets/Characters/Characters(100x100)/Armored Axeman/Armored Axeman/Shadow sprites/Armored Axeman-Shadow_death.png" id="5_hkl5u"]
+[ext_resource type="AudioStream" uid="uid://cinb1dvbjryk5" path="res://SFX/swoosh.mp3" id="6_hkl5u"]
+[ext_resource type="AudioStream" uid="uid://dbafu2f3wxxrg" path="res://SFX/Step.mp3" id="7_jjtdw"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_tqe0l"]
 seed = 1
@@ -578,7 +580,7 @@ speed = 65.0
 [node name="Player" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_h8h11")
-animation = &"attack-2"
+animation = &"walk"
 autoplay = "idle"
 frame = 7
 
@@ -640,6 +642,14 @@ libraries = {
 &"": SubResource("AnimationLibrary_hncr7")
 }
 speed_scale = 1.5
+
+[node name="AttackSoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_hkl5u")
+
+[node name="Step" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_jjtdw")
+volume_db = -8.0
+max_polyphony = 10
 
 [connection signal="animation_finished" from="Player" to="." method="_on_player_animation_finished"]
 [connection signal="area_entered" from="HitboxController" to="." method="_enemy_hit"]

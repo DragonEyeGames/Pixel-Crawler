@@ -1,6 +1,6 @@
 @icon("res://Assets/GodotIcon/icon_sword.png")
 extends CharacterBody2D
-
+class_name Enemy
 @export var health:=5.0
 var hit:AnimationPlayer
 @onready var sprite: AnimatedSprite2D = $Sprite
@@ -17,6 +17,7 @@ var canAttack:=true
 @export var weaponDamage:=1
 @onready var navAgent := $NavigationAgent2D as NavigationAgent2D
 var maxHealth
+var mainParent
 
 func _ready() -> void:
 	maxHealth=health
@@ -29,7 +30,6 @@ func _ready() -> void:
 	cooldown*=1.5
 
 func _physics_process(_delta: float) -> void:
-	print(visible)
 	if(player==null):
 		player=GameManager.player
 		return
@@ -38,14 +38,18 @@ func _physics_process(_delta: float) -> void:
 	#if(dead and not sprite.animation=="die"):
 		#sprite.play("die")
 		#shadow.play("die")
-	if(dead or attacking or !get_parent().get_parent().active):
+	if(mainParent!=null):
+		visible=mainParent.active
+	if(dead or attacking or (mainParent==null or !mainParent.active)):
+		if(mainParent!=null and !mainParent.active):
+			print("A")
 		return
 	if(len(attackingList)>=1 and canAttack):
 		if player.dead!=true:
 			attack()
 			return
 	velocity=Vector2.ZERO
-	if(global_position.distance_to(player.global_position)>=20):
+	if(global_position.distance_to(player.global_position)>=20 and global_position.distance_to(player.global_position)<=250):
 		var dir = to_local(navAgent.get_next_path_position()).normalized()
 		velocity = dir*speed
 		#velocity=player.global_position-global_position
@@ -77,6 +81,8 @@ func damage(hitDamage):
 	health-=hitDamage
 	hit.play("hit")
 	if(health<=0):
+		$DeadSound.pitch_scale=randf_range(.9, 1.1)
+		$DeadSound.play()
 		dead=true
 		if(not sprite.animation=="die"):
 			sprite.play("die")
@@ -88,6 +94,9 @@ func damage(hitDamage):
 		await get_tree().create_timer(5).timeout
 		await get_tree().process_frame
 		queue_free()
+	else:
+		$HitSound.pitch_scale=randf_range(.9, 1.1)
+		$HitSound.play()
 
 func attack():
 	if(attacking or dead):
@@ -143,9 +152,7 @@ func makePath():
 	for i in range(points.size() - 1):
 		length += points[i].distance_to(points[i + 1])
 
-	if length > 150:
-		# Too long — cancel the move
-		navAgent.target_position = global_position 
+	if length > 250:
 		return
 
 func _on_timer_timeout() -> void:

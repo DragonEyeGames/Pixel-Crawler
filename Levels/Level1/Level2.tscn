@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://c4wws2xdfldn2" path="res://Scenes/chest.tscn" id="10_x7rwe"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_xosfc"]
-vertices = PackedVector2Array(8, -33, -49.007813, -33, -49.992188, -102, 83, -102, 83, -33.976563, 24, -32.976563, -129.00781, 122, -129.99219, 31, 10, 31, 163, 122, 8, -23, 24, -23, 23, 14, 10, 14, 94, -23, 94, -102, 163, -102, 163, 14, 23, 31, 163, 31, -130, 14, -61, -23, -130, -102, -61, -102)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(0, 4, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(10, 0, 5, 11, 12, 13), PackedInt32Array(14, 15, 16, 17), PackedInt32Array(14, 17, 12, 11), PackedInt32Array(18, 19, 9), PackedInt32Array(18, 9, 8), PackedInt32Array(12, 18, 8, 13), PackedInt32Array(10, 13, 20, 21), PackedInt32Array(21, 20, 22, 23)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(93, -103, 164, -103, 164, 15, 24, 15, 24, 30, 164, 30, 164, 123, -130, 123, -131, 30, 9, 30, 9, 15, -131, 15, -131, -103, -60, -103, -60, -24, 7, -24, 7, -32, -50, -32, -51, -103, 84, -103, 84, -33, 25, -32, 25, -24, 93, -24)])
-agent_radius = 1.0
+vertices = PackedVector2Array(-123.57031, 116.5, -124.42969, 36.5, 15.5, 36.5, 157.5, 116.5, 157.5, -96.5, 157.5, 8.5, 17.5, 8.5, -124.5, -96.5, 17.5, 36.5, 157.5, 36.5, 15.5, 8.5, -124.5, 8.5)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 3), PackedInt32Array(8, 3, 2), PackedInt32Array(6, 8, 2, 10), PackedInt32Array(7, 6, 10), PackedInt32Array(7, 10, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(93, -103, 164, -103, 164, 15, 24, 15, 24, 30, 164, 30, 164, 123, -130, 123, -131, 30, 9, 30, 9, 15, -131, 15, -131, -103, -60, -103, -51, -103, 84, -103)])
+agent_radius = 6.5
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ghn66"]
 animations = [{
@@ -81,7 +81,6 @@ tile_map_data = PackedByteArray("AAD+/wEAAAAHAAUAAAD9/wEAAAAHAAUAAAD8/wEAAAAHAAU
 position = Vector2(16, -98)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_xosfc")
 
 [node name="SideDoor" type="AnimatedSprite2D" parent="." groups=["Door"]]

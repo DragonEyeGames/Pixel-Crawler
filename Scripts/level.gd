@@ -13,6 +13,15 @@ func _ready() -> void:
 		door.chapter=chapter
 	SignalBus.enemy_died.connect(on_death)
 	SignalBus.generated.connect(finishedGeneration)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	for child in $Y_Sorting.get_children():
+		var global_pos = child.global_position
+		$Y_Sorting.remove_child(child)
+		$"../Y-Sort".add_child(child)
+		child.global_position = global_pos
+		if(child is Enemy):
+			child.mainParent=self;
 	#if ResourceLoader.exists("user://scene_data.tres"):
 		#var data = ResourceLoader.load("user://scene_data.tres") as SceneData
 		#if(level in GameManager.save):

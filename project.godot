@@ -38,6 +38,7 @@ folder_colors={
 "res://Assets/GodotIcon/": "blue",
 "res://Levels/": "orange",
 "res://Levels/Level1/": "orange",
+"res://SFX/": "pink",
 "res://Scenes/": "yellow",
 "res://Scripts/": "green",
 "res://Shaders/": "teal"

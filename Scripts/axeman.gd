@@ -2,6 +2,8 @@
 extends Player
 class_name Axeman
 
+var animationFrame=0
+
 func _physics_process(_delta: float) -> void:
 	if(dead or not canMove or attacking):
 		return
@@ -22,12 +24,18 @@ func _physics_process(_delta: float) -> void:
 		animator.speed_scale=attackSpeed
 		sprite.play("attack-1")
 		animator.play("attack-1")
+		$AttackSoundEffect.pitch_scale=randf_range(.9, 1.1)
+		$AttackSoundEffect.play()
 	if(Input.is_action_just_pressed("Attack-2") and attacking==false):
 		attacking=true
 		sprite.speed_scale=attackSpeed
 		animator.speed_scale=attackSpeed
 		sprite.play("attack-2")
 		animator.play("attack-2")
+	if(sprite.animation=="walk" and ((sprite.frame==2 and animationFrame!=2) or (sprite.frame==6 and animationFrame!=6))):
+		animationFrame=sprite.frame
+		$Step.pitch_scale=randf_range(.8, 1.2)
+		$Step.play()
 		
 func flip(newDirection: String):
 	direction=newDirection
