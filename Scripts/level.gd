@@ -15,13 +15,6 @@ func _ready() -> void:
 	SignalBus.generated.connect(finishedGeneration)
 	await get_tree().process_frame
 	await get_tree().process_frame
-	for child in $Y_Sorting.get_children():
-		var global_pos = child.global_position
-		$Y_Sorting.remove_child(child)
-		$"../Y-Sort".add_child(child)
-		child.global_position = global_pos
-		if(child is Enemy):
-			child.mainParent=self;
 	#if ResourceLoader.exists("user://scene_data.tres"):
 		#var data = ResourceLoader.load("user://scene_data.tres") as SceneData
 		#if(level in GameManager.save):
@@ -46,6 +39,9 @@ func on_death():
 		#emitted=true
 		#SignalBus.allGone.emit()
 
+func _process(delta: float) -> void:
+	$NavRegion.enabled=active
+	$NavRegion.visible=active
 
 func _on_area_2d_area_entered(_area: Area2D) -> void:
 	colliding=true
@@ -53,6 +49,13 @@ func _on_area_2d_area_entered(_area: Area2D) -> void:
 func finishedGeneration():
 	for door in doors:
 		door.visible=false
+	for child in $Y_Sorting.get_children():
+		var global_pos = child.global_position
+		$Y_Sorting.remove_child(child)
+		$"../Y-Sort".add_child(child)
+		child.global_position = global_pos
+		if(child is Enemy):
+			child.mainParent=self;
 
 func _on_player_area_entered(_area: Area2D) -> void:
 	modulate.a=0

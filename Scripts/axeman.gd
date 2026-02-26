@@ -36,6 +36,8 @@ func _physics_process(_delta: float) -> void:
 		animationFrame=sprite.frame
 		$Step.pitch_scale=randf_range(.8, 1.2)
 		$Step.play()
+	if(animationFrame!=sprite.frame):
+		animationFrame=0
 		
 func flip(newDirection: String):
 	direction=newDirection

@@ -80,8 +80,9 @@ tile_map_data = PackedByteArray("AAD+/wEAAAAHAAUAAAD9/wEAAAAHAAUAAAD8/wEAAAAHAAU
 [node name="Chest" parent="." instance=ExtResource("10_x7rwe")]
 position = Vector2(16, -98)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+[node name="NavRegion" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_xosfc")
+use_edge_connections = false
 
 [node name="SideDoor" type="AnimatedSprite2D" parent="." groups=["Door"]]
 texture_filter = 1

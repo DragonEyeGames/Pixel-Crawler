@@ -1,10 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://0t3tdgnb5mjo"]
+[gd_scene load_steps=19 format=3 uid="uid://0t3tdgnb5mjo"]
 
 [ext_resource type="Script" uid="uid://xbdbk8tgb63e" path="res://Levels/Level1/monster_spawner.gd" id="1_ll0mg"]
 [ext_resource type="PackedScene" uid="uid://c78fswc6hav73" path="res://Scenes/Enemies/orc.tscn" id="2_wa7s8"]
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="3_ap54j"]
 [ext_resource type="PackedScene" uid="uid://du02kq7mkyull" path="res://Scenes/Enemies/skeleton.tscn" id="4_d6eik"]
-[ext_resource type="PackedScene" uid="uid://c1f1h4vx7wiai" path="res://Scenes/Enemies/slime.tscn" id="5_g2u14"]
 [ext_resource type="PackedScene" uid="uid://df4aytlkx5ais" path="res://Scenes/Enemies/strongOrc.tscn" id="6_actt3"]
 [ext_resource type="PackedScene" uid="uid://dq4caphl02lr3" path="res://Scenes/Enemies/strongSkeleton.tscn" id="7_cq7yy"]
 
@@ -36,21 +35,6 @@ resource_local_to_scene = true
 shader = ExtResource("3_ap54j")
 shader_parameter/whiteness = 0.0
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_3je14")
-shader_parameter/dissolve_amount = 0.0
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_07s1k"]
-frequency = 1.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cxdgs"]
-width = 1000
-height = 1000
-noise = SubResource("FastNoiseLite_07s1k")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k83io"]
-resource_local_to_scene = true
-shader = ExtResource("3_ap54j")
-shader_parameter/whiteness = 0.0
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_cxdgs")
 shader_parameter/dissolve_amount = 0.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_e37l4"]
@@ -98,12 +82,8 @@ material = SubResource("ShaderMaterial_251ul")
 [node name="Normal" type="Node2D" parent="."]
 process_mode = 4
 
-[node name="Slime" parent="Normal" instance=ExtResource("5_g2u14")]
-material = SubResource("ShaderMaterial_k83io")
-
 [node name="Strong Orc" parent="Normal" instance=ExtResource("6_actt3")]
 material = SubResource("ShaderMaterial_ruyw5")
 
 [node name="Strong Skeleton" parent="Normal" instance=ExtResource("7_cq7yy")]
 material = SubResource("ShaderMaterial_fvl30")
-health = 5.0

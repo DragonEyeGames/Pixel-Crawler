@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://c78fswc6hav73"]
+[gd_scene load_steps=59 format=3 uid="uid://c78fswc6hav73"]
 
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="1_l04we"]
 [ext_resource type="Script" uid="uid://doip6q4xhc234" path="res://Scripts/swordEnemy.gd" id="2_tq37w"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dynpn4qc58fbn" path="res://Assets/Characters/Characters(100x100)/Orc/Orc/Shadow sprites/Orc-shadow_death.png" id="5_l04we"]
 [ext_resource type="AudioStream" uid="uid://ceim6wpyemmyc" path="res://SFX/punch-1.mp3" id="6_ny6sd"]
 [ext_resource type="AudioStream" uid="uid://dmlxcswu0rhtp" path="res://SFX/punch-2.mp3" id="7_adlby"]
+[ext_resource type="AudioStream" uid="uid://cvc0ltwg66ivc" path="res://SFX/swoosh-2.mp3" id="8_adlby"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xosfc"]
 frequency = 1.0
@@ -618,6 +619,9 @@ stream = ExtResource("6_ny6sd")
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_adlby")
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_adlby")
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="area_entered" from="Areas/Hits" to="." method="_on_hits_area_entered"]

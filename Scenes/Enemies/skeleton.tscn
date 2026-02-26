@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://du02kq7mkyull"]
+[gd_scene load_steps=61 format=3 uid="uid://du02kq7mkyull"]
 
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="1_nu5bn"]
 [ext_resource type="Script" uid="uid://doip6q4xhc234" path="res://Scripts/swordEnemy.gd" id="2_eiu2b"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://blopey63jbrkb" path="res://Assets/Characters/Characters(100x100)/Skeleton/Skeleton/Shadow sprites/Skeleton-Shadow_death.png" id="5_nu5bn"]
 [ext_resource type="AudioStream" uid="uid://cgah83kl6heb0" path="res://SFX/snap(dead).mp3" id="6_6ry3g"]
 [ext_resource type="AudioStream" uid="uid://d102tj1f6vsy" path="res://SFX/crunch(hit).mp3" id="7_rjsu3"]
+[ext_resource type="AudioStream" uid="uid://ddmy4fmpb48el" path="res://SFX/swoosh-1.mp3" id="8_rjsu3"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xhj3x"]
 frequency = 1.0
@@ -608,6 +609,9 @@ stream = ExtResource("6_6ry3g")
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_rjsu3")
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_rjsu3")
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="area_entered" from="Areas/Hits" to="." method="_on_hits_area_entered"]

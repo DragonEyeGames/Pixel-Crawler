@@ -113,6 +113,8 @@ func attack():
 	else:
 		sprite.play("attack-1")
 		animator.play("attack-1")
+	$AttackSound.pitch_scale=randf_range(.9, 1.1)
+	$AttackSound.play()
 
 func _on_checks_area_entered(area: Area2D) -> void:
 	attackingList.append(area.get_parent())

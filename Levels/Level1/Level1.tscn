@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="7_dl8mf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7fl83"]
-vertices = PackedVector2Array(83, 59.992188, -82, 59, -82, -70, 83, -70)
+vertices = PackedVector2Array(85.5, 65.5, -84.5, 65.5, -84.5, -63.5, 85.5, -63.5)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-83, -71, 84, -71, 84, 61, -83, 60)])
-agent_radius = 1.0
+outlines = Array[PackedVector2Array]([PackedVector2Array(-91, -70, 92, -70, 92, 72, -91, 72)])
+agent_radius = 6.5
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("doors") groups=["North", "South"]]
 texture_filter = 1
@@ -44,8 +44,9 @@ position = Vector2(38, -85)
 [node name="Torch2" parent="." instance=ExtResource("7_dl8mf")]
 position = Vector2(-34, -85)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+[node name="NavRegion" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_7fl83")
+use_edge_connections = false
 
 [node name="Door2" parent="." instance=ExtResource("3_5g41i")]
 position = Vector2(0, 59)

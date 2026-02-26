@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://df4aytlkx5ais"]
+[gd_scene load_steps=71 format=3 uid="uid://df4aytlkx5ais"]
 
 [ext_resource type="Script" uid="uid://doip6q4xhc234" path="res://Scripts/swordEnemy.gd" id="1_e37l4"]
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="2_pd02h"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://jg7nk0jckq22" path="res://Assets/Characters/Characters(100x100)/Armored Orc/Armored Orc/Shadow sprites/Armored Orc-Shadow_death.png" id="5_0y5p0"]
 [ext_resource type="AudioStream" uid="uid://ceim6wpyemmyc" path="res://SFX/punch-1.mp3" id="6_vtyf5"]
 [ext_resource type="AudioStream" uid="uid://dmlxcswu0rhtp" path="res://SFX/punch-2.mp3" id="7_yn30m"]
+[ext_resource type="AudioStream" uid="uid://cvc0ltwg66ivc" path="res://SFX/swoosh-2.mp3" id="8_yn30m"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_e37l4"]
 frequency = 1.0
@@ -717,6 +718,7 @@ libraries = {
 }
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 50.0
 avoidance_enabled = true
 avoidance_layers = 2
 avoidance_mask = 2
@@ -730,6 +732,9 @@ stream = ExtResource("6_vtyf5")
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_yn30m")
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_yn30m")
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="area_entered" from="Areas/Hits" to="." method="_on_hits_area_entered"]

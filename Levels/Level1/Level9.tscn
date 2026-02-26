@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="9_p4o7v"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hy5j1"]
-vertices = PackedVector2Array(66, 64, -66, 64, -66, -37, 66, -37)
+vertices = PackedVector2Array(69.5, 65.5, -68.5, 65.5, -68.5, -31.5, 69.5, -31.5)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-67, -38, -67, 65, 67, 65, 67, -38)])
-agent_radius = 1.0
+outlines = Array[PackedVector2Array]([PackedVector2Array(-75, -38, -75, 72, 76, 72, 76, -38)])
+agent_radius = 6.5
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("doors") groups=["North", "South"]]
 texture_filter = 1
@@ -57,8 +57,9 @@ position = Vector2(37.5, -55)
 [node name="Torch2" parent="." instance=ExtResource("9_p4o7v")]
 position = Vector2(-34.5, -55)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+[node name="NavRegion" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_hy5j1")
+use_edge_connections = false
 
 [node name="Control" type="Control" parent="."]
 clip_contents = true

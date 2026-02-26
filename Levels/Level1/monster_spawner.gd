@@ -11,13 +11,18 @@ enum types {
 func _ready() -> void:
 	if(strength==types.weak):
 		var enemy = $Weak.get_children().pick_random()
+		var global = enemy.global_position
 		$Weak.remove_child(enemy)
 		$"../Y_Sorting".add_child(enemy)
+		enemy.global_position=global
+		
 		#queue_free()
 	if(strength==types.normal):
 		var enemy = $Normal.get_children().pick_random()
+		var global = enemy.global_position
 		$Normal.remove_child(enemy)
 		$"../Y_Sorting".add_child(enemy)
+		enemy.global_position=global
 		#queue_free()
 	await get_tree().process_frame
 	call_deferred("queue_free")
