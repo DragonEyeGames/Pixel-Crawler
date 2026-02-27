@@ -34,6 +34,8 @@ func hit(newDamage):
 	newDamage=calculateResistance(newDamage)
 	if(dead):
 		return
+	$HitSound.pitch_scale=randf_range(.9, 1.1)
+	$HitSound.play()
 	health-=newDamage
 	hitAnimator.play("hit")
 	GameManager.playerHealth=health

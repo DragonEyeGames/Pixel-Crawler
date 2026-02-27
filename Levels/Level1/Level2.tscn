@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://bb8xchi76xpxd"]
+[gd_scene load_steps=8 format=4 uid="uid://bb8xchi76xpxd"]
 
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="1_m3ha0"]
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_xosfc"]
 [ext_resource type="PackedScene" uid="uid://ctaqft8gk43cp" path="res://Levels/Level1/doorAlternate.tscn" id="3_en52i"]
 [ext_resource type="PackedScene" uid="uid://0t3tdgnb5mjo" path="res://Levels/Level1/monsterSpawner.tscn" id="6_k313m"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Scenes/door.tscn" id="6_xosfc"]
-[ext_resource type="Script" uid="uid://kgd2ux45ohr0" path="res://Scripts/door.gd" id="10_mbuxx"]
 [ext_resource type="PackedScene" uid="uid://c4wws2xdfldn2" path="res://Scenes/chest.tscn" id="10_x7rwe"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_xosfc"]
@@ -14,34 +13,22 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(93, -103, 164, -103, 164, 15, 24, 15, 24, 30, 164, 30, 164, 123, -130, 123, -131, 30, 9, 30, 9, 15, -131, 15, -131, -103, -60, -103, -51, -103, 84, -103)])
 agent_radius = 6.5
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ghn66"]
-animations = [{
-"frames": [],
-"loop": true,
-"name": &"open",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dl8mf"]
-size = Vector2(9, 28)
-
 [node name="Main" type="Node2D" node_paths=PackedStringArray("doors") groups=["East", "North", "South", "West"]]
 texture_filter = 1
 script = ExtResource("1_xosfc")
 level = 2
-doors = [NodePath("Door"), NodePath("Door3"), NodePath("Door2"), NodePath("SideDoor"), NodePath("SideDoor2")]
+doors = [NodePath("Door"), NodePath("Door3"), NodePath("Door2"), NodePath(""), NodePath("")]
 
 [node name="Y_Sorting" type="Node2D" parent="."]
 z_index = 1
 y_sort_enabled = true
 
-[node name="Door" parent="." node_paths=PackedStringArray("coverUp") instance=ExtResource("6_xosfc")]
+[node name="Door" parent="." instance=ExtResource("6_xosfc")]
 position = Vector2(-96, -117)
 toTransport = 3
 playerPos = Vector2(0, 54)
 enemyControlled = false
 direction = "north"
-coverUp = NodePath("")
 
 [node name="DoorAlternate2" parent="." instance=ExtResource("3_en52i")]
 visible = false
@@ -95,56 +82,6 @@ position = Vector2(16, -98)
 navigation_polygon = SubResource("NavigationPolygon_xosfc")
 use_edge_connections = false
 
-[node name="SideDoor" type="AnimatedSprite2D" parent="." groups=["Door"]]
-texture_filter = 1
-position = Vector2(172, -44)
-sprite_frames = SubResource("SpriteFrames_ghn66")
-animation = &"open"
-script = ExtResource("10_mbuxx")
-toTransport = 3
-playerPos = Vector2(0, 54)
-direction = "east"
-
-[node name="Area2D" type="Area2D" parent="SideDoor"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SideDoor/Area2D"]
-position = Vector2(3.5, 4)
-shape = SubResource("RectangleShape2D_dl8mf")
-
-[node name="ColorRect2" type="ColorRect" parent="SideDoor"]
-offset_left = -1.0
-offset_top = -22.0
-offset_right = 8.0
-offset_bottom = 18.0
-color = Color(0.61339027, 0.61339027, 0.61339027, 1)
-
-[node name="SideDoor2" type="AnimatedSprite2D" parent="." groups=["Door"]]
-texture_filter = 1
-position = Vector2(-148, -42)
-sprite_frames = SubResource("SpriteFrames_ghn66")
-animation = &"open"
-script = ExtResource("10_mbuxx")
-toTransport = 3
-playerPos = Vector2(0, 54)
-direction = "west"
-
-[node name="Area2D" type="Area2D" parent="SideDoor2"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SideDoor2/Area2D"]
-position = Vector2(3.5, 4)
-shape = SubResource("RectangleShape2D_dl8mf")
-
-[node name="ColorRect2" type="ColorRect" parent="SideDoor2"]
-offset_left = -1.0
-offset_top = -22.0
-offset_right = 8.0
-offset_bottom = 18.0
-color = Color(0.61339027, 0.61339027, 0.61339027, 1)
-
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
 collision_layer = 8
@@ -171,8 +108,6 @@ position = Vector2(106, -54)
 position = Vector2(11, -22)
 strength = 1
 
-[connection signal="area_entered" from="SideDoor/Area2D" to="SideDoor" method="_on_area_2d_area_entered"]
-[connection signal="area_entered" from="SideDoor2/Area2D" to="SideDoor2" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="player" to="." method="_on_player_area_entered"]
 [connection signal="area_exited" from="player" to="." method="_on_player_area_exited"]

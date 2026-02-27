@@ -6,8 +6,8 @@ func _ready() -> void:
 func spikes():
 	await get_tree().create_timer(2).timeout
 	for child in get_children():
-		child.play("extrude")
+		child.extrude()
 	await get_tree().create_timer(1).timeout
 	for child in get_children():
-		child.play("retract")
+		child.retract()
 	spikes()
