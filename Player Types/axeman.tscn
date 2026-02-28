@@ -654,7 +654,7 @@ max_polyphony = 2
 
 [node name="Step" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_jjtdw")
-volume_db = -8.0
+volume_db = -3.0
 max_polyphony = 10
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]

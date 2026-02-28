@@ -308,12 +308,12 @@ _data = {
 &"hit": SubResource("Animation_caxi4")
 }
 
-[node name="Mimic" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Mimic" type="CharacterBody2D" node_paths=PackedStringArray("chest") groups=["Enemy"]]
 material = SubResource("ShaderMaterial_8xc28")
 collision_layer = 0
 script = ExtResource("2_dnvk4")
 speed = 40
-chest = ExtResource("2_caxi4")
+chest = NodePath("Chest")
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false

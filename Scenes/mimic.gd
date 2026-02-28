@@ -1,6 +1,8 @@
 @icon("res://Assets/GodotIcon/icon_dice.png")
 extends CharacterBody2D
 
+class_name Mimic
+
 var collided=false
 var opened=false
 var canMove=false
@@ -17,10 +19,13 @@ var animationFrame=0
 @onready var navAgent := $NavigationAgent2D as NavigationAgent2D
 @export var speed=50
 var hit:AnimationPlayer
-@export var chest: PackedScene
+@export var chest: Node2D
 var knockBack: Vector2
+@export var door: Node2D
+
 
 func _ready():
+	door.locked=true
 	$Timer.start()
 	hit=$Hit
 	sprite=$Sprite
@@ -33,6 +38,8 @@ func _ready():
 		
 
 func _process(_delta: float) -> void:
+	if(dead):
+		chest.global_position=global_position
 	if("hop" in sprite.animation):
 		if(sprite.frame==1 and animationFrame!=1):
 			$Land.pitch_scale=randf_range(.9, 1.1)
@@ -45,7 +52,7 @@ func _process(_delta: float) -> void:
 		knockBack*=.65
 		move_and_slide()
 	player=GameManager.player
-	if(attacking):
+	if(attacking or dead):
 		return
 	if(canAttack and colliding and opened):
 		attacking=true
@@ -84,7 +91,7 @@ func _process(_delta: float) -> void:
 
 func peek():
 	await get_tree().create_timer(randf_range(5, 10)).timeout
-	if(not opened):
+	if(not opened and not dead):
 		sprite.play("peek")
 		peek()
 
@@ -114,6 +121,8 @@ func damage(hitDamage, hitGlobalPos):
 		get_parent().call_deferred("add_child", newChest)
 		newChest.global_position=globalPos
 		SignalBus.enemy_died.emit()
+		door.locked=false
+		door.openDoor()
 		sprite.play("boom")
 
 func _on_animation_finished() -> void:

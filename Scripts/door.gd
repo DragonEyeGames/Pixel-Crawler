@@ -9,6 +9,7 @@ extends Node2D
 @export var coverUp: Node2D
 var connection
 @export var animated=true
+var locked=false
 
 func _ready() -> void:
 	if(not animated):
@@ -31,14 +32,24 @@ func openDoor():
 		return
 	$".".play("raise")
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
+
+func close():
+	$".".play("closed")
+
+func _on_area_2d_area_entered(_area: Area2D) -> void:
 	pass
 	#if(area.get_parent() is Player):
 		#get_parent().visible=!get_parent().visible;
 		
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	if(locked):
+		close()
 	if(coverUp!=null):
 		coverUp.visible=!visible
+		
+func _physics_process(_delta: float) -> void:
+	if(animated):
+		$StaticBody2D/CollisionShape2D2.disabled=$".".animation=="open"
 
 func saveGame(): #Old undedned stuf I don;t want to ocmment out or delete
 		var enemies = get_tree().get_nodes_in_group("Enemy")
@@ -67,3 +78,8 @@ func saveGame(): #Old undedned stuf I don;t want to ocmment out or delete
 		data.playerInventory=GameManager.playerInventory.duplicate()
 		ResourceSaver.save(data, "user://scene_data.tres")
 		get_tree().change_scene_to_file("res://Levels/Level" + str(chapter) + "/Level" + str(toTransport) +".tscn")
+
+
+func _on_animation_finished() -> void:
+	if($".".animation=="raise"):
+		$".".play("open")

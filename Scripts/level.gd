@@ -75,6 +75,8 @@ func finishedGeneration():
 		if(child is Enemy):
 			child.mainParent=self;
 		else:
+			if(child is Mimic):
+				toUpdate.append(child.chest)
 			toUpdate.append(child)
 
 func _on_player_area_entered(_area: Area2D) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cwmhhrjco02h7"]
+[gd_scene load_steps=15 format=3 uid="uid://cwmhhrjco02h7"]
 
 [ext_resource type="Script" uid="uid://vayrh1hsg8yl" path="res://DungeonMaker.gd" id="1_nulmw"]
 [ext_resource type="PackedScene" uid="uid://dhd0snu2yv3e5" path="res://Levels/Level1/Level4.tscn" id="1_sifhu"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://8ly23il61jqa" path="res://Levels/Level1/level8.tscn" id="11_fo3ry"]
 [ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Scenes/HUD.tscn" id="12_dgn0p"]
 [ext_resource type="PackedScene" uid="uid://ct4ti7ck1jr5y" path="res://Player Types/player.tscn" id="14_p832w"]
-[ext_resource type="AudioStream" uid="uid://1t36qfbuf8gl" path="res://SFX/Dungeon.mp3" id="15_oq8wd"]
 
 [node name="Dungeon" type="Node2D" node_paths=PackedStringArray("startingLevel")]
 script = ExtResource("1_nulmw")
@@ -26,11 +25,6 @@ startingLevel = NodePath("Main")
 
 [node name="Main" parent="." instance=ExtResource("6_1vdva")]
 position = Vector2(1, -16)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_oq8wd")
-volume_db = -27.67
-autoplay = true
 
 [node name="Y-Sort" type="Node2D" parent="."]
 y_sort_enabled = true

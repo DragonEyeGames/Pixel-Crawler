@@ -9,7 +9,7 @@ size = Vector2(21, 3)
 [node name="Door" type="AnimatedSprite2D" groups=["Door"]]
 texture_filter = 1
 sprite_frames = ExtResource("1_p0e35")
-animation = &"closed"
+animation = &"open"
 autoplay = "open"
 script = ExtResource("2_c5cab")
 enemyControlled = true
@@ -22,4 +22,12 @@ collision_mask = 2
 position = Vector2(0.5, 11)
 shape = SubResource("RectangleShape2D_dl8mf")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.5, 11)
+shape = SubResource("RectangleShape2D_dl8mf")
+disabled = true
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

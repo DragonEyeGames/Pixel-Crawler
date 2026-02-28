@@ -1,10 +1,16 @@
 @icon("res://Assets/GodotIcon/icon_character.png")
 extends Player
 class_name Knight
-
+var animationFrame=0
 var blocking:=false
 	
 func _physics_process(_delta: float) -> void:
+	if(sprite.animation=="walk" and ((sprite.frame==2 and animationFrame!=2) or (sprite.frame==6 and animationFrame!=6))):
+		animationFrame=sprite.frame
+		$Step.pitch_scale=randf_range(.8, 1.2)
+		$Step.play()
+	if(animationFrame!=sprite.frame):
+		animationFrame=sprite.frame
 	if(sprite==null):
 		queue_free()
 		return
@@ -37,12 +43,10 @@ func _physics_process(_delta: float) -> void:
 		attacking=true
 		sprite.speed_scale=attackSpeed
 		animator.speed_scale=attackSpeed
-		if(randi_range(1, 10)==10):
-			sprite.play("attack-2")
-			animator.play("attack-2")
-		else:
-			sprite.play("attack-1")
-			animator.play("attack-1")
+		$AttackSoundEffect.pitch_scale=randf_range(.9, 1.1)
+		$AttackSoundEffect.play()
+		sprite.play("attack-1")
+		animator.play("attack-1")
 			
 		
 func flip(newDirection: String):
@@ -68,14 +72,18 @@ func _on_player_animation_finished() -> void:
 
 
 func _enemy_hit(area: Area2D) -> void:
-	area.get_parent().damage(damage*strength)
+	area.get_parent().damage(damage*strength, global_position)
 	
 func hit(newDamage):
 	if(dead):
 		return
 	if(blocking):
 		sprite.play("block")
+		$ShieldHitSound.pitch_scale=randf_range(.9, 1.1)
+		$ShieldHitSound.play()
 		return
+	$HitSound.pitch_scale=randf_range(.9, 1.1)
+	$HitSound.play()
 	health-=newDamage
 	hitAnimator.play("hit")
 	GameManager.playerHealth=health

@@ -1,10 +1,14 @@
-[gd_scene load_steps=64 format=3 uid="uid://bgmpq3nw65l7j"]
+[gd_scene load_steps=68 format=3 uid="uid://bgmpq3nw65l7j"]
 
 [ext_resource type="Script" uid="uid://cllbojkrs433o" path="res://Scripts/knight.gd" id="1_ebkyg"]
 [ext_resource type="Texture2D" uid="uid://dvqwqmuns8vkw" path="res://Assets/Characters/Characters(100x100)/Knight/Knight/Knight.png" id="2_3hayl"]
 [ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="2_fy2qv"]
 [ext_resource type="Texture2D" uid="uid://3j76cno7nww6" path="res://Assets/Characters/Characters(100x100)/Knight/Knight/Shadow sprites/Knight-Shadow.png" id="3_fy2qv"]
 [ext_resource type="Texture2D" uid="uid://b4j2re4yu88i1" path="res://Assets/Characters/Characters(100x100)/Knight/Knight/Shadow sprites/Knight-Shadow_death.png" id="4_qgysq"]
+[ext_resource type="AudioStream" uid="uid://cinb1dvbjryk5" path="res://SFX/swoosh.mp3" id="6_22xwe"]
+[ext_resource type="AudioStream" uid="uid://dbafu2f3wxxrg" path="res://SFX/Step.mp3" id="7_eoaqo"]
+[ext_resource type="AudioStream" uid="uid://cqiluwnvcudmi" path="res://SFX/playerHit.mp3" id="8_54qvq"]
+[ext_resource type="AudioStream" uid="uid://bmj6vu34foc2b" path="res://SFX/woodHit.mp3" id="9_q3mld"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3hayl"]
 seed = 1
@@ -639,9 +643,8 @@ speed = 65.0
 [node name="Player" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_d2t1y")
-animation = &"block"
+animation = &"walk"
 autoplay = "idle"
-frame_progress = 1.0
 
 [node name="Shadow" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.5370987, 0.5370987, 0.5370987, 0.6)
@@ -706,6 +709,20 @@ libraries = {
 &"": SubResource("AnimationLibrary_hncr7")
 }
 speed_scale = 1.5
+
+[node name="AttackSoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_22xwe")
+
+[node name="Step" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_eoaqo")
+volume_db = -6.0
+max_polyphony = 10
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_54qvq")
+
+[node name="ShieldHitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_q3mld")
 
 [connection signal="animation_finished" from="Player" to="." method="_on_player_animation_finished"]
 [connection signal="area_entered" from="HitboxController" to="." method="_enemy_hit"]

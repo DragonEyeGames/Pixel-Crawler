@@ -1,11 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://bpgb62u7c0l6m"]
+[gd_scene load_steps=7 format=4 uid="uid://bpgb62u7c0l6m"]
 
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_nkn5i"]
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_me3ps"]
 [ext_resource type="PackedScene" uid="uid://ksl6i5ebd3as" path="res://Levels/Level1/breakable_pot.tscn" id="4_12vnb"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_sraex"]
-[ext_resource type="PackedScene" uid="uid://d3x22sgpk0unl" path="res://Scenes/mimic.tscn" id="6_a8vds"]
-[ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="7_4xc7t"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="9_1cu8l"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lhxdc"]
@@ -13,21 +11,6 @@ vertices = PackedVector2Array(69.5, 65.5, -68.5, 65.5, -68.5, -31.5, 69.5, -31.5
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(76, -38, -75, -38, -75, 72, 76, 72)])
 agent_radius = 6.5
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_g5hcj"]
-frequency = 1.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fugqv"]
-width = 1000
-height = 1000
-noise = SubResource("FastNoiseLite_g5hcj")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wtqb5"]
-resource_local_to_scene = true
-shader = ExtResource("7_4xc7t")
-shader_parameter/whiteness = 0.0
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_fugqv")
-shader_parameter/dissolve_amount = 0.0
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("doors") groups=["South"]]
 texture_filter = 1
@@ -98,10 +81,6 @@ collision_mask = 8
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(76, 72, -75, 72, -75, -38, 76, -38)
-
-[node name="Mimic" parent="." instance=ExtResource("6_a8vds")]
-material = SubResource("ShaderMaterial_wtqb5")
-position = Vector2(0, -29)
 
 [connection signal="area_entered" from="player" to="." method="_on_player_area_entered"]
 [connection signal="area_exited" from="player" to="." method="_on_player_area_exited"]

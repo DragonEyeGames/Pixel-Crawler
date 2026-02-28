@@ -8,6 +8,7 @@ var opened=false
 
 func _process(_delta: float) -> void:
 	if(!active):
+		visible=false
 		return
 	if(collided and Input.is_action_just_pressed("Interact") and not opened):
 		opened=true
