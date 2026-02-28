@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://ksl6i5ebd3as"]
+
+[ext_resource type="Texture2D" uid="uid://cj0omml67i2ky" path="res://Assets/BreakablPot.png" id="1_2p5bm"]
+[ext_resource type="Script" uid="uid://bgxn0fqeivp3d" path="res://Scripts/breakable_pot.gd" id="2_nacd4"]
+[ext_resource type="AudioStream" uid="uid://0ujlxyfh8nl" path="res://SFX/Shatter.mp3" id="3_nacd4"]
+
+[sub_resource type="Curve" id="Curve_uj6fh"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 5.842697), 0.0, 0.0, 0, 0, Vector2(0.4476744, 2.6966295), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_nkn5i"]
+offsets = PackedFloat32Array(0, 0.05479452, 0.84931505, 0.98630136)
+colors = PackedColorArray(0, 0, 0, 1, 0.38039216, 0.2784314, 0.2901961, 1, 0.22327365, 0.16342711, 0.17033249, 1, 0, 0, 0, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uj6fh"]
+radius = 9.0
+height = 20.0
+
+[node name="BreakablePot" type="Sprite2D"]
+texture = ExtResource("1_2p5bm")
+script = ExtResource("2_nacd4")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 2)
+emitting = false
+amount = 16
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 20.0
+initial_velocity_min = 125.0
+initial_velocity_max = 200.0
+scale_amount_curve = SubResource("Curve_uj6fh")
+color_ramp = SubResource("Gradient_nkn5i")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_uj6fh")
+
+[node name="Shatter" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_nacd4")
+volume_db = -5.0

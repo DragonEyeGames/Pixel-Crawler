@@ -19,7 +19,7 @@
 [node name="Dungeon" type="Node2D" node_paths=PackedStringArray("startingLevel")]
 script = ExtResource("1_nulmw")
 levels = Array[PackedScene]([ExtResource("2_dqayi"), ExtResource("3_dgn0p"), ExtResource("1_sifhu"), ExtResource("2_slqep"), ExtResource("6_p832w")])
-caps = Array[PackedScene]([ExtResource("6_1vdva"), ExtResource("7_p832w"), ExtResource("8_oq8wd"), ExtResource("9_5ilfn"), ExtResource("10_1qybq"), ExtResource("11_fo3ry")])
+caps = Array[PackedScene]([ExtResource("7_p832w"), ExtResource("8_oq8wd"), ExtResource("9_5ilfn"), ExtResource("10_1qybq"), ExtResource("11_fo3ry")])
 startingLevel = NodePath("Main")
 
 [node name="HUD" parent="." instance=ExtResource("12_dgn0p")]

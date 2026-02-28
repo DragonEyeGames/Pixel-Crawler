@@ -42,7 +42,7 @@ func on_death():
 		#emitted=true
 		#SignalBus.allGone.emit()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$NavRegion.enabled=active
 	$NavRegion.visible=active
 	if(has_node("Floor")):
@@ -50,12 +50,19 @@ func _process(delta: float) -> void:
 	else:
 		$Control/Floor.collision_enabled=visible
 	for child in toUpdate:
-		child.visible=active
+		if is_instance_valid(child):
+			child.visible = active
+		else:
+			toUpdate.erase(child)
 
 func _on_area_2d_area_entered(_area: Area2D) -> void:
 	colliding=true
 	
 func finishedGeneration():
+	if(get_parent()==null):
+		print("BYE")
+		queue_free()
+		return
 	for door in doors:
 		door.visible=false
 	for child in $Y_Sorting.get_children():

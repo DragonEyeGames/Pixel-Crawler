@@ -1,30 +1,16 @@
-[gd_scene load_steps=11 format=4 uid="uid://bpgb62u7c0l6m"]
+[gd_scene load_steps=7 format=4 uid="uid://bpgb62u7c0l6m"]
 
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_nkn5i"]
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_me3ps"]
+[ext_resource type="PackedScene" uid="uid://ksl6i5ebd3as" path="res://Levels/Level1/breakable_pot.tscn" id="4_12vnb"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_sraex"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="9_1cu8l"]
-[ext_resource type="Texture2D" uid="uid://cj0omml67i2ky" path="res://Assets/BreakablPot.png" id="9_uj6fh"]
-[ext_resource type="Script" uid="uid://bgxn0fqeivp3d" path="res://Scripts/breakable_pot.gd" id="10_nkn5i"]
-
-[sub_resource type="Curve" id="Curve_uj6fh"]
-_limits = [0.0, 10.0, 0.0, 1.0]
-_data = [Vector2(0, 5.842697), 0.0, 0.0, 0, 0, Vector2(0.4476744, 2.6966295), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Gradient" id="Gradient_nkn5i"]
-offsets = PackedFloat32Array(0, 0.05479452, 0.84931505, 0.98630136)
-colors = PackedColorArray(0, 0, 0, 1, 0.38039216, 0.2784314, 0.2901961, 1, 0.22327365, 0.16342711, 0.17033249, 1, 0, 0, 0, 0)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uj6fh"]
-radius = 9.0
-height = 20.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lhxdc"]
-vertices = PackedVector2Array(66.00781, 67, -66, 67.99219, -66, -39, 67.97656, -39)
+vertices = PackedVector2Array(69.5, 65.5, -68.5, 65.5, -68.5, -31.5, 69.5, -31.5)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(69, -40, -67, -40, -67, 69, 67, 68)])
-agent_radius = 1.0
+outlines = Array[PackedVector2Array]([PackedVector2Array(76, -38, -75, -38, -75, 72, 76, 72)])
+agent_radius = 6.5
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("doors") groups=["South"]]
 texture_filter = 1
@@ -42,65 +28,17 @@ direction = "south"
 
 [node name="Floor" parent="." instance=ExtResource("2_me3ps")]
 z_index = -2
-tile_map_data = PackedByteArray("AAACAPz/AAABAAoAAAABAPz/AAABAAoAAAAAAPz/AAABAAoAAAD///z/AAABAAoAAAD+//z/AAABABUAAAD9//z/AAABAAoAAAD8//z/AAABABUAAAD8/wMAAAABAAoAAAD9/wMAAAAAABUAAAD+/wMAAAABAAoAAAD//wMAAAABAAoAAAAAAAMAAAABAAoAAAABAAMAAAABABUAAAACAAMAAAABAAoAAAADAAMAAAABAAoAAAAEAAMAAAACAAoAAAAEAAIAAAACAAoAAAAEAAEAAAACAAoAAAAEAAAAAAACAAoAAAAEAP//AAACAAoAAAAEAP7/AAACAAoAAAAEAP3/AAACAAoAAAADAP3/AAABABYAAAADAPz/AAABAAoAAAAEAPz/AAACAAoAAAACAP3/AAABAAoAAAABAP3/AAABAAoAAAAAAP3/AAABAAoAAAD///3/AAABAAoAAAD+//3/AAABABYAAAD9//3/AAABAAoAAAD8//3/AAABABYAAAD8//7/AAAAABYAAAD8////AAABAAoAAAD8/wAAAAABAAoAAAD8/wEAAAAAABYAAAD8/wIAAAAAABUAAAD9/wIAAAABAAoAAAD+/wIAAAABAAoAAAD//wIAAAAAABUAAAAAAAIAAAABAAoAAAABAAIAAAABABYAAAACAAIAAAABAAoAAAADAAIAAAABABUAAAADAAEAAAABAAoAAAADAAAAAAABAAoAAAADAP//AAABABUAAAACAP//AAABAAoAAAACAP7/AAAAABUAAAABAP7/AAABAAoAAAAAAP7/AAABAAoAAAD///7/AAABAAoAAAD+//7/AAABAAoAAAD9//7/AAABAAoAAAD9////AAABAAoAAAD9/wAAAAABABYAAAD9/wEAAAABAAoAAAD+/wEAAAABAAoAAAD//wEAAAABAAoAAAACAAEAAAABAAoAAAADAP7/AAABAAoAAAD/////AAAAABUAAAD+////AAABAAoAAAD+/wAAAAABAAoAAAAAAAEAAAABAAoAAAABAAEAAAABAAoAAAACAAAAAAAAABUAAAABAP//AAABABUAAAAAAP//AAABAAoAAAAAAAAAAAAAABYAAAABAAAAAAABABYAAAD//wAAAAABAAoAAAAEAPv/AAACAAkAAAADAPv/AAABAAkAAAACAPv/AAABAAkAAAABAPv/AAABAAkAAAAAAPv/AAABAAkAAAD///v/AAABAAkAAAD+//v/AAABAAkAAAD9//v/AAABAAkAAAD8//v/AAABAAkAAAD8/wQAAAABAAsAAAD9/wQAAAABAAsAAAD+/wQAAAABAAsAAAD//wQAAAABAAsAAAAAAAQAAAABAAsAAAABAAQAAAABAAsAAAACAAQAAAABAAsAAAADAAQAAAABAAsAAAAEAAQAAAACAAsAAAD7//v/AAAAAAkAAAD7//z/AAAAAAoAAAD7//3/AAAAAAoAAAD7//7/AAAAAAoAAAD7////AAAAAAoAAAD7/wAAAAAAAAoAAAD7/wEAAAAAAAoAAAD7/wIAAAAAAAoAAAD7/wMAAAAAAAoAAAD7/wQAAAAAAAsAAAA=")
+tile_map_data = PackedByteArray("AAACAPz/AAABAAoAAAABAPz/AAABAAoAAAAAAPz/AAABAAoAAAD///z/AAABAAoAAAD+//z/AAABABUAAAD9//z/AAABAAoAAAD8//z/AAABABUAAAD8/wMAAAABAAoAAAD9/wMAAAAAABUAAAD+/wMAAAABAAoAAAD//wMAAAABAAoAAAAAAAMAAAABAAoAAAABAAMAAAABABUAAAACAAMAAAABAAoAAAADAAMAAAABAAoAAAAEAAMAAAACAAoAAAAEAAIAAAACAAoAAAAEAAEAAAACAAoAAAAEAAAAAAACAAoAAAAEAP//AAACAAoAAAAEAP7/AAACAAoAAAAEAP3/AAACAAoAAAADAP3/AAABABYAAAADAPz/AAABAAoAAAAEAPz/AAACAAoAAAACAP3/AAABAAoAAAABAP3/AAABAAoAAAAAAP3/AAABAAoAAAD///3/AAABAAoAAAD+//3/AAABABYAAAD9//3/AAABAAoAAAD8//3/AAABABYAAAD8//7/AAAAABYAAAD8////AAABAAoAAAD8/wAAAAABAAoAAAD8/wEAAAAAABYAAAD8/wIAAAAAABUAAAD9/wIAAAABAAoAAAD+/wIAAAABAAoAAAD//wIAAAAAABUAAAAAAAIAAAABAAoAAAABAAIAAAABABYAAAACAAIAAAABAAoAAAADAAIAAAABABUAAAADAAEAAAABAAoAAAADAAAAAAABAAoAAAADAP//AAABABUAAAACAP//AAABAAoAAAACAP7/AAAAABUAAAABAP7/AAABAAoAAAAAAP7/AAABAAoAAAD///7/AAABAAoAAAD+//7/AAABAAoAAAD9//7/AAABAAoAAAD9////AAABAAoAAAD9/wAAAAABABYAAAD9/wEAAAABAAoAAAD+/wEAAAABAAoAAAD//wEAAAABAAoAAAACAAEAAAABAAoAAAADAP7/AAABAAoAAAD/////AAAAABUAAAD+////AAABAAoAAAD+/wAAAAABAAoAAAAAAAEAAAABAAoAAAABAAEAAAABAAoAAAACAAAAAAAAABUAAAABAP//AAABABUAAAAAAP//AAABAAoAAAAAAAAAAAAAABYAAAABAAAAAAABABYAAAD//wAAAAABAAoAAAAEAPv/AAACAAkAAAADAPv/AAABAAkAAAACAPv/AAABAAkAAAABAPv/AAABAAkAAAAAAPv/AAABAAkAAAD///v/AAABAAkAAAD+//v/AAABAAkAAAD9//v/AAABAAkAAAD8//v/AAABAAkAAAD8/wQAAAABAAsAAAD9/wQAAAABAAsAAAD+/wQAAAABAAsAAAD//wQAAgABAAsAAAAAAAQAAgABAAsAAAABAAQAAAABAAsAAAACAAQAAAABAAsAAAADAAQAAAABAAsAAAAEAAQAAAACAAsAAAD7//v/AAAAAAkAAAD7//z/AAAAAAoAAAD7//3/AAAAAAoAAAD7//7/AAAAAAoAAAD7////AAAAAAoAAAD7/wAAAAAAAAoAAAD7/wEAAAAAAAoAAAD7/wIAAAAAAAoAAAD7/wMAAAAAAAoAAAD7/wQAAAAAAAsAAAA=")
 
 [node name="Y_Sorting" type="Node2D" parent="."]
 z_index = 1
 y_sort_enabled = true
 
-[node name="BreakablePot" type="Sprite2D" parent="Y_Sorting"]
+[node name="BreakablePot" parent="Y_Sorting" instance=ExtResource("4_12vnb")]
 position = Vector2(-45, -33)
-texture = ExtResource("9_uj6fh")
-script = ExtResource("10_nkn5i")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Y_Sorting/BreakablePot"]
-position = Vector2(0, 2)
-emitting = false
-amount = 16
-lifetime = 0.4
-one_shot = true
-explosiveness = 1.0
-direction = Vector2(0, -1)
-spread = 20.0
-initial_velocity_min = 125.0
-initial_velocity_max = 200.0
-scale_amount_curve = SubResource("Curve_uj6fh")
-color_ramp = SubResource("Gradient_nkn5i")
-
-[node name="Hurtbox" type="Area2D" parent="Y_Sorting/BreakablePot"]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Y_Sorting/BreakablePot/Hurtbox"]
-position = Vector2(0, -1)
-shape = SubResource("CapsuleShape2D_uj6fh")
-
-[node name="BreakablePot2" type="Sprite2D" parent="Y_Sorting"]
-position = Vector2(56, -34)
-texture = ExtResource("9_uj6fh")
-script = ExtResource("10_nkn5i")
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Y_Sorting/BreakablePot2"]
-position = Vector2(0, 2)
-emitting = false
-amount = 16
-lifetime = 0.4
-one_shot = true
-explosiveness = 1.0
-direction = Vector2(0, -1)
-spread = 20.0
-initial_velocity_min = 125.0
-initial_velocity_max = 200.0
-scale_amount_curve = SubResource("Curve_uj6fh")
-color_ramp = SubResource("Gradient_nkn5i")
-
-[node name="Hurtbox" type="Area2D" parent="Y_Sorting/BreakablePot2"]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Y_Sorting/BreakablePot2/Hurtbox"]
-position = Vector2(0, -1)
-shape = SubResource("CapsuleShape2D_uj6fh")
+[node name="BreakablePot2" parent="Y_Sorting" instance=ExtResource("4_12vnb")]
+position = Vector2(58, -29)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.69135684, 0.6913568, 0.69135684, 1)
@@ -111,7 +49,7 @@ position = Vector2(37.5, -55)
 [node name="Torch2" parent="." instance=ExtResource("9_1cu8l")]
 position = Vector2(-34.5, -55)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+[node name="NavRegion" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_lhxdc")
 
 [node name="Control" type="Control" parent="."]
@@ -127,3 +65,23 @@ offset_bottom = 73.0
 z_index = -1
 position = Vector2(76, 77)
 tile_map_data = PackedByteArray("AAD7//v/AAABAA8AAAD8//v/AAABAA8AAAD9//v/AAABAA8AAAD+//v/AAABAA8AAAD///v/AAABAA8AAAAAAPv/AAABAA8AAAABAPv/AAABAA8AAAACAPv/AAABAA8AAAADAPv/AAABAA8AAAAEAPv/AAABAA8AAAD7//z/AAABABAAAAD7//3/AAABABEAAAD8//z/AAABABAAAAD8//3/AAABABEAAAD9//z/AAABABAAAAD9//3/AAABABEAAAD+//z/AAABABAAAAD+//3/AAABABEAAAD///z/AAABABAAAAD///3/AAABABEAAAAAAPz/AAABABAAAAAAAP3/AAABABEAAAABAPz/AAABABAAAAABAP3/AAABABEAAAACAPz/AAABABAAAAACAP3/AAABABEAAAADAPz/AAABABAAAAADAP3/AAABABEAAAAEAPz/AAABABAAAAAEAP3/AAABABEAAAA=")
+
+[node name="player" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="player"]
+polygon = PackedVector2Array(76, 72, -75, 72, -75, -38, 76, -38)
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(76, 72, -75, 72, -75, -38, 76, -38)
+
+[connection signal="area_entered" from="player" to="." method="_on_player_area_entered"]
+[connection signal="area_exited" from="player" to="." method="_on_player_area_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

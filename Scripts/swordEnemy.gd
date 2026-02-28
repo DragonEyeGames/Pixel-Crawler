@@ -46,8 +46,6 @@ func _physics_process(_delta: float) -> void:
 	if(mainParent!=null):
 		visible=mainParent.active
 	if(dead or attacking or (mainParent==null or !mainParent.active)):
-		if(mainParent!=null and !mainParent.active):
-			print("A")
 		return
 	if(len(attackingList)>=1 and canAttack):
 		if player.dead!=true:
