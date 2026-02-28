@@ -92,4 +92,5 @@ func generateWorld():
 	while len(uniqueLeft)>0:
 		await generate(placedLevels.pick_random())
 	await get_tree().process_frame
+	
 	SignalBus.generated.emit()

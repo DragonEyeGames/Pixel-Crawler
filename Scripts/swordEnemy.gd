@@ -16,8 +16,10 @@ var canAttack:=true
 @export var cooldown:=.25
 @export var weaponDamage:=1
 @onready var navAgent := $NavigationAgent2D as NavigationAgent2D
+@export var blood=false
 var maxHealth
 var mainParent
+var knockBack: Vector2
 
 func _ready() -> void:
 	maxHealth=health
@@ -30,6 +32,9 @@ func _ready() -> void:
 	cooldown*=1.5
 
 func _physics_process(_delta: float) -> void:
+	velocity=knockBack
+	knockBack*=.65
+	move_and_slide()
 	if(player==null):
 		player=GameManager.player
 		return
@@ -54,6 +59,8 @@ func _physics_process(_delta: float) -> void:
 		velocity = dir*speed
 		#velocity=player.global_position-global_position
 		#velocity=velocity.normalized()*speed
+	velocity+=knockBack
+	knockBack*=.9
 	move_and_slide()
 	if(velocity!=Vector2.ZERO and sprite.animation=="idle"):
 		sprite.play("walk")
@@ -75,11 +82,14 @@ func flip(newDirection):
 		shadow.flip_h=false
 		$Areas.scale.x=1
 
-func damage(hitDamage):
+func damage(hitDamage, hitGlobalPos):
 	if(dead):
 		return
 	health-=hitDamage
 	hit.play("hit")
+	knockBack+=(global_position-hitGlobalPos).normalized()*500
+	if(blood):
+		$Blood.emitting=true
 	if(health<=0):
 		$DeadSound.pitch_scale=randf_range(.9, 1.1)
 		$DeadSound.play()
