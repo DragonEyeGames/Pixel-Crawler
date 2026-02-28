@@ -7,6 +7,9 @@ var emitted:=false
 @export var doors: Array[Node2D] = []
 var colliding=false
 var active=false
+
+var toUpdate=[]
+
 func _ready() -> void:
 	for door in doors:
 		door.level=level
@@ -46,6 +49,8 @@ func _process(delta: float) -> void:
 		$Floor.collision_enabled=visible
 	else:
 		$Control/Floor.collision_enabled=visible
+	for child in toUpdate:
+		child.visible=active
 
 func _on_area_2d_area_entered(_area: Area2D) -> void:
 	colliding=true
@@ -60,6 +65,8 @@ func finishedGeneration():
 		child.global_position = global_pos
 		if(child is Enemy):
 			child.mainParent=self;
+		else:
+			toUpdate.append(child)
 
 func _on_player_area_entered(_area: Area2D) -> void:
 	modulate.a=0

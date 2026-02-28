@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://bb8xchi76xpxd"]
+[gd_scene load_steps=9 format=4 uid="uid://bb8xchi76xpxd"]
 
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="1_m3ha0"]
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_xosfc"]
 [ext_resource type="PackedScene" uid="uid://ctaqft8gk43cp" path="res://Levels/Level1/doorAlternate.tscn" id="3_en52i"]
 [ext_resource type="PackedScene" uid="uid://0t3tdgnb5mjo" path="res://Levels/Level1/monsterSpawner.tscn" id="6_k313m"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Scenes/door.tscn" id="6_xosfc"]
+[ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="7_en52i"]
 [ext_resource type="PackedScene" uid="uid://c4wws2xdfldn2" path="res://Scenes/chest.tscn" id="10_x7rwe"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_xosfc"]
@@ -17,18 +18,19 @@ agent_radius = 6.5
 texture_filter = 1
 script = ExtResource("1_xosfc")
 level = 2
-doors = [NodePath("Door"), NodePath("Door3"), NodePath("Door2"), NodePath(""), NodePath("")]
+doors = [NodePath("Door"), NodePath("Door4"), NodePath("Door2")]
 
 [node name="Y_Sorting" type="Node2D" parent="."]
 z_index = 1
 y_sort_enabled = true
 
-[node name="Door" parent="." instance=ExtResource("6_xosfc")]
+[node name="Door" parent="." node_paths=PackedStringArray("coverUp") instance=ExtResource("6_xosfc")]
 position = Vector2(-96, -117)
 toTransport = 3
 playerPos = Vector2(0, 54)
 enemyControlled = false
 direction = "north"
+coverUp = NodePath("../DoorAlternate2")
 
 [node name="DoorAlternate2" parent="." instance=ExtResource("3_en52i")]
 visible = false
@@ -37,13 +39,6 @@ position = Vector2(-96, -32)
 [node name="DoorAlternate3" parent="." instance=ExtResource("3_en52i")]
 visible = false
 position = Vector2(128, -32)
-
-[node name="Door3" parent="." instance=ExtResource("6_xosfc")]
-position = Vector2(17, 123)
-toTransport = 3
-playerPos = Vector2(0, 54)
-enemyControlled = false
-direction = "south"
 
 [node name="Door2" parent="." node_paths=PackedStringArray("coverUp") instance=ExtResource("6_xosfc")]
 position = Vector2(128, -117)
@@ -107,6 +102,11 @@ position = Vector2(106, -54)
 [node name="MonsterSpawner3" parent="." instance=ExtResource("6_k313m")]
 position = Vector2(11, -22)
 strength = 1
+
+[node name="Door4" parent="." instance=ExtResource("7_en52i")]
+position = Vector2(17, 123)
+enemyControlled = false
+direction = "south"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="player" to="." method="_on_player_area_entered"]

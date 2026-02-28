@@ -1,73 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://cywp0vhrkjqsx"]
+[gd_scene load_steps=4 format=3 uid="uid://cywp0vhrkjqsx"]
 
-[ext_resource type="Texture2D" uid="uid://wrg7d4vpuep6" path="res://Assets/Tilemap/FixedDoors.png" id="1_p0e35"]
+[ext_resource type="SpriteFrames" uid="uid://dcelm2kjw0qtg" path="res://Scenes/door.tres" id="1_p0e35"]
 [ext_resource type="Script" uid="uid://kgd2ux45ohr0" path="res://Scripts/door.gd" id="2_c5cab"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n6tk3"]
-atlas = ExtResource("1_p0e35")
-region = Rect2(0, 22, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_muiko"]
-atlas = ExtResource("1_p0e35")
-region = Rect2(128, 22, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_arxy7"]
-atlas = ExtResource("1_p0e35")
-region = Rect2(32, 22, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6cm3k"]
-atlas = ExtResource("1_p0e35")
-region = Rect2(64, 22, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_inhlo"]
-atlas = ExtResource("1_p0e35")
-region = Rect2(96, 22, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_fahql"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n6tk3")
-}],
-"loop": false,
-"name": &"closed",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_muiko")
-}],
-"loop": false,
-"name": &"open",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n6tk3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_arxy7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6cm3k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_inhlo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_muiko")
-}],
-"loop": false,
-"name": &"raise",
-"speed": 8.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dl8mf"]
 size = Vector2(21, 3)
 
 [node name="Door" type="AnimatedSprite2D" groups=["Door"]]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_fahql")
+sprite_frames = ExtResource("1_p0e35")
 animation = &"closed"
 autoplay = "open"
 script = ExtResource("2_c5cab")

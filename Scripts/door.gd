@@ -1,5 +1,5 @@
 @icon("res://Assets/GodotIcon/icon_door.png")
-extends AnimatedSprite2D
+extends Node2D
 @export var chapter=1
 @export var toTransport:=2
 @export var playerPos:= Vector2.ZERO
@@ -8,22 +8,28 @@ extends AnimatedSprite2D
 @export var direction: String
 @export var coverUp: Node2D
 var connection
+@export var animated=true
 
 func _ready() -> void:
+	if(not animated):
+		SignalBus.allGone.connect(openDoor)
+		return
 	if(enemyControlled):
 		SignalBus.allGone.connect(openDoor)
-		play("closed")
+		$".".play("closed")
 		await get_tree().process_frame
-		play("closed")
+		$".".play("closed")
 	else:
-		play("open")
+		$".".play("open")
 		await get_tree().process_frame
-		play("open")
+		$".".play("open")
 
 func openDoor():
 	await get_tree().process_frame
 	await get_tree().process_frame
-	play("raise")
+	if(not animated):
+		return
+	$".".play("raise")
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	pass

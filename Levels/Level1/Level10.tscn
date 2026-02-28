@@ -55,8 +55,6 @@ position = Vector2(-64, 32)
 
 [node name="Door2" parent="." instance=ExtResource("3_dl22j")]
 position = Vector2(-80, 58)
-animation = &"closed"
-autoplay = ""
 playerPos = Vector2(128, -101)
 enemyControlled = false
 level = 9
@@ -64,8 +62,6 @@ direction = "south"
 
 [node name="Door4" parent="." instance=ExtResource("3_dl22j")]
 position = Vector2(80, 59)
-animation = &"closed"
-autoplay = ""
 playerPos = Vector2(128, -101)
 enemyControlled = false
 level = 9
