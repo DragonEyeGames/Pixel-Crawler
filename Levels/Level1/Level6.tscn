@@ -1,10 +1,27 @@
-[gd_scene load_steps=7 format=4 uid="uid://bpgb62u7c0l6m"]
+[gd_scene load_steps=12 format=4 uid="uid://bpgb62u7c0l6m"]
 
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_nkn5i"]
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_me3ps"]
 [ext_resource type="PackedScene" uid="uid://ksl6i5ebd3as" path="res://Levels/Level1/breakable_pot.tscn" id="4_12vnb"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_sraex"]
+[ext_resource type="PackedScene" uid="uid://d3x22sgpk0unl" path="res://Scenes/mimic.tscn" id="6_a8vds"]
+[ext_resource type="Shader" uid="uid://chvg7tt7fvn81" path="res://Shaders/flash.gdshader" id="7_4xc7t"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="9_1cu8l"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g5hcj"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fugqv"]
+width = 1000
+height = 1000
+noise = SubResource("FastNoiseLite_g5hcj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8vds"]
+resource_local_to_scene = true
+shader = ExtResource("7_4xc7t")
+shader_parameter/whiteness = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_fugqv")
+shader_parameter/dissolve_amount = 0.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lhxdc"]
 vertices = PackedVector2Array(69.5, 65.5, -68.5, 65.5, -68.5, -31.5, 69.5, -31.5)
@@ -23,7 +40,6 @@ doors = [NodePath("Door2")]
 position = Vector2(0, 59)
 toTransport = 4
 playerPos = Vector2(80, -70)
-enemyControlled = false
 direction = "south"
 
 [node name="Floor" parent="." instance=ExtResource("2_me3ps")]
@@ -39,6 +55,11 @@ position = Vector2(-45, -33)
 
 [node name="BreakablePot2" parent="Y_Sorting" instance=ExtResource("4_12vnb")]
 position = Vector2(58, -29)
+
+[node name="Mimic" parent="Y_Sorting" node_paths=PackedStringArray("door") instance=ExtResource("6_a8vds")]
+material = SubResource("ShaderMaterial_a8vds")
+position = Vector2(1, -32)
+door = NodePath("../../Door2")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.69135684, 0.6913568, 0.69135684, 1)

@@ -6,13 +6,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dl8mf"]
 size = Vector2(21, 3)
 
-[node name="Door" type="AnimatedSprite2D" groups=["Door"]]
+[node name="Door" type="AnimatedSprite2D" node_paths=PackedStringArray("sprite") groups=["Door"]]
 texture_filter = 1
 sprite_frames = ExtResource("1_p0e35")
-animation = &"open"
+animation = &"lower"
 autoplay = "open"
 script = ExtResource("2_c5cab")
 enemyControlled = true
+sprite = NodePath(".")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

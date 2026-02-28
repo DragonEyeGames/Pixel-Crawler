@@ -25,7 +25,6 @@ var knockBack: Vector2
 
 
 func _ready():
-	door.locked=true
 	$Timer.start()
 	hit=$Hit
 	sprite=$Sprite
@@ -68,6 +67,7 @@ func _process(_delta: float) -> void:
 		opened=true
 		canAttack=false
 		sprite.play("jumpscare")
+		door.locked=true
 		$Chomp.play()
 		$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
 		await get_tree().create_timer(1).timeout

@@ -32,9 +32,10 @@ func _physics_process(_delta: float) -> void:
 		animator.speed_scale=attackSpeed
 		sprite.play("attack-2")
 		animator.play("attack-2")
+		await get_tree().create_timer(.05).timeout
 		$Attack2SoundEffect.pitch_scale=randf_range(.9, 1.1)
 		$Attack2SoundEffect.play()
-		await get_tree().create_timer(.15).timeout
+		await get_tree().create_timer(.175).timeout
 		$Attack2SoundEffect.play()
 	if(sprite.animation=="walk" and ((sprite.frame==2 and animationFrame!=2) or (sprite.frame==6 and animationFrame!=6))):
 		animationFrame=sprite.frame

@@ -345,7 +345,7 @@ wait_time = 0.1
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_mbwna")
-animation = &"hopFront"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]

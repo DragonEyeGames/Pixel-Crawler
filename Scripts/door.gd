@@ -3,38 +3,27 @@ extends Node2D
 @export var chapter=1
 @export var toTransport:=2
 @export var playerPos:= Vector2.ZERO
-@export var enemyControlled:=false
 @export var level = 2
 @export var direction: String
 @export var coverUp: Node2D
 var connection
-@export var animated=true
 var locked=false
+@export var sprite: AnimatedSprite2D
 
 func _ready() -> void:
-	if(not animated):
-		SignalBus.allGone.connect(openDoor)
-		return
-	if(enemyControlled):
-		SignalBus.allGone.connect(openDoor)
-		$".".play("closed")
-		await get_tree().process_frame
-		$".".play("closed")
-	else:
-		$".".play("open")
-		await get_tree().process_frame
-		$".".play("open")
+	sprite.play("open")
+	await get_tree().process_frame
+	sprite.play("open")
 
 func openDoor():
 	await get_tree().process_frame
 	await get_tree().process_frame
-	if(not animated):
-		return
-	$".".play("raise")
+	sprite.play("raise")
 
 
 func close():
-	$".".play("closed")
+	if(sprite.animation=="open"):
+		sprite.play("lower")
 
 func _on_area_2d_area_entered(_area: Area2D) -> void:
 	pass
@@ -48,8 +37,7 @@ func _process(_delta: float) -> void:
 		coverUp.visible=!visible
 		
 func _physics_process(_delta: float) -> void:
-	if(animated):
-		$StaticBody2D/CollisionShape2D2.disabled=$".".animation=="open"
+	$StaticBody2D/CollisionShape2D2.disabled=sprite.animation=="open"
 
 func saveGame(): #Old undedned stuf I don;t want to ocmment out or delete
 		var enemies = get_tree().get_nodes_in_group("Enemy")
@@ -81,5 +69,7 @@ func saveGame(): #Old undedned stuf I don;t want to ocmment out or delete
 
 
 func _on_animation_finished() -> void:
-	if($".".animation=="raise"):
-		$".".play("open")
+	if(sprite.animation=="raise"):
+		sprite.play("open")
+	if(sprite.animation=="lower"):
+		sprite.play("closed")
