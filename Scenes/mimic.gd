@@ -11,12 +11,14 @@ var colliding:=false
 var player
 var attacking:=false
 var canAttack:=true
+var animationFrame=0
 @export var weaponDamage:=2.5
 @export var cooldown:=.5
 @onready var navAgent := $NavigationAgent2D as NavigationAgent2D
 @export var speed=50
 var hit:AnimationPlayer
 @export var chest: PackedScene
+var knockBack: Vector2
 
 func _ready():
 	$Timer.start()
@@ -31,12 +33,25 @@ func _ready():
 		
 
 func _process(_delta: float) -> void:
+	if("hop" in sprite.animation):
+		if(sprite.frame==1 and animationFrame!=1):
+			$Land.pitch_scale=randf_range(.9, 1.1)
+			$Land.play()
+			animationFrame=1
+		if(sprite.frame!=1):
+			animationFrame=sprite.frame
+	if(!dead):
+		velocity=knockBack
+		knockBack*=.65
+		move_and_slide()
 	player=GameManager.player
 	if(attacking):
 		return
 	if(canAttack and colliding and opened):
 		attacking=true
 		canAttack=false
+		$Chomp.pitch_scale=randf_range(.9, 1.1)
+		$Chomp.play()
 		if(sprite.animation=="hopFront"):
 			sprite.play("attackFront")
 		else:
@@ -46,6 +61,7 @@ func _process(_delta: float) -> void:
 		opened=true
 		canAttack=false
 		sprite.play("jumpscare")
+		$Chomp.play()
 		$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
 		await get_tree().create_timer(1).timeout
 		canAttack=true
@@ -79,18 +95,24 @@ func _on_area_2d_area_entered(_area: Area2D) -> void:
 func _on_area_2d_area_exited(_area: Area2D) -> void:
 	collided=false
 
-func damage(hitDamage):
+func damage(hitDamage, hitGlobalPos):
 	if(dead or not opened):
 		return
+	$Impact.pitch_scale=randf_range(.9, 1.1)
+	$Impact.play()
+	knockBack+=(global_position-hitGlobalPos).normalized()*500
 	health-=hitDamage
 	hit.play("hit")
 	if(health<=0):
 		dead=true
 		opened=false
-		var newChest=chest.instantiate()
-		get_parent().call_deferred("add_child" ,newChest)
-		newChest.global_position=global_position
-		newChest.global_position.y-=5
+		$Chest.visible=true
+		$Chest.active=true
+		var globalPos=$Chest.global_position
+		var newChest = $Chest
+		call_deferred("remove_child", newChest)
+		get_parent().call_deferred("add_child", newChest)
+		newChest.global_position=globalPos
 		SignalBus.enemy_died.emit()
 		sprite.play("boom")
 

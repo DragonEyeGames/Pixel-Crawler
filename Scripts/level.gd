@@ -11,6 +11,7 @@ var active=false
 var toUpdate=[]
 
 func _ready() -> void:
+	modulate.a=0
 	for door in doors:
 		door.level=level
 		door.chapter=chapter
@@ -59,6 +60,7 @@ func _on_area_2d_area_entered(_area: Area2D) -> void:
 	colliding=true
 	
 func finishedGeneration():
+	visible=true
 	if(get_parent()==null):
 		print("BYE")
 		queue_free()
@@ -76,7 +78,6 @@ func finishedGeneration():
 			toUpdate.append(child)
 
 func _on_player_area_entered(_area: Area2D) -> void:
-	modulate.a=0
 	visible=true
 	var tween=create_tween()
 	tween.tween_property(self, "modulate:a", 1.0, .1)

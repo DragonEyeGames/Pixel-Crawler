@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_l7ecc"]
 [ext_resource type="PackedScene" uid="uid://ctaqft8gk43cp" path="res://Levels/Level1/doorAlternate.tscn" id="3_q0vph"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_x2yma"]
-[ext_resource type="PackedScene" uid="uid://c5a5w6hpeq0ok" path="res://Scenes/statue.tscn" id="6_csn0e"]
+[ext_resource type="PackedScene" uid="uid://ksl6i5ebd3as" path="res://Levels/Level1/breakable_pot.tscn" id="8_mrsrh"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Scenes/door.tscn" id="9_csn0e"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="9_p4o7v"]
 
@@ -36,8 +36,6 @@ position = Vector2(0, 32)
 
 [node name="Door2" parent="." instance=ExtResource("4_x2yma")]
 position = Vector2(0, 59)
-animation = &"closed"
-autoplay = ""
 playerPos = Vector2(128, -101)
 enemyControlled = false
 level = 9
@@ -50,9 +48,6 @@ tile_map_data = PackedByteArray("AAD8/wMAAAABAAoAAAD9/wMAAAAAABUAAAD+/wMAAAABAAo
 [node name="Y_Sorting" type="Node2D" parent="."]
 z_index = 1
 y_sort_enabled = true
-
-[node name="Statue" parent="Y_Sorting" instance=ExtResource("6_csn0e")]
-position = Vector2(0, 3)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.69135684, 0.6913568, 0.69135684, 1)
@@ -96,6 +91,9 @@ collision_mask = 2
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="player"]
 polygon = PackedVector2Array(-75, 72, 76, 72, 76, -38, -75, -38)
+
+[node name="BreakablePot" parent="." instance=ExtResource("8_mrsrh")]
+position = Vector2(-66, -37)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="player" to="." method="_on_player_area_entered"]

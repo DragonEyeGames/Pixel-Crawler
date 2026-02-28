@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://bb8xchi76xpxd"]
+[gd_scene load_steps=10 format=4 uid="uid://bb8xchi76xpxd"]
 
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="1_m3ha0"]
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_xosfc"]
+[ext_resource type="PackedScene" uid="uid://ksl6i5ebd3as" path="res://Levels/Level1/breakable_pot.tscn" id="3_ayde2"]
 [ext_resource type="PackedScene" uid="uid://ctaqft8gk43cp" path="res://Levels/Level1/doorAlternate.tscn" id="3_en52i"]
 [ext_resource type="PackedScene" uid="uid://0t3tdgnb5mjo" path="res://Levels/Level1/monsterSpawner.tscn" id="6_k313m"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Scenes/door.tscn" id="6_xosfc"]
@@ -26,6 +27,15 @@ y_sort_enabled = true
 
 [node name="Chest" parent="Y_Sorting" instance=ExtResource("10_x7rwe")]
 position = Vector2(16, -98)
+
+[node name="BreakablePot" parent="Y_Sorting" instance=ExtResource("3_ayde2")]
+position = Vector2(162, 41)
+
+[node name="BreakablePot2" parent="Y_Sorting" instance=ExtResource("3_ayde2")]
+position = Vector2(144, 42)
+
+[node name="BreakablePot3" parent="Y_Sorting" instance=ExtResource("3_ayde2")]
+position = Vector2(153, 33)
 
 [node name="Door" parent="." node_paths=PackedStringArray("coverUp") instance=ExtResource("6_xosfc")]
 position = Vector2(-96, -117)

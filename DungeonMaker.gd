@@ -94,7 +94,7 @@ func cap():
 	var level=null
 	while level==null:
 		if(len(placedLevels)<=0):
-			failedCaps=25
+			failedCaps+=1
 		var testLevel = placedLevels.pick_random()
 		if(testLevel.is_in_group("North")):
 			level=testLevel
@@ -160,8 +160,9 @@ func generateWorld():
 	while len(uniqueLeft)>0:
 		await generate(placedLevels.pick_random())
 	await get_tree().process_frame
-	while len(instantiatedCaps)>=1 and failedCaps<=25:
+	while len(instantiatedCaps)>=1 and failedCaps<=100:
 		await cap()
 	await get_tree().process_frame
 	await get_tree().process_frame
+	startingLevel.modulate.a=1
 	SignalBus.generated.emit()

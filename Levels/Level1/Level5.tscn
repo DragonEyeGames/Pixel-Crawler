@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://deo8ogw66xfsq"]
+[gd_scene load_steps=16 format=4 uid="uid://deo8ogw66xfsq"]
 
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_nijbd"]
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_cg4ff"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_x1euj"]
+[ext_resource type="PackedScene" uid="uid://0t3tdgnb5mjo" path="res://Levels/Level1/monsterSpawner.tscn" id="6_x4cxm"]
 [ext_resource type="Texture2D" uid="uid://dkgps26n57idn" path="res://Assets/Tilemap/fire_animation.png" id="8_ycmcf"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="9_l2wws"]
 
@@ -138,6 +139,14 @@ collision_mask = 8
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(76, 72, -75, 72, -75, -38, 76, -38)
+
+[node name="MonsterSpawner" parent="." instance=ExtResource("6_x4cxm")]
+position = Vector2(-51, -23)
+strength = 1
+
+[node name="MonsterSpawner2" parent="." instance=ExtResource("6_x4cxm")]
+position = Vector2(44, -26)
+strength = 1
 
 [connection signal="area_entered" from="player" to="." method="_on_player_area_entered"]
 [connection signal="area_exited" from="player" to="." method="_on_player_area_exited"]
