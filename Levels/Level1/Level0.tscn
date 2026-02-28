@@ -1,59 +1,9 @@
-[gd_scene load_steps=14 format=4 uid="uid://s3yjedgeef8o"]
+[gd_scene load_steps=7 format=4 uid="uid://s3yjedgeef8o"]
 
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_ajely"]
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_3yu0n"]
-[ext_resource type="Texture2D" uid="uid://dkgps26n57idn" path="res://Assets/Tilemap/fire_animation.png" id="7_h2dl5"]
+[ext_resource type="PackedScene" uid="uid://dk6dhq7uvjpin" path="res://Scenes/big_torch.tscn" id="4_csq6c"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Scenes/door.tscn" id="8_aa3m5"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u74sm"]
-atlas = ExtResource("7_h2dl5")
-region = Rect2(39, 0, 33, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qpfp8"]
-atlas = ExtResource("7_h2dl5")
-region = Rect2(39, 48, 33, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ajely"]
-atlas = ExtResource("7_h2dl5")
-region = Rect2(39, 96, 33, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3yu0n"]
-atlas = ExtResource("7_h2dl5")
-region = Rect2(39, 144, 33, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_im6i0"]
-atlas = ExtResource("7_h2dl5")
-region = Rect2(39, 192, 33, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i4luy"]
-atlas = ExtResource("7_h2dl5")
-region = Rect2(39, 240, 33, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_yx5hh"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u74sm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qpfp8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ajely")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3yu0n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_im6i0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i4luy")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csq6c"]
 size = Vector2(119, 110)
@@ -82,24 +32,14 @@ y_sort_enabled = true
 position = Vector2(0, -53)
 toTransport = 1
 playerPos = Vector2(0, 55)
-enemyControlled = false
 level = 0
 direction = "north"
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.69135684, 0.6913568, 0.69135684, 1)
-
-[node name="BigTorch" type="AnimatedSprite2D" parent="."]
+[node name="BigTorch" parent="." instance=ExtResource("4_csq6c")]
 position = Vector2(36, -48)
-sprite_frames = SubResource("SpriteFrames_yx5hh")
-autoplay = "default"
-frame_progress = 0.9579048
 
-[node name="BigTorch2" type="AnimatedSprite2D" parent="."]
+[node name="BigTorch2" parent="." instance=ExtResource("4_csq6c")]
 position = Vector2(-35, -48)
-sprite_frames = SubResource("SpriteFrames_yx5hh")
-autoplay = "default"
-frame_progress = 0.42394128
 
 [node name="Control" type="Control" parent="."]
 clip_contents = true

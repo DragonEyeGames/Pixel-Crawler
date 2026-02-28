@@ -388,6 +388,7 @@ speed_scale = 1.5
 
 [node name="Chest" parent="." instance=ExtResource("2_caxi4")]
 visible = false
+modulate = Color(1, 1, 1, 0)
 active = false
 
 [node name="Chomp" type="AudioStreamPlayer2D" parent="."]

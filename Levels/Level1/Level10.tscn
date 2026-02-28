@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cheti8t634gxo"]
+[gd_scene load_steps=10 format=4 uid="uid://cheti8t634gxo"]
 
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_0c11c"]
 [ext_resource type="PackedScene" uid="uid://cywp0vhrkjqsx" path="res://Scenes/door.tscn" id="2_avc1n"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="4_t8q16"]
 [ext_resource type="PackedScene" uid="uid://0t3tdgnb5mjo" path="res://Levels/Level1/monsterSpawner.tscn" id="6_0c11c"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="6_lp0kh"]
+[ext_resource type="PackedScene" uid="uid://d3o0d25dxhxkc" path="res://Levels/Level1/small_furnace.tscn" id="8_dl22j"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8ckri"]
 vertices = PackedVector2Array(134.5, 66.5, -133.5, 66.5, -133.5, -32.5, 134.5, -32.5)
@@ -25,7 +26,6 @@ doors = [NodePath("Door"), NodePath("Door3"), NodePath("Door2"), NodePath("Door4
 position = Vector2(64, -53)
 toTransport = 4
 playerPos = Vector2(-51, 56)
-enemyControlled = false
 level = 9
 direction = "north"
 coverUp = NodePath("../DoorAlternate3")
@@ -41,7 +41,6 @@ position = Vector2(64, 32)
 position = Vector2(-64, -53)
 toTransport = 4
 playerPos = Vector2(-51, 56)
-enemyControlled = false
 level = 9
 direction = "north"
 coverUp = NodePath("../DoorAlternate4")
@@ -56,14 +55,12 @@ position = Vector2(-64, 32)
 [node name="Door2" parent="." instance=ExtResource("3_dl22j")]
 position = Vector2(-80, 58)
 playerPos = Vector2(128, -101)
-enemyControlled = false
 level = 9
 direction = "south"
 
 [node name="Door4" parent="." instance=ExtResource("3_dl22j")]
 position = Vector2(80, 59)
 playerPos = Vector2(128, -101)
-enemyControlled = false
 level = 9
 direction = "south"
 
@@ -75,8 +72,8 @@ tile_map_data = PackedByteArray("AAD8/wMAAAABAAoAAAD9/wMAAAAAABUAAAD+/wMAAAABAAo
 z_index = 1
 y_sort_enabled = true
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.69135684, 0.6913568, 0.69135684, 1)
+[node name="Fire" parent="Y_Sorting" instance=ExtResource("8_dl22j")]
+position = Vector2(1, 11)
 
 [node name="Control" type="Control" parent="."]
 clip_contents = true

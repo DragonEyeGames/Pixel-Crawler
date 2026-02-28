@@ -115,6 +115,7 @@ func damage(hitDamage, hitGlobalPos):
 		opened=false
 		$Chest.visible=true
 		$Chest.active=true
+		$Chest.modulate.a=1
 		var globalPos=$Chest.global_position
 		var newChest = $Chest
 		call_deferred("remove_child", newChest)

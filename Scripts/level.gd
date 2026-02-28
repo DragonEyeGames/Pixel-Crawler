@@ -91,3 +91,7 @@ func _on_player_area_exited(_area: Area2D) -> void:
 	var tween=create_tween()
 	tween.tween_property(self, "modulate:a", 0.0, .1)
 	active=false
+	await get_tree().create_timer(.1).timeout
+	await get_tree().process_frame
+	if(not active):
+		visible=false

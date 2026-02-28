@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://3dvcsmdurge"]
+
+[ext_resource type="Texture2D" uid="uid://dkgps26n57idn" path="res://Assets/Tilemap/fire_animation.png" id="1_derp7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nijbd"]
+atlas = ExtResource("1_derp7")
+region = Rect2(80, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg4ff"]
+atlas = ExtResource("1_derp7")
+region = Rect2(80, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rss6v"]
+atlas = ExtResource("1_derp7")
+region = Rect2(80, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1euj"]
+atlas = ExtResource("1_derp7")
+region = Rect2(80, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_am2wo"]
+atlas = ExtResource("1_derp7")
+region = Rect2(80, 192, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_888os"]
+atlas = ExtResource("1_derp7")
+region = Rect2(80, 240, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nxrld"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nijbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cg4ff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rss6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1euj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_am2wo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_888os")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xc3xs"]
+radius = 4.0
+
+[sub_resource type="Gradient" id="Gradient_derp7"]
+offsets = PackedFloat32Array(0, 0.27333334, 1)
+colors = PackedColorArray(1, 0.47748065, 0.32435524, 1, 1, 0.6296997, 0.40493256, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g4pcn"]
+gradient = SubResource("Gradient_derp7")
+fill = 1
+fill_from = Vector2(0.5046729, 0.5140187)
+fill_to = Vector2(0.864486, 0.8598131)
+
+[node name="Fire" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_nxrld")
+autoplay = "default"
+frame_progress = 0.032840814
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, 4)
+shape = SubResource("CircleShape2D_xc3xs")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.8797844, 0.78031605, 1)
+energy = 1.59
+texture = SubResource("GradientTexture2D_g4pcn")
+texture_scale = 1.15

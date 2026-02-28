@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dhd0snu2yv3e5"]
+[gd_scene load_steps=12 format=4 uid="uid://dhd0snu2yv3e5"]
 
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_v72e1"]
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_so18s"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://0t3tdgnb5mjo" path="res://Levels/Level1/monsterSpawner.tscn" id="8_pdu42"]
 [ext_resource type="PackedScene" uid="uid://b3i6dfak5vsmn" path="res://Scenes/spike.tscn" id="9_lfbxl"]
 [ext_resource type="Script" uid="uid://dya7qfsa4hqdw" path="res://Scripts/spikeController.gd" id="9_v72e1"]
+[ext_resource type="PackedScene" uid="uid://3dvcsmdurge" path="res://Levels/Level1/furnace.tscn" id="10_h3ukb"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_pdu42"]
 vertices = PackedVector2Array(-10.390625, 64.57031, -84.5, 65.421875, -84.5, -64.5, -9.3984375, 2.5234375, 309.5, -64.5, 309.5, 1.5234375)
@@ -27,7 +28,6 @@ doors = [NodePath("Door5"), NodePath("Door"), NodePath("Door2"), NodePath("Door4
 position = Vector2(-48, 59)
 toTransport = 9
 playerPos = Vector2(0, -38)
-enemyControlled = false
 direction = "south"
 
 [node name="Floor" parent="." instance=ExtResource("2_so18s")]
@@ -60,11 +60,13 @@ position = Vector2(-38, -1)
 [node name="Spike6" parent="Y_Sorting/Spikes" instance=ExtResource("9_lfbxl")]
 position = Vector2(-52, -1)
 
+[node name="Fire" parent="Y_Sorting" instance=ExtResource("10_h3ukb")]
+position = Vector2(176, -33)
+
 [node name="Door" parent="." node_paths=PackedStringArray("coverUp") instance=ExtResource("6_7csao")]
 position = Vector2(0, -85)
 toTransport = 5
 playerPos = Vector2(0, 54)
-enemyControlled = false
 direction = "north"
 coverUp = NodePath("../DoorAlternate3")
 
@@ -81,7 +83,6 @@ visible = false
 position = Vector2(112, -85)
 toTransport = 6
 playerPos = Vector2(0, 54)
-enemyControlled = false
 direction = "north"
 coverUp = NodePath("../DoorAlternate4")
 
@@ -93,16 +94,12 @@ position = Vector2(112, 0)
 position = Vector2(240, -85)
 toTransport = 8
 playerPos = Vector2(0, 54)
-enemyControlled = false
 direction = "north"
 coverUp = NodePath("../DoorAlternate5")
 
 [node name="DoorAlternate5" parent="." instance=ExtResource("7_7kvmr")]
 visible = false
 position = Vector2(240, 0)
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.69135684, 0.6913568, 0.69135684, 1)
 
 [node name="Control" type="Control" parent="."]
 clip_contents = true
@@ -141,6 +138,18 @@ strength = 1
 [node name="NavRegion" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_pdu42")
 use_edge_connections = false
+
+[node name="Torch" parent="." instance=ExtResource("7_xrw8b")]
+position = Vector2(271, -88)
+
+[node name="Torch2" parent="." instance=ExtResource("7_xrw8b")]
+position = Vector2(199, -85)
+
+[node name="Torch3" parent="." instance=ExtResource("7_xrw8b")]
+position = Vector2(149, -86)
+
+[node name="Torch4" parent="." instance=ExtResource("7_xrw8b")]
+position = Vector2(78, -86)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="player" to="." method="_on_player_area_entered"]

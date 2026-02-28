@@ -61,9 +61,6 @@ material = SubResource("ShaderMaterial_a8vds")
 position = Vector2(1, -32)
 door = NodePath("../../Door2")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.69135684, 0.6913568, 0.69135684, 1)
-
 [node name="Torch" parent="." instance=ExtResource("9_1cu8l")]
 position = Vector2(37.5, -55)
 

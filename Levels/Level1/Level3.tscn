@@ -1,64 +1,11 @@
-[gd_scene load_steps=16 format=4 uid="uid://b5sb5uvmsepyh"]
+[gd_scene load_steps=8 format=4 uid="uid://b5sb5uvmsepyh"]
 
 [ext_resource type="Script" uid="uid://ct55chxbho0yk" path="res://Scripts/level.gd" id="1_hy5j1"]
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_xxxi4"]
+[ext_resource type="PackedScene" uid="uid://d3o0d25dxhxkc" path="res://Levels/Level1/small_furnace.tscn" id="4_1tgk4"]
 [ext_resource type="PackedScene" uid="uid://b1wf1joh17gir" path="res://Scenes/openDoor.tscn" id="4_3e7p2"]
 [ext_resource type="PackedScene" uid="uid://0t3tdgnb5mjo" path="res://Levels/Level1/monsterSpawner.tscn" id="6_1tgk4"]
-[ext_resource type="Texture2D" uid="uid://dkgps26n57idn" path="res://Assets/Tilemap/fire_animation.png" id="8_hy5j1"]
 [ext_resource type="PackedScene" uid="uid://bu73dvp8i65sr" path="res://Scenes/torch.tscn" id="9_xc3xs"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xxxi4"]
-atlas = ExtResource("8_hy5j1")
-region = Rect2(130, 0, 43, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4c4gq"]
-atlas = ExtResource("8_hy5j1")
-region = Rect2(130, 48, 43, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3e7p2"]
-atlas = ExtResource("8_hy5j1")
-region = Rect2(130, 96, 43, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dxjb0"]
-atlas = ExtResource("8_hy5j1")
-region = Rect2(130, 144, 43, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hx0pg"]
-atlas = ExtResource("8_hy5j1")
-region = Rect2(130, 192, 43, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uyp6w"]
-atlas = ExtResource("8_hy5j1")
-region = Rect2(130, 240, 43, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_t21pv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xxxi4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4c4gq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3e7p2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dxjb0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hx0pg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uyp6w")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xc3xs"]
-radius = 4.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hy5j1"]
 vertices = PackedVector2Array(69.5, 65.5, -68.5, 65.5, -68.5, -31.5, 69.5, -31.5)
@@ -86,19 +33,7 @@ tile_map_data = PackedByteArray("AAACAPz/AAABAAoAAAABAPz/AAABAAoAAAAAAPz/AAABAAo
 z_index = 1
 y_sort_enabled = true
 
-[node name="Fire" type="AnimatedSprite2D" parent="Y_Sorting"]
-sprite_frames = SubResource("SpriteFrames_t21pv")
-autoplay = "default"
-frame_progress = 0.23267825
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Y_Sorting/Fire"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Y_Sorting/Fire/StaticBody2D"]
-position = Vector2(-1, 4)
-shape = SubResource("CircleShape2D_xc3xs")
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.69135684, 0.6913568, 0.69135684, 1)
+[node name="Fire" parent="Y_Sorting" instance=ExtResource("4_1tgk4")]
 
 [node name="Torch" parent="." instance=ExtResource("9_xc3xs")]
 position = Vector2(37.5, -55)

@@ -36,11 +36,17 @@ func hit(newDamage):
 		return
 	$HitSound.pitch_scale=randf_range(.9, 1.1)
 	$HitSound.play()
+	Engine.time_scale = 0.05
 	health-=newDamage
 	hitAnimator.play("hit")
 	GameManager.playerHealth=health
+	await get_tree().create_timer(0.02, true).timeout
+	Engine.time_scale = 1.0
 	if(health<=0):
 		dead=true
+		Engine.time_scale = .2
+		var tween=create_tween()
+		tween.tween_property(Engine, "time_scale", 1.0, 2)
 		sprite.play("die")
 		shadow.play("die")
 		await get_tree().create_timer(1.5).timeout

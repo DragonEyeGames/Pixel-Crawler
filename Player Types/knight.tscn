@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://bgmpq3nw65l7j"]
+[gd_scene load_steps=70 format=3 uid="uid://bgmpq3nw65l7j"]
 
 [ext_resource type="Script" uid="uid://cllbojkrs433o" path="res://Scripts/knight.gd" id="1_ebkyg"]
 [ext_resource type="Texture2D" uid="uid://dvqwqmuns8vkw" path="res://Assets/Characters/Characters(100x100)/Knight/Knight/Knight.png" id="2_3hayl"]
@@ -633,6 +633,15 @@ _data = {
 &"hit": SubResource("Animation_qgysq")
 }
 
+[sub_resource type="Gradient" id="Gradient_22xwe"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eoaqo"]
+gradient = SubResource("Gradient_22xwe")
+fill = 1
+fill_from = Vector2(0.5046729, 0.5140187)
+fill_to = Vector2(0.864486, 0.8598131)
+
 [node name="Knight" type="CharacterBody2D"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_qgysq")
@@ -723,7 +732,11 @@ stream = ExtResource("8_54qvq")
 
 [node name="ShieldHitSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_q3mld")
-volume_db = -4.0
+volume_db = -6.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = SubResource("GradientTexture2D_eoaqo")
+texture_scale = 2.25
 
 [connection signal="animation_finished" from="Player" to="." method="_on_player_animation_finished"]
 [connection signal="area_entered" from="HitboxController" to="." method="_enemy_hit"]

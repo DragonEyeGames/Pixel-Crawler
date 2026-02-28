@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cwmhhrjco02h7"]
+[gd_scene load_steps=17 format=3 uid="uid://cwmhhrjco02h7"]
 
 [ext_resource type="Script" uid="uid://vayrh1hsg8yl" path="res://DungeonMaker.gd" id="1_nulmw"]
 [ext_resource type="PackedScene" uid="uid://dhd0snu2yv3e5" path="res://Levels/Level1/Level4.tscn" id="1_sifhu"]
@@ -14,6 +14,20 @@
 [ext_resource type="PackedScene" uid="uid://8ly23il61jqa" path="res://Levels/Level1/level8.tscn" id="11_fo3ry"]
 [ext_resource type="PackedScene" uid="uid://cc0s4o6dq8er" path="res://Scenes/HUD.tscn" id="12_dgn0p"]
 [ext_resource type="PackedScene" uid="uid://ct4ti7ck1jr5y" path="res://Player Types/player.tscn" id="14_p832w"]
+[ext_resource type="Script" uid="uid://crbn1y3r0d481" path="res://cam.gd" id="15_oq8wd"]
+
+[sub_resource type="Environment" id="Environment_oq8wd"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.57
+glow_bloom = 0.13
+glow_hdr_threshold = 1.13
+glow_hdr_scale = 2.56
+glow_hdr_luminance_cap = 45.03
+fog_enabled = true
+fog_light_energy = 2.55
+adjustment_enabled = true
+adjustment_saturation = 1.1
 
 [node name="Dungeon" type="Node2D" node_paths=PackedStringArray("startingLevel")]
 script = ExtResource("1_nulmw")
@@ -35,3 +49,10 @@ position = Vector2(13, 2)
 [node name="Cam" type="Camera2D" parent="Y-Sort/Player"]
 position = Vector2(63, -310)
 zoom = Vector2(4.4, 4.4)
+script = ExtResource("15_oq8wd")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_oq8wd")
