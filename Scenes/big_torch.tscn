@@ -1,6 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dk6dhq7uvjpin"]
+[gd_scene load_steps=16 format=3 uid="uid://dk6dhq7uvjpin"]
 
 [ext_resource type="Texture2D" uid="uid://dkgps26n57idn" path="res://Assets/Tilemap/fire_animation.png" id="1_whhxl"]
+[ext_resource type="Script" uid="uid://dagvpp7ycetn2" path="res://Scenes/torch.gd" id="2_punbh"]
+[ext_resource type="AudioStream" uid="uid://bjvp46664s4f0" path="res://SFX/fire.mp3" id="3_8q11h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u74sm"]
 atlas = ExtResource("1_whhxl")
@@ -62,13 +64,64 @@ fill = 1
 fill_from = Vector2(0.5046729, 0.5140187)
 fill_to = Vector2(0.864486, 0.8598131)
 
+[sub_resource type="Animation" id="Animation_h1t0l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:texture_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_wced7"]
+resource_name = "glow"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:texture_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33, 0.51, 0.66, 0.8, 1.0333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.15, 1.35, 1.25, 1.15, 1.23, 1.15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_beu3c"]
+_data = {
+&"RESET": SubResource("Animation_h1t0l"),
+&"glow": SubResource("Animation_wced7")
+}
+
 [node name="BigTorch" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_yx5hh")
 autoplay = "default"
 frame_progress = 0.9579048
+script = ExtResource("2_punbh")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(1.1, 1.1)
 color = Color(1, 0.87912714, 0.78023136, 1)
 energy = 1.59
 texture = SubResource("GradientTexture2D_punbh")
-texture_scale = 1.15
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_beu3c")
+}
+autoplay = "glow"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_8q11h")
+volume_db = -30.0
+autoplay = true
+stream_paused = true
+max_distance = 140.0
