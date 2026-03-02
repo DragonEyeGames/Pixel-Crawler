@@ -37,6 +37,7 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 folder_colors={
 "res://Assets/": "red",
 "res://Assets/GodotIcon/": "blue",
+"res://Fonts/": "blue",
 "res://Levels/": "orange",
 "res://Levels/Level1/": "orange",
 "res://SFX/": "pink",

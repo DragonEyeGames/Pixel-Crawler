@@ -1,0 +1,378 @@
+[gd_scene load_steps=16 format=4 uid="uid://mg6kleyfbl1o"]
+
+[ext_resource type="FontFile" uid="uid://df43mdabfw85x" path="res://Fonts/Pixley.ttf" id="1_eiy7p"]
+[ext_resource type="Texture2D" uid="uid://db7dfmuxq14vi" path="res://Assets/Torch.png" id="2_h7a2f"]
+[ext_resource type="Shader" uid="uid://dpc12kxi88dgq" path="res://fog.gdshader" id="3_qoqlk"]
+[ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="4_iwfq2"]
+
+[sub_resource type="Curve" id="Curve_ee4bf"]
+_limits = [0.0, 50.0, 0.0, 1.0]
+_data = [Vector2(0, 21.348316), 0.0, 0.0, 0, 0, Vector2(0.27906975, 34.83146), 0.0, 0.0, 0, 0, Vector2(0.8255814, 34.269665), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7r1g0"]
+seed = 1
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cqjrg"]
+noise = SubResource("FastNoiseLite_7r1g0")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e2xy7"]
+shader = ExtResource("3_qoqlk")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_cqjrg")
+shader_parameter/density = 0.25
+shader_parameter/speed = Vector2(0.02, 0.01)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fimr5"]
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u7cqb"]
+noise = SubResource("FastNoiseLite_fimr5")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_afec1"]
+shader = ExtResource("3_qoqlk")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_u7cqb")
+shader_parameter/density = 0.25
+shader_parameter/speed = Vector2(-0.01, -0.02)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_31qfy"]
+seed = 2
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qie43"]
+noise = SubResource("FastNoiseLite_31qfy")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_61cf8"]
+shader = ExtResource("3_qoqlk")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_qie43")
+shader_parameter/density = 0.25
+shader_parameter/speed = Vector2(0.03, -0.02)
+
+[sub_resource type="Environment" id="Environment_rnncn"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.57
+glow_bloom = 0.13
+glow_hdr_threshold = 1.13
+glow_hdr_scale = 2.56
+glow_hdr_luminance_cap = 45.03
+fog_enabled = true
+fog_light_energy = 2.55
+adjustment_enabled = true
+adjustment_saturation = 1.1
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 42.796753
+offset_right = 1917.8701
+offset_bottom = 273.4369
+theme_override_fonts/normal_font = ExtResource("1_eiy7p")
+theme_override_font_sizes/normal_font_size = 176
+text = "Pixel Crawler"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title2" type="RichTextLabel" parent="."]
+modulate = Color(4.29996, 0, 0, 1)
+z_index = -1
+layout_mode = 0
+offset_left = 49.82434
+offset_top = 2.9978027
+offset_right = 1924.8978
+offset_bottom = 276.4347
+theme_override_fonts/normal_font = ExtResource("1_eiy7p")
+theme_override_font_sizes/normal_font_size = 176
+text = "Pixel Crawler"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Torch" type="Node2D" parent="."]
+modulate = Color(1, 0.648568, 0.5942587, 1)
+position = Vector2(1752.8757, 1011.41296)
+
+[node name="Fire" type="Node2D" parent="Torch"]
+modulate = Color(1.8247963, 1.8247963, 1.8247963, 0.79600006)
+
+[node name="Fire" type="CPUParticles2D" parent="Torch/Fire"]
+amount = 200
+lifetime = 1.12
+randomness = 1.0
+lifetime_randomness = 0.4
+direction = Vector2(0, -1)
+spread = 18.2
+gravity = Vector2(0, 0)
+initial_velocity_min = 325.0
+initial_velocity_max = 380.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 408.5
+scale_amount_curve = SubResource("Curve_ee4bf")
+color = Color(1, 0, 0, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="Fire2" type="CPUParticles2D" parent="Torch/Fire"]
+amount = 200
+lifetime = 1.12
+randomness = 1.0
+lifetime_randomness = 0.4
+direction = Vector2(0, -1)
+spread = 18.2
+gravity = Vector2(0, 0)
+initial_velocity_min = 325.0
+initial_velocity_max = 380.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 408.5
+scale_amount_curve = SubResource("Curve_ee4bf")
+color = Color(0.8350781, 0.8123662, 0, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="Fire3" type="CPUParticles2D" parent="Torch/Fire"]
+amount = 200
+lifetime = 1.12
+randomness = 1.0
+lifetime_randomness = 0.4
+direction = Vector2(0, -1)
+spread = 18.2
+gravity = Vector2(0, 0)
+initial_velocity_min = 325.0
+initial_velocity_max = 380.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 408.5
+scale_amount_curve = SubResource("Curve_ee4bf")
+color = Color(1, 0.3113789, 0, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="Fire4" type="CPUParticles2D" parent="Torch/Fire"]
+amount = 200
+lifetime = 1.12
+randomness = 1.0
+lifetime_randomness = 0.4
+direction = Vector2(0, -1)
+spread = 18.2
+gravity = Vector2(0, 0)
+initial_velocity_min = 325.0
+initial_velocity_max = 380.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 408.5
+scale_amount_curve = SubResource("Curve_ee4bf")
+color = Color(0.96535945, 0.41551143, 0, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="Fire5" type="CPUParticles2D" parent="Torch/Fire"]
+z_index = -1
+amount = 100
+lifetime = 1.12
+randomness = 1.0
+lifetime_randomness = 0.4
+direction = Vector2(0, -1)
+spread = 18.2
+gravity = Vector2(0, 0)
+initial_velocity_min = 325.0
+initial_velocity_max = 380.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 408.5
+scale_amount_curve = SubResource("Curve_ee4bf")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="Control" type="Control" parent="Torch"]
+z_index = -1
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -47.44043
+offset_top = -0.77996826
+offset_right = -20.467773
+offset_bottom = 23.300598
+scale = Vector2(3.515, 3.515)
+
+[node name="Torch" type="Sprite2D" parent="Torch/Control"]
+position = Vector2(15.148804, -0.026428223)
+texture = ExtResource("2_h7a2f")
+
+[node name="Torch2" type="Node2D" parent="."]
+modulate = Color(1, 0.5259075, 0.46041763, 1)
+position = Vector2(213.16248, 1004.5084)
+
+[node name="Fire" type="Node2D" parent="Torch2"]
+modulate = Color(1.8247963, 1.8247963, 1.8247963, 0.79600006)
+
+[node name="Fire" type="CPUParticles2D" parent="Torch2/Fire"]
+amount = 200
+lifetime = 1.12
+randomness = 1.0
+lifetime_randomness = 0.4
+direction = Vector2(0, -1)
+spread = 18.2
+gravity = Vector2(0, 0)
+initial_velocity_min = 325.0
+initial_velocity_max = 380.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 408.5
+scale_amount_curve = SubResource("Curve_ee4bf")
+color = Color(1, 0, 0, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="Fire2" type="CPUParticles2D" parent="Torch2/Fire"]
+amount = 200
+lifetime = 1.12
+randomness = 1.0
+lifetime_randomness = 0.4
+direction = Vector2(0, -1)
+spread = 18.2
+gravity = Vector2(0, 0)
+initial_velocity_min = 325.0
+initial_velocity_max = 380.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 408.5
+scale_amount_curve = SubResource("Curve_ee4bf")
+color = Color(0.8350781, 0.8123662, 0, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="Fire3" type="CPUParticles2D" parent="Torch2/Fire"]
+amount = 200
+lifetime = 1.12
+randomness = 1.0
+lifetime_randomness = 0.4
+direction = Vector2(0, -1)
+spread = 18.2
+gravity = Vector2(0, 0)
+initial_velocity_min = 325.0
+initial_velocity_max = 380.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 408.5
+scale_amount_curve = SubResource("Curve_ee4bf")
+color = Color(1, 0.3113789, 0, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="Fire4" type="CPUParticles2D" parent="Torch2/Fire"]
+amount = 200
+lifetime = 1.12
+randomness = 1.0
+lifetime_randomness = 0.4
+direction = Vector2(0, -1)
+spread = 18.2
+gravity = Vector2(0, 0)
+initial_velocity_min = 325.0
+initial_velocity_max = 380.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 408.5
+scale_amount_curve = SubResource("Curve_ee4bf")
+color = Color(0.96535945, 0.41551143, 0, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="Fire5" type="CPUParticles2D" parent="Torch2/Fire"]
+z_index = -1
+amount = 100
+lifetime = 1.12
+randomness = 1.0
+lifetime_randomness = 0.4
+direction = Vector2(0, -1)
+spread = 18.2
+gravity = Vector2(0, 0)
+initial_velocity_min = 325.0
+initial_velocity_max = 380.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 408.5
+scale_amount_curve = SubResource("Curve_ee4bf")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="Control" type="Control" parent="Torch2"]
+z_index = -1
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -47.44043
+offset_top = -0.77996826
+offset_right = -20.467773
+offset_bottom = 23.300598
+scale = Vector2(3.515, 3.515)
+
+[node name="Torch" type="Sprite2D" parent="Torch2/Control"]
+position = Vector2(15.148804, -0.026428223)
+texture = ExtResource("2_h7a2f")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0.13682577, 0.13682574, 0.13682571, 1)
+z_index = 4
+material = SubResource("ShaderMaterial_e2xy7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(5.3300004, 5.3300004, 5.3300004, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+modulate = Color(0.13682577, 0.13682574, 0.13682571, 1)
+z_index = 4
+material = SubResource("ShaderMaterial_afec1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(5.3300004, 5.3300004, 5.3300004, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+modulate = Color(0.13682577, 0.13682574, 0.13682571, 1)
+z_index = 4
+material = SubResource("ShaderMaterial_61cf8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(5.3300004, 5.3300004, 5.3300004, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rnncn")
+
+[node name="Walls" parent="." instance=ExtResource("4_iwfq2")]
+modulate = Color(0.19434929, 0.19434926, 0.19434926, 1)
+z_index = -5
+position = Vector2(1134.0406, 521.772)
+scale = Vector2(20, 20)
+tile_map_data = PackedByteArray("AAD8//7/AAABAAMAAAD9//7/AAABAAMAAAD+//7/AAABAAMAAAD///7/AAABAAMAAAAAAP7/AAABAAMAAAABAP7/AAABAAMAAAACAP7/AAABAAMAAAACAP//AAABAAMAAAACAAAAAAABAAMAAAACAAEAAAABAAMAAAABAAEAAAABAAMAAAAAAAEAAAABAAMAAAD//wEAAAABAAMAAAD+/wEAAAABAAMAAAD9/wEAAAABAAMAAAD8/wEAAAABAAMAAAD8/wAAAAABAAMAAAD9/wAAAAABAAMAAAD+/wAAAAABAAMAAAD//wAAAAABAAMAAAAAAAAAAAABAAMAAAABAAAAAAABAAMAAAABAP//AAABAAMAAAAAAP//AAABAAMAAAD/////AAABAAMAAAD+////AAABAAMAAAD9////AAABAAMAAAD8////AAABAAMAAAA=")
