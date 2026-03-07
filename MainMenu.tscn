@@ -1,14 +1,74 @@
-[gd_scene load_steps=16 format=4 uid="uid://mg6kleyfbl1o"]
+[gd_scene load_steps=26 format=4 uid="uid://mg6kleyfbl1o"]
 
 [ext_resource type="FontFile" uid="uid://df43mdabfw85x" path="res://Fonts/Pixley.ttf" id="1_eiy7p"]
 [ext_resource type="Texture2D" uid="uid://db7dfmuxq14vi" path="res://Assets/Torch.png" id="2_h7a2f"]
+[ext_resource type="Shader" uid="uid://ck11g77b3f88q" path="res://fire.gdshader" id="3_iwfq2"]
 [ext_resource type="Shader" uid="uid://dpc12kxi88dgq" path="res://fog.gdshader" id="3_qoqlk"]
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="4_iwfq2"]
 
 [sub_resource type="Curve" id="Curve_ee4bf"]
 _limits = [0.0, 50.0, 0.0, 1.0]
-_data = [Vector2(0, 21.348316), 0.0, 0.0, 0, 0, Vector2(0.27906975, 34.83146), 0.0, 0.0, 0, 0, Vector2(0.8255814, 34.269665), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 29.775284), 0.0, 0.0, 0, 0, Vector2(0.26744187, 20.786518), 0.0, 0.0, 0, 0, Vector2(0.81395346, 3.9325867), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_iwfq2"]
+colors = PackedColorArray(0, 0, 0, 1, 0.65834004, 0.6583399, 0.6583399, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7r1g0"]
+gradient = SubResource("Gradient_iwfq2")
+height = 164
+fill_from = Vector2(0.50373936, 0.24786326)
+fill_to = Vector2(0.525641, 0)
+
+[sub_resource type="Gradient" id="Gradient_cqjrg"]
+offsets = PackedFloat32Array(0, 0.5897436, 0.96794873)
+colors = PackedColorArray(0, 0, 0, 1, 0.41598046, 0.41598043, 0.4159804, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e2xy7"]
+gradient = SubResource("Gradient_cqjrg")
+height = 164
+fill = 1
+fill_from = Vector2(0.49278846, 0.82478637)
+fill_to = Vector2(0.5694445, 0.32478634)
+
+[sub_resource type="Gradient" id="Gradient_fimr5"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u7cqb"]
+gradient = SubResource("Gradient_fimr5")
+height = 164
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qie43"]
+frequency = 0.0637
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_61cf8"]
+width = 64
+height = 164
+noise = SubResource("FastNoiseLite_qie43")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rnncn"]
+shader = ExtResource("3_iwfq2")
+shader_parameter/debug = false
+shader_parameter/pallet_size = 5
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_61cf8")
+shader_parameter/grad_tex = SubResource("GradientTexture2D_u7cqb")
+shader_parameter/frame_grad_1 = SubResource("GradientTexture2D_7r1g0")
+shader_parameter/frame_grad_2 = SubResource("GradientTexture2D_e2xy7")
+shader_parameter/mask_color = Color(1, 1, 1, 1)
+shader_parameter/bg_color = Color(0, 0, 0, 0)
+shader_parameter/flame_0 = Color(1.1638972, 0.8783721, 0.34266046, 1)
+shader_parameter/flame_1 = Color(1.353256, 0.8289137, 0, 1)
+shader_parameter/flame_2 = Color(1.5720325, 0.6952364, 0, 1)
+shader_parameter/flame_3 = Color(1.8247963, 0.15170373, 0, 1)
+shader_parameter/flame_4 = Color(2.7690506, 0, 0, 1)
+shader_parameter/scroll_speed = 0.9
+shader_parameter/thresh_f0 = 0.3
+shader_parameter/thresh_f1 = 0.5
+shader_parameter/thresh_f2 = 0.65
+shader_parameter/thresh_f3 = 0.8
+shader_parameter/thresh_f4 = 1.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_7r1g0"]
 seed = 1
@@ -87,10 +147,25 @@ vertical_alignment = 1
 modulate = Color(4.29996, 0, 0, 1)
 z_index = -1
 layout_mode = 0
-offset_left = 49.82434
-offset_top = 2.9978027
-offset_right = 1924.8978
-offset_bottom = 276.4347
+offset_left = 46.0
+offset_top = -1.3790741
+offset_right = 1921.0735
+offset_bottom = 272.0578
+theme_override_fonts/normal_font = ExtResource("1_eiy7p")
+theme_override_font_sizes/normal_font_size = 176
+text = "Pixel Crawler"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title3" type="RichTextLabel" parent="."]
+visible = false
+modulate = Color(4.29996, 0, 0, 1)
+z_index = -1
+layout_mode = 0
+offset_left = 46.0
+offset_top = -2.0
+offset_right = 1921.0735
+offset_bottom = 271.4369
 theme_override_fonts/normal_font = ExtResource("1_eiy7p")
 theme_override_font_sizes/normal_font_size = 176
 text = "Pixel Crawler"
@@ -98,22 +173,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Torch" type="Node2D" parent="."]
-modulate = Color(1, 0.648568, 0.5942587, 1)
 position = Vector2(1752.8757, 1011.41296)
 
 [node name="Fire" type="Node2D" parent="Torch"]
+visible = false
 modulate = Color(1.8247963, 1.8247963, 1.8247963, 0.79600006)
 
 [node name="Fire" type="CPUParticles2D" parent="Torch/Fire"]
-amount = 200
-lifetime = 1.12
+amount = 75
+lifetime = 0.36
 randomness = 1.0
 lifetime_randomness = 0.4
 direction = Vector2(0, -1)
 spread = 18.2
 gravity = Vector2(0, 0)
-initial_velocity_min = 325.0
-initial_velocity_max = 380.0
+initial_velocity_min = 300.0
+initial_velocity_max = 350.0
 angular_velocity_min = -720.0
 angular_velocity_max = 720.0
 angle_min = -720.0
@@ -124,15 +199,15 @@ hue_variation_min = -1.0
 hue_variation_max = 1.0
 
 [node name="Fire2" type="CPUParticles2D" parent="Torch/Fire"]
-amount = 200
-lifetime = 1.12
+amount = 75
+lifetime = 0.36
 randomness = 1.0
 lifetime_randomness = 0.4
 direction = Vector2(0, -1)
 spread = 18.2
 gravity = Vector2(0, 0)
-initial_velocity_min = 325.0
-initial_velocity_max = 380.0
+initial_velocity_min = 300.0
+initial_velocity_max = 350.0
 angular_velocity_min = -720.0
 angular_velocity_max = 720.0
 angle_min = -720.0
@@ -143,15 +218,15 @@ hue_variation_min = -1.0
 hue_variation_max = 1.0
 
 [node name="Fire3" type="CPUParticles2D" parent="Torch/Fire"]
-amount = 200
-lifetime = 1.12
+amount = 75
+lifetime = 0.36
 randomness = 1.0
 lifetime_randomness = 0.4
 direction = Vector2(0, -1)
 spread = 18.2
 gravity = Vector2(0, 0)
-initial_velocity_min = 325.0
-initial_velocity_max = 380.0
+initial_velocity_min = 300.0
+initial_velocity_max = 350.0
 angular_velocity_min = -720.0
 angular_velocity_max = 720.0
 angle_min = -720.0
@@ -162,15 +237,15 @@ hue_variation_min = -1.0
 hue_variation_max = 1.0
 
 [node name="Fire4" type="CPUParticles2D" parent="Torch/Fire"]
-amount = 200
-lifetime = 1.12
+amount = 75
+lifetime = 0.36
 randomness = 1.0
 lifetime_randomness = 0.4
 direction = Vector2(0, -1)
 spread = 18.2
 gravity = Vector2(0, 0)
-initial_velocity_min = 325.0
-initial_velocity_max = 380.0
+initial_velocity_min = 300.0
+initial_velocity_max = 350.0
 angular_velocity_min = -720.0
 angular_velocity_max = 720.0
 angle_min = -720.0
@@ -182,15 +257,15 @@ hue_variation_max = 1.0
 
 [node name="Fire5" type="CPUParticles2D" parent="Torch/Fire"]
 z_index = -1
-amount = 100
-lifetime = 1.12
+amount = 75
+lifetime = 0.36
 randomness = 1.0
 lifetime_randomness = 0.4
 direction = Vector2(0, -1)
 spread = 18.2
 gravity = Vector2(0, 0)
-initial_velocity_min = 325.0
-initial_velocity_max = 380.0
+initial_velocity_min = 300.0
+initial_velocity_max = 350.0
 angular_velocity_min = -720.0
 angular_velocity_max = 720.0
 angle_min = -720.0
@@ -200,13 +275,13 @@ hue_variation_min = -1.0
 hue_variation_max = 1.0
 
 [node name="Control" type="Control" parent="Torch"]
-z_index = -1
+z_index = 1
 clip_contents = true
 layout_mode = 3
 anchors_preset = 0
-offset_left = -47.44043
+offset_left = -49.798462
 offset_top = -0.77996826
-offset_right = -20.467773
+offset_right = -22.825806
 offset_bottom = 23.300598
 scale = Vector2(3.515, 3.515)
 
@@ -214,107 +289,15 @@ scale = Vector2(3.515, 3.515)
 position = Vector2(15.148804, -0.026428223)
 texture = ExtResource("2_h7a2f")
 
+[node name="FireSprite" type="ColorRect" parent="Torch"]
+material = SubResource("ShaderMaterial_rnncn")
+offset_left = -32.589844
+offset_top = -164.24121
+offset_right = 31.410156
+offset_bottom = -0.24121094
+
 [node name="Torch2" type="Node2D" parent="."]
-modulate = Color(1, 0.5259075, 0.46041763, 1)
 position = Vector2(213.16248, 1004.5084)
-
-[node name="Fire" type="Node2D" parent="Torch2"]
-modulate = Color(1.8247963, 1.8247963, 1.8247963, 0.79600006)
-
-[node name="Fire" type="CPUParticles2D" parent="Torch2/Fire"]
-amount = 200
-lifetime = 1.12
-randomness = 1.0
-lifetime_randomness = 0.4
-direction = Vector2(0, -1)
-spread = 18.2
-gravity = Vector2(0, 0)
-initial_velocity_min = 325.0
-initial_velocity_max = 380.0
-angular_velocity_min = -720.0
-angular_velocity_max = 720.0
-angle_min = -720.0
-angle_max = 408.5
-scale_amount_curve = SubResource("Curve_ee4bf")
-color = Color(1, 0, 0, 1)
-hue_variation_min = -1.0
-hue_variation_max = 1.0
-
-[node name="Fire2" type="CPUParticles2D" parent="Torch2/Fire"]
-amount = 200
-lifetime = 1.12
-randomness = 1.0
-lifetime_randomness = 0.4
-direction = Vector2(0, -1)
-spread = 18.2
-gravity = Vector2(0, 0)
-initial_velocity_min = 325.0
-initial_velocity_max = 380.0
-angular_velocity_min = -720.0
-angular_velocity_max = 720.0
-angle_min = -720.0
-angle_max = 408.5
-scale_amount_curve = SubResource("Curve_ee4bf")
-color = Color(0.8350781, 0.8123662, 0, 1)
-hue_variation_min = -1.0
-hue_variation_max = 1.0
-
-[node name="Fire3" type="CPUParticles2D" parent="Torch2/Fire"]
-amount = 200
-lifetime = 1.12
-randomness = 1.0
-lifetime_randomness = 0.4
-direction = Vector2(0, -1)
-spread = 18.2
-gravity = Vector2(0, 0)
-initial_velocity_min = 325.0
-initial_velocity_max = 380.0
-angular_velocity_min = -720.0
-angular_velocity_max = 720.0
-angle_min = -720.0
-angle_max = 408.5
-scale_amount_curve = SubResource("Curve_ee4bf")
-color = Color(1, 0.3113789, 0, 1)
-hue_variation_min = -1.0
-hue_variation_max = 1.0
-
-[node name="Fire4" type="CPUParticles2D" parent="Torch2/Fire"]
-amount = 200
-lifetime = 1.12
-randomness = 1.0
-lifetime_randomness = 0.4
-direction = Vector2(0, -1)
-spread = 18.2
-gravity = Vector2(0, 0)
-initial_velocity_min = 325.0
-initial_velocity_max = 380.0
-angular_velocity_min = -720.0
-angular_velocity_max = 720.0
-angle_min = -720.0
-angle_max = 408.5
-scale_amount_curve = SubResource("Curve_ee4bf")
-color = Color(0.96535945, 0.41551143, 0, 1)
-hue_variation_min = -1.0
-hue_variation_max = 1.0
-
-[node name="Fire5" type="CPUParticles2D" parent="Torch2/Fire"]
-z_index = -1
-amount = 100
-lifetime = 1.12
-randomness = 1.0
-lifetime_randomness = 0.4
-direction = Vector2(0, -1)
-spread = 18.2
-gravity = Vector2(0, 0)
-initial_velocity_min = 325.0
-initial_velocity_max = 380.0
-angular_velocity_min = -720.0
-angular_velocity_max = 720.0
-angle_min = -720.0
-angle_max = 408.5
-scale_amount_curve = SubResource("Curve_ee4bf")
-hue_variation_min = -1.0
-hue_variation_max = 1.0
 
 [node name="Control" type="Control" parent="Torch2"]
 z_index = -1
@@ -328,8 +311,16 @@ offset_bottom = 23.300598
 scale = Vector2(3.515, 3.515)
 
 [node name="Torch" type="Sprite2D" parent="Torch2/Control"]
+z_index = 2
 position = Vector2(15.148804, -0.026428223)
 texture = ExtResource("2_h7a2f")
+
+[node name="FireSprite" type="ColorRect" parent="Torch2"]
+material = SubResource("ShaderMaterial_rnncn")
+offset_left = -31.266006
+offset_top = -162.54773
+offset_right = 32.733994
+offset_bottom = 1.4522705
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(0.13682577, 0.13682574, 0.13682571, 1)
