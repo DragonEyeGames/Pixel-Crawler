@@ -1,10 +1,12 @@
-[gd_scene load_steps=26 format=4 uid="uid://mg6kleyfbl1o"]
+[gd_scene load_steps=28 format=4 uid="uid://mg6kleyfbl1o"]
 
+[ext_resource type="Script" uid="uid://eunnwbn22epi" path="res://MainMenu.gd" id="1_cqjrg"]
 [ext_resource type="FontFile" uid="uid://df43mdabfw85x" path="res://Fonts/Pixley.ttf" id="1_eiy7p"]
 [ext_resource type="Texture2D" uid="uid://db7dfmuxq14vi" path="res://Assets/Torch.png" id="2_h7a2f"]
 [ext_resource type="Shader" uid="uid://ck11g77b3f88q" path="res://fire.gdshader" id="3_iwfq2"]
 [ext_resource type="Shader" uid="uid://dpc12kxi88dgq" path="res://fog.gdshader" id="3_qoqlk"]
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="4_iwfq2"]
+[ext_resource type="Texture2D" uid="uid://3hhaup3jsxd0" path="res://Assets/ButtonFrame.png" id="6_7r1g0"]
 
 [sub_resource type="Curve" id="Curve_ee4bf"]
 _limits = [0.0, 50.0, 0.0, 1.0]
@@ -131,6 +133,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_cqjrg")
 
 [node name="Title" type="RichTextLabel" parent="."]
 layout_mode = 0
@@ -367,3 +370,58 @@ z_index = -5
 position = Vector2(1134.0406, 521.772)
 scale = Vector2(20, 20)
 tile_map_data = PackedByteArray("AAD8//7/AAABAAMAAAD9//7/AAABAAMAAAD+//7/AAABAAMAAAD///7/AAABAAMAAAAAAP7/AAABAAMAAAABAP7/AAABAAMAAAACAP7/AAABAAMAAAACAP//AAABAAMAAAACAAAAAAABAAMAAAACAAEAAAABAAMAAAABAAEAAAABAAMAAAAAAAEAAAABAAMAAAD//wEAAAABAAMAAAD+/wEAAAABAAMAAAD9/wEAAAABAAMAAAD8/wEAAAABAAMAAAD8/wAAAAABAAMAAAD9/wAAAAABAAMAAAD+/wAAAAABAAMAAAD//wAAAAABAAMAAAAAAAAAAAABAAMAAAABAAAAAAABAAMAAAABAP//AAABAAMAAAAAAP//AAABAAMAAAD/////AAABAAMAAAD+////AAABAAMAAAD9////AAABAAMAAAD8////AAABAAMAAAA=")
+
+[node name="Start" type="Button" parent="."]
+self_modulate = Color(0.33580995, 0.37959573, 0.4163052, 1)
+layout_mode = 0
+offset_left = 613.0076
+offset_top = 387.7071
+offset_right = 701.0076
+offset_bottom = 427.7071
+scale = Vector2(7.88, 6.56)
+icon = ExtResource("6_7r1g0")
+flat = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Start"]
+self_modulate = Color(0.73300546, 0.7330054, 0.7330054, 1)
+layout_mode = 0
+offset_left = 17.290464
+offset_top = 11.390222
+offset_right = 83.11127
+offset_bottom = 34.78341
+scale = Vector2(0.845, 0.845)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_eiy7p")
+theme_override_font_sizes/normal_font_size = 16
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings" type="Button" parent="."]
+self_modulate = Color(0.33580995, 0.37959573, 0.4163052, 1)
+layout_mode = 0
+offset_left = 615.3469
+offset_top = 687.1913
+offset_right = 703.3469
+offset_bottom = 727.1913
+scale = Vector2(7.88, 6.56)
+icon = ExtResource("6_7r1g0")
+flat = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Settings"]
+self_modulate = Color(0.73300546, 0.7330054, 0.7330054, 1)
+layout_mode = 0
+offset_left = 17.290464
+offset_top = 11.390222
+offset_right = 83.11127
+offset_bottom = 34.78341
+scale = Vector2(0.845, 0.845)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_eiy7p")
+theme_override_font_sizes/normal_font_size = 16
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
