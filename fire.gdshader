@@ -55,9 +55,9 @@ uniform float thresh_f4;
 
 
 void fragment() {
-
+	vec4 startingColor = COLOR;
 	//Before doing any logic it checks if the color its working on is the same as what it should be masking out.
-	if (COLOR == mask_color) {
+	if (COLOR.rgb == mask_color.rgb) {
 
 		//This set the "scroll" increment and its speed for the noise texture.
 			//It makes sure its rounded to the nearest whole pixel,
@@ -104,6 +104,9 @@ void fragment() {
 	//Its useful for setting your gradients
 	if (debug == true) {
 		COLOR = map_color;
+	}
+	if(COLOR.rgb!=bg_color.rgb){
+		COLOR.a=startingColor.a;
 	}
 
 	}
