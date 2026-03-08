@@ -8,3 +8,4 @@
 stream = ExtResource("1_fbmny")
 volume_db = -27.67
 autoplay = true
+bus = &"Music"

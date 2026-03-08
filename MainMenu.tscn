@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://mg6kleyfbl1o"]
+[gd_scene load_steps=39 format=4 uid="uid://mg6kleyfbl1o"]
 
 [ext_resource type="Script" uid="uid://eunnwbn22epi" path="res://MainMenu.gd" id="1_cqjrg"]
 [ext_resource type="FontFile" uid="uid://df43mdabfw85x" path="res://Fonts/Pixley.ttf" id="1_eiy7p"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="4_iwfq2"]
 [ext_resource type="Texture2D" uid="uid://3hhaup3jsxd0" path="res://Assets/ButtonFrame.png" id="6_7r1g0"]
 [ext_resource type="BitMap" uid="uid://cdj0prm4slm7u" path="res://Assets/ButtonMask.png" id="8_e2xy7"]
+[ext_resource type="AudioStream" uid="uid://bjvp46664s4f0" path="res://SFX/fire.mp3" id="9_fimr5"]
 
 [sub_resource type="Curve" id="Curve_ee4bf"]
 _limits = [0.0, 50.0, 0.0, 1.0]
@@ -580,7 +581,8 @@ offset_top = 22.84464
 offset_right = 201.88353
 offset_bottom = 38.844643
 scale = Vector2(0.415, 0.415)
-value = 48.0
+min_value = -250.0
+max_value = 36.0
 
 [node name="Music Bar" type="HSlider" parent="SettingsMenu"]
 offset_left = 61.547432
@@ -588,7 +590,8 @@ offset_top = 30.831848
 offset_right = 195.82883
 offset_bottom = 46.831852
 scale = Vector2(0.415, 0.415)
-value = 48.0
+min_value = -250.0
+max_value = 36.0
 
 [node name="Master Bar" type="HSlider" parent="SettingsMenu"]
 offset_left = 66.04622
@@ -596,15 +599,26 @@ offset_top = 39.206936
 offset_right = 191.94852
 offset_bottom = 55.20694
 scale = Vector2(0.415, 0.415)
-value = 48.0
+min_value = -250.0
+max_value = 36.0
 
-[node name="Walls" parent="SettingsMenu" instance=ExtResource("4_iwfq2")]
-self_modulate = Color(0.8732984, 0.8732984, 0.8732984, 1)
-position = Vector2(75.58043, 56.53762)
+[node name="Close" type="Button" parent="SettingsMenu"]
+modulate = Color(0.735357, 0.735357, 0.735357, 1)
+offset_left = 67.74697
+offset_top = 49.975483
+offset_right = 92.51291
+offset_bottom = 63.15222
+pivot_offset = Vector2(12.095867, 6.7877655)
+focus_mode = 0
+flat = true
+
+[node name="Walls" parent="SettingsMenu/Close" instance=ExtResource("4_iwfq2")]
+self_modulate = Color(0.7919987, 0.7919993, 0.7919988, 1)
+position = Vector2(7.833454, 6.562134)
 scale = Vector2(0.565, 0.415)
 tile_map_data = PackedByteArray("AAABAAAAAAACAAcAAAAAAAAAAAABAAcAAAD//wAAAAAAAAcAAAD/////AAAAAAUAAAAAAP//AAABAAUAAAABAP//AAACAAUAAAA=")
 
-[node name="Music" type="RichTextLabel" parent="SettingsMenu/Walls"]
+[node name="Text" type="RichTextLabel" parent="SettingsMenu/Close/Walls"]
 self_modulate = Color(0.7792914, 0.7792914, 0.7792913, 1)
 offset_left = -9.034926
 offset_top = -10.441622
@@ -614,9 +628,23 @@ scale = Vector2(0.605, 0.893)
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("1_eiy7p")
 theme_override_font_sizes/normal_font_size = 16
-text = "Music:"
+text = "Close"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Ambient Fire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_fimr5")
+volume_db = -40.75
+autoplay = true
+bus = &"SFX"
+
+[node name="StartFire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_fimr5")
+bus = &"SFX"
+
+[node name="SettingsFire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_fimr5")
+bus = &"SFX"
 
 [connection signal="mouse_entered" from="Start" to="." method="_on_start_mouse_entered"]
 [connection signal="mouse_exited" from="Start" to="." method="_on_start_mouse_exited"]
@@ -624,3 +652,9 @@ vertical_alignment = 1
 [connection signal="mouse_entered" from="Settings" to="." method="_on_settings_mouse_entered"]
 [connection signal="mouse_exited" from="Settings" to="." method="_on_settings_mouse_exited"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="value_changed" from="SettingsMenu/SFX Bar" to="." method="_on_sfx_bar_value_changed"]
+[connection signal="value_changed" from="SettingsMenu/Music Bar" to="." method="_on_music_bar_value_changed"]
+[connection signal="value_changed" from="SettingsMenu/Master Bar" to="." method="_on_master_bar_value_changed"]
+[connection signal="mouse_entered" from="SettingsMenu/Close" to="." method="_on_close_mouse_entered"]
+[connection signal="mouse_exited" from="SettingsMenu/Close" to="." method="_on_close_mouse_exited"]
+[connection signal="pressed" from="SettingsMenu/Close" to="." method="_on_close_pressed"]
