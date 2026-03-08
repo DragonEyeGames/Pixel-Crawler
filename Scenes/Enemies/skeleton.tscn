@@ -606,12 +606,15 @@ wait_time = 0.1
 
 [node name="DeadSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_6ry3g")
+bus = &"SFX"
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_rjsu3")
+bus = &"SFX"
 
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_rjsu3")
+bus = &"SFX"
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="area_entered" from="Areas/Hits" to="." method="_on_hits_area_entered"]

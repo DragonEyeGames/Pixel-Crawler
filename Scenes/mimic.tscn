@@ -394,14 +394,17 @@ active = false
 [node name="Chomp" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_fugqv")
 volume_db = -1.0
+bus = &"SFX"
 
 [node name="Land" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_8xc28")
 volume_db = -8.0
+bus = &"SFX"
 
 [node name="Impact" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_ds5ud")
 volume_db = -2.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

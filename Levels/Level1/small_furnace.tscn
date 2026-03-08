@@ -134,3 +134,4 @@ stream = ExtResource("3_t57gl")
 volume_db = -25.0
 autoplay = true
 max_distance = 200.0
+bus = &"SFX"

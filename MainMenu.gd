@@ -28,6 +28,8 @@ func _on_start_mouse_entered() -> void:
 	tween.tween_property($Start/FireSprite2, "modulate:a", 1, .1)
 	var tween2=create_tween()
 	tween2.tween_property($Start, "scale", Vector2(8.668, 7.216), .1)
+	var tween3=create_tween()
+	tween3.tween_property($StartFire, "volume_db", -10, .1)
 
 
 func _on_start_mouse_exited() -> void:
@@ -35,6 +37,8 @@ func _on_start_mouse_exited() -> void:
 	tween.tween_property($Start/FireSprite2, "modulate:a", 0, .1)
 	var tween2=create_tween()
 	tween2.tween_property($Start, "scale", Vector2(7.88, 6.56), .1)
+	var tween3=create_tween()
+	tween3.tween_property($StartFire, "volume_db", -80, .1)
 
 
 func _on_settings_mouse_entered() -> void:
@@ -42,6 +46,8 @@ func _on_settings_mouse_entered() -> void:
 	tween.tween_property($Settings/FireSprite2, "modulate:a", 1, .1)
 	var tween2=create_tween()
 	tween2.tween_property($Settings, "scale", Vector2(8.668, 7.216), .1)
+	var tween3=create_tween()
+	tween3.tween_property($SettingsFire, "volume_db", -10, .1)
 
 
 func _on_settings_mouse_exited() -> void:
@@ -49,6 +55,8 @@ func _on_settings_mouse_exited() -> void:
 	tween.tween_property($Settings/FireSprite2, "modulate:a", 0, .1)
 	var tween2=create_tween()
 	tween2.tween_property($Settings, "scale", Vector2(7.88, 6.56), .1)
+	var tween3=create_tween()
+	tween3.tween_property($SettingsFire, "volume_db", -80, .1)
 
 
 func _on_close_mouse_entered() -> void:
@@ -72,6 +80,8 @@ func _on_close_pressed() -> void:
 
 func _on_sfx_bar_value_changed(value: float) -> void:
 	var multiplier=1
+	if(value==-250):
+		value=-6400
 	if(value<0):
 		value=abs(value)
 		multiplier=-1
@@ -80,6 +90,8 @@ func _on_sfx_bar_value_changed(value: float) -> void:
 
 func _on_music_bar_value_changed(value: float) -> void:
 	var multiplier=1
+	if(value==-250):
+		value=-6400
 	if(value<0):
 		value=abs(value)
 		multiplier=-1
@@ -88,6 +100,8 @@ func _on_music_bar_value_changed(value: float) -> void:
 
 func _on_master_bar_value_changed(value: float) -> void:
 	var multiplier=1
+	if(value==-250):
+		value=-6400
 	if(value<0):
 		value=abs(value)
 		multiplier=-1

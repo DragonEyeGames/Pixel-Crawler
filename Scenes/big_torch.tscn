@@ -123,5 +123,5 @@ autoplay = "glow"
 stream = ExtResource("3_8q11h")
 volume_db = -30.0
 autoplay = true
-stream_paused = true
 max_distance = 140.0
+bus = &"SFX"

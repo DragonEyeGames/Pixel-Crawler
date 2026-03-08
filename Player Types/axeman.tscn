@@ -656,18 +656,22 @@ speed_scale = 1.5
 
 [node name="AttackSoundEffect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_hkl5u")
+bus = &"SFX"
 
 [node name="Attack2SoundEffect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_l4jkb")
 max_polyphony = 2
+bus = &"SFX"
 
 [node name="Step" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_jjtdw")
 volume_db = -3.0
 max_polyphony = 10
+bus = &"SFX"
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_ikv8n")
+bus = &"SFX"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture = SubResource("GradientTexture2D_1cb2b")

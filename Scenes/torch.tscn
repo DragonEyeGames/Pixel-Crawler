@@ -124,3 +124,4 @@ stream = ExtResource("3_beu3c")
 volume_db = -35.0
 autoplay = true
 max_distance = 100.0
+bus = &"SFX"

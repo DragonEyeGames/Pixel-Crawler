@@ -734,12 +734,15 @@ autostart = true
 
 [node name="DeadSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_vtyf5")
+bus = &"SFX"
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_yn30m")
+bus = &"SFX"
 
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_yn30m")
+bus = &"SFX"
 
 [node name="Blood" type="CPUParticles2D" parent="."]
 position = Vector2(2, 1)

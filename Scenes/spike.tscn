@@ -106,10 +106,12 @@ disabled = true
 [node name="Extrude" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_fhxds")
 max_distance = 200.0
+bus = &"SFX"
 
 [node name="Retract" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_khj5f")
 max_distance = 200.0
+bus = &"SFX"
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
 [connection signal="area_entered" from="Hitzone" to="." method="_on_hitzone_area_entered"]
