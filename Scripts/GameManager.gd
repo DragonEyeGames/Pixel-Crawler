@@ -11,6 +11,11 @@ var transition: AnimationPlayer
 var playerPos = null
 var playerGold:=0
 
+# Volumes 'n Stuff
+var musicVolume = 0
+var sfxVolume = 0
+var masterVolume = 0
+
 enum inventoryItems {
 	Tome,
 	Ring,

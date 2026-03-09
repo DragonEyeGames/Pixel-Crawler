@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2cavvq4ef4uf"]
+[gd_scene load_steps=6 format=3 uid="uid://b2cavvq4ef4uf"]
 
 [ext_resource type="Script" uid="uid://bevdrdh5lrqe8" path="res://Scenes/finished.gd" id="1_weud0"]
+[ext_resource type="FontFile" uid="uid://df43mdabfw85x" path="res://Fonts/Pixley.ttf" id="2_idxfv"]
 
 [sub_resource type="Animation" id="Animation_weud0"]
 length = 0.001
@@ -52,8 +53,9 @@ script = ExtResource("1_weud0")
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 600.0
-theme_override_font_sizes/normal_font_size = 100
-text = "Good Job! You have successfully beaten the first part of the game! You now get to buy goods with gold, and level up stats!"
+theme_override_fonts/normal_font = ExtResource("2_idxfv")
+theme_override_font_sizes/normal_font_size = 112
+text = "You have beaten the first section of the game! Time to go shopping!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -79,7 +81,9 @@ offset_left = 644.0
 offset_top = 744.0
 offset_right = 1293.0
 offset_bottom = 884.0
-theme_override_font_sizes/font_size = 101
+pivot_offset = Vector2(2704, 445)
+theme_override_fonts/font = ExtResource("2_idxfv")
+theme_override_font_sizes/font_size = 112
 text = "Continue"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

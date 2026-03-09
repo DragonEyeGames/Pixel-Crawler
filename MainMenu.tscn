@@ -188,7 +188,7 @@ shader_parameter/thresh_f2 = 0.65
 shader_parameter/thresh_f3 = 0.8
 shader_parameter/thresh_f4 = 1.0
 
-[node name="Control" type="Control"]
+[node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
