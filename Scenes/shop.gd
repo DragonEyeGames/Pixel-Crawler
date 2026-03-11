@@ -22,7 +22,7 @@ func _ready() -> void:
 		var itemParent=item.get_parent()
 		itemParent.remove_child(item)
 		itemParent.add_child(item)
-		GameManager.playerGold=100
+		#GameManager.playerGold=100
 	playerGold=GameManager.playerGold
 	calculateDisabled()
 
@@ -128,6 +128,7 @@ func _on_continue_pressed() -> void:
 	await get_tree().create_timer(.2).timeout
 	$AnimationPlayer.play("fade")
 	await get_tree().create_timer(.15).timeout
+	await get_tree().process_frame
 	get_tree().change_scene_to_file("res://Dungeon.tscn")
 
 

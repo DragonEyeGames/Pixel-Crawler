@@ -12,10 +12,10 @@ sprite_frames = ExtResource("1_p0e35")
 animation = &"lower"
 autoplay = "open"
 script = ExtResource("2_c5cab")
-enemyControlled = true
 sprite = NodePath(".")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -24,6 +24,7 @@ position = Vector2(0.5, 11)
 shape = SubResource("RectangleShape2D_dl8mf")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0.5, 11)

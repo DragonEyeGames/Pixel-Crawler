@@ -681,6 +681,7 @@ libraries = {
 speed_scale = 1.5
 
 [node name="Areas" type="Node2D" parent="."]
+visible = false
 
 [node name="Hits" type="Area2D" parent="Areas"]
 collision_layer = 0
