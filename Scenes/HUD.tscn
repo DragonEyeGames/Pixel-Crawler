@@ -1,7 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://cc0s4o6dq8er"]
+[gd_scene load_steps=19 format=3 uid="uid://cc0s4o6dq8er"]
 
 [ext_resource type="Script" uid="uid://bw0m6nv81px4h" path="res://Scripts/hud.gd" id="1_gqhqa"]
 [ext_resource type="Texture2D" uid="uid://boxvemmbmck2m" path="res://Assets/coin-Sheet.png" id="2_jo1ms"]
+[ext_resource type="FontFile" uid="uid://df43mdabfw85x" path="res://Fonts/Pixley.ttf" id="2_psnte"]
+[ext_resource type="Texture2D" uid="uid://lorw45jqwyy1" path="res://Assets/Healthbar/pixil-layer-0.png" id="4_g8s2e"]
+[ext_resource type="Texture2D" uid="uid://btq1ve43w1c4s" path="res://Assets/Healthbar/pixil-layer-1.png" id="5_t385i"]
+[ext_resource type="Texture2D" uid="uid://bbfm4wa7c5sce" path="res://Assets/Healthbar/pixil-layer-2.png" id="6_nfm57"]
+[ext_resource type="Texture2D" uid="uid://dwb6n13s2ax01" path="res://Assets/Healthbar/Underlay.png" id="7_t385i"]
 
 [sub_resource type="Animation" id="Animation_5g41i"]
 length = 0.001
@@ -81,12 +86,6 @@ _data = {
 &"out": SubResource("Animation_7fl83")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqhqa"]
-bg_color = Color(0.60209715, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0dox"]
-bg_color = Color(2.5268645e-07, 0.4577831, 0.04449694, 1)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_psnte"]
 atlas = ExtResource("2_jo1ms")
 region = Rect2(0, 0, 16, 16)
@@ -158,23 +157,14 @@ libraries = {
 }
 autoplay = "in"
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = 43.0
-offset_top = 58.0
-offset_right = 564.0
-offset_bottom = 135.0
-theme_override_font_sizes/font_size = 59
-theme_override_styles/background = SubResource("StyleBoxFlat_gqhqa")
-theme_override_styles/fill = SubResource("StyleBoxFlat_a0dox")
-max_value = 10.0
-value = 5.0
-
 [node name="Gold" type="RichTextLabel" parent="."]
-offset_left = 139.0
-offset_top = 109.0
-offset_right = 322.0
-offset_bottom = 244.0
-theme_override_font_sizes/normal_font_size = 66
+offset_left = 133.0
+offset_top = 135.0
+offset_right = 316.0
+offset_bottom = 249.0
+scale = Vector2(0.885, 0.885)
+theme_override_fonts/normal_font = ExtResource("2_psnte")
+theme_override_font_sizes/normal_font_size = 80
 text = "0"
 vertical_alignment = 1
 
@@ -184,3 +174,27 @@ scale = Vector2(3.8, 3.8)
 sprite_frames = SubResource("SpriteFrames_b5b84")
 autoplay = "default"
 frame_progress = 0.9684638
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = 61.0
+offset_top = 37.999996
+offset_right = 117.0
+offset_bottom = 53.999996
+scale = Vector2(6.805, 5.841)
+value = 50.0
+texture_progress = ExtResource("4_g8s2e")
+
+[node name="Sprite2D" type="Sprite2D" parent="TextureProgressBar"]
+self_modulate = Color(1, 1, 1, 0.51900005)
+position = Vector2(28, 8)
+texture = ExtResource("5_t385i")
+
+[node name="Sprite2D2" type="Sprite2D" parent="TextureProgressBar"]
+position = Vector2(28, 8)
+texture = ExtResource("6_nfm57")
+
+[node name="Underlay" type="Sprite2D" parent="TextureProgressBar"]
+modulate = Color(0.47397625, 0.47397554, 0.47397572, 1)
+z_index = -1
+position = Vector2(27.765402, 8.017817)
+texture = ExtResource("7_t385i")

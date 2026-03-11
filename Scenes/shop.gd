@@ -5,6 +5,8 @@ var playerGold
 var itemList = []
 var selectedList = []
 
+var first=true
+
 func _ready() -> void:
 	randomize()
 	for child in $Paid.get_children():
@@ -20,7 +22,7 @@ func _ready() -> void:
 		var itemParent=item.get_parent()
 		itemParent.remove_child(item)
 		itemParent.add_child(item)
-	GameManager.playerGold=90
+		GameManager.playerGold=100
 	playerGold=GameManager.playerGold
 	calculateDisabled()
 
@@ -55,6 +57,11 @@ func Ring() -> void:
 	GameManager.playerStrength=round(GameManager.playerStrength)
 	
 func calculateDisabled():
+	if(not first):
+		$Ding.pitch_scale=randf_range(.95, 1.05)
+		$Ding.play()
+	else:
+		first=false
 	$"Gold Counter".text="Your Gold: " + str(playerGold)
 	if(playerGold<30):
 		$Paid/Ring/Select.disabled=true
@@ -102,6 +109,7 @@ func Tunic() -> void:
 
 
 func _on_continue_pressed() -> void:
+	$Kaching.play()
 	var data = SceneData.new()
 	GameManager.playerPos=null
 	if ResourceLoader.exists("user://scene_data.tres"):
@@ -117,10 +125,14 @@ func _on_continue_pressed() -> void:
 	data.playerGold=GameManager.playerGold
 	data.playerInventory=GameManager.playerInventory.duplicate()
 	ResourceSaver.save(data, "user://scene_data.tres")
-	get_tree().change_scene_to_file("res://Levels/Level" + str(2) + "/Level" + str(0) +".tscn")
+	await get_tree().create_timer(.2).timeout
+	$AnimationPlayer.play("fade")
+	await get_tree().create_timer(.15).timeout
+	get_tree().change_scene_to_file("res://Dungeon.tscn")
 
 
 func Elixir() -> void:
+	$Ding.play()
 	playerGold-=20
 	GameManager.playerGold=playerGold
 	calculateDisabled()

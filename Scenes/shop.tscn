@@ -1,8 +1,47 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8bekucr76jye"]
+[gd_scene load_steps=9 format=3 uid="uid://b8bekucr76jye"]
 
 [ext_resource type="FontFile" uid="uid://df43mdabfw85x" path="res://Fonts/Pixley.ttf" id="1_2shtd"]
 [ext_resource type="Script" uid="uid://ex1vthk30db8" path="res://Scenes/shop.gd" id="1_io27d"]
 [ext_resource type="Texture2D" uid="uid://d4xo2l5jbfsq" path="res://Assets/Stuff.png" id="2_io27d"]
+[ext_resource type="AudioStream" uid="uid://pk363na3ucla" path="res://SFX/Ding.mp3" id="4_fdj0q"]
+[ext_resource type="AudioStream" uid="uid://thk2ny8ba085" path="res://SFX/Kaching.mp3" id="5_k6jq0"]
+
+[sub_resource type="Animation" id="Animation_k6jq0"]
+resource_name = "fade"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3ps1r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ymrm4"]
+_data = {
+&"RESET": SubResource("Animation_3ps1r"),
+&"fade": SubResource("Animation_k6jq0")
+}
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -96,6 +135,7 @@ offset_left = 23.42857
 offset_top = 315.42856
 offset_right = 270.28577
 offset_bottom = 378.42856
+focus_mode = 0
 theme_override_fonts/font = ExtResource("1_2shtd")
 theme_override_font_sizes/font_size = 48
 text = "30 Gold"
@@ -165,6 +205,7 @@ offset_left = 23.42857
 offset_top = 315.42856
 offset_right = 270.28577
 offset_bottom = 378.42856
+focus_mode = 0
 theme_override_fonts/font = ExtResource("1_2shtd")
 theme_override_font_sizes/font_size = 48
 text = "40 Gold"
@@ -234,6 +275,7 @@ offset_left = 23.42857
 offset_top = 315.42856
 offset_right = 270.28577
 offset_bottom = 378.42856
+focus_mode = 0
 theme_override_fonts/font = ExtResource("1_2shtd")
 theme_override_font_sizes/font_size = 48
 text = "25 Gold"
@@ -303,6 +345,7 @@ offset_left = 23.42857
 offset_top = 315.42856
 offset_right = 270.28577
 offset_bottom = 378.42856
+focus_mode = 0
 theme_override_fonts/font = ExtResource("1_2shtd")
 theme_override_font_sizes/font_size = 48
 text = "35 Gold"
@@ -372,6 +415,7 @@ offset_left = 23.42857
 offset_top = 315.42856
 offset_right = 270.28577
 offset_bottom = 378.42856
+focus_mode = 0
 theme_override_fonts/font = ExtResource("1_2shtd")
 theme_override_font_sizes/font_size = 48
 text = "15 Gold"
@@ -441,6 +485,7 @@ offset_left = 23.42857
 offset_top = 315.42856
 offset_right = 270.28577
 offset_bottom = 378.42856
+focus_mode = 0
 theme_override_fonts/font = ExtResource("1_2shtd")
 theme_override_font_sizes/font_size = 48
 text = "50 Gold"
@@ -510,6 +555,7 @@ offset_left = 23.42857
 offset_top = 315.42856
 offset_right = 270.28577
 offset_bottom = 378.42856
+focus_mode = 0
 theme_override_fonts/font = ExtResource("1_2shtd")
 theme_override_font_sizes/font_size = 48
 text = "20 Gold"
@@ -528,6 +574,7 @@ offset_top = 888.00006
 offset_right = 1212.0
 offset_bottom = 1052.0
 scale = Vector2(0.845, 0.845)
+focus_mode = 0
 theme_override_fonts/font = ExtResource("1_2shtd")
 theme_override_font_sizes/font_size = 128
 text = "Finish"
@@ -543,6 +590,31 @@ theme_override_font_sizes/normal_font_size = 64
 text = "Your Gold: 67"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Ding" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fdj0q")
+volume_db = -5.0
+max_polyphony = 5
+bus = &"SFX"
+
+[node name="Kaching" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_k6jq0")
+volume_db = -7.0
+max_polyphony = 5
+bus = &"SFX"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ymrm4")
+}
+speed_scale = 0.75
 
 [connection signal="pressed" from="Paid/Ring/Select" to="." method="Ring"]
 [connection signal="pressed" from="Paid/Chest/Select" to="." method="Chest"]

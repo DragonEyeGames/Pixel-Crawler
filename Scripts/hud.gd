@@ -13,8 +13,8 @@ func _ready() -> void:
 	goldValue=GameManager.playerGold
 
 func _process(delta: float) -> void:
-	$ProgressBar.max_value=GameManager.playerMaxHealth
-	$ProgressBar.value=GameManager.playerHealth
+	$TextureProgressBar.max_value=GameManager.playerMaxHealth
+	$TextureProgressBar.value=GameManager.playerHealth
 	goldOffset+=GameManager.playerGold-goldValue-goldOffset
 	if(goldOffset==0):
 		await get_tree().create_timer(3).timeout

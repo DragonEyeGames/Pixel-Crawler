@@ -26,7 +26,7 @@ func entered():
 	await get_tree().process_frame
 	await get_tree().process_frame
 	GameManager.playerPos=null
-	get_tree().change_scene_to_file("res://Scenes/finished.tscn")
+	get_tree().change_scene_to_file("res://Scenes/upgrades.tscn")
 		
 func _on_area_2d_area_entered(_area: Area2D) -> void:
 	colliding=true

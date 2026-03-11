@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dki6tawtdwex1"]
+[gd_scene load_steps=3 format=3 uid="uid://dki6tawtdwex1"]
 
 [ext_resource type="Script" uid="uid://bsvokrc24oqkn" path="res://Scenes/upgrades.gd" id="1_qnnf3"]
+[ext_resource type="FontFile" uid="uid://df43mdabfw85x" path="res://Fonts/Pixley.ttf" id="2_mstou"]
 
 [node name="Upgrades" type="Control"]
 layout_mode = 3
@@ -43,9 +44,11 @@ color = Color(0.41981313, 0.41981313, 0.4198131, 1)
 layout_mode = 0
 offset_left = 4.0
 offset_top = 5.714264
-offset_right = 295.42853
-offset_bottom = 89.14284
-theme_override_font_sizes/normal_font_size = 34
+offset_right = 346.74518
+offset_bottom = 112.025055
+scale = Vector2(0.85, 0.85)
+theme_override_fonts/normal_font = ExtResource("2_mstou")
+theme_override_font_sizes/normal_font_size = 48
 text = "Damage Upgrade"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -54,9 +57,11 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 4.0
 offset_top = 116.5714
-offset_right = 295.42853
-offset_bottom = 191.99997
-theme_override_font_sizes/normal_font_size = 39
+offset_right = 421.59113
+offset_bottom = 232.95404
+scale = Vector2(0.7, 0.7)
+theme_override_fonts/normal_font = ExtResource("2_mstou")
+theme_override_font_sizes/normal_font_size = 48
 text = "+1 Strength"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -65,9 +70,11 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 4.0
 offset_top = 215.99997
-offset_right = 295.42853
-offset_bottom = 291.42853
-theme_override_font_sizes/normal_font_size = 27
+offset_right = 506.29895
+offset_bottom = 374.3503
+scale = Vector2(0.58, 0.58)
+theme_override_fonts/normal_font = ExtResource("2_mstou")
+theme_override_font_sizes/normal_font_size = 48
 text = "Be very strong and bonk those enemies!"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -78,7 +85,8 @@ offset_left = 23.42857
 offset_top = 315.42856
 offset_right = 270.28577
 offset_bottom = 378.42856
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("2_mstou")
+theme_override_font_sizes/font_size = 64
 text = "Select"
 
 [node name="Speed" type="ColorRect" parent="Free"]
@@ -98,9 +106,11 @@ color = Color(0.41981313, 0.41981313, 0.4198131, 1)
 layout_mode = 0
 offset_left = 4.0
 offset_top = 5.714264
-offset_right = 295.42853
-offset_bottom = 89.14284
-theme_override_font_sizes/normal_font_size = 34
+offset_right = 332.35425
+offset_bottom = 118.262665
+scale = Vector2(0.89, 0.89)
+theme_override_fonts/normal_font = ExtResource("2_mstou")
+theme_override_font_sizes/normal_font_size = 48
 text = "Speed Upgrade"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -109,9 +119,11 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 4.0
 offset_top = 116.5714
-offset_right = 295.42853
-offset_bottom = 191.99997
-theme_override_font_sizes/normal_font_size = 39
+offset_right = 420.0785
+offset_bottom = 235.75513
+scale = Vector2(0.7, 0.7)
+theme_override_fonts/normal_font = ExtResource("2_mstou")
+theme_override_font_sizes/normal_font_size = 48
 text = "+1 Speed"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -120,9 +132,11 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 4.0
 offset_top = 215.99997
-offset_right = 295.42853
-offset_bottom = 291.42853
-theme_override_font_sizes/normal_font_size = 27
+offset_right = 440.17212
+offset_bottom = 363.3223
+scale = Vector2(0.67, 0.67)
+theme_override_fonts/normal_font = ExtResource("2_mstou")
+theme_override_font_sizes/normal_font_size = 48
 text = "Go fast and outspeed those enemies!"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -133,7 +147,8 @@ offset_left = 23.42857
 offset_top = 315.42856
 offset_right = 270.28577
 offset_bottom = 378.42856
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("2_mstou")
+theme_override_font_sizes/font_size = 64
 text = "Select"
 
 [node name="Health" type="ColorRect" parent="Free"]
@@ -153,9 +168,11 @@ color = Color(0.41981313, 0.41981313, 0.4198131, 1)
 layout_mode = 0
 offset_left = 4.0
 offset_top = 5.714264
-offset_right = 295.42853
-offset_bottom = 89.14284
-theme_override_font_sizes/normal_font_size = 34
+offset_right = 328.24146
+offset_bottom = 109.966064
+scale = Vector2(0.895, 0.895)
+theme_override_fonts/normal_font = ExtResource("2_mstou")
+theme_override_font_sizes/normal_font_size = 48
 text = "Health Upgrade"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -164,9 +181,11 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 4.0
 offset_top = 116.5714
-offset_right = 295.42853
-offset_bottom = 191.99997
-theme_override_font_sizes/normal_font_size = 39
+offset_right = 418.56604
+offset_bottom = 231.87976
+scale = Vector2(0.7, 0.7)
+theme_override_fonts/normal_font = ExtResource("2_mstou")
+theme_override_font_sizes/normal_font_size = 48
 text = "+1 Health"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -175,9 +194,11 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 4.0
 offset_top = 215.99997
-offset_right = 295.42853
-offset_bottom = 291.42853
-theme_override_font_sizes/normal_font_size = 27
+offset_right = 483.6632
+offset_bottom = 372.66837
+scale = Vector2(0.605, 0.605)
+theme_override_fonts/normal_font = ExtResource("2_mstou")
+theme_override_font_sizes/normal_font_size = 48
 text = "Be very tanky and take more hits!"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -188,14 +209,19 @@ offset_left = 23.42857
 offset_top = 315.42856
 offset_right = 270.28577
 offset_bottom = 378.42856
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("2_mstou")
+theme_override_font_sizes/font_size = 64
 text = "Select"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_right = 1919.0
-offset_bottom = 174.0
-theme_override_font_sizes/normal_font_size = 73
+offset_left = 2.0000038
+offset_top = 14.000002
+offset_right = 1882.3922
+offset_bottom = 188.0
+scale = Vector2(1.02, 1.02)
+theme_override_fonts/normal_font = ExtResource("2_mstou")
+theme_override_font_sizes/normal_font_size = 96
 text = "You may pick one of these for free!"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -205,9 +231,10 @@ layout_mode = 0
 offset_left = 774.00006
 offset_top = 888.00006
 offset_right = 1212.0
-offset_bottom = 1052.0
+offset_bottom = 1060.781
 scale = Vector2(0.845, 0.845)
-theme_override_font_sizes/font_size = 82
+theme_override_fonts/font = ExtResource("2_mstou")
+theme_override_font_sizes/font_size = 96
 text = "Continue"
 
 [node name="Control" type="Control" parent="."]
@@ -220,11 +247,12 @@ scale = Vector2(0.87, 0.87)
 
 [node name="StatHeader" type="RichTextLabel" parent="Control"]
 layout_mode = 0
-offset_left = 14.0
-offset_top = -22.0
-offset_right = 419.0
-offset_bottom = 87.0
-theme_override_font_sizes/normal_font_size = 44
+offset_top = 1.1494274
+offset_right = 507.09933
+offset_bottom = 83.63759
+scale = Vector2(0.88, 0.88)
+theme_override_fonts/normal_font = ExtResource("2_mstou")
+theme_override_font_sizes/normal_font_size = 48
 text = "Your Current Stats:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -239,21 +267,24 @@ offset_bottom = 294.0
 [node name="Health" type="RichTextLabel" parent="Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 61)
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 44
+theme_override_fonts/normal_font = ExtResource("2_mstou")
+theme_override_font_sizes/normal_font_size = 48
 text = "Health: 20"
 vertical_alignment = 1
 
 [node name="Speed" type="RichTextLabel" parent="Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 61)
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 44
+theme_override_fonts/normal_font = ExtResource("2_mstou")
+theme_override_font_sizes/normal_font_size = 48
 text = "Speed: 20"
 vertical_alignment = 1
 
 [node name="Strength" type="RichTextLabel" parent="Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 61)
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 44
+theme_override_fonts/normal_font = ExtResource("2_mstou")
+theme_override_font_sizes/normal_font_size = 48
 text = "Strength: 20"
 vertical_alignment = 1
 
