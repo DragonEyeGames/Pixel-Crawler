@@ -7,7 +7,7 @@ func _on_knight_pressed() -> void:
 	GameManager.playerSpeed=12.0
 	GameManager.playerStrength=13.0
 	GameManager.playerHealth=GameManager.playerMaxHealth
-	get_tree().change_scene_to_file("res://Dungeon.tscn")
+	loadScene()
 
 
 func _on_axeman_pressed() -> void:
@@ -16,7 +16,14 @@ func _on_axeman_pressed() -> void:
 	GameManager.playerSpeed=10.0
 	GameManager.playerStrength=20.0
 	GameManager.playerHealth=GameManager.playerMaxHealth
-	get_tree().change_scene_to_file("res://Dungeon.tscn")
+	loadScene()
+	
+func loadScene():
+	var tween=create_tween()
+	tween.tween_property($Fade/Control, "modulate:a", 1, .1)
+	await get_tree().create_timer(.1).timeout
+	await get_tree().process_frame
+	LoadManager.load_scene(self, "res://Dungeon.tscn")
 
 
 func _on_archer_pressed() -> void:

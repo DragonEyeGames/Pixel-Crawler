@@ -20,6 +20,7 @@ config/icon="res://Assets/icon.svg"
 GameManager="*res://Scripts/GameManager.gd"
 SignalBus="*res://Scripts/SignalBus.gd"
 Music="*res://Scenes/music.tscn"
+LoadManager="*res://Scripts/LoadManager.gd"
 
 [display]
 
