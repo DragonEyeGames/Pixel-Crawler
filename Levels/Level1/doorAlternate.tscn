@@ -4,8 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="2_15r50"]
 
 [node name="DoorAlternate2" type="Node2D"]
-z_index = -1
 script = ExtResource("1_e2jt8")
 
 [node name="Walls" parent="." instance=ExtResource("2_15r50")]
 tile_map_data = PackedByteArray("AAAAAPr/AAABABAAAAAAAPv/AAABABEAAAD///r/AAABABAAAAD///v/AAABABEAAAD///n/AAABAA8AAAAAAPn/AAABAA8AAAA=")
+
+[node name="Frame" parent="." instance=ExtResource("2_15r50")]
+tile_map_data = PackedByteArray("AAAAAPr/AgAEABMAAAAAAPv/AgAEABQAAAD///r/AgADABMAAAD///v/AgADABQAAAD///n/AgADABIAAAAAAPn/AgAEABIAAAA=")
+collision_enabled = false

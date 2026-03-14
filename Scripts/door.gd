@@ -36,9 +36,7 @@ func _process(_delta: float) -> void:
 	if(locked):
 		close()
 	if(coverUp!=null):
-		coverUp.visible=!visible
-		if(coverUp.visible):
-			sorter.visible=false
+		coverUp.active=visible
 		
 func _physics_process(_delta: float) -> void:
 	$StaticBody2D/CollisionShape2D2.disabled=sprite.animation=="open"
