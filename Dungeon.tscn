@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cwmhhrjco02h7"]
+[gd_scene load_steps=23 format=3 uid="uid://cwmhhrjco02h7"]
 
 [ext_resource type="Script" uid="uid://vayrh1hsg8yl" path="res://DungeonMaker.gd" id="1_nulmw"]
 [ext_resource type="PackedScene" uid="uid://dhd0snu2yv3e5" path="res://Levels/Level1/Level4.tscn" id="1_sifhu"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://crbn1y3r0d481" path="res://cam.gd" id="15_oq8wd"]
 [ext_resource type="AudioStream" uid="uid://cvb54fveb6rmr" path="res://SFX/Gong.mp3" id="16_5ilfn"]
 [ext_resource type="PackedScene" uid="uid://daq8p8ifyvpav" path="res://pause.tscn" id="17_1qybq"]
+[ext_resource type="FontFile" uid="uid://df43mdabfw85x" path="res://Fonts/Pixley.ttf" id="18_fo3ry"]
 
 [sub_resource type="Environment" id="Environment_oq8wd"]
 background_mode = 3
@@ -30,6 +31,43 @@ fog_enabled = true
 fog_light_energy = 2.55
 adjustment_enabled = true
 adjustment_saturation = 1.1
+
+[sub_resource type="Animation" id="Animation_l1ucm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Generating"]
+}
+
+[sub_resource type="Animation" id="Animation_5uo6n"]
+resource_name = "load"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["Generating", "Generating.", "Generating..", "Generating..."]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lghnf"]
+_data = {
+&"RESET": SubResource("Animation_l1ucm"),
+&"load": SubResource("Animation_5uo6n")
+}
 
 [node name="Dungeon" type="Node2D" node_paths=PackedStringArray("startingLevel")]
 script = ExtResource("1_nulmw")
@@ -66,3 +104,32 @@ volume_db = -15.0
 bus = &"SFX"
 
 [node name="Pause" parent="." instance=ExtResource("17_1qybq")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 537.0
+offset_right = 1924.0
+offset_bottom = 1081.0
+theme_override_fonts/normal_font = ExtResource("18_fo3ry")
+theme_override_font_sizes/normal_font_size = 144
+text = "Generating"
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_lghnf")
+}
+autoplay = "load"
+speed_scale = 0.5

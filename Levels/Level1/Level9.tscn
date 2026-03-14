@@ -14,12 +14,13 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-75, -38, -75, 72, 76, 72, 76, -38)])
 agent_radius = 6.5
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("doors") groups=["North", "South"]]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("doors", "wall") groups=["North", "South"]]
 texture_filter = 1
 script = ExtResource("1_jsdd8")
 level = 9
 enemies = 0
 doors = [NodePath("Door"), NodePath("Door2")]
+wall = NodePath("Wall")
 
 [node name="Door" parent="." node_paths=PackedStringArray("coverUp") instance=ExtResource("9_csn0e")]
 position = Vector2(0, -53)
@@ -57,22 +58,9 @@ position = Vector2(37.5, -55)
 position = Vector2(-34.5, -55)
 
 [node name="NavRegion" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_hy5j1")
 use_edge_connections = false
-
-[node name="Control" type="Control" parent="."]
-clip_contents = true
-layout_mode = 3
-anchors_preset = 0
-offset_left = -76.0
-offset_top = -77.0
-offset_right = 77.0
-offset_bottom = 73.0
-
-[node name="BackWalls" parent="Control" instance=ExtResource("2_l7ecc")]
-z_index = -1
-position = Vector2(76, 77)
-tile_map_data = PackedByteArray("AAD7//v/AAABAA8AAAD8//v/AAABAA8AAAD9//v/AAABAA8AAAD+//v/AAABAA8AAAD///v/AAADABIAAAAAAPv/AAAEABIAAAABAPv/AAABAA8AAAACAPv/AAABAA8AAAADAPv/AAABAA8AAAAEAPv/AAADAA8AAAD7//z/AAABABAAAAD7//3/AAABABEAAAD8//z/AAABABAAAAD8//3/AAABABEAAAD9//z/AAABABAAAAD9//3/AAABABEAAAD+//z/AAABABAAAAD+//3/AAABABEAAAABAPz/AAABABAAAAABAP3/AAABABEAAAACAPz/AAABABAAAAACAP3/AAABABEAAAADAPz/AAABABAAAAADAP3/AAABABEAAAAEAPz/AAADABAAAAAEAP3/AAADABEAAAD///z/AAADABMAAAD///3/AAADABQAAAAAAPz/AAAEABMAAAAAAP3/AAAEABQAAAA=")
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
@@ -89,6 +77,23 @@ collision_mask = 2
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="player"]
 polygon = PackedVector2Array(-75, 72, 76, 72, 76, -38, -75, -38)
+
+[node name="Wall" type="Node2D" parent="." groups=["y_sort"]]
+position = Vector2(0, -43)
+
+[node name="Control" type="Control" parent="Wall"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -76.0
+offset_top = -34.0
+offset_right = 77.0
+offset_bottom = 116.0
+
+[node name="BackWalls" parent="Wall/Control" instance=ExtResource("2_l7ecc")]
+z_index = -1
+position = Vector2(76, 77)
+tile_map_data = PackedByteArray("AAD7//v/AAABAA8AAAD8//v/AAABAA8AAAD9//v/AAABAA8AAAD+//v/AAABAA8AAAD///v/AAADABIAAAAAAPv/AAAEABIAAAABAPv/AAABAA8AAAACAPv/AAABAA8AAAADAPv/AAABAA8AAAAEAPv/AAADAA8AAAD7//z/AAABABAAAAD7//3/AAABABEAAAD8//z/AAABABAAAAD8//3/AAABABEAAAD9//z/AAABABAAAAD9//3/AAABABEAAAD+//z/AAABABAAAAD+//3/AAABABEAAAABAPz/AAABABAAAAABAP3/AAABABEAAAACAPz/AAABABAAAAACAP3/AAABABEAAAADAPz/AAABABAAAAADAP3/AAABABEAAAAEAPz/AAADABAAAAAEAP3/AAADABEAAAD///z/AAADABMAAAD///3/AAADABQAAAAAAPz/AAAEABMAAAAAAP3/AAAEABQAAAA=")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="player" to="." method="_on_player_area_entered"]

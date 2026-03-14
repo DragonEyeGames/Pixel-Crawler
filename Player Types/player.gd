@@ -3,7 +3,6 @@ extends Node2D
 var selected
 
 func _ready():
-	$CanvasLayer.visible=true
 	SignalBus.generated.connect(finishedGeneration)
 	if(GameManager.playerPos!=null):
 		global_position=GameManager.playerPos
@@ -49,16 +48,11 @@ func _ready():
 			cam.position_smoothing_enabled=true
 
 func finishedGeneration():
-	var text=create_tween()
-	text.tween_property($CanvasLayer/ColorRect/RichTextLabel, "modulate:a", 0, .1)
-	await get_tree().create_timer(.15).timeout
-	var tween=create_tween()
 	selected.process_mode=ProcessMode.PROCESS_MODE_INHERIT
 	for child in get_children():
 		if(child is CharacterBody2D and child!=selected):
 			child.queue_free()
 	selected.canMove=false
-	tween.tween_property($CanvasLayer/ColorRect, "modulate:a", 0, .5)
-	await get_tree().create_timer(.5).timeout
+	await get_tree().create_timer(.25).timeout
 	selected.canMove=true
 	call_deferred("queue_free")

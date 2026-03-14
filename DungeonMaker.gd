@@ -13,6 +13,7 @@ var failedCaps=0
 var endPlaced=false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$CanvasLayer.visible=true
 	for level in levels:
 		var newLevel = level.instantiate()
 		#add_child(newLevel)
@@ -222,12 +223,19 @@ func generateWorld():
 	while len(instantiatedCaps)>=1 and failedCaps<=100:
 		await cap()
 	await get_tree().process_frame
-	await get_tree().process_frame
 	for sort in get_tree().get_nodes_in_group("y_sort"):
 		var global=sort.global_position
 		sort.get_parent().remove_child(sort)
 		$"Y-Sort".add_child(sort)
 		sort.global_position=global
+	await get_tree().process_frame
 	startingLevel.modulate.a=1
 	SignalBus.generated.emit()
+	await get_tree().create_timer(.1).timeout
+	var text=create_tween()
+	text.tween_property($CanvasLayer/ColorRect/RichTextLabel, "modulate:a", 0, .1)
+	await get_tree().create_timer(.15).timeout
 	$Gong.play()
+	var tween=create_tween()
+	tween.tween_property($CanvasLayer/ColorRect, "modulate:a", 0, .5)
+	await get_tree().create_timer(.5).timeout

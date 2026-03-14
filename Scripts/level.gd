@@ -52,7 +52,7 @@ func _process(_delta: float) -> void:
 	if(has_node("Floor")):
 		$Floor.collision_enabled=visible
 	else:
-		$Control/Floor.collision_enabled=visible
+		$Control2/Floor.collision_enabled=visible
 	for child in toUpdate:
 		if is_instance_valid(child):
 			child.visible = active

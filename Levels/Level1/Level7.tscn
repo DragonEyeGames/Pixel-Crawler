@@ -37,6 +37,7 @@ y_sort_enabled = true
 position = Vector2(2, -123)
 
 [node name="NavRegion" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_i4375")
 
 [node name="Control" type="Control" parent="."]

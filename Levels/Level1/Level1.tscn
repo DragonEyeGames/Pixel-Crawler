@@ -54,6 +54,7 @@ position = Vector2(-34, 0)
 color = Color(0.69135684, 0.6913568, 0.69135684, 1)
 
 [node name="NavRegion" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_7fl83")
 use_edge_connections = false
 
