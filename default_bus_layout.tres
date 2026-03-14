@@ -1,4 +1,10 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://01y251l8t1"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://01y251l8t1"]
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_j3pel"]
+resource_name = "LowPassFilter"
+
+[sub_resource type="AudioEffectChorus" id="AudioEffectChorus_j3pel"]
+resource_name = "Chorus"
 
 [resource]
 bus/1/name = &"SFX"
@@ -13,3 +19,7 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.26724052
 bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectLowPassFilter_j3pel")
+bus/2/effect/0/enabled = false
+bus/2/effect/1/effect = SubResource("AudioEffectChorus_j3pel")
+bus/2/effect/1/enabled = false

@@ -152,7 +152,7 @@ fill_to = Vector2(0.5694445, 0.32478634)
 
 [sub_resource type="Gradient" id="Gradient_31qfy"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qie43"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_31qfy"]
 gradient = SubResource("Gradient_31qfy")
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
@@ -171,7 +171,7 @@ shader = ExtResource("3_iwfq2")
 shader_parameter/debug = false
 shader_parameter/pallet_size = 5
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_rnncn")
-shader_parameter/grad_tex = SubResource("GradientTexture2D_qie43")
+shader_parameter/grad_tex = SubResource("GradientTexture2D_31qfy")
 shader_parameter/frame_grad_1 = SubResource("GradientTexture2D_fimr5")
 shader_parameter/frame_grad_2 = SubResource("GradientTexture2D_afec1")
 shader_parameter/mask_color = Color(1, 1, 1, 1)
@@ -239,6 +239,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Torch" type="Node2D" parent="."]
+visible = false
 position = Vector2(2050.4248, 1017.80133)
 scale = Vector2(9, 9)
 
@@ -364,6 +365,7 @@ offset_right = -30.673977
 offset_bottom = -0.6910877
 
 [node name="Torch2" type="Node2D" parent="."]
+visible = false
 position = Vector2(213.16248, 1000.6781)
 scale = Vector2(9, 9)
 
@@ -439,30 +441,15 @@ tile_map_data = PackedByteArray("AAD8//7/AAABAAMAAAD9//7/AAABAAMAAAD+//7/AAABAAM
 [node name="Start" type="TextureButton" parent="."]
 self_modulate = Color(0.33580995, 0.37959573, 0.4163052, 1)
 layout_mode = 0
-offset_left = 954.94147
-offset_top = 523.4691
-offset_right = 1034.9414
-offset_bottom = 555.4691
+offset_left = 951.044
+offset_top = 466.9563
+offset_right = 1031.044
+offset_bottom = 498.9563
 scale = Vector2(7.88, 6.56)
 pivot_offset = Vector2(44.596504, 19.67694)
 focus_mode = 0
 texture_normal = ExtResource("6_7r1g0")
 texture_click_mask = ExtResource("8_e2xy7")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Start"]
-self_modulate = Color(0.73300546, 0.7330054, 0.7330054, 1)
-layout_mode = 0
-offset_left = 12.975744
-offset_top = 7.426807
-offset_right = 78.79655
-offset_bottom = 30.819996
-scale = Vector2(0.845, 0.845)
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("1_eiy7p")
-theme_override_font_sizes/normal_font_size = 16
-text = "Start"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="FireSprite2" type="ColorRect" parent="Start"]
 modulate = Color(1, 1, 1, 0)
@@ -475,34 +462,34 @@ offset_right = 72.103485
 offset_bottom = 21.210526
 mouse_filter = 2
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Start"]
+self_modulate = Color(0.73300546, 0.7330054, 0.7330054, 1)
+layout_mode = 0
+offset_left = 13.470429
+offset_top = 2.883309
+offset_right = 432.98337
+offset_bottom = 231.41805
+scale = Vector2(0.126, 0.126)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_eiy7p")
+theme_override_font_sizes/normal_font_size = 112
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Settings" type="TextureButton" parent="."]
 self_modulate = Color(0.33580995, 0.37959573, 0.4163052, 1)
 z_index = 1
 layout_mode = 0
-offset_left = 919.7131
-offset_top = 879.82336
-offset_right = 999.71313
-offset_bottom = 911.82336
+offset_left = 917.06024
+offset_top = 684.3154
+offset_right = 997.0603
+offset_bottom = 716.3154
 scale = Vector2(7.88, 6.56)
 pivot_offset = Vector2(39.734886, 15.789703)
 focus_mode = 0
 texture_normal = ExtResource("6_7r1g0")
 texture_click_mask = ExtResource("8_e2xy7")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Settings"]
-self_modulate = Color(0.73300546, 0.7330054, 0.7330054, 1)
-layout_mode = 0
-offset_left = 12.975744
-offset_top = 7.426807
-offset_right = 78.79655
-offset_bottom = 30.819996
-scale = Vector2(0.845, 0.845)
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("1_eiy7p")
-theme_override_font_sizes/normal_font_size = 16
-text = "Settings"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="FireSprite2" type="ColorRect" parent="Settings"]
 modulate = Color(1, 1, 1, 0)
@@ -515,41 +502,67 @@ offset_right = 72.103485
 offset_bottom = 21.210526
 mouse_filter = 2
 
-[node name="SettingsMenu" parent="." instance=ExtResource("4_iwfq2")]
-visible = false
+[node name="RichTextLabel" type="RichTextLabel" parent="Settings"]
+self_modulate = Color(0.73300546, 0.7330054, 0.7330054, 1)
+layout_mode = 0
+offset_left = 13.470429
+offset_top = 2.883309
+offset_right = 432.98337
+offset_bottom = 231.41805
+scale = Vector2(0.126, 0.126)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_eiy7p")
+theme_override_font_sizes/normal_font_size = 96
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="TextureButton" parent="."]
+self_modulate = Color(0.33580995, 0.37959573, 0.4163052, 1)
+z_index = 2
+layout_mode = 0
+offset_left = 917.06024
+offset_top = 918.1615
+offset_right = 997.0603
+offset_bottom = 950.1615
+scale = Vector2(7.88, 6.56)
+pivot_offset = Vector2(39.734886, 15.789703)
+focus_mode = 0
+texture_normal = ExtResource("6_7r1g0")
+texture_click_mask = ExtResource("8_e2xy7")
+
+[node name="FireSprite2" type="ColorRect" parent="Quit"]
 modulate = Color(1, 1, 1, 0)
+z_index = -1
+material = SubResource("ShaderMaterial_3fnrj")
+layout_mode = 0
+offset_left = 8.103487
+offset_top = -42.789474
+offset_right = 72.103485
+offset_bottom = 21.210526
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Quit"]
+self_modulate = Color(0.73300546, 0.7330054, 0.7330054, 1)
+layout_mode = 0
+offset_left = 13.470429
+offset_top = 2.883309
+offset_right = 432.98337
+offset_bottom = 231.41805
+scale = Vector2(0.126, 0.126)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_eiy7p")
+theme_override_font_sizes/normal_font_size = 112
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsMenu" parent="." instance=ExtResource("4_iwfq2")]
 self_modulate = Color(0.3854925, 0.3854925, 0.38549235, 1)
 z_index = 5
 position = Vector2(-157.75006, 73.55176)
 scale = Vector2(14.075, 14.075)
 tile_map_data = PackedByteArray("AAACAAAAAAAAAAUAAAACAAEAAAAAAAYAAAACAAIAAAAAAAYAAAADAAAAAAABAAUAAAADAAEAAAABAAYAAAADAAIAAAABAAYAAAAEAAAAAAABAAUAAAAEAAEAAAABAAYAAAAEAAIAAAABAAYAAAAFAAAAAAABAAUAAAAFAAEAAAABAAYAAAAFAAIAAAABAAYAAAAGAAAAAAABAAUAAAAGAAEAAAABAAYAAAAGAAIAAAABAAYAAAAHAAAAAAACAAUAAAAHAAEAAAACAAYAAAAHAAIAAAACAAYAAAAHAAMAAAACAAcAAAACAAMAAAAAAAcAAAADAAMAAAABAAcAAAAEAAMAAAABAAcAAAAFAAMAAAABAAcAAAAGAAMAAAABAAcAAAA=")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="SettingsMenu"]
-self_modulate = Color(0.7792914, 0.7792914, 0.7792913, 1)
-offset_left = 56.15434
-offset_top = 5.2662206
-offset_right = 121.97514
-offset_bottom = 28.659409
-scale = Vector2(0.71, 0.71)
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("1_eiy7p")
-theme_override_font_sizes/normal_font_size = 16
-text = "Settings"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SFX" type="RichTextLabel" parent="SettingsMenu"]
-self_modulate = Color(0.7792914, 0.7792914, 0.7792913, 1)
-offset_left = 39.97397
-offset_top = 21.964306
-offset_right = 105.79477
-offset_bottom = 45.357494
-scale = Vector2(0.445, 0.445)
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("1_eiy7p")
-theme_override_font_sizes/normal_font_size = 16
-text = "SFX: "
-vertical_alignment = 1
 
 [node name="Music" type="RichTextLabel" parent="SettingsMenu"]
 self_modulate = Color(0.7792914, 0.7792914, 0.7792913, 1)
@@ -634,6 +647,36 @@ text = "Close"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="RichTextLabel" type="RichTextLabel" parent="SettingsMenu"]
+self_modulate = Color(0.73300546, 0.7330054, 0.7330054, 1)
+z_index = 3
+offset_left = 38.643597
+offset_top = 0.8694565
+offset_right = 695.90314
+offset_bottom = 229.40419
+scale = Vector2(0.126, 0.126)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_eiy7p")
+theme_override_font_sizes/normal_font_size = 112
+text = "Volumes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFX" type="RichTextLabel" parent="SettingsMenu"]
+self_modulate = Color(0.73300546, 0.7330054, 0.7330054, 1)
+z_index = 3
+offset_left = 40.39563
+offset_top = 21.397028
+offset_right = 182.93115
+offset_bottom = 120.0702
+scale = Vector2(0.126, 0.126)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_eiy7p")
+theme_override_font_sizes/normal_font_size = 64
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Ambient Fire" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_fimr5")
 volume_db = -40.75
@@ -652,12 +695,21 @@ volume_db = -80.0
 autoplay = true
 bus = &"SFX"
 
+[node name="QuitFire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_fimr5")
+volume_db = -80.0
+autoplay = true
+bus = &"SFX"
+
 [connection signal="mouse_entered" from="Start" to="." method="_on_start_mouse_entered"]
 [connection signal="mouse_exited" from="Start" to="." method="_on_start_mouse_exited"]
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="mouse_entered" from="Settings" to="." method="_on_settings_mouse_entered"]
 [connection signal="mouse_exited" from="Settings" to="." method="_on_settings_mouse_exited"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="mouse_exited" from="Quit" to="." method="_on_quit_mouse_exited"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
 [connection signal="value_changed" from="SettingsMenu/SFX Bar" to="." method="_on_sfx_bar_value_changed"]
 [connection signal="value_changed" from="SettingsMenu/Music Bar" to="." method="_on_music_bar_value_changed"]
 [connection signal="value_changed" from="SettingsMenu/Master Bar" to="." method="_on_master_bar_value_changed"]

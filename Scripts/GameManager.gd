@@ -36,7 +36,3 @@ enum playerTypes {
 }
 
 var playerType:=playerTypes.Axeman
-
-func _process(_delta: float) -> void:
-	if(Input.is_action_just_pressed("Escape")):
-		get_tree().quit()

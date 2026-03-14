@@ -110,6 +110,7 @@ process_mode = 4
 material = SubResource("ShaderMaterial_eef01")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15

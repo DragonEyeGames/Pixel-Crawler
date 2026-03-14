@@ -1,0 +1,369 @@
+[gd_scene load_steps=9 format=4 uid="uid://daq8p8ifyvpav"]
+
+[ext_resource type="Script" uid="uid://bkqk4pjk2q8uy" path="res://pause.gd" id="1_aq7p1"]
+[ext_resource type="FontFile" uid="uid://df43mdabfw85x" path="res://Fonts/Pixley.ttf" id="2_6eyaj"]
+[ext_resource type="Texture2D" uid="uid://3hhaup3jsxd0" path="res://Assets/ButtonFrame.png" id="3_bwtow"]
+[ext_resource type="BitMap" uid="uid://cdj0prm4slm7u" path="res://Assets/ButtonMask.png" id="4_05lnj"]
+[ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="5_bwtow"]
+
+[sub_resource type="Animation" id="Animation_bwtow"]
+resource_name = "reset"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_05lnj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jg8ls"]
+_data = {
+&"RESET": SubResource("Animation_05lnj"),
+&"reset": SubResource("Animation_bwtow")
+}
+
+[node name="Pause" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_aq7p1")
+
+[node name="Control" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1916.0
+offset_bottom = 1067.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.652)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 356.0
+offset_right = 1134.0
+offset_bottom = 777.2014
+scale = Vector2(1.415, 1.415)
+mouse_filter = 2
+
+[node name="Resume" type="Control" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Resume" type="TextureButton" parent="Control/VBoxContainer/Resume"]
+self_modulate = Color(0.33580995, 0.37959573, 0.4163052, 1)
+layout_mode = 0
+offset_left = 228.26854
+offset_top = 48.763237
+offset_right = 308.26855
+offset_bottom = 80.76324
+scale = Vector2(5.72, 4.762)
+pivot_offset = Vector2(40.259354, 15.544861)
+focus_mode = 0
+texture_normal = ExtResource("3_bwtow")
+texture_click_mask = ExtResource("4_05lnj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/VBoxContainer/Resume/Resume"]
+self_modulate = Color(0.73300546, 0.7330054, 0.7330054, 1)
+layout_mode = 0
+offset_left = 12.975744
+offset_top = 7.426807
+offset_right = 78.79655
+offset_bottom = 30.819996
+scale = Vector2(0.845, 0.845)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_6eyaj")
+theme_override_font_sizes/normal_font_size = 16
+text = "Resume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings" type="Control" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Settings" type="TextureButton" parent="Control/VBoxContainer/Settings"]
+self_modulate = Color(0.33580995, 0.37959573, 0.4163052, 1)
+z_index = 1
+layout_mode = 0
+offset_left = 224.735
+offset_top = 76.60072
+offset_right = 304.73505
+offset_bottom = 108.60072
+scale = Vector2(5.72, 4.762)
+pivot_offset = Vector2(39.734886, 15.789703)
+focus_mode = 0
+texture_normal = ExtResource("3_bwtow")
+texture_click_mask = ExtResource("4_05lnj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/VBoxContainer/Settings/Settings"]
+self_modulate = Color(0.73300546, 0.7330054, 0.7330054, 1)
+layout_mode = 0
+offset_left = 12.975744
+offset_top = 7.426807
+offset_right = 78.79655
+offset_bottom = 30.819996
+scale = Vector2(0.845, 0.845)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_6eyaj")
+theme_override_font_sizes/normal_font_size = 16
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu" type="Control" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Menu" type="TextureButton" parent="Control/VBoxContainer/Menu"]
+self_modulate = Color(0.33580995, 0.37959573, 0.4163052, 1)
+z_index = 2
+layout_mode = 0
+offset_left = 221.90814
+offset_top = 109.38514
+offset_right = 301.9082
+offset_bottom = 141.38513
+scale = Vector2(5.72, 4.762)
+pivot_offset = Vector2(39.734886, 15.789703)
+focus_mode = 0
+texture_normal = ExtResource("3_bwtow")
+texture_click_mask = ExtResource("4_05lnj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/VBoxContainer/Menu/Menu"]
+self_modulate = Color(0.73300546, 0.7330054, 0.7330054, 1)
+layout_mode = 0
+offset_left = 12.975744
+offset_top = 7.426807
+offset_right = 78.79655
+offset_bottom = 30.819996
+scale = Vector2(0.845, 0.845)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_6eyaj")
+theme_override_font_sizes/normal_font_size = 16
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 42.796753
+offset_right = 1917.8701
+offset_bottom = 273.4369
+focus_mode = 0
+theme_override_fonts/normal_font = ExtResource("2_6eyaj")
+theme_override_font_sizes/normal_font_size = 176
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title2" type="RichTextLabel" parent="Control"]
+modulate = Color(4.29996, 0, 0, 1)
+z_index = -1
+layout_mode = 0
+offset_left = 46.0
+offset_top = -1.3790741
+offset_right = 1921.0735
+offset_bottom = 272.0578
+theme_override_fonts/normal_font = ExtResource("2_6eyaj")
+theme_override_font_sizes/normal_font_size = 176
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationTree" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jg8ls")
+}
+autoplay = "reset"
+
+[node name="SettingsMenu" parent="." instance=ExtResource("5_bwtow")]
+visible = false
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.3854925, 0.3854925, 0.38549235, 1)
+z_index = 5
+position = Vector2(-157.75006, 73.55176)
+scale = Vector2(14.075, 14.075)
+tile_map_data = PackedByteArray("AAACAAAAAAAAAAUAAAACAAEAAAAAAAYAAAACAAIAAAAAAAYAAAADAAAAAAABAAUAAAADAAEAAAABAAYAAAADAAIAAAABAAYAAAAEAAAAAAABAAUAAAAEAAEAAAABAAYAAAAEAAIAAAABAAYAAAAFAAAAAAABAAUAAAAFAAEAAAABAAYAAAAFAAIAAAABAAYAAAAGAAAAAAABAAUAAAAGAAEAAAABAAYAAAAGAAIAAAABAAYAAAAHAAAAAAACAAUAAAAHAAEAAAACAAYAAAAHAAIAAAACAAYAAAAHAAMAAAACAAcAAAACAAMAAAAAAAcAAAADAAMAAAABAAcAAAAEAAMAAAABAAcAAAAFAAMAAAABAAcAAAAGAAMAAAABAAcAAAA=")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SettingsMenu"]
+self_modulate = Color(0.7792914, 0.7792914, 0.7792913, 1)
+offset_left = 56.15434
+offset_top = 5.2662206
+offset_right = 121.97514
+offset_bottom = 28.659409
+scale = Vector2(0.71, 0.71)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_6eyaj")
+theme_override_font_sizes/normal_font_size = 16
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFX" type="RichTextLabel" parent="SettingsMenu"]
+self_modulate = Color(0.7792914, 0.7792914, 0.7792913, 1)
+offset_left = 39.97397
+offset_top = 21.964306
+offset_right = 105.79477
+offset_bottom = 45.357494
+scale = Vector2(0.445, 0.445)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_6eyaj")
+theme_override_font_sizes/normal_font_size = 16
+text = "SFX: "
+vertical_alignment = 1
+
+[node name="Music" type="RichTextLabel" parent="SettingsMenu"]
+self_modulate = Color(0.7792914, 0.7792914, 0.7792913, 1)
+offset_left = 39.835514
+offset_top = 30.133
+offset_right = 105.65631
+offset_bottom = 53.526188
+scale = Vector2(0.445, 0.445)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_6eyaj")
+theme_override_font_sizes/normal_font_size = 16
+text = "Music:"
+vertical_alignment = 1
+
+[node name="Master" type="RichTextLabel" parent="SettingsMenu"]
+self_modulate = Color(0.7792914, 0.7792914, 0.7792913, 1)
+offset_left = 39.97397
+offset_top = 38.16324
+offset_right = 105.79477
+offset_bottom = 61.556427
+scale = Vector2(0.445, 0.445)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_6eyaj")
+theme_override_font_sizes/normal_font_size = 16
+text = "Master:"
+vertical_alignment = 1
+
+[node name="SFX Bar" type="HSlider" parent="SettingsMenu"]
+offset_left = 58.37443
+offset_top = 22.84464
+offset_right = 201.88353
+offset_bottom = 38.844643
+scale = Vector2(0.415, 0.415)
+min_value = -250.0
+max_value = 36.0
+
+[node name="Music Bar" type="HSlider" parent="SettingsMenu"]
+offset_left = 61.547432
+offset_top = 30.831848
+offset_right = 195.82883
+offset_bottom = 46.831852
+scale = Vector2(0.415, 0.415)
+min_value = -250.0
+max_value = 36.0
+
+[node name="Master Bar" type="HSlider" parent="SettingsMenu"]
+offset_left = 66.04622
+offset_top = 39.206936
+offset_right = 191.94852
+offset_bottom = 55.20694
+scale = Vector2(0.415, 0.415)
+min_value = -250.0
+max_value = 36.0
+
+[node name="Close" type="Button" parent="SettingsMenu"]
+modulate = Color(0.735357, 0.735357, 0.735357, 1)
+offset_left = 67.74697
+offset_top = 49.975483
+offset_right = 92.51291
+offset_bottom = 63.15222
+pivot_offset = Vector2(12.095867, 6.7877655)
+focus_mode = 0
+flat = true
+
+[node name="Walls" parent="SettingsMenu/Close" instance=ExtResource("5_bwtow")]
+self_modulate = Color(0.7919987, 0.7919993, 0.7919988, 1)
+position = Vector2(7.833454, 6.562134)
+scale = Vector2(0.565, 0.415)
+tile_map_data = PackedByteArray("AAABAAAAAAACAAcAAAAAAAAAAAABAAcAAAD//wAAAAAAAAcAAAD/////AAAAAAUAAAAAAP//AAABAAUAAAABAP//AAACAAUAAAA=")
+
+[node name="Text" type="RichTextLabel" parent="SettingsMenu/Close/Walls"]
+self_modulate = Color(0.7792914, 0.7792914, 0.7792913, 1)
+offset_left = -9.034926
+offset_top = -10.441622
+offset_right = 47.53676
+offset_bottom = 13.682325
+scale = Vector2(0.605, 0.893)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_6eyaj")
+theme_override_font_sizes/normal_font_size = 16
+text = "Close"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="Control/VBoxContainer/Resume/Resume" to="." method="_on_resume_mouse_entered"]
+[connection signal="mouse_exited" from="Control/VBoxContainer/Resume/Resume" to="." method="_on_resume_mouse_exited"]
+[connection signal="pressed" from="Control/VBoxContainer/Resume/Resume" to="." method="_on_resume_pressed"]
+[connection signal="mouse_entered" from="Control/VBoxContainer/Settings/Settings" to="." method="_on_settings_mouse_entered"]
+[connection signal="mouse_exited" from="Control/VBoxContainer/Settings/Settings" to="." method="_on_settings_mouse_exited"]
+[connection signal="pressed" from="Control/VBoxContainer/Settings/Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="Control/VBoxContainer/Menu/Menu" to="." method="_on_menu_mouse_entered"]
+[connection signal="mouse_exited" from="Control/VBoxContainer/Menu/Menu" to="." method="_on_menu_mouse_exited"]
+[connection signal="pressed" from="Control/VBoxContainer/Menu/Menu" to="." method="_on_menu_pressed"]
+[connection signal="value_changed" from="SettingsMenu/SFX Bar" to="." method="_on_sfx_bar_value_changed"]
+[connection signal="value_changed" from="SettingsMenu/Music Bar" to="." method="_on_music_bar_value_changed"]
+[connection signal="value_changed" from="SettingsMenu/Master Bar" to="." method="_on_master_bar_value_changed"]
+[connection signal="mouse_entered" from="SettingsMenu/Close" to="." method="_on_close_mouse_entered"]
+[connection signal="mouse_exited" from="SettingsMenu/Close" to="." method="_on_close_mouse_exited"]
+[connection signal="pressed" from="SettingsMenu/Close" to="." method="_on_close_pressed"]

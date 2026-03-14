@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cwmhhrjco02h7"]
+[gd_scene load_steps=19 format=3 uid="uid://cwmhhrjco02h7"]
 
 [ext_resource type="Script" uid="uid://vayrh1hsg8yl" path="res://DungeonMaker.gd" id="1_nulmw"]
 [ext_resource type="PackedScene" uid="uid://dhd0snu2yv3e5" path="res://Levels/Level1/Level4.tscn" id="1_sifhu"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://ct4ti7ck1jr5y" path="res://Player Types/player.tscn" id="14_p832w"]
 [ext_resource type="Script" uid="uid://crbn1y3r0d481" path="res://cam.gd" id="15_oq8wd"]
 [ext_resource type="AudioStream" uid="uid://cvb54fveb6rmr" path="res://SFX/Gong.mp3" id="16_5ilfn"]
+[ext_resource type="PackedScene" uid="uid://daq8p8ifyvpav" path="res://pause.tscn" id="17_1qybq"]
 
 [sub_resource type="Environment" id="Environment_oq8wd"]
 background_mode = 3
@@ -63,3 +64,5 @@ environment = SubResource("Environment_oq8wd")
 stream = ExtResource("16_5ilfn")
 volume_db = -15.0
 bus = &"SFX"
+
+[node name="Pause" parent="." instance=ExtResource("17_1qybq")]

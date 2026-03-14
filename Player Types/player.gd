@@ -3,6 +3,7 @@ extends Node2D
 var selected
 
 func _ready():
+	$CanvasLayer.visible=true
 	SignalBus.generated.connect(finishedGeneration)
 	if(GameManager.playerPos!=null):
 		global_position=GameManager.playerPos

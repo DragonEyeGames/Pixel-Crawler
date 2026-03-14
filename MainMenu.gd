@@ -118,3 +118,26 @@ func _on_master_bar_value_changed(value: float) -> void:
 		value=abs(value)
 		multiplier=-1
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), sqrt(value)*multiplier)
+
+
+func _on_quit_mouse_entered() -> void:
+	var tween=create_tween()
+	tween.tween_property($Quit/FireSprite2, "modulate:a", 1, .1)
+	var tween2=create_tween()
+	tween2.tween_property($Quit, "scale", Vector2(8.668, 7.216), .1)
+	var tween3=create_tween()
+	tween3.tween_property($QuitFire, "volume_db", fireVolume, .1)
+
+
+
+func _on_quit_mouse_exited() -> void:
+	var tween=create_tween()
+	tween.tween_property($Quit/FireSprite2, "modulate:a", 0, .1)
+	var tween2=create_tween()
+	tween2.tween_property($Quit, "scale", Vector2(7.88, 6.56), .1)
+	var tween3=create_tween()
+	tween3.tween_property($QuitFire, "volume_db", -80, .1)
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
