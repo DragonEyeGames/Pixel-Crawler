@@ -7,6 +7,7 @@ var emitted:=false
 @export var doors: Array[Node2D] = []
 var colliding=false
 var active=false
+@export var wall: Node2D
 
 var toUpdate=[]
 
@@ -44,6 +45,8 @@ func on_death():
 		#SignalBus.allGone.emit()
 
 func _process(_delta: float) -> void:
+	if(wall!=null):
+		wall.visible=active
 	$NavRegion.enabled=active
 	$NavRegion.visible=active
 	if(has_node("Floor")):

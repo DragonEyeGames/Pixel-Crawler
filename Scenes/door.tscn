@@ -1,18 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://cywp0vhrkjqsx"]
+[gd_scene load_steps=5 format=3 uid="uid://cywp0vhrkjqsx"]
 
 [ext_resource type="SpriteFrames" uid="uid://dcelm2kjw0qtg" path="res://Scenes/door.tres" id="1_p0e35"]
 [ext_resource type="Script" uid="uid://kgd2ux45ohr0" path="res://Scripts/door.gd" id="2_c5cab"]
+[ext_resource type="PackedScene" uid="uid://bthb03lgfdfci" path="res://Scenes/doorFrame.tscn" id="3_fahql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dl8mf"]
 size = Vector2(21, 3)
 
-[node name="Door" type="AnimatedSprite2D" node_paths=PackedStringArray("sprite") groups=["Door"]]
+[node name="Door" type="AnimatedSprite2D" node_paths=PackedStringArray("sprite", "sorter") groups=["Door"]]
+self_modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 sprite_frames = ExtResource("1_p0e35")
 animation = &"lower"
 autoplay = "open"
 script = ExtResource("2_c5cab")
 sprite = NodePath(".")
+sorter = NodePath("frame")
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
@@ -30,6 +33,17 @@ visible = false
 position = Vector2(0.5, 11)
 shape = SubResource("RectangleShape2D_dl8mf")
 disabled = true
+
+[node name="Door2" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, 10)
+sprite_frames = ExtResource("1_p0e35")
+animation = &"open"
+autoplay = "open"
+offset = Vector2(0, -10)
+
+[node name="frame" parent="." instance=ExtResource("3_fahql")]
+position = Vector2(0, 4)
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

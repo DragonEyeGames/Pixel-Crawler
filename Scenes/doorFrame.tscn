@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bthb03lgfdfci"]
+
+[ext_resource type="Texture2D" uid="uid://bhu1ffd6mr6y1" path="res://Assets/DoorFrame.png" id="1_pccnd"]
+
+[node name="frame" type="Sprite2D" groups=["y_sort"]]
+position = Vector2(0, -6)
+texture = ExtResource("1_pccnd")
+offset = Vector2(0.44411087, -3.3024406)

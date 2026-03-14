@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1wf1joh17gir"]
+[gd_scene load_steps=7 format=3 uid="uid://b1wf1joh17gir"]
 
 [ext_resource type="Texture2D" uid="uid://bhu1ffd6mr6y1" path="res://Assets/DoorFrame.png" id="1_wu27d"]
 [ext_resource type="Script" uid="uid://kgd2ux45ohr0" path="res://Scripts/door.gd" id="2_n6tk3"]
 [ext_resource type="SpriteFrames" uid="uid://dcelm2kjw0qtg" path="res://Scenes/door.tres" id="3_d7h43"]
+[ext_resource type="PackedScene" uid="uid://bthb03lgfdfci" path="res://Scenes/doorFrame.tscn" id="4_cpgph"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dl8mf"]
 size = Vector2(20, 3)
@@ -10,12 +11,14 @@ size = Vector2(20, 3)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7h43"]
 size = Vector2(21, 3)
 
-[node name="Door" type="Sprite2D" node_paths=PackedStringArray("sprite") groups=["Door"]]
+[node name="Door" type="Sprite2D" node_paths=PackedStringArray("sprite", "sorter") groups=["Door"]]
+self_modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 texture = ExtResource("1_wu27d")
 offset = Vector2(0.5, 0.5)
 script = ExtResource("2_n6tk3")
 sprite = NodePath("Control/Door2")
+sorter = NodePath("frame")
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
@@ -36,10 +39,12 @@ offset_right = 10.0
 offset_bottom = 15.0
 
 [node name="Door2" type="AnimatedSprite2D" parent="Control"]
-position = Vector2(9, 11)
+visible = false
+position = Vector2(9, 21)
 sprite_frames = ExtResource("3_d7h43")
 animation = &"open"
 autoplay = "open"
+offset = Vector2(0, -10)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 visible = false
@@ -48,6 +53,12 @@ visible = false
 position = Vector2(0.5, 11)
 shape = SubResource("RectangleShape2D_d7h43")
 disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+
+[node name="frame" parent="." instance=ExtResource("4_cpgph")]
+position = Vector2(0, 4)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="animation_finished" from="Control/Door2" to="." method="_on_animation_finished"]

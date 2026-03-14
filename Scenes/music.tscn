@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://5wk1fr8he0gh"]
 
-[ext_resource type="AudioStream" uid="uid://d4kjjpxjktq3y" path="res://SFX/Dungeon.wav" id="1_fbmny"]
+[ext_resource type="AudioStream" uid="uid://d2fydlss7nnah" path="res://SFX/Dungeon.mp3" id="1_fbmny"]
 
 [node name="Music" type="Node2D"]
 process_mode = 3
@@ -10,3 +10,4 @@ stream = ExtResource("1_fbmny")
 volume_db = -27.67
 autoplay = true
 bus = &"Music"
+parameters/looping = true

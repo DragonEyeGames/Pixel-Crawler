@@ -9,6 +9,7 @@ extends Node2D
 var connection
 var locked=false
 @export var sprite: AnimatedSprite2D
+@export var sorter: Sprite2D
 
 func _ready() -> void:
 	sprite.play("open")
@@ -31,10 +32,13 @@ func _on_area_2d_area_entered(_area: Area2D) -> void:
 		#get_parent().visible=!get_parent().visible;
 		
 func _process(_delta: float) -> void:
+	sorter.visible=(get_parent().active and visible)
 	if(locked):
 		close()
 	if(coverUp!=null):
 		coverUp.visible=!visible
+		if(coverUp.visible):
+			sorter.visible=false
 		
 func _physics_process(_delta: float) -> void:
 	$StaticBody2D/CollisionShape2D2.disabled=sprite.animation=="open"

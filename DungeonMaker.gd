@@ -223,6 +223,11 @@ func generateWorld():
 		await cap()
 	await get_tree().process_frame
 	await get_tree().process_frame
+	for sort in get_tree().get_nodes_in_group("y_sort"):
+		var global=sort.global_position
+		sort.get_parent().remove_child(sort)
+		$"Y-Sort".add_child(sort)
+		sort.global_position=global
 	startingLevel.modulate.a=1
 	SignalBus.generated.emit()
 	$Gong.play()
