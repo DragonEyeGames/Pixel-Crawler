@@ -558,37 +558,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SettingsMenu" parent="." instance=ExtResource("4_iwfq2")]
+visible = false
+modulate = Color(1, 1, 1, 0)
 self_modulate = Color(0.3854925, 0.3854925, 0.38549235, 1)
 z_index = 5
 position = Vector2(-157.75006, 73.55176)
 scale = Vector2(14.075, 14.075)
 tile_map_data = PackedByteArray("AAACAAAAAAAAAAUAAAACAAEAAAAAAAYAAAACAAIAAAAAAAYAAAADAAAAAAABAAUAAAADAAEAAAABAAYAAAADAAIAAAABAAYAAAAEAAAAAAABAAUAAAAEAAEAAAABAAYAAAAEAAIAAAABAAYAAAAFAAAAAAABAAUAAAAFAAEAAAABAAYAAAAFAAIAAAABAAYAAAAGAAAAAAABAAUAAAAGAAEAAAABAAYAAAAGAAIAAAABAAYAAAAHAAAAAAACAAUAAAAHAAEAAAACAAYAAAAHAAIAAAACAAYAAAAHAAMAAAACAAcAAAACAAMAAAAAAAcAAAADAAMAAAABAAcAAAAEAAMAAAABAAcAAAAFAAMAAAABAAcAAAAGAAMAAAABAAcAAAA=")
-
-[node name="Music" type="RichTextLabel" parent="SettingsMenu"]
-self_modulate = Color(0.7792914, 0.7792914, 0.7792913, 1)
-offset_left = 39.835514
-offset_top = 30.133
-offset_right = 105.65631
-offset_bottom = 53.526188
-scale = Vector2(0.445, 0.445)
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("1_eiy7p")
-theme_override_font_sizes/normal_font_size = 16
-text = "Music:"
-vertical_alignment = 1
-
-[node name="Master" type="RichTextLabel" parent="SettingsMenu"]
-self_modulate = Color(0.7792914, 0.7792914, 0.7792913, 1)
-offset_left = 39.97397
-offset_top = 38.16324
-offset_right = 105.79477
-offset_bottom = 61.556427
-scale = Vector2(0.445, 0.445)
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("1_eiy7p")
-theme_override_font_sizes/normal_font_size = 16
-text = "Master:"
-vertical_alignment = 1
 
 [node name="SFX Bar" type="HSlider" parent="SettingsMenu"]
 offset_left = 58.37443
@@ -633,16 +609,17 @@ position = Vector2(7.833454, 6.562134)
 scale = Vector2(0.565, 0.415)
 tile_map_data = PackedByteArray("AAABAAAAAAACAAcAAAAAAAAAAAABAAcAAAD//wAAAAAAAAcAAAD/////AAAAAAUAAAAAAP//AAABAAUAAAABAP//AAACAAUAAAA=")
 
-[node name="Text" type="RichTextLabel" parent="SettingsMenu/Close/Walls"]
-self_modulate = Color(0.7792914, 0.7792914, 0.7792913, 1)
-offset_left = -9.034926
-offset_top = -10.441622
-offset_right = 47.53676
-offset_bottom = 13.682325
-scale = Vector2(0.605, 0.893)
+[node name="RichTextLabel" type="RichTextLabel" parent="SettingsMenu/Close/Walls"]
+self_modulate = Color(0.73300546, 0.7330054, 0.7330054, 1)
+z_index = 3
+offset_left = -8.769406
+offset_top = -12.666167
+offset_right = 304.5987
+offset_bottom = 218.35654
+scale = Vector2(0.11, 0.126)
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("1_eiy7p")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 112
 text = "Close"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -672,8 +649,38 @@ offset_bottom = 120.0702
 scale = Vector2(0.126, 0.126)
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("1_eiy7p")
-theme_override_font_sizes/normal_font_size = 64
-text = "Quit"
+theme_override_font_sizes/normal_font_size = 48
+text = "SFX:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFX2" type="RichTextLabel" parent="SettingsMenu"]
+self_modulate = Color(0.73300546, 0.7330054, 0.7330054, 1)
+z_index = 3
+offset_left = 40.052357
+offset_top = 28.948978
+offset_right = 208.92346
+offset_bottom = 127.62215
+scale = Vector2(0.126, 0.126)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_eiy7p")
+theme_override_font_sizes/normal_font_size = 48
+text = "Music:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFX3" type="RichTextLabel" parent="SettingsMenu"]
+self_modulate = Color(0.73300546, 0.7330054, 0.7330054, 1)
+z_index = 3
+offset_left = 40.052357
+offset_top = 37.18747
+offset_right = 227.99402
+offset_bottom = 135.86064
+scale = Vector2(0.126, 0.126)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_eiy7p")
+theme_override_font_sizes/normal_font_size = 48
+text = "Master:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
