@@ -2,12 +2,18 @@ extends Sprite2D
 
 var colliding:=false
 
+var playerEntered=false
+
 func _process(_delta: float) -> void:
 	if(Input.is_action_just_pressed("Interact") and colliding):
 		entered()
 		
 		
 func entered():
+	if(playerEntered):
+		return
+	playerEntered=true
+	print("entered")
 	$Seen.visible=false
 	GameManager.player.canMove=false
 	GameManager.player.flip("left")
@@ -20,13 +26,17 @@ func entered():
 	GameManager.player.global_position=$Marker2D.global_position
 	var tween2 = create_tween()
 	tween2.tween_property(GameManager.player, "global_position", $End.global_position, 1)
+	print("shmoving")
 	await get_tree().create_timer(.6).timeout
 	GameManager.transition.play("out")
 	await get_tree().create_timer(.6).timeout
+	print("YEs")
 	await get_tree().process_frame
 	await get_tree().process_frame
 	GameManager.playerPos=null
+	print("almost")
 	get_tree().change_scene_to_file("res://Scenes/upgrades.tscn")
+	print("done")
 		
 func _on_area_2d_area_entered(_area: Area2D) -> void:
 	colliding=true

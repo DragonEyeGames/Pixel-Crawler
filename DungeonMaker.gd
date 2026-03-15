@@ -79,8 +79,8 @@ func generate(on: Node2D):
 		newDoor = south_doors.pick_random()
 		levelReplacement.doors.erase(newDoor)
 		levelReplacement.global_position = door.global_position - newDoor.position
-		await get_tree().process_frame
-		await get_tree().process_frame
+		await get_tree().physics_frame
+		await get_tree().physics_frame
 		if(levelReplacement.colliding):
 			level.colliding=false
 			levelReplacement.colliding=false
@@ -145,8 +145,8 @@ func cap():
 		newDoor = south_doors.pick_random()
 		levelReplacement.doors.erase(newDoor)
 		levelReplacement.global_position = door.global_position - newDoor.position
-		await get_tree().process_frame
-		await get_tree().process_frame
+		await get_tree().physics_frame
+		await get_tree().physics_frame
 		if(levelReplacement.colliding):
 			level.colliding=false
 			levelReplacement.colliding=false
@@ -196,8 +196,8 @@ func placeEnd():
 		newDoor = south_doors.pick_random()
 		levelReplacement.doors.erase(newDoor)
 		levelReplacement.global_position = door.global_position - newDoor.position
-		await get_tree().process_frame
-		await get_tree().process_frame
+		await get_tree().physics_frame
+		await get_tree().physics_frame
 		if(levelReplacement.colliding):
 			level.colliding=false
 			levelReplacement.colliding=false
@@ -216,19 +216,19 @@ func generateWorld():
 	await get_tree().physics_frame
 	while len(uniqueLeft)>0:
 		await generate(placedLevels.pick_random())
-	await get_tree().process_frame
+	await get_tree().physics_frame
 	while endPlaced==false:
 		await placeEnd()
-	await get_tree().process_frame
+	await get_tree().physics_frame
 	while len(instantiatedCaps)>=1 and failedCaps<=100:
 		await cap()
-	await get_tree().process_frame
+	await get_tree().physics_frame
 	for sort in get_tree().get_nodes_in_group("y_sort"):
 		var global=sort.global_position
 		sort.get_parent().remove_child(sort)
 		$"Y-Sort".add_child(sort)
 		sort.global_position=global
-	await get_tree().process_frame
+	await get_tree().physics_frame
 	startingLevel.modulate.a=1
 	SignalBus.generated.emit()
 	await get_tree().create_timer(.1).timeout

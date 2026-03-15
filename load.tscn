@@ -1,6 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://5dm1ub2gf8mi"]
+[gd_scene load_steps=6 format=3 uid="uid://5dm1ub2gf8mi"]
 
 [ext_resource type="FontFile" uid="uid://df43mdabfw85x" path="res://Fonts/Pixley.ttf" id="1_edu2m"]
+[ext_resource type="Script" uid="uid://cdadm3q22danq" path="res://load.gd" id="1_g58xu"]
+
+[sub_resource type="Animation" id="Animation_fjnpg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Loading"]
+}
 
 [sub_resource type="Animation" id="Animation_g58xu"]
 resource_name = "load"
@@ -18,21 +34,6 @@ tracks/0/keys = {
 "values": ["Loading", "Loading.", "Loading..", "Loading...", "Loading..."]
 }
 
-[sub_resource type="Animation" id="Animation_fjnpg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RichTextLabel:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["Loading"]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ogmen"]
 _data = {
 &"RESET": SubResource("Animation_fjnpg"),
@@ -46,6 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_g58xu")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0

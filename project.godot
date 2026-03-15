@@ -13,7 +13,8 @@ config_version=5
 config/name="Pixel Crawler"
 run/main_scene="uid://mg6kleyfbl1o"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://Assets/icon.svg"
+boot_splash/image="uid://ctift0ehher4m"
+config/icon="uid://ca0yr7kusk68e"
 
 [autoload]
 
@@ -123,5 +124,6 @@ Pause={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 viewport/hdr_2d=true
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)

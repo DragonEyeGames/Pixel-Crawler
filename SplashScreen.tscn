@@ -1,0 +1,122 @@
+[gd_scene load_steps=8 format=4 uid="uid://dibufkaoow4ur"]
+
+[ext_resource type="Texture2D" uid="uid://dq68qm5q6ddy2" path="res://Assets/Characters/Characters(100x100)/Armored Axeman/Armored Axeman/Armored Axeman-Attack01.png" id="4_ja1jw"]
+[ext_resource type="Texture2D" uid="uid://ca2nd6y8kab1j" path="res://Assets/Characters/Characters(100x100)/Armored Orc/Armored Orc/Armored Orc-Idle.png" id="6_hmrfq"]
+[ext_resource type="PackedScene" uid="uid://bd72ohs7x3fys" path="res://Scenes/tilemap.tscn" id="7_4k1wf"]
+[ext_resource type="FontFile" uid="uid://df43mdabfw85x" path="res://Fonts/Pixley.ttf" id="8_4k1wf"]
+
+[sub_resource type="Gradient" id="Gradient_l4jkb"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pq256"]
+gradient = SubResource("Gradient_l4jkb")
+fill = 1
+fill_from = Vector2(0.5046729, 0.5140187)
+fill_to = Vector2(0.864486, 0.8598131)
+
+[sub_resource type="Environment" id="Environment_ja1jw"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.57
+glow_bloom = 0.13
+glow_hdr_threshold = 1.13
+glow_hdr_scale = 2.56
+glow_hdr_luminance_cap = 45.03
+fog_enabled = true
+fog_light_energy = 2.55
+adjustment_enabled = true
+adjustment_saturation = 1.1
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+modulate = Color(9.027417, 9.027417, 9.027417, 1)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 59.0
+offset_top = -115.0
+offset_right = 99.0
+offset_bottom = -75.0
+
+[node name="Title" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 118.379074
+offset_right = 1882.0734
+offset_bottom = 391.81598
+focus_mode = 0
+theme_override_fonts/normal_font = ExtResource("8_4k1wf")
+theme_override_font_sizes/normal_font_size = 176
+text = "Pixel Crawler"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title3" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 1056.0
+offset_right = 2995.0732
+offset_bottom = 1329.4369
+scale = Vector2(0.58, 0.58)
+focus_mode = 0
+theme_override_fonts/normal_font = ExtResource("8_4k1wf")
+theme_override_font_sizes/normal_font_size = 176
+text = "Loading"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title2" type="RichTextLabel" parent="Control"]
+modulate = Color(4.456143, 0, 0, 1)
+z_index = -1
+layout_mode = 0
+offset_left = 10.203247
+offset_top = 117.0
+offset_right = 1885.2767
+offset_bottom = 390.4369
+theme_override_fonts/normal_font = ExtResource("8_4k1wf")
+theme_override_font_sizes/normal_font_size = 176
+text = "Pixel Crawler"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.08078336, 0.080783345, 0.0807833, 1)
+
+[node name="ArmoredOrcIdle" type="Sprite2D" parent="."]
+position = Vector2(1009, 853)
+scale = Vector2(23.515, 23.515)
+texture = ExtResource("6_hmrfq")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(41.756355, 36.810272, 25.82412, 21.200409)
+
+[node name="PointLight2D2" type="PointLight2D" parent="ArmoredOrcIdle"]
+visible = false
+position = Vector2(3.99745, -0.9355718)
+scale = Vector2(0.001, 0.001)
+energy = 0.48
+texture = SubResource("GradientTexture2D_pq256")
+texture_scale = 20.0
+
+[node name="Walls" parent="." instance=ExtResource("7_4k1wf")]
+modulate = Color(0.19434929, 0.19434926, 0.19434926, 1)
+z_index = -5
+position = Vector2(1105.5095, 218.30402)
+scale = Vector2(30.78, 30.78)
+tile_map_data = PackedByteArray("AAD8//7/AAABAAMAAAD9//7/AAABAAMAAAD+//7/AAABAAMAAAD///7/AAABAAMAAAAAAP7/AAABAAMAAAABAP7/AAABAAMAAAACAP7/AAABAAMAAAACAP//AAABAAIAAAACAAAAAAABAAMAAAACAAEAAAABAAQAAAABAAEAAAABAAQAAAAAAAEAAAABAAQAAAD//wEAAAABAAQAAAD+/wEAAAABAAQAAAD9/wEAAAABAAQAAAD8/wEAAAABAAQAAAD8/wAAAAABAAMAAAD9/wAAAAABAAMAAAD+/wAAAAABAAMAAAD//wAAAAABAAMAAAAAAAAAAAABAAMAAAABAAAAAAABAAMAAAABAP//AAABAAIAAAAAAP//AAABAAIAAAD/////AAABAAIAAAD+////AAABAAIAAAD9////AAABAAIAAAD8////AAABAAIAAAA=")
+
+[node name="ArmoredAxemanAttack01" type="Sprite2D" parent="."]
+position = Vector2(370.00003, 781)
+scale = Vector2(22.805, 22.805)
+texture = ExtResource("4_ja1jw")
+region_enabled = true
+region_rect = Rect2(334.45883, 30.518356, 21.485779, 27.209705)
+
+[node name="PointLight2D" type="PointLight2D" parent="ArmoredAxemanAttack01"]
+scale = Vector2(0.38, 0.38)
+energy = 0.48
+texture = SubResource("GradientTexture2D_pq256")
+texture_scale = 2.25
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ja1jw")

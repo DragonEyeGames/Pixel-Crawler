@@ -603,6 +603,7 @@ avoidance_mask = 2
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
+autostart = true
 
 [node name="DeadSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_6ry3g")

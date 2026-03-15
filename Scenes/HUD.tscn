@@ -158,10 +158,10 @@ libraries = {
 autoplay = "in"
 
 [node name="Gold" type="RichTextLabel" parent="."]
-offset_left = 133.0
-offset_top = 135.0
-offset_right = 316.0
-offset_bottom = 249.0
+offset_left = 146.0
+offset_top = 134.0
+offset_right = 329.0
+offset_bottom = 248.0
 scale = Vector2(0.885, 0.885)
 theme_override_fonts/normal_font = ExtResource("2_psnte")
 theme_override_font_sizes/normal_font_size = 80

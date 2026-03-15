@@ -18,8 +18,7 @@ func _ready() -> void:
 		door.chapter=chapter
 	SignalBus.enemy_died.connect(on_death)
 	SignalBus.generated.connect(finishedGeneration)
-	await get_tree().process_frame
-	await get_tree().process_frame
+	await get_tree().physics_frame
 	#if ResourceLoader.exists("user://scene_data.tres"):
 		#var data = ResourceLoader.load("user://scene_data.tres") as SceneData
 		#if(level in GameManager.save):

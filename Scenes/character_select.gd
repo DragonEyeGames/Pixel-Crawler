@@ -23,7 +23,7 @@ func loadScene():
 	tween.tween_property($Fade/Control, "modulate:a", 1, .1)
 	await get_tree().create_timer(.1).timeout
 	await get_tree().process_frame
-	LoadManager.load_scene(self, "res://Dungeon.tscn")
+	get_tree().change_scene_to_file("res://load.tscn")
 
 
 func _on_archer_pressed() -> void:

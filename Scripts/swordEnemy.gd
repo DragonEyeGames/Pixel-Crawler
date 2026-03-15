@@ -24,7 +24,6 @@ var knockBack: Vector2
 func _ready() -> void:
 	maxHealth=health
 	await get_tree().process_frame
-	$Timer.start()
 	hit=$Hit
 	shadow=$Shadow
 	player=GameManager.player
